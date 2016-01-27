@@ -27,3 +27,6 @@ sass:
 
 # Timezone setting
 timezone: Europe/London
+
+# allow jekyll to work with github.io url
+baseurl: /joblint
