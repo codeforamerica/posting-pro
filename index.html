@@ -10,76 +10,27 @@ layout: page
 </div>
 
 <div class="column output-area">
+    <div class="post-output" data-control="contextOutput">
 
-    <div class="output-tally">
-        <h2>Issue Tally</h2>
-        <ul class="count-chart" data-control="countOutput">
-            <li class="count" data-role="count" data-type="culture">
-                <span class="bar-label">Culture</span>
-                <span class="bar" data-role="bar">&#8203;</span>
-                <span class="number" data-role="number">0</span>
-            </li>
-            <li class="count" data-role="count" data-type="realism">
-                <span class="bar-label">Realism</span>
-                <span class="bar" data-role="bar">&#8203;</span>
-                <span class="number" data-role="number">0</span>
-            </li>
-            <li class="count" data-role="count" data-type="recruiter">
-                <span class="bar-label">Recruiter</span>
-                <span class="bar" data-role="bar">&#8203;</span>
-                <span class="number" data-role="number">0</span>
-            </li>
-            <li class="count" data-role="count" data-type="sexism">
-                <span class="bar-label">Sexism</span>
-                <span class="bar" data-role="bar">&#8203;</span>
-                <span class="number" data-role="number">0</span>
-            </li>
-            <li class="count" data-role="count" data-type="tech">
-                <span class="bar-label">Tech</span>
-                <span class="bar" data-role="bar">&#8203;</span>
-                <span class="number" data-role="number">0</span>
-            </li>
-        </ul>
+        <script type="text/x-template" data-template="highlight">
+
+            <div style="display:inline-block">
+                <span class="error-highlight">{occurance}</span>
+                {>tooltip}
+            </div>
+
+        </script>
+        <script type="text/x-template" data-template="tooltip">
+
+            <div class="error-tooltip issue issue-{level}" data-control="errorTooltip">
+                <h3>{name}</h3>
+                <p>
+                    <span class="solution">{solution}</span>
+                    <span class="reason">{reason}</span>
+                </p>
+            </div>
+
+        </script>
+
     </div>
-
-    <div class="output-issues">
-        <h2>Issues</h2>
-        <div data-control="issuesOutput">
-            <p class="no-issues">No issues found!</p>
-            <script type="text/x-template" data-template="issues">
-
-                {#issues.length}
-                    <ul class="issue-list">
-                        {#issues}
-                            <li>{>issue}</li>
-                        {/issues}
-                    </ul>
-                {/issues.length}
-
-                {^issues.length}
-                    <p class="no-issues">No issues found!</p>
-                {/issues.length}
-
-            </script>
-            <script type="text/x-template" data-template="issue">
-
-                <div class="issue issue-{level}">
-                    <h3>
-                        {name}
-                        <span class="level">({level})</span>
-                    </h3>
-                    <p class="context">{&contextHtml}</p>
-                    <p>
-                        <span class="solution">{solution}</span>
-                        <span class="reason">{reason}</span>
-                    </p>
-                </div>
-
-            </script>
-            <script type="text/x-template" data-template="occurance">
-                <em class="occurance">{occurance}</em>
-            </script>
-        </div>
-    </div>
-
 </div>

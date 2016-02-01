@@ -27,8 +27,10 @@
 
     function initControls () {
         cuff.controls.postInput = postInputControl;
-        cuff.controls.issuesOutput = issuesOutputControl;
-        cuff.controls.countOutput = countOutputControl;
+        //cuff.controls.issuesOutput = issuesOutputControl;
+        //cuff.controls.countOutput = countOutputControl;
+        cuff.controls.contextOutput = contextOutputControl;
+        cuff.controls.errorTooltip = errorTooltipControl;
         cuff();
     };
 
@@ -53,6 +55,56 @@
             }, 1);
         }
     };
+
+    function contextOutputControl (element) {
+
+      $(document).on('lint-results', function( event, results) {
+          var inputEl = $(document).find('#post-input')[0];
+          var baseText = inputEl.value;
+
+          // sort array by the position of the issue
+          var issues = _.sortBy(results.issues, function(issue) {
+              return issue.position;
+          });
+          issues.reverse(); // now the issues are sorted by last to first
+
+          issues.forEach(function(issue) {
+            var occuranceLength = issue.occurance.length;
+
+            var beginning = baseText.slice(0, issue.position);
+            var end = baseText.slice(issue.position + occuranceLength);
+
+            var highlight = templates.highlight.render(issue, templates);
+            baseText = beginning + highlight + end;
+          });
+
+          element.innerHTML = baseText;
+          cuff(element); // only apply bindings for children of this element
+      });
+    };
+
+    function errorTooltipControl (element) {
+      var parent = $(element).parent()
+      parent.hover(
+        function() { showTooltip(element) },
+        function() { hideTooltip(element) }
+      );
+
+      var parentOffset = parent.offset();
+      var tooltipOffset = {
+        top : parentOffset.top + 30,
+        left: parentOffset.left - 10
+      };
+      $(element).offset(tooltipOffset);
+    };
+
+    function showTooltip(element) {
+      $(element).addClass("error-tooltip-show");
+    }
+
+    function hideTooltip(element) {
+      $(element).removeClass("error-tooltip-show");
+    }
 
     function issuesOutputControl (element) {
         $(document).on('lint-results', function (event, results) {
