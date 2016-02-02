@@ -91,10 +91,21 @@
       );
 
       var parentOffset = parent.offset();
+      var parentWidth = parent.width();
+      var documentWidth = $(document).width();
+
       var tooltipOffset = {
-        top : parentOffset.top + 30,
-        left: parentOffset.left - 10
+        top : parentOffset.top + 30
       };
+
+      var tooltipWidth = 200;
+
+      if(parentOffset.left + parentWidth + tooltipWidth > documentWidth) { // if the tooltip will go over the edge
+        tooltipOffset.left = parentOffset.left - tooltipWidth + parentWidth / 2;
+      } else { // if it's fine
+        tooltipOffset.left = parentOffset.left;
+      }
+
       $(element).offset(tooltipOffset);
     };
 
