@@ -59,8 +59,8 @@
     function contextOutputControl (element) {
 
       $(document).on('lint-results', function( event, results) {
-          var inputEl = $(document).find('#post-input')[0];
-          var baseText = inputEl.value;
+          var inputElement = $(document).find('#post-input')[0];
+          var baseText = inputElement.value;
 
           // sort array by the position of the issue
           var issues = _.sortBy(results.issues, function(issue) {
