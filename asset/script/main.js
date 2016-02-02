@@ -29,6 +29,7 @@
         cuff.controls.postInput = postInputControl;
         //cuff.controls.issuesOutput = issuesOutputControl;
         //cuff.controls.countOutput = countOutputControl;
+        cuff.controls.summaryOutput = summaryOutputControl;
         cuff.controls.contextOutput = contextOutputControl;
         cuff.controls.errorTooltip = errorTooltipControl;
         cuff();
@@ -39,13 +40,12 @@
         var $element = $(element);
         var lastLintId;
         $element.on('keyup', function () {
-            var results = joblint(element.value);
+            var inputValue = element.value.replace(/\n/g, "<br>");
+            var results = joblint(inputValue);
+            results.readingLevel = buildReadingLevel(element.value);
             var lintId = generateLintId(results);
-            if (!lastLintId || lintId !== lastLintId) {
-                lastLintId = lintId;
-                saveSession(element.value);
-                $document.trigger('lint-results', results);
-            }
+            saveSession(element.value);
+            $document.trigger('lint-results', results);
         });
         var session = loadSession();
         if (session) {
@@ -60,7 +60,7 @@
 
       $(document).on('lint-results', function( event, results) {
           var inputElement = $(document).find('#post-input')[0];
-          var baseText = inputElement.value;
+          var baseText = inputElement.value.replace(/\n/g, "<br>");;
 
           // sort array by the position of the issue
           var issues = _.sortBy(results.issues, function(issue) {
@@ -91,10 +91,21 @@
       );
 
       var parentOffset = parent.offset();
+      var parentWidth = parent.width();
+      var documentWidth = $(document).width();
+
       var tooltipOffset = {
-        top : parentOffset.top + 30,
-        left: parentOffset.left - 10
+        top : parentOffset.top + 30
       };
+
+      var tooltipWidth = 200;
+
+      if(parentOffset.left + parentWidth + tooltipWidth > documentWidth) { // if the tooltip will go over the edge
+        tooltipOffset.left = parentOffset.left - tooltipWidth + parentWidth / 2;
+      } else { // if it's fine
+        tooltipOffset.left = parentOffset.left;
+      }
+
       $(element).offset(tooltipOffset);
     };
 
@@ -142,6 +153,16 @@
         });
     };
 
+    function summaryOutputControl(element) {
+        $(document).on('lint-results', function (event, results) {
+            var tooHigh = results.readingLevel >= 9;
+            var readingLevelSummary = 
+                {"readingLevel": results.readingLevel,
+                 "tooHigh": tooHigh,
+                 "level": tooHigh ? "warning" : "info"});
+            element.innerHTML = templates.readingLevel.render(readingLevelSummary});
+    };
+
     function generateLintId (results) {
         return JSON.stringify(results);
     }
@@ -165,6 +186,12 @@
             forEach: (typeof Array.prototype.forEach !== 'undefined')
         };
         return (supports.events && supports.querySelector && supports.forEach);
+    }
+
+    function buildReadingLevel (text) {
+        var ts = textstatistics(text);
+        var gradeLevel = ts.fleschKincaidGradeLevel();
+        return gradeLevel;
     }
 
 }());
