@@ -39,7 +39,8 @@
         var $element = $(element);
         var lastLintId;
         $element.on('keyup', function () {
-            var results = joblint(element.value);
+            var inputValue = element.value.replace(/\n/g, "<br>");
+            var results = joblint(inputValue);
             var lintId = generateLintId(results);
             if (!lastLintId || lintId !== lastLintId) {
                 lastLintId = lintId;
@@ -60,7 +61,7 @@
 
       $(document).on('lint-results', function( event, results) {
           var inputElement = $(document).find('#post-input')[0];
-          var baseText = inputElement.value;
+          var baseText = inputElement.value.replace(/\n/g, "<br>");;
 
           // sort array by the position of the issue
           var issues = _.sortBy(results.issues, function(issue) {
