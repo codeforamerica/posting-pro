@@ -97,7 +97,7 @@ body {
 // Input area
 
 .input-area {
-    width: 60%;
+    width: 50%;
 }
 .post-input {
     box-sizing: border-box;
@@ -130,13 +130,17 @@ body {
 // Output area
 
 .output-area {
-    width: 40%;
+    width: 50%;
     overflow: auto;
-    padding: 20px;
 }
 .output-tally, .output-issues {
     box-sizing: border-box;
     @extend .clearfix;
+}
+
+.post-output {
+    @extend .post-input;
+    background-color: #33353a;
 }
 
 @media only screen and (max-width: 720px) {
@@ -156,6 +160,24 @@ body {
     }
 }
 
+// Context output
+
+.error-highlight {
+  color: red;
+  cursor: pointer;
+}
+
+.error-tooltip {
+  position:absolute;
+  width: 200px;
+  height: auto;
+  display: none;
+  z-index: 100;
+
+  &.error-tooltip-show {
+    display: block;
+  }
+}
 
 // Issue list
 
