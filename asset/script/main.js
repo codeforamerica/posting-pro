@@ -98,7 +98,7 @@
         top : parentOffset.top + 30
       };
 
-      var tooltipWidth = 200;
+      var tooltipWidth = 300;
 
       if(parentOffset.left + parentWidth + tooltipWidth > documentWidth) { // if the tooltip will go over the edge
         tooltipOffset.left = parentOffset.left - tooltipWidth + parentWidth / 2;
