@@ -13,7 +13,7 @@ body {
     font-family: 'Trebuchet MS', 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Tahoma, sans-serif;
     font-size: 140%;
     line-height: 1.3;
-    color: #ddd;
+    color: #333;
 }
 h1, h2, h3, p, ul {
     margin: 0;
@@ -21,10 +21,10 @@ h1, h2, h3, p, ul {
     font-weight: normal;
 }
 h1 {
-    @include rem(font-size, 24px);
+    @include rem(font-size, 36px);
 }
 h2 {
-    @include rem(font-size, 14px);
+    @include rem(font-size, 24px);
     text-transform: uppercase;
 }
 h3 {
@@ -33,6 +33,9 @@ h3 {
 }
 a {
     color: inherit;
+}
+.clear{
+	clear: both;
 }
 
 
@@ -43,7 +46,7 @@ html {
 }
 body {
     height: 100%;
-    background-color: #33353a;
+    background-color: #fff;
 }
 .header, .main, .footer {
     @extend .clearfix;
@@ -52,10 +55,17 @@ body {
     padding: 15px;
 }
 .main {
-    height: 90%;
-    background-color: #2a2c30;
+	width:1450px;
+    height: 70%;
+	margin: 0 auto;
+    background-color: #fff;
 }
 
+@media only screen and (max-width: 1450px) {
+    .main {
+		width: 100%;
+	}
+}
 @media only screen and (max-width: 720px) {
     .main {
         height: auto;
@@ -68,16 +78,63 @@ body {
 .site-name, .tagline {
     @include rem(line-height, 24px);
     margin-bottom: 0;
-    float: left;
 }
 .site-name {
-    margin-right: 15px;
+    text-align: center;
+    line-height: 2em;
 }
 .tagline {
     float: left;
 }
+.dashboard{
+	width: 1420px;
+	height: auto;
+    border: 3px solid #E0E0E0;
+	margin: 15px auto;
+	padding: 15px;
+}
+.instruct, .inform{
+	float: left;
+	height: 50px;
+}
+.instruct{
+	width: 740px;
+}
+.inform{
+	width: 670px;
+}
+@media only screen and (max-width: 1450px) {
+    .dashboard {
+		width: 95%;
+		padding: 2%;
+		margin:0;
+	}
+	.instruct{
+		width: 60%;
+	}
+	.inform{
+		width: 40%;
+	}
+}
+@media only screen and (max-width: 720px) {
+    .instruct, .inform{
+		float: none;
+		height: auto;
+	}
+}
 
 
+// Footer
+
+footer p{
+	width: 1450px;
+	margin:0 auto;
+}
+@media only screen and (max-width: 1450px) {
+    footer p{
+		width: 100%;
+	}
+}
 // Columns
 
 .column {
@@ -97,20 +154,26 @@ body {
 // Input area
 
 .input-area {
-    width: 50%;
+    width: 700px;
+	margin: 0 50px 0 0;
+}
+@media only screen and (max-width: 1450px) {
+    .input-area {
+		width: 46%;
+		margin: 0 2%;
+	}
 }
 .post-input {
     box-sizing: border-box;
     width: 100%;
-    height: 100%;
+    height: 90%;
     padding: 20px;
     resize: none;
-    background-color: #1d1e20;
-    border: 1px solid #999;
+    background-color: #fff;
+    border: 3px solid #E0E0E0 !important;
     border: none;
     @include rem(font-size, 16px);
     line-height: 1.5;
-    color: rgba(255, 255, 255, .6);
 }
 .post-input:focus {
     outline: none;
@@ -130,8 +193,13 @@ body {
 // Output area
 
 .output-area {
-    width: 50%;
-    overflow: auto;
+    width: 700px;
+}
+@media only screen and (max-width: 1450px) {
+    .output-area {
+		width: 46%;
+		margin: 0 2%;
+	}
 }
 .output-tally, .output-issues {
     box-sizing: border-box;
@@ -140,7 +208,7 @@ body {
 
 .post-output {
     @extend .post-input;
-    background-color: #33353a;
+    background-color: #E0E0E0;
 }
 
 @media only screen and (max-width: 720px) {
@@ -194,10 +262,13 @@ body {
     background-color: #3a3f48;
 }
 .issue-error {
-    background-color: #483a3a;
+    background-color: #fff
 }
 .issue-warning {
-    background-color: #48463a;
+    background-color: #fff;
+}
+.issue h3{
+	font-size: 1em;
 }
 .issue h3, .issue p {
     @include rem(margin-bottom, 10px);
@@ -224,8 +295,8 @@ body {
     color: #fff;
 }
 .reason {
-    color: rgba(255, 255, 255, .6);
     font-style: italic;
+	display: block;
 }
 .no-issues {
     color: #5ba348;
