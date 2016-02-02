@@ -194,7 +194,6 @@ footer p{
 
 .output-area {
     width: 700px;
-	overflow: auto;
 }
 @media only screen and (max-width: 1450px) {
     .output-area {
@@ -210,6 +209,7 @@ footer p{
 .post-output {
     @extend .post-input;
     background-color: #E0E0E0;
+	overflow: auto;
 }
 
 @media only screen and (max-width: 720px) {
