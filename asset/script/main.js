@@ -155,8 +155,12 @@
 
     function summaryOutputControl(element) {
         $(document).on('lint-results', function (event, results) {
-            element.innerHTML = templates.readingLevel.render({level: results.readingLevel});
-        });
+            var tooHigh = results.readingLevel >= 9;
+            var readingLevelSummary = 
+                {"readingLevel": results.readingLevel,
+                 "tooHigh": tooHigh,
+                 "level": tooHigh ? "warning" : "info"});
+            element.innerHTML = templates.readingLevel.render(readingLevelSummary});
     };
 
     function generateLintId (results) {
