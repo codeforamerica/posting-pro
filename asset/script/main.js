@@ -41,11 +41,8 @@
         $element.on('keyup', function () {
             var results = joblint(element.value);
             var lintId = generateLintId(results);
-            if (!lastLintId || lintId !== lastLintId) {
-                lastLintId = lintId;
-                saveSession(element.value);
-                $document.trigger('lint-results', results);
-            }
+            saveSession(element.value);
+            $document.trigger('lint-results', results);
         });
         var session = loadSession();
         if (session) {
