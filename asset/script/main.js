@@ -42,11 +42,8 @@
             var inputValue = element.value.replace(/\n/g, "<br>");
             var results = joblint(inputValue);
             var lintId = generateLintId(results);
-            if (!lastLintId || lintId !== lastLintId) {
-                lastLintId = lintId;
-                saveSession(element.value);
-                $document.trigger('lint-results', results);
-            }
+            saveSession(element.value);
+            $document.trigger('lint-results', results);
         });
         var session = loadSession();
         if (session) {
