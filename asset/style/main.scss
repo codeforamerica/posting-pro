@@ -232,13 +232,13 @@ footer p{
 // Context output
 
 .error-highlight {
-  border-bottom: 4px solid red;
   cursor: pointer;
+  border-bottom: 5px solid red;
 }
 
 .error-tooltip {
   position:absolute;
-  width: 200px;
+  width: 300px;
   height: auto;
   display: none;
   z-index: 100;
@@ -260,16 +260,19 @@ footer p{
 }
 .issue {
     padding: 10px;
-    background-color: #3a3f48;
+    background-color: #fff;
+	border: 1px solid red;
 }
 .issue-error {
-    background-color: #fff
+    background-color: #fff;
+	border: 1px solid red;
 }
 .issue-warning {
     background-color: #fff;
+	border: 1px solid red;
 }
 .issue h3{
-	font-size: 1em;
+	font-size: 1.2em;
 }
 .issue h3, .issue p {
     @include rem(margin-bottom, 10px);
@@ -298,6 +301,8 @@ footer p{
 .reason {
     font-style: italic;
 	display: block;
+	padding: 5px 0 0 0;
+	border-top: 1px solid #ddd;
 }
 .no-issues {
     color: #5ba348;
