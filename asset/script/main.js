@@ -29,6 +29,7 @@
         cuff.controls.postInput = postInputControl;
         //cuff.controls.issuesOutput = issuesOutputControl;
         //cuff.controls.countOutput = countOutputControl;
+        cuff.controls.summaryOutput = summaryOutputControl;
         cuff.controls.contextOutput = contextOutputControl;
         cuff.controls.errorTooltip = errorTooltipControl;
         cuff();
@@ -41,6 +42,7 @@
         $element.on('keyup', function () {
             var inputValue = element.value.replace(/\n/g, "<br>");
             var results = joblint(inputValue);
+            results.readingLevel = buildReadingLevel(element.value);
             var lintId = generateLintId(results);
             saveSession(element.value);
             $document.trigger('lint-results', results);
@@ -151,6 +153,16 @@
         });
     };
 
+    function summaryOutputControl(element) {
+        $(document).on('lint-results', function (event, results) {
+            var tooHigh = results.readingLevel >= 9;
+            var readingLevelSummary = 
+                {"readingLevel": results.readingLevel,
+                 "tooHigh": tooHigh,
+                 "level": tooHigh ? "warning" : "info"});
+            element.innerHTML = templates.readingLevel.render(readingLevelSummary});
+    };
+
     function generateLintId (results) {
         return JSON.stringify(results);
     }
@@ -174,6 +186,12 @@
             forEach: (typeof Array.prototype.forEach !== 'undefined')
         };
         return (supports.events && supports.querySelector && supports.forEach);
+    }
+
+    function buildReadingLevel (text) {
+        var ts = textstatistics(text);
+        var gradeLevel = ts.fleschKincaidGradeLevel();
+        return gradeLevel;
     }
 
 }());
