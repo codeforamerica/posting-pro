@@ -60,7 +60,7 @@
 
       $(document).on('lint-results', function( event, results) {
           var inputElement = $(document).find('#post-input')[0];
-          var baseText = inputElement.value.replace(/\n/g, "<br>");;
+          var baseText = inputElement.value.replace(/\n/g, "<br>");
 
           // sort array by the position of the issue
           var issues = _.sortBy(results.issues, function(issue) {
@@ -156,11 +156,13 @@
     function summaryOutputControl(element) {
         $(document).on('lint-results', function (event, results) {
             var tooHigh = results.readingLevel >= 9;
-            var readingLevelSummary = 
-                {"readingLevel": results.readingLevel,
-                 "tooHigh": tooHigh,
-                 "level": tooHigh ? "warning" : "info"});
-            element.innerHTML = templates.readingLevel.render(readingLevelSummary});
+            var readingLevelSummary = {
+              "readingLevel": results.readingLevel,
+              "tooHigh": tooHigh,
+              "level": tooHigh ? "warning" : "info"
+            };
+            element.innerHTML = templates.readingLevel.render(readingLevelSummary);
+        });
     };
 
     function generateLintId (results) {
