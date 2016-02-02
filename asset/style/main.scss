@@ -173,8 +173,7 @@ footer p{
     border: 3px solid #E0E0E0 !important;
     border: none;
     @include rem(font-size, 16px);
-    line-height: 1.5;
-	overflow: auto;
+    line-height: 1.8;
 }
 .post-input:focus {
     outline: none;
@@ -195,6 +194,7 @@ footer p{
 
 .output-area {
     width: 700px;
+	overflow: auto;
 }
 @media only screen and (max-width: 1450px) {
     .output-area {
