@@ -250,10 +250,10 @@ footer p{
   height: auto;
   display: none;
   z-index: 100;
+}
 
-  &.error-tooltip-show {
-    display: block;
-  }
+.tooltip-show {
+  display: block;
 }
 
 // Issue list
