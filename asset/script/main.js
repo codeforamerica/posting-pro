@@ -27,8 +27,7 @@
 
     function initControls () {
         cuff.controls.postInput = postInputControl;
-        //cuff.controls.issuesOutput = issuesOutputControl;
-        //cuff.controls.countOutput = countOutputControl;
+        cuff.controls.countOutput = countOutputControl;
         cuff.controls.summaryOutput = summaryOutputControl;
         cuff.controls.contextOutput = contextOutputControl;
         cuff.controls.errorTooltip = errorTooltipControl;
@@ -57,6 +56,12 @@
     };
 
     function contextOutputControl (element) {
+      var acceptedTypes = ["tech", "sexism", "realism"];
+      var typeTranslation = {
+        tech: "jargon",
+        sexism: "gender",
+        realism: "expectations"
+      }
 
       $(document).on('lint-results', function( event, results) {
           var inputElement = $(document).find('#post-input')[0];
@@ -69,6 +74,15 @@
           issues.reverse(); // now the issues are sorted by last to first
 
           issues.forEach(function(issue) {
+
+            _.forEach(acceptedTypes, function(acceptedType) { // iterate through potentially defined issue types
+                if(_.has(issue.increment, acceptedType)) { // if we're supposed to increment one of these
+                  issue.type = acceptedType; // create new property with that type
+                  issue.typeTranslation = typeTranslation[acceptedType];
+                  return false; // exit loop
+                }
+            });
+
             var occuranceLength = issue.occurance.length;
 
             var beginning = baseText.slice(0, issue.position);
@@ -116,16 +130,6 @@
     function hideTooltip(element) {
       $(element).removeClass("error-tooltip-show");
     }
-
-    function issuesOutputControl (element) {
-        $(document).on('lint-results', function (event, results) {
-            results.issues.forEach(function (issue) {
-                var occuranceHtml = templates.occurance.render(issue);
-                issue.contextHtml = issue.context.replace('{{occurance}}', occuranceHtml);
-            });
-            element.innerHTML = templates.issues.render(results, templates);
-        });
-    };
 
     function countOutputControl (element) {
         var counters = {};

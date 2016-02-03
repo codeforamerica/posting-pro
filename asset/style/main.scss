@@ -4,6 +4,10 @@
 @import "vendor/normalize";
 @import "vendor/rem";
 
+$jargonIssueColor: blue;
+$genderIssueColor: green;
+$expectationsIssueColor: purple;
+
 // Typography
 
 html {
@@ -234,7 +238,11 @@ footer p{
 .error-highlight {
   cursor: pointer;
   border-bottom: 5px solid red;
+  &.error-sexism { border-color: $genderIssueColor; }
+  &.error-realism { border-color: $expectationsIssueColor; }
+  &.error-tech { border-color: $jargonIssueColor; }
 }
+
 
 .error-tooltip {
   position:absolute;
@@ -261,15 +269,10 @@ footer p{
 .issue {
     padding: 10px;
     background-color: #fff;
-	border: 1px solid red;
-}
-.issue-error {
-    background-color: #fff;
-	border: 1px solid red;
-}
-.issue-warning {
-    background-color: #fff;
-	border: 1px solid red;
+	  border: 1px solid red;
+    &.issue-sexism { border-color: $genderIssueColor; }
+    &.issue-realism { border-color: $expectationsIssueColor; }
+    &.issue-tech { border-color: $jargonIssueColor; }
 }
 .issue h3{
 	font-size: 1.2em;
@@ -318,6 +321,7 @@ footer p{
     list-style: none;
 }
 .count {
+    display: inline-block;
     margin-bottom: 5px;
     overflow: hidden;
     @extend .clearfix;
