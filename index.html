@@ -17,15 +17,15 @@ layout: page
         <script type="text/x-template" data-template="highlight">
 
             <div style="display:inline-block">
-                <span class="error-highlight">{occurance}</span>
+                <span class="error-highlight error-{type}">{occurance}</span>
                 {>tooltip}
             </div>
 
         </script>
         <script type="text/x-template" data-template="tooltip">
 
-            <div class="tooltip issue issue-{level}" data-control="errorTooltip">
-                <h3>{name}</h3>
+            <div class="error-tooltip issue issue-{type}" data-control="errorTooltip">
+                <h3>{typeTranslation} ISSUE</h3>
                 <p>
                     <span class="solution">{solution}</span>
                     <span class="reason">{reason}</span>

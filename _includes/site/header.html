@@ -3,12 +3,13 @@
 <div class="dashboard">
 	<div class="instruct">
       <p>It's challenging to write a job posting that's inviting to all the great candidates that you're looking for. Use the Job Posting Analysis tool to help identify and eliminate words or phrases that might cause quality candidates to pass on your posting.</p>
-      <p><i><strong>TIP:</strong>The location of your workplace can be a potential factor in a candidate's decision, so remember to highlight transportation benefits and  public transit options.</i></p>
+      <p class="remove-margin"><i><strong>TIP:</strong>The location of your workplace can be a potential factor in a candidate's decision, so remember to highlight transportation benefits and  public transit options.</i></p>
     </div>
     <div class="inform">
-      <div data-control="summaryOutput">
+
+      <div data-control="summaryOutput" class="reading-level">
 	    <script type="text/x-template" data-template="readingLevel">
-		    	
+
 	    	<h3><span class="{level}">Reading level: {readingLevel}</span>	(?)</h3>
              <div class="tooltip info-tooltip" data-control="infoTooltip">
                 <p>
@@ -20,6 +21,28 @@
             </div>
 	    </script>
       </div>
+
+			<ul class="count-chart" data-control="countOutput">
+					<li class="count" data-role="count" data-type="sexism">
+							<span class="circle" data-role="circle">
+								<span class="number" data-role="number">0</span>
+							</span>
+							<span class="circle-label">Gender</span>
+					</li>
+					<li class="count" data-role="count" data-type="tech">
+							<span class="circle" data-role="circle">
+								<span class="number" data-role="number">0</span>
+							</span>
+							<span class="circle-label">Jargon</span>
+					</li>
+					<li class="count" data-role="count" data-type="realism">
+							<span class="circle" data-role="circle">
+								<span class="number" data-role="number">0</span>
+							</span>
+							<span class="circle-label">Expectations</span>
+					</li>
+			</ul>
+
     </div>
     <div class="clear"></div>
 </div>

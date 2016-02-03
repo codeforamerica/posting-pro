@@ -4,6 +4,10 @@
 @import "vendor/normalize";
 @import "vendor/rem";
 
+$jargonIssueColor: blue;
+$genderIssueColor: green;
+$expectationsIssueColor: purple;
+
 // Typography
 
 html {
@@ -12,7 +16,7 @@ html {
 body {
     font-family: 'Trebuchet MS', 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Tahoma, sans-serif;
     font-size: 140%;
-    line-height: 1.4;
+    line-height: 1.3;
     color: #333;
 }
 h1, h2, h3, p, ul {
@@ -38,6 +42,9 @@ a {
 	clear: both;
 }
 
+p.remove-margin {
+  margin: 0;
+}
 
 // Basic layout styles
 
@@ -95,10 +102,7 @@ body {
 }
 .instruct, .inform{
 	float: left;
-	height: auto;
-}
-.instruct p, .inform p{
-	margin: 5px 0 !important;
+	min-height: 50px;
 }
 .instruct{
 	width: 740px;
@@ -126,13 +130,8 @@ body {
 }
 @media only screen and (max-width: 720px) {
     .instruct, .inform{
-		width: 100%;
 		float: none;
 		height: auto;
-	}
-    .inform{
-		border-top: 2px solid #ddd;
-		padding-top: 4px;
 	}
 }
 
@@ -206,7 +205,8 @@ footer p{
 // Output area
 
 .output-area {
-    width: 700px;
+  width: 700px;
+
 }
 @media only screen and (max-width: 1450px) {
     .output-area {
@@ -222,7 +222,7 @@ footer p{
 .post-output {
     @extend .post-input;
     background-color: #E0E0E0;
-	overflow: auto;
+    overflow: auto;
 }
 
 @media only screen and (max-width: 720px) {
@@ -247,9 +247,12 @@ footer p{
 .error-highlight {
   cursor: pointer;
   border-bottom: 5px solid red;
+  &.error-sexism { border-color: $genderIssueColor; }
+  &.error-realism { border-color: $expectationsIssueColor; }
+  &.error-tech { border-color: $jargonIssueColor; }
 }
 
-.tooltip {
+.tooltip, .error-tooltip {
   position:absolute;
   width: 300px;
   height: auto;
@@ -279,15 +282,10 @@ footer p{
 .issue {
     padding: 10px;
     background-color: #fff;
-	border: 1px solid red;
-}
-.issue-error {
-    background-color: #fff;
-	border: 1px solid red;
-}
-.issue-warning {
-    background-color: #fff;
-	border: 1px solid red;
+	  border: 1px solid red;
+    &.issue-sexism { border-color: $genderIssueColor; }
+    &.issue-realism { border-color: $expectationsIssueColor; }
+    &.issue-tech { border-color: $jargonIssueColor; }
 }
 .issue h3{
 	font-size: 1.2em;
@@ -326,23 +324,54 @@ footer p{
     color: #5ba348;
 }
 
+// Reading level
+
+.reading-level {
+  display: inline-block;
+  float: left;
+  max-width: 150px;
+}
+
 
 // Count chart
 
 .count-chart {
     margin: 0;
-    margin-bottom: 30px;
     padding: 0;
     list-style: none;
+    display: inline-block;
+    float: right;
 }
 .count {
+    display: inline-block;
     margin-bottom: 5px;
     overflow: hidden;
+    width: 74px;
+    margin-right: 10px;
+    text-align: center;
     @extend .clearfix;
 }
 .count span {
     display: block;
     float: left;
+}
+.circle-label {
+  text-align: center;
+  display: block;
+  width: 74px;
+  margin-top: 10px;
+}
+.circle {
+  display: block;
+  position: relative;
+  border-radius: 50%;
+  width: 56px;
+  height: 56px;
+  margin-left: 9px;
+  background-color: white;
+  &.circle-sexism { background-color: $genderIssueColor; }
+  &.circle-realism { background-color: $expectationsIssueColor; }
+  &.circle-tech { background-color: $jargonIssueColor; }
 }
 .bar-label {
     width: 15%;
@@ -356,13 +385,15 @@ footer p{
     transition: width .2s ease;
 }
 .number {
-    color: rgba(255, 255, 255, .6);
-}
-.number:before {
-    content: "("
-}
-.number:after {
-    content: ")"
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-size: 24px;
+    color: white;
+    line-height: 56px;
+    text-align: center;
+    width: 56px;
+    height: 56px;
 }
 
 @media only screen and (max-width: 1100px) {

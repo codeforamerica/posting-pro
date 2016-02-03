@@ -2,6 +2,7 @@
     'use strict';
 
     var templates = {};
+    var acceptedTypes = ["tech", "sexism", "realism"];
 
     if (!isSupportedBrowser()) {
         document.getElementById('unsupported').style.display = 'block';
@@ -27,8 +28,7 @@
 
     function initControls () {
         cuff.controls.postInput = postInputControl;
-        //cuff.controls.issuesOutput = issuesOutputControl;
-        //cuff.controls.countOutput = countOutputControl;
+        cuff.controls.countOutput = countOutputControl;
         cuff.controls.summaryOutput = summaryOutputControl;
         cuff.controls.contextOutput = contextOutputControl;
         cuff.controls.errorTooltip = errorTooltipControl;
@@ -59,6 +59,12 @@
 
     function contextOutputControl (element) {
 
+      var typeTranslation = {
+        tech: "jargon",
+        sexism: "gender",
+        realism: "expectations"
+      }
+
       $(document).on('lint-results', function( event, results) {
           var inputElement = $(document).find('#post-input')[0];
           var baseText = inputElement.value.replace(/\n/g, "<br>");
@@ -70,6 +76,15 @@
           issues.reverse(); // now the issues are sorted by last to first
 
           issues.forEach(function(issue) {
+
+            _.forEach(acceptedTypes, function(acceptedType) { // iterate through potentially defined issue types
+                if(_.has(issue.increment, acceptedType)) { // if we're supposed to increment one of these
+                  issue.type = acceptedType; // create new property with that type
+                  issue.typeTranslation = typeTranslation[acceptedType];
+                  return false; // exit loop
+                }
+            });
+
             var occuranceLength = issue.occurance.length;
 
             var beginning = baseText.slice(0, issue.position);
@@ -159,21 +174,26 @@
         $(element).find('[data-role=count]').each(function () {
             var type = this.getAttribute('data-type');
             var count = {
-                bar: this.querySelector('[data-role=bar]'),
+                circle: this.querySelector('[data-role=circle]'),
                 number: this.querySelector('[data-role=number]')
             }
             counters[type] = count;
             countersArray.push(count);
         });
+
         $(document).on('lint-results', function (event, results) {
             countersArray.forEach(function (count) {
                 count.number.innerHTML = 0;
-                count.bar.style.width = 0;
             });
+
+            _.forEach(acceptedTypes, function(acceptedType) {
+              results.counts[acceptedType] = results.counts[acceptedType] || 0;
+            });
+
             Object.keys(results.counts).forEach(function (type) {
                 if (counters[type]) {
                     counters[type].number.innerHTML = results.counts[type];
-                    counters[type].bar.style.width = (results.counts[type] * 2) + '%';
+                    $(counters[type].circle).addClass("circle-" + type);
                 }
             });
         });
