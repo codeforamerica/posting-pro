@@ -244,7 +244,7 @@ footer p{
 .error-highlight {
   cursor: pointer;
   position: relative;
-  border-bottom: 5px solid red;
+  border-bottom: 5px solid #cc0000;
   &.error-sexism { border-color: $genderIssueColor; }
   &.error-realism { border-color: $expectationsIssueColor; }
   &.error-tech { border-color: $jargonIssueColor; }
@@ -264,8 +264,8 @@ footer p{
 
 .info-tooltip {
     padding: 10px;
-    background-color: #E0E0E0;
-    border: 1px solid #cc0000;
+    background-color: white;
+    border: 2px solid #cc0000;
 }
 
 // Issue list
