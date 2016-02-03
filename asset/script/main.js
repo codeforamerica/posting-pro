@@ -185,7 +185,7 @@
             var readingLevelSummary = {
               "readingLevel": results.readingLevel,
               "tooHigh": tooHigh,
-              "level": tooHigh ? "error-highlight" : ""
+              "level": tooHigh ? "error-highlight" : "info-highlight"
             };
             element.innerHTML = templates.readingLevel.render(readingLevelSummary);
             cuff(element);
