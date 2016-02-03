@@ -92,7 +92,7 @@
               var end = baseText.slice(issue.position + occuranceLength);
 
               var highlight = templates.highlight.render(issue, templates);
-              baseText = beginning + highlight + end;  
+              baseText = beginning + highlight + end;
             }
           });
 
@@ -132,7 +132,7 @@
       var tooltipOffset = calculateOffset(element);
       $(element).offset(tooltipOffset);
 
-      parent.parent().scroll(element, tooltipScroll);
+      //parent.parent().scroll(element, tooltipScroll);
     }
 
 
