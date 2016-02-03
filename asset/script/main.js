@@ -142,6 +142,8 @@
         );
 
         var tooltipOffset = calculateOffset(element);
+        tooltipOffset.top += 20;
+        tooltipOffset.left += 120;
         $(element).offset(tooltipOffset);
     }
 

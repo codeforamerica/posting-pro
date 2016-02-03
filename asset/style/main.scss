@@ -265,6 +265,7 @@ footer p{
 .info-tooltip {
     padding: 10px;
     background-color: #E0E0E0;
+    border: 1px solid #cc0000;
 }
 
 // Issue list
@@ -338,7 +339,7 @@ footer p{
 }
 @media only screen and (max-width: 750px) {
     .reading-level{
-		float: none; 
+		float: none;
 		border-left: none;
 		margin: 0 auto;
 	}
@@ -366,7 +367,7 @@ footer p{
 }
 @media only screen and (max-width: 750px) {
     .count-chart{
-		float: none; 
+		float: none;
 		border-left: none;
 		margin: 0 auto;
 	}
