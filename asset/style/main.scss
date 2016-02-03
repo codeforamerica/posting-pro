@@ -325,6 +325,8 @@ footer p{
     display: inline-block;
     margin-bottom: 5px;
     overflow: hidden;
+    width: 84px;
+    margin-right: 20px;
     @extend .clearfix;
 }
 .count span {
@@ -333,13 +335,16 @@ footer p{
 }
 .circle-label {
   text-align: center;
+  display: block;
+  width: 84px;
+  margin-bottom: 10px;
 }
 .circle {
   display: block;
   position: relative;
   border-radius: 50%;
-  width: 80px;
-  height: 80px;
+  width: 84px;
+  height: 84px;
   background-color: white;
   &.circle-sexism { background-color: $genderIssueColor; }
   &.circle-realism { background-color: $expectationsIssueColor; }
