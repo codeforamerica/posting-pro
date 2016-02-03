@@ -85,13 +85,15 @@
                 }
             });
 
-            var occuranceLength = issue.occurance.length;
+            if(issue.type) {
+              var occuranceLength = issue.occurance.length;
 
-            var beginning = baseText.slice(0, issue.position);
-            var end = baseText.slice(issue.position + occuranceLength);
+              var beginning = baseText.slice(0, issue.position);
+              var end = baseText.slice(issue.position + occuranceLength);
 
-            var highlight = templates.highlight.render(issue, templates);
-            baseText = beginning + highlight + end;
+              var highlight = templates.highlight.render(issue, templates);
+              baseText = beginning + highlight + end;  
+            }
           });
 
           element.innerHTML = baseText;
