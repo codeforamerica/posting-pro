@@ -119,10 +119,13 @@ body {
 	.instruct, .inform{
 		width: 48%;
 		padding: 1%;
+		margin: 0;
 	}
 }
 @media only screen and (max-width: 720px) {
     .instruct, .inform{
+		width: 98%;
+		margin: 10px 0;
 		float: none;
 		height: auto;
 	}
@@ -333,6 +336,13 @@ footer p{
 	border-left: 4px solid #ddd;
 	border-top: 2px solid #ddd;
 }
+@media only screen and (max-width: 750px) {
+    .reading-level{
+		float: none; 
+		border-left: none;
+		margin: 0 auto;
+	}
+}
 .reading-level h3{
 	font-weight: bold;
 	margin: 0 0 0 15px;
@@ -343,6 +353,7 @@ footer p{
 	float: left;
 	margin: -5px 15px 0 25px;
 }
+
 // Count chart
 .count-chart {
 	width: 280px;
@@ -352,6 +363,13 @@ footer p{
     float: right;
 	border-left: 4px solid #ddd;
 	border-bottom: 2px solid #ddd;
+}
+@media only screen and (max-width: 750px) {
+    .count-chart{
+		float: none; 
+		border-left: none;
+		margin: 0 auto;
+	}
 }
 .count {
     display: inline-block;
