@@ -95,7 +95,10 @@ body {
 }
 .instruct, .inform{
 	float: left;
-	height: 50px;
+	height: auto;
+}
+.instruct p, .inform p{
+	margin: 0 !important;
 }
 .instruct{
 	width: 740px;
