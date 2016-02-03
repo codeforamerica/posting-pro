@@ -1,3 +1,6 @@
+---
+---
+
 @import "vendor/normalize";
 @import "vendor/rem";
 
@@ -39,6 +42,9 @@ a {
 	clear: both;
 }
 
+p.remove-margin {
+  margin: 0;
+}
 
 // Basic layout styles
 
@@ -96,7 +102,7 @@ body {
 }
 .instruct, .inform{
 	float: left;
-	height: 50px;
+	min-height: 50px;
 }
 .instruct{
 	width: 740px;
@@ -246,8 +252,7 @@ footer p{
   &.error-tech { border-color: $jargonIssueColor; }
 }
 
-
-.tooltip {
+.tooltip, .error-tooltip {
   position:absolute;
   width: 300px;
   height: auto;
@@ -319,21 +324,31 @@ footer p{
     color: #5ba348;
 }
 
+// Reading level
+
+.reading-level {
+  display: inline-block;
+  float: left;
+  max-width: 150px;
+}
+
 
 // Count chart
 
 .count-chart {
     margin: 0;
-    margin-bottom: 30px;
     padding: 0;
     list-style: none;
+    display: inline-block;
+    float: right;
 }
 .count {
     display: inline-block;
     margin-bottom: 5px;
     overflow: hidden;
-    width: 84px;
-    margin-right: 20px;
+    width: 74px;
+    margin-right: 10px;
+    text-align: center;
     @extend .clearfix;
 }
 .count span {
@@ -343,15 +358,16 @@ footer p{
 .circle-label {
   text-align: center;
   display: block;
-  width: 84px;
-  margin-bottom: 10px;
+  width: 74px;
+  margin-top: 10px;
 }
 .circle {
   display: block;
   position: relative;
   border-radius: 50%;
-  width: 84px;
-  height: 84px;
+  width: 56px;
+  height: 56px;
+  margin-left: 9px;
   background-color: white;
   &.circle-sexism { background-color: $genderIssueColor; }
   &.circle-realism { background-color: $expectationsIssueColor; }
@@ -372,12 +388,12 @@ footer p{
     position: absolute;
     left: 0;
     top: 0;
-    font-size: 36px;
+    font-size: 24px;
     color: white;
-    line-height: 80px;
+    line-height: 56px;
     text-align: center;
-    width: 80px;
-    height: 80px;
+    width: 56px;
+    height: 56px;
 }
 
 @media only screen and (max-width: 1100px) {
