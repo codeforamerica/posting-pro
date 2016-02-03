@@ -130,18 +130,8 @@
       );
 
       var tooltipOffset = calculateOffset(element);
-      $(element).offset(tooltipOffset);
-
-      //parent.parent().scroll(element, tooltipScroll);
+      $(element).position(tooltipOffset);
     }
-
-
-    function tooltipScroll(event) {
-      var element = event.data;
-      var tooltipOffset = calculateOffset(element);
-      $(element).offset(tooltipOffset);
-    }
-
 
     function infoTooltipControl(element) {
         var parent = $(element).parent();
