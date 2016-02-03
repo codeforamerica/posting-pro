@@ -99,13 +99,8 @@
       });
     };
 
-    function errorTooltipControl (element) {
+    function calculateOffset(element) {
       var parent = $(element).parent();
-      parent.hover(
-        function() { showTooltip(element) },
-        function() { hideTooltip(element) }
-      );
-
       var parentOffset = parent.offset();
       var parentWidth = parent.width();
       var documentWidth = $(document).width();
@@ -122,32 +117,40 @@
         tooltipOffset.left = parentOffset.left;
       }
 
+      return tooltipOffset;
+    }
+
+    function errorTooltipControl (element) {
+      var parent = $(element).parent();
+      parent.hover(
+        function() { showTooltip(element) },
+        function() { hideTooltip(element) }
+      );
+
+      var tooltipOffset = calculateOffset(element);
+      $(element).offset(tooltipOffset);
+
+      parent.parent().scroll(element, tooltipScroll);
+    }
+
+
+    function tooltipScroll(event) {
+      var element = event.data;
+      var tooltipOffset = calculateOffset(element);
       $(element).offset(tooltipOffset);
     }
 
+
     function infoTooltipControl(element) {
         var parent = $(element).parent();
+
         parent.hover(
             function() { showTooltip(element); },
             function() { hideTooltip(element); }
         );
-            var parentOffset = parent.offset();
-      var parentWidth = parent.width();
-      var documentWidth = $(document).width();
 
-      var tooltipOffset = {
-        top : parentOffset.top + 30
-      };
-
-      var tooltipWidth = 200;
-
-      if(parentOffset.left + parentWidth + tooltipWidth > documentWidth) { // if the tooltip will go over the edge
-        tooltipOffset.left = parentOffset.left - tooltipWidth + parentWidth / 2;
-      } else { // if it's fine
-        tooltipOffset.left = parentOffset.left;
-      }
-
-      $(element).offset(tooltipOffset);
+        var tooltipOffset = calculateOffset(element);
+        $(element).offset(tooltipOffset);
     }
 
     function showTooltip(element) {
