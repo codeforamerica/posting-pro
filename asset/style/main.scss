@@ -1,6 +1,3 @@
----
----
-
 @import "vendor/normalize";
 @import "vendor/rem";
 
@@ -107,6 +104,11 @@ body {
 .inform{
 	width: 670px;
 }
+
+.info-highlight {
+    cursor: pointer;
+}
+
 @media only screen and (max-width: 1450px) {
     .dashboard {
 		width: 95%;
@@ -245,16 +247,21 @@ footer p{
 }
 
 
-.error-tooltip {
+.tooltip {
   position:absolute;
   width: 300px;
   height: auto;
   display: none;
   z-index: 100;
 
-  &.error-tooltip-show {
+  &.tooltip-show {
     display: block;
   }
+}
+
+.info-tooltip {
+    padding: 10px;
+    background-color: #E0E0E0;
 }
 
 // Issue list

@@ -7,27 +7,42 @@
     </div>
     <div class="inform">
 
+      <div data-control="summaryOutput">
+	    <script type="text/x-template" data-template="readingLevel">
+
+	    	<h3><span class="{level}">Reading level: {readingLevel}</span>	(?)</h3>
+             <div class="tooltip info-tooltip" data-control="infoTooltip">
+                <p>
+                    {#tooHigh}
+                    <span class="solution">Try using simpler words and shorter sentences.</span>
+                    {/tooHigh}
+                    <span class="reason">Most people are comfortable reading at a 5-7 grade reading level. If your job posting is a level much higher than that you may have trouble reaching enough job seekers.</span>
+                </p>
+            </div>
+	    </script>
+      </div>
+
 			<ul class="count-chart" data-control="countOutput">
-          <li class="count" data-role="count" data-type="sexism">
-              <span class="circle-label">Gender</span>
-              <span class="circle" data-role="circle">
+					<li class="count" data-role="count" data-type="sexism">
+							<span class="circle-label">Gender</span>
+							<span class="circle" data-role="circle">
 								<span class="number" data-role="number">0</span>
 							</span>
-          </li>
-          <li class="count" data-role="count" data-type="tech">
-              <span class="circle-label">Jargon</span>
-              <span class="circle" data-role="circle">
+					</li>
+					<li class="count" data-role="count" data-type="tech">
+							<span class="circle-label">Jargon</span>
+							<span class="circle" data-role="circle">
 								<span class="number" data-role="number">0</span>
 							</span>
 
-          </li>
-          <li class="count" data-role="count" data-type="realism">
-              <span class="circle-label">Expectations</span>
-              <span class="circle" data-role="circle">
+					</li>
+					<li class="count" data-role="count" data-type="realism">
+							<span class="circle-label">Expectations</span>
+							<span class="circle" data-role="circle">
 								<span class="number" data-role="number">0</span>
 							</span>
-          </li>
-      </ul>
+					</li>
+			</ul>
 
     </div>
     <div class="clear"></div>
