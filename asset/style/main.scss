@@ -99,10 +99,7 @@ body {
 }
 .instruct, .inform{
 	float: left;
-	height: auto;
-}
-.instruct p, .inform p{
-	margin: 0 !important;
+	height: 50px;
 }
 .instruct{
 	width: 740px;
@@ -200,7 +197,8 @@ footer p{
 // Output area
 
 .output-area {
-    width: 700px;
+  width: 700px;
+
 }
 @media only screen and (max-width: 1450px) {
     .output-area {
@@ -216,7 +214,7 @@ footer p{
 .post-output {
     @extend .post-input;
     background-color: #E0E0E0;
-	overflow: auto;
+    overflow: auto;
 }
 
 @media only screen and (max-width: 720px) {
@@ -333,6 +331,20 @@ footer p{
     display: block;
     float: left;
 }
+.circle-label {
+  text-align: center;
+}
+.circle {
+  display: block;
+  position: relative;
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  background-color: white;
+  &.circle-sexism { background-color: $genderIssueColor; }
+  &.circle-realism { background-color: $expectationsIssueColor; }
+  &.circle-tech { background-color: $jargonIssueColor; }
+}
 .bar-label {
     width: 15%;
     overflow: hidden;
@@ -345,13 +357,15 @@ footer p{
     transition: width .2s ease;
 }
 .number {
-    color: rgba(255, 255, 255, .6);
-}
-.number:before {
-    content: "("
-}
-.number:after {
-    content: ")"
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-size: 36px;
+    color: white;
+    line-height: 80px;
+    text-align: center;
+    width: 80px;
+    height: 80px;
 }
 
 @media only screen and (max-width: 1100px) {
