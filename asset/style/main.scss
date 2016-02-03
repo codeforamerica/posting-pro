@@ -214,6 +214,7 @@ footer p{
 
 .post-output {
     @extend .post-input;
+    position: relative;
     background-color: #E0E0E0;
     overflow: auto;
 }
@@ -239,6 +240,7 @@ footer p{
 
 .error-highlight {
   cursor: pointer;
+  position: relative;
   border-bottom: 5px solid red;
   &.error-sexism { border-color: $genderIssueColor; }
   &.error-realism { border-color: $expectationsIssueColor; }

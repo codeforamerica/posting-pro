@@ -1,0 +1,29 @@
+The Head of Technology creates the technical foundation for the change Code for America seeks. He leads a team that builds and sustains the core technology that service redesign teams use to deliver outcomes with our government partners, and that our network of Brigades use to connect and amplify the impact of the movement. We're looking for a damn good rockstar to really hit the ground running!
+
+Preferred Qualifications:
+Track record of success in consumer and/or enterprise software leadership.
+Deep understanding of visionary technology principles, include lean and agile development, open platforms, and open data.
+5-10 years of experience leading development teams. We want a grizzled veteran!
+Active in open source projects.
+Background in work on large interrelated systems, SOA, API design.
+Preferred text editors are bbedit or notepad.
+Passion for public service, cities, and making the world a better place. Civics is sexy!
+Good sense of humor, reasonable ping pong skills, and a stubborn belief in what’s possible.
+Code for America offers full health and dental benefits, a 401k plan with matching funds and a culture that is collaborative, hardworking and fun.
+
+This means:
+Leading a team of engineers who understand the needs of our teams and our network and can support both effectively.
+Identifying and/or developing a set of standardized tools and platforms that create efficiency and consistency for the applications our teams use.
+Creating and refining internal engineering approaches.
+Evolving Code for America’s drama-free engineering culture - and working collaboratively to develop a set of approaches and standards that support CfA’s mission and each of CfA’s programs.
+Coaching teams thru a lean/agile process for application development.
+Developing and managing external partnerships and resources and establish guidelines guidelines and principles for relationships with vendors.
+Understanding existing local government technology and crafting a vision that helps our partners transition to 21st century technology infrastructure and approaches.
+Where appropriate, driving strategic standards initiatives.
+Representing Code for America at conferences, on advisory boards, etc.
+Contributing to Code for America’s strategy as we learn what works to achieve our vision.
+
+Interested and qualified candidates should submit a resume and cover letter at http://codeforamerica.org/jobs. Candidates will be evaluated on a rolling basis until the position is filled. You may also contact us with any questions at info@codeforamerica.org.
+
+About Code for America
+We are a six year old startup non-profit with great people and a huge opportunity to make a difference.  We work collaboratively and agilely and strive to learn from everything we do. We respect each other, work hard, and have a great time together.  We’re looking for individuals who share our vision, our values, and our willingness to do what it takes to achieve an ambitious mission over the next few years.
