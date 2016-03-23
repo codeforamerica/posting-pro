@@ -7,6 +7,8 @@ exclude:
   - LICENSE
   - Makefile
   - README.md
+  - config.ru
+  - vendor
 
 # Whether to publish future posts
 future: false
@@ -27,6 +29,3 @@ sass:
 
 # Timezone setting
 timezone: Europe/London
-
-# allow jekyll to work with github.io url
-baseurl: /joblint
