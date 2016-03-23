@@ -1,8 +1,8 @@
 # posting-pro
-Job posting builder with bias analysis
+Job posting builder with bias analysis. We split the front end off of [codeforamerica/joblint](https://github.com/codeforamerica/joblint/) because it's going to diverge quite a bit.
 
-Stable/production: https://posting-pro.herokuapp.com/
-Staging (most recent changes): https://posting-pro-staging.herokuapp.com/
+- Stable/production: https://posting-pro.herokuapp.com/
+- Staging (most recent changes): https://posting-pro-staging.herokuapp.com/
 
 [existing/similar resources](https://docs.google.com/document/d/1dtsNGx81HCnRR2mNZxi86TJsm67hCo7UqtoN2FzSXZ0/edit)
 
@@ -19,7 +19,7 @@ Commits to master automagically push to [staging](https://posting-pro-staging.he
 If you want to test your local changes in a similar-to-heroku environment, run `heroku local web`.
 
 ### Making changes to joblint.js or rules.js
-The text analysis is mainly done by our fork of the [joblint] library. To move your changes their to here, follow these steps.
+The text analysis is mainly done by our fork of the [joblint](https://github.com/codeforamerica/joblint/) library. To move your changes there to here, follow these steps.
 
 * On the joblint side, make sure the library is packaged up via `make bundle`
 * Copy contents of build/joblint.min.js (in joblint) (`pbcopy < build/joblint.min.js` is good)
