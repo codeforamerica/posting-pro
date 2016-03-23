@@ -1,23 +1,29 @@
 # posting-pro
 Job posting builder with bias analysis
 
-http://codeforamerica.github.io/joblint - previous, will redirect
+Stable/production: https://posting-pro.herokuapp.com/
+Staging (most recent changes): https://posting-pro-staging.herokuapp.com/
 
 [existing/similar resources](https://docs.google.com/document/d/1dtsNGx81HCnRR2mNZxi86TJsm67hCo7UqtoN2FzSXZ0/edit)
 
-### Moving joblint.js or rules.js changes
-If not already done:
-* Install npm (`brew install node` is great)
-* `npm install` installs all the joblint dependencies
+### Developing
+This is more or less a [Jekyll](https://jekyllrb.com/) site.
 
-MAYBE OUT OF DATE, set up of this repo in progress
-To test locally:
-* `make bundle`
-* `pbcopy < build/joblint.min.js`
-* _Commit any changes you want to save_
-* `git checkout gh-pages`
-* `pbpaste > assets/script/vendor/joblint.js`
-* `jekyll serve` (may need `jekyll build` first)
-* [http://0.0.0.0:4000/joblint/](http://0.0.0.0:4000/joblint/)
+After cloning, run `bundle install`.
 
-Publishing the changes is as simple as committing the joblint.js file that was copied over, but please test locally/on a branch from gh-pages & confirm changes with the rest of the team first.
+`jekyll build` compiles the site and `jekyll serve` runs it at http://0.0.0.0:4000](http://0.0.0.0:4000) and should watch for file changes.
+
+### Deploying
+Commits to master automagically push to [staging](https://posting-pro-staging.herokuapp.com/). From there, code can be pushed to production via the heroku pipeline. 
+
+If you want to test your local changes in a similar-to-heroku environment, run `heroku local web`.
+
+### Making changes to joblint.js or rules.js
+The text analysis is mainly done by our fork of the [joblint] library. To move your changes their to here, follow these steps.
+
+* On the joblint side, make sure the library is packaged up via `make bundle`
+* Copy contents of build/joblint.min.js (in joblint) (`pbcopy < build/joblint.min.js` is good)
+* (In posting-pro) paste into assets/script/vendor/joblint.js (`pbpaste > assets/script/vendor/joblint.js`)
+* `jekyll build`/`jekyll serve` to see changes at [http://0.0.0.0:4000](http://0.0.0.0:4000)
+
+Make sure to commit the changes in both repos.
