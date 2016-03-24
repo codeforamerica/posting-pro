@@ -86,10 +86,10 @@
             });
 
             if(issue.type) {
-              var occuranceLength = issue.occurance.length;
+              var occurrenceLength = issue.occurrence.length;
 
               var beginning = baseText.slice(0, issue.position);
-              var end = baseText.slice(issue.position + occuranceLength);
+              var end = baseText.slice(issue.position + occurrenceLength);
 
               var highlight = templates.highlight.render(issue, templates);
               baseText = beginning + highlight + end;
@@ -158,8 +158,8 @@
     function issuesOutputControl (element) {
         $(document).on('lint-results', function (event, results) {
             results.issues.forEach(function (issue) {
-                var occuranceHtml = templates.occurance.render(issue);
-                issue.contextHtml = issue.context.replace('{{occurance}}', occuranceHtml);
+                var occurrenceHtml = templates.occurrence.render(issue);
+                issue.contextHtml = issue.context.replace('{{occurrence}}', occurrenceHtml);
             });
             element.innerHTML = templates.issues.render(results, templates);
         });
