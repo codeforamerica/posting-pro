@@ -30,11 +30,12 @@
         cuff.controls.postInput = postInputControl;
         cuff.controls.countOutput = countOutputControl;
         cuff.controls.summaryOutput = summaryOutputControl;
-        cuff.controls.contextOutput = contextOutputControl;
+        cuff.controls.companyDescOutput = contextOutputControl;
+        cuff.controls.jobDescOutput = contextOutputControl;
         cuff.controls.errorTooltip = errorTooltipControl;
         cuff.controls.infoTooltip = infoTooltipControl;
         cuff();
-    };
+    }
 
     function postInputControl (element) {
         var $document = $(document);
@@ -45,17 +46,17 @@
             var results = joblint(inputValue);
             results.readingLevel = buildReadingLevel(element.value);
             var lintId = generateLintId(results);
-            saveSession(element.value);
-            $document.trigger('lint-results', results);
+            saveSession(element.value, element.id);
+            $document.trigger('lint-results', [results, element.id.replace("-input", "")]);
         });
-        var session = loadSession();
+        var session = loadSession(element.id);
         if (session) {
-            element.value = loadSession();
+            element.value = session;
             setTimeout(function () {
                 $element.trigger('keyup');
             }, 1);
         }
-    };
+    }
 
     function contextOutputControl (element) {
 
@@ -63,10 +64,10 @@
         tech: "jargon",
         sexism: "gender",
         realism: "expectations"
-      }
+      };
 
-      $(document).on('lint-results', function( event, results) {
-          var inputElement = $(document).find('#post-input')[0];
+      $(document).on('lint-results', function(event, results, descId) {
+          var inputElement = $(document).find('#' + descId + '-input')[0];
           var baseText = inputElement.value.replace(/\n/g, "<br>");
 
           // sort array by the position of the issue
@@ -96,10 +97,12 @@
             }
           });
 
+          element = document.getElementById(descId + '-output');
+
           element.innerHTML = baseText;
           cuff(element); // only apply bindings for children of this element
       });
-    };
+    }
 
     function calculateOffset(element) {
       var parent = $(element).parent();
@@ -213,15 +216,15 @@
         return JSON.stringify(results);
     }
 
-    function saveSession (postContent) {
+    function saveSession (postContent, elementId) {
         if (typeof window.localStorage !== 'undefined') {
-            localStorage.setItem('post', postContent);
+            localStorage.setItem(elementId, postContent);
         }
     }
 
-    function loadSession () {
+    function loadSession (elementId) {
         if (typeof window.localStorage !== 'undefined') {
-            return localStorage.getItem('post');
+            return localStorage.getItem(elementId);
         }
     }
 
