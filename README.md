@@ -9,7 +9,7 @@ Job posting builder with bias analysis. We split the front end off of [codeforam
 ### Developing
 This is more or less a [Jekyll](https://jekyllrb.com/) site.
 
-After cloning, run `bundle install` and `gem install foreman`.
+After cloning, run `bundle install`.
 
 `jekyll build` compiles the site and `foreman start` runs it at http://0.0.0.0:4000](http://0.0.0.0:4000).
 

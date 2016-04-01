@@ -9,4 +9,5 @@ gem 'thin'
 group :development do
   gem 'jekyll'
   gem 'jekyll-assets'
+  gem 'foreman'
 end
