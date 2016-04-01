@@ -1,13 +1,6 @@
-
+source: jekyll
 # Files and directories to exclude from compilation
 exclude:
-  - CNAME
-  - Gemfile
-  - Gemfile.lock
-  - LICENSE
-  - Makefile
-  - README.md
-  - config.ru
   - vendor
 
 # Whether to publish future posts
@@ -28,4 +21,4 @@ sass:
   style: :compressed
 
 # Timezone setting
-timezone: Europe/London
+timezone: America/Los_Angeles
