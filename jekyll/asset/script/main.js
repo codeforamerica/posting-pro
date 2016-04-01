@@ -174,9 +174,8 @@
         $(element).find('[data-role=count]').each(function () {
             var type = this.getAttribute('data-type');
             var count = {
-                circle: this.querySelector('[data-role=circle]'),
                 number: this.querySelector('[data-role=number]')
-            }
+            };
             counters[type] = count;
             countersArray.push(count);
         });
@@ -193,11 +192,10 @@
             Object.keys(results.counts).forEach(function (type) {
                 if (counters[type]) {
                     counters[type].number.innerHTML = results.counts[type];
-                    $(counters[type].circle).addClass("circle-" + type);
                 }
             });
         });
-    };
+    }
 
     function summaryOutputControl(element) {
         $(document).on('lint-results', function (event, results) {
