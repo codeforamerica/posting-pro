@@ -9,12 +9,12 @@ Job posting builder with bias analysis. We split the front end off of [codeforam
 ### Developing
 This is more or less a [Jekyll](https://jekyllrb.com/) site.
 
-After cloning, run `bundle install`.
+After cloning, run `bundle install` and `gem install foreman`.
 
-`jekyll build` compiles the site and `jekyll serve` runs it at http://0.0.0.0:4000](http://0.0.0.0:4000) and should watch for file changes.
+`jekyll build` compiles the site and `foreman start` runs it at http://0.0.0.0:4000](http://0.0.0.0:4000).
 
 ### Deploying
-Commits to master automagically push to [staging](https://posting-pro-staging.herokuapp.com/). From there, code can be pushed to production via the heroku pipeline. 
+Commits to master automagically push to [staging](https://posting-pro-staging.herokuapp.com/). From there, code can be pushed to production via the heroku pipeline.
 
 If you want to test your local changes in a similar-to-heroku environment, run `heroku local web`.
 
