@@ -29,6 +29,7 @@
     function initControls () {
         cuff.controls.postInput = postInputControl;
         cuff.controls.countOutput = countOutputControl;
+        cuff.controls.companyCountOutput = countOutputControl;
         cuff.controls.summaryOutput = summaryOutputControl;
         cuff.controls.companyDescOutput = contextOutputControl;
         cuff.controls.jobDescOutput = contextOutputControl;
@@ -173,16 +174,19 @@
         var countersArray = [];
         $(element).find('[data-role=count]').each(function () {
             var type = this.getAttribute('data-type');
-            var count = {
-                number: this.querySelector('[data-role=number]')
-            };
-            counters[type] = count;
-            countersArray.push(count);
+            var counter = this.querySelector('[data-role=number]');
+            counters[type] = counter;
+            countersArray.push(counter);
         });
 
-        $(document).on('lint-results', function (event, results) {
-            countersArray.forEach(function (count) {
-                count.number.innerHTML = 0;
+        $(document).on('lint-results', function (event, results, id) {
+
+            if (countersArray[0].className.indexOf(id) < 0) {
+              return;
+            }
+
+            countersArray.forEach(function (counter) {
+                counter.innerHTML = 0;
             });
 
             _.forEach(acceptedTypes, function(acceptedType) {
@@ -191,14 +195,19 @@
 
             Object.keys(results.counts).forEach(function (type) {
                 if (counters[type]) {
-                    counters[type].number.innerHTML = results.counts[type];
+                    counters[type].innerHTML = results.counts[type];
                 }
             });
         });
     }
 
     function summaryOutputControl(element) {
-        $(document).on('lint-results', function (event, results) {
+        $(document).on('lint-results', function (event, results, id) {
+            
+            if (element.className.indexOf(id) < 0) {
+              return;
+            }
+
             var tooHigh = results.readingLevel >= 9;
             var readingLevelSummary = {
               "readingLevel": results.readingLevel,
