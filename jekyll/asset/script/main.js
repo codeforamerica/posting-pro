@@ -31,7 +31,8 @@
         cuff.controls.totalCountOutput = totalOutputControl;
         cuff.controls.jobCountOutput = countOutputControl;
         cuff.controls.companyCountOutput = countOutputControl;
-        cuff.controls.summaryOutput = summaryOutputControl;
+        cuff.controls.readingLevelOutput = readingLevelOutputControl;
+        cuff.controls.averageRLOutput = averageRLOutputControl;
         cuff.controls.companyDescOutput = contextOutputControl;
         cuff.controls.jobDescOutput = contextOutputControl;
         cuff.controls.errorTooltip = errorTooltipControl;
@@ -231,7 +232,7 @@
         });
     }
 
-    function summaryOutputControl(element) {
+    function readingLevelOutputControl(element) {
         $(document).on('lint-results', function (event, results, id) {
             
             // trying to match the results to the counters
@@ -242,6 +243,27 @@
             var tooHigh = results.readingLevel >= 9;
             var readingLevelSummary = {
               "readingLevel": results.readingLevel,
+              "tooHigh": tooHigh,
+              "level": tooHigh ? "error-highlight" : "info-highlight"
+            };
+            element.innerHTML = templates.readingLevel.render(readingLevelSummary);
+            cuff(element);
+            $(document).trigger('update-average', [id, results.readingLevel]);
+        });
+    }
+
+    function averageRLOutputControl(element) {
+
+        var levels = {};
+
+        $(document).on('update-average', function (event, levelId, readingLevel) {
+            
+            levels[levelId] = readingLevel;
+            var average = _.round(_.mean(_.values(levels)), 1);
+
+            var tooHigh = average >= 9;
+            var readingLevelSummary = {
+              "readingLevel": average,
               "tooHigh": tooHigh,
               "level": tooHigh ? "error-highlight" : "info-highlight"
             };
