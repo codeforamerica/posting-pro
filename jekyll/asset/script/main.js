@@ -28,7 +28,8 @@
 
     function initControls () {
         cuff.controls.postInput = postInputControl;
-        cuff.controls.countOutput = countOutputControl;
+        cuff.controls.totalCountOutput = totalOutputControl;
+        cuff.controls.jobCountOutput = countOutputControl;
         cuff.controls.companyCountOutput = countOutputControl;
         cuff.controls.summaryOutput = summaryOutputControl;
         cuff.controls.companyDescOutput = contextOutputControl;
@@ -129,8 +130,8 @@
     function errorTooltipControl (element) {
       var parent = $(element).parent();
       parent.hover(
-        function() { showTooltip(element) },
-        function() { hideTooltip(element) }
+        function() { showTooltip(element); },
+        function() { hideTooltip(element); }
       );
 
       var tooltipOffset = calculateOffset(element);
@@ -181,6 +182,7 @@
 
         $(document).on('lint-results', function (event, results, id) {
 
+            // trying to match the results to the counters
             if (countersArray[0].className.indexOf(id) < 0) {
               return;
             }
@@ -198,12 +200,41 @@
                     counters[type].innerHTML = results.counts[type];
                 }
             });
+            $(document).trigger('update-totals');
+        });
+    }
+
+    function totalOutputControl (element) {
+        var counters = {};
+        var countersArray = [];
+        $(element).find('[data-role=count]').each(function () {
+            var type = this.getAttribute('data-type');
+            var counter = this.querySelector('[data-role=number]');
+            counters[type] = counter;
+            countersArray.push(counter);
+        });
+
+        $(document).on('update-totals', function (event) {
+
+            countersArray.forEach(function (counter) {
+                counter.innerHTML =  0;
+            });
+
+            $('.count-chart-small').children().each(function() {
+              var type = this.getAttribute('data-type');
+              if (counters[type]) {
+                var subCount = $(this).find('[data-role=number]')[0].innerHTML * 1;
+                counters[type].innerHTML = counters[type].innerHTML * 1 + subCount;
+              }
+            });
+
         });
     }
 
     function summaryOutputControl(element) {
         $(document).on('lint-results', function (event, results, id) {
             
+            // trying to match the results to the counters
             if (element.className.indexOf(id) < 0) {
               return;
             }
