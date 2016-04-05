@@ -4,35 +4,16 @@ description: Test job posts for issues with gender, jargon, expectations, and re
 layout: page
 ---
 
-<div class="column input-area">
-	<h2>Job Posting</h2>
-    <label class="visually-hidden" for="post-input">Paste or write your job post here</label>
-    <textarea id="post-input" class="post-input" data-control="postInput" placeholder="Paste or write your job post here"></textarea>
+{% include site/analysisboxes.html descType="company" %}
+
+<div class="inform-small">
+  {% include site/readinglevel.html id="company-desc" %}
+  {% include site/counters.html id="company-desc" %}
 </div>
 
-<div class="column output-area">
-	<h2>Bias Analysis</h2>
-    <div class="post-output" data-control="contextOutput">
+{% include site/analysisboxes.html descType="job" %}
 
-        <script type="text/x-template" data-template="highlight">
-
-            <div style="display:inline-block">
-                <span class="error-highlight error-{type}">{occurrence}</span>
-                {>tooltip}
-            </div>
-
-        </script>
-        <script type="text/x-template" data-template="tooltip">
-
-            <div class="error-tooltip issue issue-{type}" data-control="errorTooltip">
-                <h3>{typeTranslation}</h3>
-                <p>
-                    <span class="solution">{solution}</span>
-                    <span class="reason">{reason}</span>
-                </p>
-            </div>
-
-        </script>
-
-    </div>
+<div class="inform-small">
+  {% include site/readinglevel.html id="job-desc" %}
+  {% include site/counters.html id="job-desc" %}
 </div>

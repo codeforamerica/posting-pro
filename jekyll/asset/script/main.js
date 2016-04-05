@@ -28,13 +28,15 @@
 
     function initControls () {
         cuff.controls.postInput = postInputControl;
+        cuff.controls.totalCountOutput = totalOutputControl;
         cuff.controls.countOutput = countOutputControl;
-        cuff.controls.summaryOutput = summaryOutputControl;
+        cuff.controls.readingLevelOutput = readingLevelOutputControl;
+        cuff.controls.averageRLOutput = averageRLOutputControl;
         cuff.controls.contextOutput = contextOutputControl;
         cuff.controls.errorTooltip = errorTooltipControl;
         cuff.controls.infoTooltip = infoTooltipControl;
         cuff();
-    };
+    }
 
     function postInputControl (element) {
         var $document = $(document);
@@ -45,17 +47,17 @@
             var results = joblint(inputValue);
             results.readingLevel = buildReadingLevel(element.value);
             var lintId = generateLintId(results);
-            saveSession(element.value);
-            $document.trigger('lint-results', results);
+            saveSession(element.value, element.id);
+            $document.trigger('lint-results', [results, element.id.replace("-input", "")]);
         });
-        var session = loadSession();
+        var session = loadSession(element.id);
         if (session) {
-            element.value = loadSession();
+            element.value = session;
             setTimeout(function () {
                 $element.trigger('keyup');
             }, 1);
         }
-    };
+    }
 
     function contextOutputControl (element) {
 
@@ -63,10 +65,10 @@
         tech: "jargon",
         sexism: "gender",
         realism: "expectations"
-      }
+      };
 
-      $(document).on('lint-results', function( event, results) {
-          var inputElement = $(document).find('#post-input')[0];
+      $(document).on('lint-results', function(event, results, descId) {
+          var inputElement = $(document).find('#' + descId + '-input')[0];
           var baseText = inputElement.value.replace(/\n/g, "<br>");
 
           // sort array by the position of the issue
@@ -96,10 +98,12 @@
             }
           });
 
+          element = document.getElementById(descId + '-output');
+
           element.innerHTML = baseText;
           cuff(element); // only apply bindings for children of this element
       });
-    };
+    }
 
     function calculateOffset(element) {
       var parent = $(element).parent();
@@ -125,8 +129,8 @@
     function errorTooltipControl (element) {
       var parent = $(element).parent();
       parent.hover(
-        function() { showTooltip(element) },
-        function() { hideTooltip(element) }
+        function() { showTooltip(element); },
+        function() { hideTooltip(element); }
       );
 
       var tooltipOffset = calculateOffset(element);
@@ -170,17 +174,20 @@
         var countersArray = [];
         $(element).find('[data-role=count]').each(function () {
             var type = this.getAttribute('data-type');
-            var count = {
-                circle: this.querySelector('[data-role=circle]'),
-                number: this.querySelector('[data-role=number]')
-            }
-            counters[type] = count;
-            countersArray.push(count);
+            var counter = this.querySelector('[data-role=number]');
+            counters[type] = counter;
+            countersArray.push(counter);
         });
 
-        $(document).on('lint-results', function (event, results) {
-            countersArray.forEach(function (count) {
-                count.number.innerHTML = 0;
+        $(document).on('lint-results', function (event, results, id) {
+
+            // trying to match the results to the counters
+            if (countersArray[0].className.indexOf(id) < 0) {
+              return;
+            }
+
+            countersArray.forEach(function (counter) {
+                counter.innerHTML = 0;
             });
 
             _.forEach(acceptedTypes, function(acceptedType) {
@@ -189,18 +196,72 @@
 
             Object.keys(results.counts).forEach(function (type) {
                 if (counters[type]) {
-                    counters[type].number.innerHTML = results.counts[type];
-                    $(counters[type].circle).addClass("circle-" + type);
+                    counters[type].innerHTML = results.counts[type];
                 }
             });
+            $(document).trigger('update-totals');
         });
-    };
+    }
 
-    function summaryOutputControl(element) {
-        $(document).on('lint-results', function (event, results) {
+    function totalOutputControl (element) {
+        var counters = {};
+        var countersArray = [];
+        $(element).find('[data-role=count]').each(function () {
+            var type = this.getAttribute('data-type');
+            var counter = this.querySelector('[data-role=number]');
+            counters[type] = counter;
+            countersArray.push(counter);
+        });
+
+        $(document).on('update-totals', function (event) {
+
+            countersArray.forEach(function (counter) {
+                counter.innerHTML =  0;
+            });
+
+            $('.count-chart-small').children().each(function() {
+              var type = this.getAttribute('data-type');
+              if (counters[type]) {
+                var subCount = $(this).find('[data-role=number]')[0].innerHTML * 1;
+                counters[type].innerHTML = counters[type].innerHTML * 1 + subCount;
+              }
+            });
+
+        });
+    }
+
+    function readingLevelOutputControl(element) {
+        $(document).on('lint-results', function (event, results, id) {
+            
+            // trying to match the results to the counters
+            if (element.className.indexOf(id) < 0) {
+              return;
+            }
+
             var tooHigh = results.readingLevel >= 9;
             var readingLevelSummary = {
               "readingLevel": results.readingLevel,
+              "tooHigh": tooHigh,
+              "level": tooHigh ? "error-highlight" : "info-highlight"
+            };
+            element.innerHTML = templates.readingLevel.render(readingLevelSummary);
+            cuff(element);
+            $(document).trigger('update-average', [id, results.readingLevel]);
+        });
+    }
+
+    function averageRLOutputControl(element) {
+
+        var levels = {};
+
+        $(document).on('update-average', function (event, levelId, readingLevel) {
+            
+            levels[levelId] = readingLevel;
+            var average = _.round(_.mean(_.values(levels)), 1);
+
+            var tooHigh = average >= 9;
+            var readingLevelSummary = {
+              "readingLevel": average,
               "tooHigh": tooHigh,
               "level": tooHigh ? "error-highlight" : "info-highlight"
             };
@@ -213,15 +274,15 @@
         return JSON.stringify(results);
     }
 
-    function saveSession (postContent) {
+    function saveSession (postContent, elementId) {
         if (typeof window.localStorage !== 'undefined') {
-            localStorage.setItem('post', postContent);
+            localStorage.setItem(elementId, postContent);
         }
     }
 
-    function loadSession () {
+    function loadSession (elementId) {
         if (typeof window.localStorage !== 'undefined') {
-            return localStorage.getItem('post');
+            return localStorage.getItem(elementId);
         }
     }
 

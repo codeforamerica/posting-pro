@@ -1,0 +1,31 @@
+<div class="column input-area">
+    <h2>{{ include.descType | capitalize }} Description</h2>
+    <label class="visually-hidden" for="post-input">Paste or write your {{ include.descType }} description here</label>
+    <!-- {{ include.descType }} creates either company-desc-input or job-desc-input -->
+    <textarea id="{{ include.descType }}-desc-input" class="post-input" data-control="postInput" placeholder="Paste or write your {{ include.descType }} description here"></textarea>
+</div>
+
+<div class="column output-area">
+    <h2>Bias Analysis</h2>
+    <div id="{{ include.descType }}-desc-output" class="post-output" data-control="contextOutput">
+
+        <script type="text/x-template" data-template="highlight">
+
+            <div style="display:inline-block">
+                <span class="error-highlight error-{type}">{occurrence}</span>
+                {>tooltip}
+            </div>
+
+        </script>
+        <script type="text/x-template" data-template="tooltip">
+
+            <div class="error-tooltip issue issue-{type}" data-control="errorTooltip">
+                <h3>{typeTranslation}</h3>
+                <p>
+                    <span class="solution">{solution}</span>
+                    <span class="reason">{reason}</span>
+                </p>
+            </div>
+        </script>
+    </div>
+</div>
