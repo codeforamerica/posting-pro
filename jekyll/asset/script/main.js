@@ -29,12 +29,10 @@
     function initControls () {
         cuff.controls.postInput = postInputControl;
         cuff.controls.totalCountOutput = totalOutputControl;
-        cuff.controls.jobCountOutput = countOutputControl;
-        cuff.controls.companyCountOutput = countOutputControl;
+        cuff.controls.countOutput = countOutputControl;
         cuff.controls.readingLevelOutput = readingLevelOutputControl;
         cuff.controls.averageRLOutput = averageRLOutputControl;
-        cuff.controls.companyDescOutput = contextOutputControl;
-        cuff.controls.jobDescOutput = contextOutputControl;
+        cuff.controls.contextOutput = contextOutputControl;
         cuff.controls.errorTooltip = errorTooltipControl;
         cuff.controls.infoTooltip = infoTooltipControl;
         cuff();
