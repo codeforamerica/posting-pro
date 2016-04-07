@@ -1,14 +1,13 @@
 set :public_dir, Proc.new { File.join(root, "_site") }
 set :views, Proc.new { File.join(File.dirname(__FILE__), "views") }
 
-post '/api', :provides => :json do
-  #
-  #
-  # Code to handle api calls
-  #
-  #
-  puts "Here comes your data!"
-  puts params
+require './sinatra/skillsengine.rb'
+require 'json'
+
+# call the SkillsEngine API
+post '/api/skillsengine/competencies' do
+  data = JSON.parse(request.body.read)
+  SkillsEngine.analyze_competencies(data['text'])
 end
 
 before do
