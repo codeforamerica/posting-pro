@@ -25,16 +25,21 @@ h1, h2, h3, p, ul {
     font-weight: normal;
 }
 h1 {
-    @include rem(font-size, 36px);
+    @include rem(font-size, 42px);
 }
 h2 {
+    @include rem(font-size, 26px);
     text-align: center;
-    @include rem(font-size, 24px);
-    margin: 50px 0 20px 0;
+    line-height: 2.5em;
 }
 h3 {
-    @include rem(font-size, 14px);
-    text-transform: uppercase;
+    @include rem(font-size, 22px);
+    line-height: 3.5em;
+    text-align: center;
+    margin: 75px 0 0 0;
+}
+h4 {
+    @include rem(font-size, 16px);
 }
 a {
     color: inherit;
@@ -92,19 +97,16 @@ body {
     line-height: 1.5em;
 }
 .tagline {
-    float: left;
+    margin:20px 0 0 0;
 }
 .dashboard{
-	width: 1450px;
-	height: auto;
-    border: 3px solid #E0E0E0;
-	margin: 15px auto;
+	width: 270px;
+    position: fixed;
+    top:20px;
+    right: 20px;
 }
 .instruct, .inform{
-	width: 660px;
-	float: left;
-	min-height: 50px;
-	padding: 20px;
+    width:100%;
 }
 .instruct{
 	margin-right:50px;
@@ -112,25 +114,8 @@ body {
 .info-highlight {
     cursor: pointer;
 }
-
-@media only screen and (max-width: 1450px) {
-	.dashboard{
-		width: 100%;
-	}
-	.instruct, .inform{
-		width: 48%;
-		padding: 1%;
-		margin: 0;
-	}
-}
-@media only screen and (max-width: 720px) {
-    .instruct, .inform{
-		width: 98%;
-		margin: 10px 0;
-		float: none;
-		height: auto;
-	}
-}
+.inform h3{line-height: 3em; margin: 0;}
+.inform h4{text-align: center;}
 
 
 // Footer
@@ -195,7 +180,7 @@ footer p{
 //Input form
 .line-input{width: 550px; margin: 0 auto;
 }
-.line-input form{width: 350px; margin: 20px auto;}
+.line-input form{width: 350px; margin: 0 auto;}
 .line-input form input{
     width: 96%; 
     padding: 2%;
@@ -204,13 +189,13 @@ footer p{
 .line-input select{
     width: 250px; 
     font-size:1.6rem;
-    margin: 20px auto;
+    margin: 0 auto;
     display: block;
 }
 .line-input textarea{
     width: 96%; 
     padding: 2%;
-    border: 1px solid #E0E0E0 !important;
+    border: 2px solid #E0E0E0 !important;
 }
 
 // Output area
@@ -344,13 +329,12 @@ footer p{
 }
 
 .reading-level-small {
-    padding: 28px 0 24px 0;
 }
 
 .reading-level-total {
-    float: right;
-    padding: 15px 0 0 0;
-    border-left: 4px solid #ddd;
+    width:100%;
+    background-color: #E0E0E0;
+    margin: 15px 0 0 0;
 }
 
 @media only screen and (max-width: 750px) {
@@ -378,19 +362,10 @@ footer p{
     float: right;
     list-style: none;
 }
+
+.count-chart-total{padding:0;}
 .count-chart-small {
     padding: 10px 0 0 0;
-}
-.count-chart-total {
-    padding: 0 0 0 15px;
-    float: right;
-}
-@media only screen and (max-width: 750px) {
-    .count-chart{
-		float: none;
-		border-left: none;
-		margin: 0 auto;
-	}
 }
 .count {
     display: inline-block;
