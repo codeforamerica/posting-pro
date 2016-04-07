@@ -4,7 +4,12 @@ description: Test job posts for issues with gender, jargon, expectations, and re
 layout: page
 ---
 
-{% include site/companyname.html %}
+<div class="line-input" id="company_name">
+    <h3>What's your company  name?</h3>
+    <form>
+        <input type="text" id="companyname" name="companyname">
+    </form>
+</div>
 
 <h3>Please describe your company to a job seeker.</h3>
 {% include site/analysisboxes.html descType="company" %}
@@ -13,9 +18,31 @@ layout: page
   {% include site/counters.html id="company-desc" %}
 </div>
 
-{% include site/employmenttype.html %}
-{% include site/howapply.html %}
-{% include site/positiontitle.html %}
+<div class="line-input" id="employment_type">
+    <h3>What is the employment type?</h3>
+    <select>
+        <option value="fullTime">Full-Time</option>
+        <option value="partTime">Part-Time</option>
+        <option value="casual">Casual</option>
+        <option value="contractor">Contractor</option>
+        <option value="intern">Intern</option>
+        <option value="other">Other</option>
+    </select>
+</div>
+
+<div class="line-input" id="position_apply">
+    <h3>How does a job seeker apply?</h3>
+    <form>
+        <textarea name="positionapply" id="positionapply" rows="5"></textarea>
+    </form>
+</div>
+
+<div class="line-input" id="position_title">
+    <h3>What is the position title?</h3>
+    <form>
+        <input type="text" id="positiontitle" name="positiontitle">
+    </form>
+</div>
 
 <h3>Please describe this position to a job seeker.</h3>
 {% include site/analysisboxes.html descType="job" %}
