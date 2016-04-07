@@ -28,8 +28,9 @@ h1 {
     @include rem(font-size, 36px);
 }
 h2 {
+    text-align: center;
     @include rem(font-size, 24px);
-    text-transform: uppercase;
+    margin: 50px 0 20px 0;
 }
 h3 {
     @include rem(font-size, 14px);
@@ -63,7 +64,6 @@ body {
 }
 .main {
 	width:1450px;
-    height: 50%;
 	margin: 0 auto;
     background-color: #fff;
 }
@@ -88,7 +88,8 @@ body {
 }
 .site-name {
     text-align: center;
-    line-height: 2em;
+    font-size: 5em !important;
+    line-height: 1.5em;
 }
 .tagline {
     float: left;
@@ -147,7 +148,7 @@ footer p{
 }
 
 // Columns
-
+.columnWrapper{width:820px; margin: 0 auto;}
 .column {
     float: left;
     box-sizing: border-box;
@@ -164,29 +165,21 @@ footer p{
 // small ratings for input boxes
 
 .inform-small {
-    min-height: 50px;
-    padding: 20px;
-    padding-top: 0px;
-    float: left;
-    margin-left: 20%;
+    width: 820px;
+    height: 85px;
+    margin: 0 auto;
 }
-
 // Input area
 
 .input-area {
-    width: 700px;
-	margin: 0 50px 0 0;
+    width: 400px;
+	margin: 0 20px 0 0;
 }
-@media only screen and (max-width: 1450px) {
-    .input-area {
-		width: 46%;
-		margin: 0 2%;
-	}
-}
+
 .post-input {
     box-sizing: border-box;
     width: 100%;
-    height: 85%;
+    height: 250px;
     padding: 20px;
     resize: none;
     background-color: #fff;
@@ -199,28 +192,31 @@ footer p{
     outline: none;
 }
 
-@media only screen and (max-width: 720px) {
-    .input-area {
-        width: auto;
-    }
-    .post-input {
-        width: 100%;
-        height: 300px;
-    }
+//Input form
+.line-input{width: 550px; margin: 0 auto;
 }
-
+.line-input form{width: 350px; margin: 20px auto;}
+.line-input form input{
+    width: 96%; 
+    padding: 2%;
+    font-size:1.6rem;
+}
+.line-input select{
+    width: 250px; 
+    font-size:1.6rem;
+    margin: 20px auto;
+    display: block;
+}
+.line-input textarea{
+    width: 96%; 
+    padding: 2%;
+    border: 1px solid #E0E0E0 !important;
+}
 
 // Output area
 
 .output-area {
-  width: 700px;
-
-}
-@media only screen and (max-width: 1450px) {
-    .output-area {
-		width: 46%;
-		margin: 0 2%;
-	}
+    width: 400px;
 }
 .output-tally, .output-issues {
     box-sizing: border-box;
@@ -344,13 +340,11 @@ footer p{
 
 .reading-level {
 	width: 295px;
-	border-top: 2px solid #ddd;
+    float: left;
 }
 
 .reading-level-small {
-    float: left;
     padding: 28px 0 24px 0;
-    border-bottom: 2px solid #ddd;
 }
 
 .reading-level-total {
@@ -381,18 +375,15 @@ footer p{
 .count-chart {
 	width: 280px;
     margin: 0;
+    float: right;
     list-style: none;
-	border-bottom: 2px solid #ddd;
 }
 .count-chart-small {
     padding: 10px 0 0 0;
-    float: left;
-    border-top: 2px solid #ddd;
 }
 .count-chart-total {
     padding: 0 0 0 15px;
     float: right;
-    border-left: 4px solid #ddd;
 }
 @media only screen and (max-width: 750px) {
     .count-chart{

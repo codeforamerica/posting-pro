@@ -4,16 +4,23 @@ description: Test job posts for issues with gender, jargon, expectations, and re
 layout: page
 ---
 
-{% include site/analysisboxes.html descType="company" %}
+{% include site/companyname.html %}
 
+<h2>Please describe your company to a job seeker.</h2>
+{% include site/analysisboxes.html descType="company" %}
 <div class="inform-small">
   {% include site/readinglevel.html id="company-desc" %}
   {% include site/counters.html id="company-desc" %}
 </div>
 
-{% include site/analysisboxes.html descType="job" %}
+{% include site/employmenttype.html %}
+{% include site/howapply.html %}
+{% include site/positiontitle.html %}
 
+<h2>Please describe this position to a job seeker.</h2>
+{% include site/analysisboxes.html descType="job" %}
 <div class="inform-small">
   {% include site/readinglevel.html id="job-desc" %}
   {% include site/counters.html id="job-desc" %}
 </div>
+
