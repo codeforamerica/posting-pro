@@ -460,10 +460,12 @@ footer p{
 .skillsNext:hover{background-color:#D1D1D1;}
 .skillsEngine{width: 840px; margin: 0 auto;}
 .skillsEngine h4{text-align: center;}
+.skillsEngine p{float:left; padding: 10px 0 0;}
+.skillsEngine p.centered{float:none; padding: 0;}
 .skillsEngine ul{list-style-type: none; margin: 0 0 50px 0;}
-.skillsEngine ul li{width:500px; height:35px; margin: 10px auto;}
-.skillsEngine p{padding:12px 0;}
-.skillsEngine p.centered{padding:0;}
+.skillsEngine input{margin: 10px 0 0;}
+.skillsEngine ul li{width:500px; margin: 0 auto;}
+.skillsEngine ul li:last-of-type fieldset{margin-left:110px;}
 .switch-field {
     margin: 0 20px 0;
     float: left;
