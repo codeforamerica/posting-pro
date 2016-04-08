@@ -1,14 +1,23 @@
 set :public_dir, Proc.new { File.join(root, "_site") }
 set :views, Proc.new { File.join(File.dirname(__FILE__), "views") }
+enable :sessions
+set :session_secret, ENV['SINATRA_SESSION_SECRET']
 
-post '/api', :provides => :json do
-  #
-  #
-  # Code to handle api calls
-  #
-  #
-  puts "Here comes your data!"
-  puts params
+require './sinatra/skills_engine.rb'
+require 'json'
+
+# call the SkillsEngine API
+post '/api/skillsengine/competencies' do
+  data = JSON.parse(request.body.read)
+
+  skills_engine_api = SkillsEngine.new(session['se_access_token'], session['se_token_expiry'])
+  skills_engine_response = skills_engine_api.analyze_competencies(data['text'])
+  if skills_engine_api.has_updated_token
+    session['se_access_token'] = skills_engine_api.access_token
+    session['se_token_expiry'] = skills_engine_api.token_expiry
+  end
+
+  skills_engine_response
 end
 
 before do

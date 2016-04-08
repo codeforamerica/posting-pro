@@ -13,6 +13,8 @@ GEM
     coffee-script-source (1.9.1.1)
     colorator (0.1)
     daemons (1.2.3)
+    domain_name (0.5.20160310)
+      unf (>= 0.0.5, < 1.0.0)
     eventmachine (1.2.0.1)
     execjs (2.5.2)
     fast-stemmer (1.0.2)
@@ -23,6 +25,8 @@ GEM
       thor (~> 0.19.1)
     hike (1.2.3)
     hitimes (1.2.2)
+    http-cookie (1.0.2)
+      domain_name (~> 0.5)
     jekyll (2.4.0)
       classifier-reborn (~> 2.0)
       colorator (~> 0.1)
@@ -54,6 +58,7 @@ GEM
       sass (~> 3.2)
     jekyll-watch (1.2.1)
       listen (~> 2.7)
+    json (1.8.3)
     kramdown (1.5.0)
     liquid (2.6.2)
     listen (2.10.1)
@@ -61,8 +66,10 @@ GEM
       rb-fsevent (>= 0.9.3)
       rb-inotify (>= 0.9)
     mercenary (0.3.5)
+    mime-types (2.99.1)
     mini_magick (4.5.1)
     multi_json (1.11.2)
+    netrc (0.11.0)
     parslet (1.5.0)
       blankslate (~> 2.0)
     posix-spawn (0.3.11)
@@ -80,6 +87,10 @@ GEM
     rb-inotify (0.9.5)
       ffi (>= 0.5.0)
     redcarpet (3.3.1)
+    rest-client (1.8.0)
+      http-cookie (>= 1.0.2, < 2.0)
+      mime-types (>= 1.16, < 3.0)
+      netrc (~> 0.7)
     safe_yaml (1.0.4)
     sass (3.4.15)
     sinatra (1.4.7)
@@ -106,6 +117,9 @@ GEM
       hitimes
     toml (0.1.2)
       parslet (~> 1.5.0)
+    unf (0.1.4)
+      unf_ext
+    unf_ext (0.0.7.2)
     yajl-ruby (1.2.1)
 
 PLATFORMS
@@ -115,7 +129,9 @@ DEPENDENCIES
   foreman
   jekyll
   jekyll-assets
+  json
   rack-jekyll
+  rest-client
   sinatra
   thin
 
