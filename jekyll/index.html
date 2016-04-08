@@ -51,20 +51,42 @@ layout: page
   {% include site/counters.html id="job-desc" %}
 </div>
 
-<button class="skillsNext">NEXT</button>
+<button class="skillsNext" data-control="generateSkillsButton">NEXT</button>
 
 <div class="skillsEngine">
     <h3>Soft and Hard Skills</h3>
     <p class="centered">These are common skills associated with the title and description of your position.</br>Please select, N/A, Preferred or Required for each skill listed. You may also add a skill that is not listed.</p>
-    <h4>Soft Skills</h4>
-    <script>
-    (function(){
-        var switchfieldArray = document.getElementsByClassName("switch-field");
-        Array.prototype.forEach.call(switchfieldArray, function(i){
-            console.log(i.indexOf);
-        });
-    })();
-    </script>
+
+		<script type="text/x-template" data-template="skillSet">
+	    {#skills.length}
+				<h4>{type}</h4>
+				<ul>
+            {#skills}
+              <li>
+								{>skillImportanceSwitcher}
+							</li>
+            {/skills}
+	      </ul>
+	    {/skills.length}
+		</script>
+
+		<script type="text/x-template" data-template="skillImportanceSwitcher">
+				<form>
+						<fieldset class="switch-field">
+								<input type="radio" id="switch-left-{id}" name="switch-{id}" value="na" checked/>
+								<label for="switch_left-{id}">N/A</label>
+								<input type="radio" id="switch-center-{id}" name="switch-{id}" value="preferred" />
+								<label for="switch_center-{id}">Preferred</label>
+								<input type="radio" id="switch-right-{id}" name="switch-{id}" value="required" />
+								<label for="switch_right-{id}">Required</label>
+						</fieldset>
+				</form>
+				<p>{name}</p>
+		</script>
+
+		<div id="soft-skills"></div>
+		<div id="hard-skills"></div>
+
     <ul>
         <li>
             <form>

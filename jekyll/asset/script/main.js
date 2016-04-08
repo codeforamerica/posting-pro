@@ -1,8 +1,21 @@
 (function () {
     'use strict';
 
+    // We should put this in a separate utilities file
+    $.postJSON = function(url, data, callback) {
+        return jQuery.ajax({
+            'type': 'POST',
+            'url': url,
+            'contentType': 'application/json; charset=utf-8',
+            'data': JSON.stringify(data),
+            'dataType': 'json',
+            'success': callback
+        });
+    };
+
     var templates = {};
     var acceptedTypes = ["tech", "sexism", "realism"];
+    var currentSkillsAnalysis = {};
 
     if (!isSupportedBrowser()) {
         document.getElementById('unsupported').style.display = 'block';
@@ -35,6 +48,7 @@
         cuff.controls.contextOutput = contextOutputControl;
         cuff.controls.errorTooltip = errorTooltipControl;
         cuff.controls.infoTooltip = infoTooltipControl;
+        cuff.controls.generateSkillsButton = generateSkillsControl;
         cuff();
     }
 
@@ -232,7 +246,7 @@
 
     function readingLevelOutputControl(element) {
         $(document).on('lint-results', function (event, results, id) {
-            
+
             // trying to match the results to the counters
             if (element.className.indexOf(id) < 0) {
               return;
@@ -255,7 +269,7 @@
         var levels = {};
 
         $(document).on('update-average', function (event, levelId, readingLevel) {
-            
+
             levels[levelId] = readingLevel;
             var average = _.round(_.mean(_.values(levels)), 1);
 
@@ -268,6 +282,59 @@
             element.innerHTML = templates.readingLevel.render(readingLevelSummary);
             cuff(element);
         });
+    }
+
+    function generateSkillsControl(element) {
+      var MAX_SKILLS = 5;
+
+      $(element).bind('click', function() {
+        var jobDescription = $("#job-desc-input").val();
+
+        getSkillsEngineCompetencies(jobDescription, function(data) {
+          if(data && data.result && data.result.competencies_analysis) {
+            currentSkillsAnalysis = data.result.competencies_analysis;
+
+            if(currentSkillsAnalysis.skills && currentSkillsAnalysis.skills.length) {
+              var skills = [];
+
+              var len = _.min([MAX_SKILLS, currentSkillsAnalysis.skills.length]);
+              for(var i = 0; i < len; i++) {
+                var skill = {
+                  name: currentSkillsAnalysis.skills[i][0],
+                  id: "skill" + i
+                }
+                skills.push(skill);
+              }
+
+              renderSkillSet("Soft Skills", skills, "soft-skills");
+            }
+
+            if(currentSkillsAnalysis.tools && currentSkillsAnalysis.tools.length) {
+              var tools = [];
+
+              var len = _.min([MAX_SKILLS, currentSkillsAnalysis.tools.length]);
+              for(var i = 0; i < len; i++) {
+                var tool = {
+                  name: currentSkillsAnalysis.tools[i].title,
+                  id: "tool" + i
+                }
+                tools.push(tool);
+              }
+
+              renderSkillSet("Hard Skills", tools, "hard-skills");
+            }
+          }
+        });
+      });
+    }
+
+    function renderSkillSet(name, skills, id) {
+      var skillSet = {
+        type: name,
+        skills: skills
+      };
+
+      $("#"+id)[0].innerHTML = templates.skillSet.render(skillSet, templates);
     }
 
     function generateLintId (results) {
@@ -299,6 +366,10 @@
         var ts = textstatistics(text);
         var gradeLevel = ts.fleschKincaidGradeLevel();
         return gradeLevel;
+    }
+
+    function getSkillsEngineCompetencies (text, callback) {
+      $.postJSON('api/skillsengine/competencies', { text: text }, callback);
     }
 
 }());
