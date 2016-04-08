@@ -1,7 +1,7 @@
 set :public_dir, Proc.new { File.join(root, "_site") }
 set :views, Proc.new { File.join(File.dirname(__FILE__), "views") }
 
-require './sinatra/skillsengine.rb'
+require './sinatra/skills_engine.rb'
 require 'json'
 
 # call the SkillsEngine API
