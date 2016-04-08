@@ -47,6 +47,7 @@ a {
 .clear{
 	clear: both;
 }
+.centered{text-align: center;}
 
 p.remove-margin {
   margin: 0;
@@ -83,7 +84,6 @@ body {
         height: auto;
     }
 }
-
 
 // Header
 
@@ -438,6 +438,50 @@ footer p{
     }
 }
 
+//skills engine
+
+.skillsNext{width:150px; height: 35px; margin: 50px auto 0; display: block;}
+.skillsEngine{width: 840px; margin: 0 auto;}
+.skillsEngine h4{text-align: center;}
+.skillsEngine ul{list-style-type: none; margin: 0 0 50px 0;}
+.skillsEngine ul li{width:500px; height:35px; margin: 10px auto;}
+.skillsEngine p{padding:12px 0;}
+.skillsEngine p.centered{padding:0;}
+.switch-field {
+    margin: 0 20px 0;
+    float: left;
+    border: none;
+    overflow: hidden;
+}
+.switch-field input {display: none;}
+.switch-field label {float: left;}
+.switch-field label {
+    display: inline-block;
+    width: 60px;
+    color:#888;
+    background-color: #e4e4e4;
+    text-align: center;
+    text-shadow: none;
+    padding: 6px 14px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    -webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.1);
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.1);
+    -webkit-transition: all 0.1s ease-in-out;
+    -moz-transition:    all 0.1s ease-in-out;
+    -ms-transition:     all 0.1s ease-in-out;
+    -o-transition:      all 0.1s ease-in-out;
+    transition:         all 0.1s ease-in-out;
+}
+.switch-field label:hover {cursor: pointer;}
+.switch-field input:checked + label {
+    color:#333;
+    font-weight: bold;
+    background-color: #A5DC86;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+.switch-field label:first-of-type {border-radius: 4px 0 0 4px;}
+.switch-field label:last-of-type {border-radius: 0 4px 4px 0;}
 
 // Overlays
 

@@ -51,3 +51,102 @@ layout: page
   {% include site/counters.html id="job-desc" %}
 </div>
 
+<button class="skillsNext">NEXT</button>
+
+<div class="skillsEngine">
+    <h3>Soft and Hard Skills</h3>
+    <p class="centered">These are common skills associated with the title and description of your position.</br>Please select, N/A, Preferred or Required for each skill listed. You may also add a skill that is not listed.</p>
+    <h4>Soft Skills</h4>
+    <script>
+    (function(){
+        var switchfieldArray = document.getElementsByClassName("switch-field");
+        Array.prototype.forEach.call(switchfieldArray, function(i){
+            console.log(i.indexOf);
+        });
+    })();
+    </script>
+    <ul>
+        <li>
+            <form>
+                <fieldset class="switch-field">
+                    <input type="radio" id="switch_left1" name="switch1" value="na" checked/>
+                    <label for="switch_left1">N/A</label>
+                    <input type="radio" id="switch_center1" name="switch1" value="preferred" />
+                    <label for="switch_center1">Preferred</label>
+                    <input type="radio" id="switch_right1" name="switch1" value="required" />
+                    <label for="switch_right1">Required</label>
+                </fieldset>
+            </form>
+            <p>Test 1</p>
+        </li>
+        <li>
+            <form>
+                <fieldset class="switch-field">
+                    <input type="radio" id="switch_left2" name="switch2" value="na" checked/>
+                    <label for="switch_left2">N/A</label>
+                    <input type="radio" id="switch_center2" name="switch2" value="preferred" />
+                    <label for="switch_center2">Preferred</label>
+                    <input type="radio" id="switch_right2" name="switch2" value="required" />
+                    <label for="switch_right2">Required</label>
+                </fieldset>
+            </form>
+            <p>Test 2</p>
+        </li>
+        <li>
+            <form>
+                <fieldset class="switch-field">
+                    <input type="radio" id="switch_left3" name="switch3" value="na" checked/>
+                    <label for="switch_left3">N/A</label>
+                    <input type="radio" id="switch_center3" name="switch3" value="preferred" />
+                    <label for="switch_center3">Preferred</label>
+                    <input type="radio" id="switch_right3" name="switch3" value="required" />
+                    <label for="switch_right3">Required</label>
+                </fieldset>
+            </form>
+            <p>Test 3</p>
+        </li>
+    </ul>
+
+    <h4>Hard Skills</h4>
+    <ul>
+        <li>
+            <form>
+                <fieldset class="switch-field">
+                    <input type="radio" id="switch_left4" name="switch4" value="na" checked/>
+                    <label for="switch_left4">N/A</label>
+                    <input type="radio" id="switch_center4" name="switch4" value="preferred" />
+                    <label for="switch_center4">Preferred</label>
+                    <input type="radio" id="switch_right4" name="switch4" value="required" />
+                    <label for="switch_right4">Required</label>
+                </fieldset>
+            </form>
+            <p>Test 4</p>
+        </li>
+        <li>
+            <form>
+                <fieldset class="switch-field">
+                    <input type="radio" id="switch_left5" name="switch5" value="na" checked/>
+                    <label for="switch_left5">N/A</label>
+                    <input type="radio" id="switch_center5" name="switch5" value="preferred" />
+                    <label for="switch_center5">Preferred</label>
+                    <input type="radio" id="switch_right5" name="switch5" value="required" />
+                    <label for="switch_right5">Required</label>
+                </fieldset>
+            </form>
+            <p>Test 5</p>
+        </li>
+        <li>
+            <form>
+                <fieldset class="switch-field">
+                    <input type="radio" id="switch_left6" name="switch6" value="na" checked/>
+                    <label for="switch_left6">N/A</label>
+                    <input type="radio" id="switch_center6" name="switch6" value="preferred" />
+                    <label for="switch_center6">Preferred</label>
+                    <input type="radio" id="switch_right6" name="switch6" value="required" />
+                    <label for="switch_right6">Required</label>
+                </fieldset>
+            </form>
+            <p>Test 6</p>
+        </li>
+    </ul>
+</div>
