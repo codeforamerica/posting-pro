@@ -18,6 +18,13 @@ layout: page
   {% include site/counters.html id="company-desc" %}
 </div>
 
+<div class="line-input" id="location">
+    <h3>What is the location of this position?</h3>
+    <form>
+        <input type="text" id="locationinput" name="locationinput">
+    </form>
+</div>
+
 <div class="line-input" id="employment_type">
     <h3>What is the employment type?</h3>
     <select>
@@ -69,7 +76,7 @@ layout: page
                     <label for="switch_right1">Required</label>
                 </fieldset>
             </form>
-            <p>Test 1</p>
+            <p>Test 1</p><div class="clear"></div>
         </li>
         <li>
             <form>
@@ -82,7 +89,7 @@ layout: page
                     <label for="switch_right2">Required</label>
                 </fieldset>
             </form>
-            <p>Test 2</p>
+            <p>Test 2</p><div class="clear"></div>
         </li>
         <li>
             <form>
@@ -95,7 +102,18 @@ layout: page
                     <label for="switch_right3">Required</label>
                 </fieldset>
             </form>
-            <p>Test 3</p>
+            <p>Test 3</p><div class="clear"></div>
+        </li>
+        <li>
+            <form>
+                <fieldset class="switch-field">
+                    <input type="radio" id="switch_centerAdd1" name="switchAdd1" value="preferred" />
+                    <label for="switch_centerAdd1">Preferred</label>
+                    <input type="radio" id="switch_rightAdd1" name="switchAdd1" value="required" />
+                    <label for="switch_rightAdd1">Required</label>
+                </fieldset>
+            </form>
+            <input type="text" id="switchAddInput1" name="switchAdd1">
         </li>
     </ul>
 
@@ -112,7 +130,7 @@ layout: page
                     <label for="switch_right4">Required</label>
                 </fieldset>
             </form>
-            <p>Test 4</p>
+            <p>Test 4</p><div class="clear"></div>
         </li>
         <li>
             <form>
@@ -125,7 +143,7 @@ layout: page
                     <label for="switch_right5">Required</label>
                 </fieldset>
             </form>
-            <p>Test 5</p>
+            <p>Test 5</p><div class="clear"></div>
         </li>
         <li>
             <form>
@@ -138,7 +156,18 @@ layout: page
                     <label for="switch_right6">Required</label>
                 </fieldset>
             </form>
-            <p>Test 6</p>
+            <p>Test 6</p><div class="clear"></div>
+        </li>
+        <li>
+            <form>
+                <fieldset class="switch-field">
+                    <input type="radio" id="switch_centerAdd2" name="switchAdd2" value="preferred" />
+                    <label for="switch_centerAdd2">Preferred</label>
+                    <input type="radio" id="switch_rightAdd2" name="switchAdd2" value="required" />
+                    <label for="switch_rightAdd2">Required</label>
+                </fieldset>
+            </form>
+            <input type="text" id="switchAddInput2" name="switchAdd2">
         </li>
     </ul>
 </div>
