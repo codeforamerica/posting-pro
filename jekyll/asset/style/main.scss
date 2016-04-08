@@ -395,7 +395,23 @@ footer p{
   &.circle-sexism { background-color: $genderIssueColor; }
   &.circle-realism { background-color: $expectationsIssueColor; }
   &.circle-tech { background-color: $jargonIssueColor; }
+  &.circle-plus { background-color: #e4e4e4; }
 }
+.circle-plus{
+    color:#888;
+    font-size:30px; 
+    font-weight: bold; 
+    line-height: 1.1em;
+    text-align: center; 
+    margin: 10px auto;
+    cursor: pointer;
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition:    all 0.2s ease-in-out;
+    -ms-transition:     all 0.2s ease-in-out;
+    -o-transition:      all 0.2s ease-in-out;
+    transition:         all 0.2s ease-in-out;
+}
+.circle-plus:hover{color:#333; background-color:#0CE8D7;}
 .bar-label {
     width: 15%;
     overflow: hidden;
@@ -460,9 +476,10 @@ footer p{
 .skillsNext:hover{background-color:#D1D1D1;}
 .skillsEngine{width: 840px; margin: 0 auto;}
 .skillsEngine h4{text-align: center;}
+.skillsEngine h4:last-of-type{margin: 50px 0 0 0;}
 .skillsEngine p{float:left; padding: 10px 0 0;}
 .skillsEngine p.centered{float:none; padding: 0;}
-.skillsEngine ul{list-style-type: none; margin: 0 0 50px 0;}
+.skillsEngine ul{list-style-type: none;}
 .skillsEngine input{margin: 10px 0 0;}
 .skillsEngine ul li{width:500px; margin: 0 auto;}
 .skillsEngine ul li:last-of-type fieldset{margin-left:110px;}
@@ -501,6 +518,7 @@ footer p{
 }
 .switch-field label:first-of-type {border-radius: 4px 0 0 4px;}
 .switch-field label:last-of-type {border-radius: 0 4px 4px 0;}
+#training_offered .switch-field{width:180px; margin:0 auto; float: none;}
 
 // Overlays
 

@@ -19,7 +19,7 @@ layout: page
 </div>
 
 <div class="line-input" id="location">
-    <h3>What is the location of this position?</h3>
+    <h3>What location will this position mostly be working from?</h3>
     <form>
         <input type="text" id="locationinput" name="locationinput">
     </form>
@@ -107,7 +107,7 @@ layout: page
         <li>
             <form>
                 <fieldset class="switch-field">
-                    <input type="radio" id="switch_centerAdd1" name="switchAdd1" value="preferred" />
+                    <input type="radio" id="switch_centerAdd1" name="switchAdd1" value="preferred" checked/>
                     <label for="switch_centerAdd1">Preferred</label>
                     <input type="radio" id="switch_rightAdd1" name="switchAdd1" value="required" />
                     <label for="switch_rightAdd1">Required</label>
@@ -116,6 +116,7 @@ layout: page
             <input type="text" id="switchAddInput1" name="switchAdd1">
         </li>
     </ul>
+    <span class="circle circle-plus">+</span>
 
     <h4>Hard Skills</h4>
     <ul>
@@ -161,7 +162,7 @@ layout: page
         <li>
             <form>
                 <fieldset class="switch-field">
-                    <input type="radio" id="switch_centerAdd2" name="switchAdd2" value="preferred" />
+                    <input type="radio" id="switch_centerAdd2" name="switchAdd2" value="preferred" checked/>
                     <label for="switch_centerAdd2">Preferred</label>
                     <input type="radio" id="switch_rightAdd2" name="switchAdd2" value="required" />
                     <label for="switch_rightAdd2">Required</label>
@@ -170,4 +171,28 @@ layout: page
             <input type="text" id="switchAddInput2" name="switchAdd2">
         </li>
     </ul>
+    <span class="circle circle-plus">+</span>
 </div>
+
+<div class="line-input" id="certificated_needed">
+    <h3>Are any certificates needed?</h3>
+    <form>
+        <input type="text" id="certNeeded" name="certNeeded">
+        <span class="circle circle-plus">+</span>
+    </form>
+</div>
+
+<div class="line-input" id="training_offered">
+    <h3>Is training offered on the job?</h3>
+    <form>
+        <fieldset class="switch-field">
+            <input type="radio" id="switch_leftTrain" name="training" value="yes" checked/>
+            <label for="switch_leftTrain">Yes</label>
+            <input type="radio" id="switch_rightTrain" name="training" value="no" />
+            <label for="switch_rightTrain">No</label>
+        </fieldset>
+    </form>
+    <div class="clear"></div>
+</div>
+
+<button class="skillsNext">EXPORT</button>
