@@ -330,6 +330,7 @@
 
     function renderSkillSet(name, skills, id) {
       var skillSet = {
+        id: id,
         type: name,
         skills: skills
       };
