@@ -2,8 +2,6 @@ require 'rest-client'
 require 'json'
 
 module SkillsEngine
-  @@client_id = ENV['SKILLS_ENGINE_ID']
-  @@client_secret = ENV['SKILLS_ENGINE_SECRET']
   @@access_token = nil
 
   private_class_method def self.get_access_token
@@ -17,8 +15,8 @@ module SkillsEngine
   private_class_method def self.fetch_new_access_token
     response = RestClient.post('https://api.skillsengine.com/oauth/token', {
       grant_type: 'client_credentials',
-      client_id: @@client_id,
-      client_secret: @@client_secret
+      client_id: ENV['SKILLS_ENGINE_ID'],
+      client_secret: ENV['SKILLS_ENGINE_SECRET']
     })
 
     JSON.parse(response)["access_token"]
