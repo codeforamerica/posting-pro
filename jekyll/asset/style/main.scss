@@ -395,7 +395,23 @@ footer p{
   &.circle-sexism { background-color: $genderIssueColor; }
   &.circle-realism { background-color: $expectationsIssueColor; }
   &.circle-tech { background-color: $jargonIssueColor; }
+  &.circle-plus { background-color: #e4e4e4; }
 }
+.circle-plus{
+    color:#888;
+    font-size:30px; 
+    font-weight: bold; 
+    line-height: 1.1em;
+    text-align: center; 
+    margin: 10px auto;
+    cursor: pointer;
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition:    all 0.2s ease-in-out;
+    -ms-transition:     all 0.2s ease-in-out;
+    -o-transition:      all 0.2s ease-in-out;
+    transition:         all 0.2s ease-in-out;
+}
+.circle-plus:hover{color:#333; background-color:#0CE8D7;}
 .bar-label {
     width: 15%;
     overflow: hidden;
@@ -439,14 +455,34 @@ footer p{
 }
 
 //skills engine
-
-.skillsNext{width:150px; height: 35px; margin: 50px auto 0; display: block;}
+.skillsNext{
+    width:200px; 
+    font-family: 'Trebuchet MS', 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Tahoma, sans-serif;;
+    color: #333;
+    font-size: 20px;
+    font-weight: bold;
+    background: #e4e4e4;
+    box-shadow: none;
+    border: none;
+    padding:15px;
+    margin: 50px auto 0; 
+    display: block;
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition:    all 0.2s ease-in-out;
+    -ms-transition:     all 0.2s ease-in-out;
+    -o-transition:      all 0.2s ease-in-out;
+    transition:         all 0.2s ease-in-out;
+}
+.skillsNext:hover{background-color:#D1D1D1;}
 .skillsEngine{width: 840px; margin: 0 auto;}
 .skillsEngine h4{text-align: center;}
-.skillsEngine ul{list-style-type: none; margin: 0 0 50px 0;}
-.skillsEngine ul li{width:500px; height:35px; margin: 10px auto;}
-.skillsEngine p{padding:12px 0;}
-.skillsEngine p.centered{padding:0;}
+.skillsEngine h4:last-of-type{margin: 50px 0 0 0;}
+.skillsEngine p{float:left; padding: 10px 0 0;}
+.skillsEngine p.centered{float:none; padding: 0;}
+.skillsEngine ul{list-style-type: none;}
+.skillsEngine input{margin: 10px 0 0;}
+.skillsEngine ul li{width:500px; margin: 0 auto;}
+.skillsEngine ul li:last-of-type fieldset{margin-left:110px;}
 .switch-field {
     margin: 0 20px 0;
     float: left;
@@ -466,22 +502,23 @@ footer p{
     border: 1px solid rgba(0, 0, 0, 0.2);
     -webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.1);
     box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.1);
-    -webkit-transition: all 0.1s ease-in-out;
-    -moz-transition:    all 0.1s ease-in-out;
-    -ms-transition:     all 0.1s ease-in-out;
-    -o-transition:      all 0.1s ease-in-out;
-    transition:         all 0.1s ease-in-out;
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition:    all 0.2s ease-in-out;
+    -ms-transition:     all 0.2s ease-in-out;
+    -o-transition:      all 0.2s ease-in-out;
+    transition:         all 0.2s ease-in-out;
 }
 .switch-field label:hover {cursor: pointer;}
 .switch-field input:checked + label {
     color:#333;
     font-weight: bold;
-    background-color: #A5DC86;
+    background-color: #0CE8D7;
     -webkit-box-shadow: none;
     box-shadow: none;
 }
 .switch-field label:first-of-type {border-radius: 4px 0 0 4px;}
 .switch-field label:last-of-type {border-radius: 0 4px 4px 0;}
+#training_offered .switch-field{width:180px; margin:0 auto; float: none;}
 
 // Overlays
 
