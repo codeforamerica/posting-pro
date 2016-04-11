@@ -58,120 +58,58 @@ layout: page
   {% include site/counters.html id="job-desc" %}
 </div>
 
-<button class="skillsNext">NEXT</button>
+<button class="skillsNext" data-control="generateSkillsButton">NEXT</button>
 
 <div class="skillsEngine">
     <h3>Soft and Hard Skills</h3>
     <p class="centered">These are common skills associated with the title and description of your position.</br>Please select, N/A, Preferred or Required for each skill listed. You may also add a skill that is not listed.</p>
-    <h4>Soft Skills</h4>
-    <ul>
-        <li>
-            <form>
-                <fieldset class="switch-field">
-                    <input type="radio" id="switch_left1" name="switch1" value="na" checked/>
-                    <label for="switch_left1">N/A</label>
-                    <input type="radio" id="switch_center1" name="switch1" value="preferred" />
-                    <label for="switch_center1">Preferred</label>
-                    <input type="radio" id="switch_right1" name="switch1" value="required" />
-                    <label for="switch_right1">Required</label>
-                </fieldset>
-            </form>
-            <p>Test 1</p><div class="clear"></div>
-        </li>
-        <li>
-            <form>
-                <fieldset class="switch-field">
-                    <input type="radio" id="switch_left2" name="switch2" value="na" checked/>
-                    <label for="switch_left2">N/A</label>
-                    <input type="radio" id="switch_center2" name="switch2" value="preferred" />
-                    <label for="switch_center2">Preferred</label>
-                    <input type="radio" id="switch_right2" name="switch2" value="required" />
-                    <label for="switch_right2">Required</label>
-                </fieldset>
-            </form>
-            <p>Test 2</p><div class="clear"></div>
-        </li>
-        <li>
-            <form>
-                <fieldset class="switch-field">
-                    <input type="radio" id="switch_left3" name="switch3" value="na" checked/>
-                    <label for="switch_left3">N/A</label>
-                    <input type="radio" id="switch_center3" name="switch3" value="preferred" />
-                    <label for="switch_center3">Preferred</label>
-                    <input type="radio" id="switch_right3" name="switch3" value="required" />
-                    <label for="switch_right3">Required</label>
-                </fieldset>
-            </form>
-            <p>Test 3</p><div class="clear"></div>
-        </li>
-        <li>
-            <form>
-                <fieldset class="switch-field">
-                    <input type="radio" id="switch_centerAdd1" name="switchAdd1" value="preferred" checked/>
-                    <label for="switch_centerAdd1">Preferred</label>
-                    <input type="radio" id="switch_rightAdd1" name="switchAdd1" value="required" />
-                    <label for="switch_rightAdd1">Required</label>
-                </fieldset>
-            </form>
-            <input type="text" id="switchAddInput1" name="switchAdd1">
-        </li>
-    </ul>
-    <span class="circle circle-plus">+</span>
 
-    <h4>Hard Skills</h4>
-    <ul>
-        <li>
-            <form>
-                <fieldset class="switch-field">
-                    <input type="radio" id="switch_left4" name="switch4" value="na" checked/>
-                    <label for="switch_left4">N/A</label>
-                    <input type="radio" id="switch_center4" name="switch4" value="preferred" />
-                    <label for="switch_center4">Preferred</label>
-                    <input type="radio" id="switch_right4" name="switch4" value="required" />
-                    <label for="switch_right4">Required</label>
-                </fieldset>
-            </form>
-            <p>Test 4</p><div class="clear"></div>
-        </li>
-        <li>
-            <form>
-                <fieldset class="switch-field">
-                    <input type="radio" id="switch_left5" name="switch5" value="na" checked/>
-                    <label for="switch_left5">N/A</label>
-                    <input type="radio" id="switch_center5" name="switch5" value="preferred" />
-                    <label for="switch_center5">Preferred</label>
-                    <input type="radio" id="switch_right5" name="switch5" value="required" />
-                    <label for="switch_right5">Required</label>
-                </fieldset>
-            </form>
-            <p>Test 5</p><div class="clear"></div>
-        </li>
-        <li>
-            <form>
-                <fieldset class="switch-field">
-                    <input type="radio" id="switch_left6" name="switch6" value="na" checked/>
-                    <label for="switch_left6">N/A</label>
-                    <input type="radio" id="switch_center6" name="switch6" value="preferred" />
-                    <label for="switch_center6">Preferred</label>
-                    <input type="radio" id="switch_right6" name="switch6" value="required" />
-                    <label for="switch_right6">Required</label>
-                </fieldset>
-            </form>
-            <p>Test 6</p><div class="clear"></div>
-        </li>
-        <li>
-            <form>
-                <fieldset class="switch-field">
-                    <input type="radio" id="switch_centerAdd2" name="switchAdd2" value="preferred" checked/>
-                    <label for="switch_centerAdd2">Preferred</label>
-                    <input type="radio" id="switch_rightAdd2" name="switchAdd2" value="required" />
-                    <label for="switch_rightAdd2">Required</label>
-                </fieldset>
-            </form>
-            <input type="text" id="switchAddInput2" name="switchAdd2">
-        </li>
-    </ul>
-    <span class="circle circle-plus">+</span>
+		<script type="text/x-template" data-template="skillSet">
+	    {#skills.length}
+				<h4>{type}</h4>
+				<ul>
+            {#skills}
+              <li>
+								{>skillImportanceSwitcher}
+							</li>
+            {/skills}
+						<li>
+							{>skillAdder}
+						</li>
+	      </ul>
+				<span class="circle circle-plus">+</span>
+	    {/skills.length}
+		</script>
+
+		<script type="text/x-template" data-template="skillImportanceSwitcher">
+				<form>
+						<fieldset class="switch-field">
+								<input type="radio" id="switch-left-{id}" name="switch-{id}" value="na" checked/>
+								<label for="switch_left-{id}">N/A</label>
+								<input type="radio" id="switch-center-{id}" name="switch-{id}" value="preferred" />
+								<label for="switch_center-{id}">Preferred</label>
+								<input type="radio" id="switch-right-{id}" name="switch-{id}" value="required" />
+								<label for="switch_right-{id}">Required</label>
+						</fieldset>
+				</form>
+				<p>{name}</p><div class="clear"></div>
+		</script>
+
+		<script type="text/x-template" data-template="skillAdder">
+			<form>
+					<fieldset class="switch-field">
+							<input type="radio" id="switch_center-add-{id}" name="switch-add-{id}" value="preferred" checked/>
+							<label for="switch_center-add-{id}">Preferred</label>
+							<input type="radio" id="switch_right-add-{id}" name="switch-add-{id}" value="required" />
+							<label for="switch_right-add-{id}">Required</label>
+					</fieldset>
+			</form>
+			<input type="text" id="switch-add-input-{id}" name="switch-add-{id}">
+		</script>
+
+		<div id="soft-skills"></div>
+		<div id="hard-skills"></div>
+
 </div>
 
 <div class="line-input" id="certificated_needed">
