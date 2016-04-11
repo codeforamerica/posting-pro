@@ -24,7 +24,7 @@ end
 # get nearby transit locations from Google Maps API
 get '/api/googlemaps/nearby_transit' do
   results = GoogleMaps.nearby_transit_stations_from_address(params['address'])
-  results.take(5)
+  results.take(3)
 end
 
 

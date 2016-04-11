@@ -18,10 +18,34 @@ module GoogleMaps
         if places.nil?
           []
         else
-          places.results
+          JSON.parse(places)['results']
         end
       end
     end
+  end
+
+  def self.place_detail(place_id)
+    response = RestClient.get('https://maps.googleapis.com/maps/api/place/details/json',
+      { params: {
+          placeid: place_id,
+          key: ENV['GOOGLE_API_KEY']
+        }
+      })
+
+    response.body
+  end
+
+  def self.directions(from_place_id, to_place_id)
+    response = RestClient.get('https://maps.googleapis.com/maps/api/directions/json',
+      { params: {
+          origin: "place_id:#{from_place_id}",
+          destination: "place_id:#{to_place_id}",
+          mode: 'transit',
+          key: ENV['GOOGLE_API_KEY']
+        }
+      })
+
+    response.body
   end
 
   def self.geocode(address)
