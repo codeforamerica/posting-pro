@@ -4,6 +4,7 @@ enable :sessions
 set :session_secret, ENV['SINATRA_SESSION_SECRET']
 
 require './sinatra/skills_engine.rb'
+require './sinatra/google_maps.rb'
 require 'json'
 
 # call the SkillsEngine API
@@ -19,6 +20,13 @@ post '/api/skillsengine/competencies' do
 
   skills_engine_response
 end
+
+# get nearby transit locations from Google Maps API
+get '/api/googlemaps/nearby_transit' do
+  results = GoogleMaps.nearby_transit_stations_from_address(params['address'])
+  results.take(5)
+end
+
 
 before do
     response.headers['Cache-Control'] = 'public, max-age=36000'
