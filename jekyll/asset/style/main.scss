@@ -182,18 +182,18 @@ footer p{
 }
 .line-input form{width: 350px; margin: 0 auto;}
 .line-input form input{
-    width: 96%; 
+    width: 96%;
     padding: 2%;
     font-size:1.6rem;
 }
 .line-input select{
-    width: 250px; 
+    width: 250px;
     font-size:1.6rem;
     margin: 0 auto;
     display: block;
 }
 .line-input textarea{
-    width: 96%; 
+    width: 96%;
     padding: 2%;
     border: 2px solid #E0E0E0 !important;
 }
@@ -399,10 +399,10 @@ footer p{
 }
 .circle-plus{
     color:#888;
-    font-size:30px; 
-    font-weight: bold; 
+    font-size:30px;
+    font-weight: bold;
     line-height: 1.1em;
-    text-align: center; 
+    text-align: center;
     margin: 10px auto;
     cursor: pointer;
     -webkit-transition: all 0.2s ease-in-out;
@@ -455,8 +455,13 @@ footer p{
 }
 
 //skills engine
+.skillsNextContainer {
+    margin: 50px auto 0;
+    display: block;
+    text-align: center;
+}
 .skillsNext{
-    width:200px; 
+    width:200px;
     font-family: 'Trebuchet MS', 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Tahoma, sans-serif;;
     color: #333;
     font-size: 20px;
@@ -465,14 +470,15 @@ footer p{
     box-shadow: none;
     border: none;
     padding:15px;
-    margin: 50px auto 0; 
-    display: block;
+    margin-left: 15px;
+    display: inline-block;
     -webkit-transition: all 0.2s ease-in-out;
     -moz-transition:    all 0.2s ease-in-out;
     -ms-transition:     all 0.2s ease-in-out;
     -o-transition:      all 0.2s ease-in-out;
     transition:         all 0.2s ease-in-out;
 }
+.skillsNext:first-child { margin-left: 0px; }
 .skillsNext:hover{background-color:#D1D1D1;}
 .skillsEngine{width: 840px; margin: 0 auto;}
 .skillsEngine h4{text-align: center;}

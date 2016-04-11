@@ -49,6 +49,7 @@
         cuff.controls.errorTooltip = errorTooltipControl;
         cuff.controls.infoTooltip = infoTooltipControl;
         cuff.controls.loadSkillsPageButton = loadSkillsPageControl;
+        cuff.controls.previousPageButton = previousPageControl;
         cuff();
     }
 
@@ -289,6 +290,13 @@
         $("#page_1").hide();
         generateSkillsControl();
         $("#page_2").show();
+      });
+    }
+
+    function previousPageControl(element) {
+      $(element).bind('click', function() {
+        $("#page_2").hide();
+        $("#page_1").show();
       });
     }
 
