@@ -1,18 +1,6 @@
 (function () {
     'use strict';
 
-    // We should put this in a separate utilities file
-    $.postJSON = function(url, data, callback) {
-        return jQuery.ajax({
-            'type': 'POST',
-            'url': url,
-            'contentType': 'application/json; charset=utf-8',
-            'data': JSON.stringify(data),
-            'dataType': 'json',
-            'success': callback
-        });
-    };
-
     var templates = {};
     var acceptedTypes = ["tech", "sexism", "realism"];
     var currentSkillsAnalysis = {};
