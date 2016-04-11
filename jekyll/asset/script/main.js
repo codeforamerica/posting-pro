@@ -243,7 +243,7 @@
 
             var tooHigh = results.readingLevel >= 9;
             var readingLevelSummary = {
-              "readingLevel": results.readingLevel,
+              "readingLevel": results.readingLevel < 0 ? 'N/A' : results.readingLevel,
               "tooHigh": tooHigh,
               "level": tooHigh ? "error-highlight" : "info-highlight"
             };
@@ -259,12 +259,18 @@
 
         $(document).on('update-average', function (event, levelId, readingLevel) {
 
+          if (readingLevel < 0) {
+            delete levels[levelId];
+          } else {
             levels[levelId] = readingLevel;
-            var average = _.round(_.mean(_.values(levels)), 1);
+          }
+
+          var average = Object.keys(levels).length === 0 ? -1
+                                                         : _.round(_.mean(_.values(levels)), 1);
 
             var tooHigh = average >= 9;
             var readingLevelSummary = {
-              "readingLevel": average,
+              "readingLevel": average < 0 ? 'N/A' : average,
               "tooHigh": tooHigh,
               "level": tooHigh ? "error-highlight" : "info-highlight"
             };
@@ -304,7 +310,7 @@
               var skill = {
                 name: currentSkillsAnalysis.skills[i][0],
                 id: "skill" + i
-              }
+              };
               skills.push(skill);
             }
 
@@ -319,7 +325,7 @@
               var tool = {
                 name: currentSkillsAnalysis.tools[i].title,
                 id: "tool" + i
-              }
+              };
               tools.push(tool);
             }
 
@@ -365,9 +371,13 @@
     }
 
     function buildReadingLevel (text) {
+      if (text) { // apparently if text == "", this is false
         var ts = textstatistics(text);
         var gradeLevel = ts.fleschKincaidGradeLevel();
         return gradeLevel;
+      } else {
+        return -1;
+      }
     }
 
     function getSkillsEngineCompetencies (text, callback) {
