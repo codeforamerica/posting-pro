@@ -38,6 +38,7 @@
         cuff.controls.infoTooltip = infoTooltipControl;
         cuff.controls.loadSkillsPageButton = loadSkillsPageControl;
         cuff.controls.previousPageButton = previousPageControl;
+        cuff.controls.exportPostingPageButton = exportPostingPageControl;
         cuff();
     }
 
@@ -327,6 +328,10 @@
           }
         }
       });
+    }
+
+    function exportPostingPageControl(element) {
+      
     }
 
     function renderSkillSet(name, skills, id) {
