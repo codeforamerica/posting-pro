@@ -1,3 +1,4 @@
+// jQuery POST using JSON
 $.postJSON = function(url, data, callback) {
     return jQuery.ajax({
         'type': 'POST',
