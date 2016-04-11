@@ -4,133 +4,141 @@ description: Test job posts for issues with gender, jargon, expectations, and re
 layout: page
 ---
 
-<div class="line-input" id="company_name">
-    <h3>What's your company  name?</h3>
-    <form>
-        <input type="text" id="companyname" name="companyname">
-    </form>
-</div>
+<div id="page_1">
 
-<h3>Please describe your company to a job seeker.</h3>
-{% include site/analysisboxes.html descType="company" %}
-<div class="inform-small">
-  {% include site/readinglevel.html id="company-desc" %}
-  {% include site/counters.html id="company-desc" %}
-</div>
+  <div class="line-input" id="company_name">
+      <h3>What's your company  name?</h3>
+      <form>
+          <input type="text" id="companyname" name="companyname">
+      </form>
+  </div>
 
-<div class="line-input" id="location">
-    <h3>What location will this position mostly be working from?</h3>
-    <form>
-        <input type="text" id="locationinput" name="locationinput">
-    </form>
-</div>
+  <h3>Please describe your company to a job seeker.</h3>
+  {% include site/analysisboxes.html descType="company" %}
+  <div class="inform-small">
+    {% include site/readinglevel.html id="company-desc" %}
+    {% include site/counters.html id="company-desc" %}
+  </div>
 
-<div class="line-input" id="employment_type">
-    <h3>What is the employment type?</h3>
-    <select>
-        <option value="fullTime">Full-Time</option>
-        <option value="partTime">Part-Time</option>
-        <option value="casual">Casual</option>
-        <option value="contractor">Contractor</option>
-        <option value="intern">Intern</option>
-        <option value="other">Other</option>
-    </select>
-</div>
+  <div class="line-input" id="location">
+      <h3>What location will this position mostly be working from?</h3>
+      <form>
+          <input type="text" id="locationinput" name="locationinput">
+      </form>
+  </div>
 
-<div class="line-input" id="position_apply">
-    <h3>How does a job seeker apply?</h3>
-    <form>
-        <textarea name="positionapply" id="positionapply" rows="5"></textarea>
-    </form>
-</div>
+  <div class="line-input" id="employment_type">
+      <h3>What is the employment type?</h3>
+      <select>
+          <option value="fullTime">Full-Time</option>
+          <option value="partTime">Part-Time</option>
+          <option value="casual">Casual</option>
+          <option value="contractor">Contractor</option>
+          <option value="intern">Intern</option>
+          <option value="other">Other</option>
+      </select>
+  </div>
 
-<div class="line-input" id="position_title">
-    <h3>What is the position title?</h3>
-    <form>
-        <input type="text" id="positiontitle" name="positiontitle">
-    </form>
-</div>
+  <div class="line-input" id="position_apply">
+      <h3>How does a job seeker apply?</h3>
+      <form>
+          <textarea name="positionapply" id="positionapply" rows="5"></textarea>
+      </form>
+  </div>
 
-<h3>Please describe this position to a job seeker.</h3>
-{% include site/analysisboxes.html descType="job" %}
-<div class="inform-small">
-  {% include site/readinglevel.html id="job-desc" %}
-  {% include site/counters.html id="job-desc" %}
-</div>
+  <div class="line-input" id="position_title">
+      <h3>What is the position title?</h3>
+      <form>
+          <input type="text" id="positiontitle" name="positiontitle">
+      </form>
+  </div>
 
-<button class="skillsNext" data-control="generateSkillsButton">NEXT</button>
+  <h3>Please describe this position to a job seeker.</h3>
+  {% include site/analysisboxes.html descType="job" %}
+  <div class="inform-small">
+    {% include site/readinglevel.html id="job-desc" %}
+    {% include site/counters.html id="job-desc" %}
+  </div>
 
-<div class="skillsEngine">
-    <h3>Soft and Hard Skills</h3>
-    <p class="centered">These are common skills associated with the title and description of your position.</br>Please select, N/A, Preferred or Required for each skill listed. You may also add a skill that is not listed.</p>
-
-		<script type="text/x-template" data-template="skillSet">
-	    {#skills.length}
-				<h4>{type}</h4>
-				<ul>
-            {#skills}
-              <li>
-								{>skillImportanceSwitcher}
-							</li>
-            {/skills}
-						<li>
-							{>skillAdder}
-						</li>
-	      </ul>
-				<span class="circle circle-plus">+</span>
-	    {/skills.length}
-		</script>
-
-		<script type="text/x-template" data-template="skillImportanceSwitcher">
-				<form>
-						<fieldset class="switch-field">
-								<input type="radio" id="switch-left-{id}" name="switch-{id}" value="na" checked/>
-								<label for="switch_left-{id}">N/A</label>
-								<input type="radio" id="switch-center-{id}" name="switch-{id}" value="preferred" />
-								<label for="switch_center-{id}">Preferred</label>
-								<input type="radio" id="switch-right-{id}" name="switch-{id}" value="required" />
-								<label for="switch_right-{id}">Required</label>
-						</fieldset>
-				</form>
-				<p>{name}</p><div class="clear"></div>
-		</script>
-
-		<script type="text/x-template" data-template="skillAdder">
-			<form>
-					<fieldset class="switch-field">
-							<input type="radio" id="switch_center-add-{id}" name="switch-add-{id}" value="preferred" checked/>
-							<label for="switch_center-add-{id}">Preferred</label>
-							<input type="radio" id="switch_right-add-{id}" name="switch-add-{id}" value="required" />
-							<label for="switch_right-add-{id}">Required</label>
-					</fieldset>
-			</form>
-			<input type="text" id="switch-add-input-{id}" name="switch-add-{id}">
-		</script>
-
-		<div id="soft-skills"></div>
-		<div id="hard-skills"></div>
+  <button class="skillsNext" data-control="loadSkillsPageButton">NEXT</button>
 
 </div>
 
-<div class="line-input" id="certificated_needed">
-    <h3>Are any certificates needed?</h3>
-    <form>
-        <input type="text" id="certNeeded" name="certNeeded">
-        <span class="circle circle-plus">+</span>
-    </form>
-</div>
+<div id="page_2" style="display:none;">
 
-<div class="line-input" id="training_offered">
-    <h3>Is training offered on the job?</h3>
-    <form>
-        <fieldset class="switch-field">
-            <input type="radio" id="switch_leftTrain" name="training" value="yes" checked/>
-            <label for="switch_leftTrain">Yes</label>
-            <input type="radio" id="switch_rightTrain" name="training" value="no" />
-            <label for="switch_rightTrain">No</label>
-        </fieldset>
-    </form>
-    <div class="clear"></div>
-</div>
+  <div class="skillsEngine">
+      <h3>Soft and Hard Skills</h3>
+      <p class="centered">These are common skills associated with the title and description of your position.</br>Please select, N/A, Preferred or Required for each skill listed. You may also add a skill that is not listed.</p>
 
-<button class="skillsNext">EXPORT</button>
+  		<script type="text/x-template" data-template="skillSet">
+  	    {#skills.length}
+  				<h4>{type}</h4>
+  				<ul>
+              {#skills}
+                <li>
+  								{>skillImportanceSwitcher}
+  							</li>
+              {/skills}
+  						<li>
+  							{>skillAdder}
+  						</li>
+  	      </ul>
+  				<span class="circle circle-plus">+</span>
+  	    {/skills.length}
+  		</script>
+
+  		<script type="text/x-template" data-template="skillImportanceSwitcher">
+  				<form>
+  						<fieldset class="switch-field">
+  								<input type="radio" id="switch-left-{id}" name="switch-{id}" value="na" checked/>
+  								<label for="switch_left-{id}">N/A</label>
+  								<input type="radio" id="switch-center-{id}" name="switch-{id}" value="preferred" />
+  								<label for="switch_center-{id}">Preferred</label>
+  								<input type="radio" id="switch-right-{id}" name="switch-{id}" value="required" />
+  								<label for="switch_right-{id}">Required</label>
+  						</fieldset>
+  				</form>
+  				<p>{name}</p><div class="clear"></div>
+  		</script>
+
+  		<script type="text/x-template" data-template="skillAdder">
+  			<form>
+  					<fieldset class="switch-field">
+  							<input type="radio" id="switch_center-add-{id}" name="switch-add-{id}" value="preferred" checked/>
+  							<label for="switch_center-add-{id}">Preferred</label>
+  							<input type="radio" id="switch_right-add-{id}" name="switch-add-{id}" value="required" />
+  							<label for="switch_right-add-{id}">Required</label>
+  					</fieldset>
+  			</form>
+  			<input type="text" id="switch-add-input-{id}" name="switch-add-{id}">
+  		</script>
+
+  		<div id="soft-skills"></div>
+  		<div id="hard-skills"></div>
+
+  </div>
+
+  <div class="line-input" id="certificated_needed">
+      <h3>Are any certificates needed?</h3>
+      <form>
+          <input type="text" id="certNeeded" name="certNeeded">
+          <span class="circle circle-plus">+</span>
+      </form>
+  </div>
+
+  <div class="line-input" id="training_offered">
+      <h3>Is training offered on the job?</h3>
+      <form>
+          <fieldset class="switch-field">
+              <input type="radio" id="switch_leftTrain" name="training" value="yes" checked/>
+              <label for="switch_leftTrain">Yes</label>
+              <input type="radio" id="switch_rightTrain" name="training" value="no" />
+              <label for="switch_rightTrain">No</label>
+          </fieldset>
+      </form>
+      <div class="clear"></div>
+  </div>
+
+  <button class="skillsNext">EXPORT</button>
+
+</div>

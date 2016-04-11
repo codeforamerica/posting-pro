@@ -48,7 +48,7 @@
         cuff.controls.contextOutput = contextOutputControl;
         cuff.controls.errorTooltip = errorTooltipControl;
         cuff.controls.infoTooltip = infoTooltipControl;
-        cuff.controls.generateSkillsButton = generateSkillsControl;
+        cuff.controls.loadSkillsPageButton = loadSkillsPageControl;
         cuff();
     }
 
@@ -284,47 +284,52 @@
         });
     }
 
-    function generateSkillsControl(element) {
-      var MAX_SKILLS = 5;
-
+    function loadSkillsPageControl(element) {
       $(element).bind('click', function() {
-        var jobDescription = $("#job-desc-input").val();
+        $("#page_1").hide();
+        generateSkillsControl();
+        $("#page_2").show();
+      });
+    }
 
-        getSkillsEngineCompetencies(jobDescription, function(data) {
-          if(data && data.result && data.result.competencies_analysis) {
-            currentSkillsAnalysis = data.result.competencies_analysis;
+    function generateSkillsControl() {
+      var MAX_SKILLS = 5;
+      var jobDescription = $("#job-desc-input").val();
 
-            if(currentSkillsAnalysis.skills && currentSkillsAnalysis.skills.length) {
-              var skills = [];
+      getSkillsEngineCompetencies(jobDescription, function(data) {
+        if(data && data.result && data.result.competencies_analysis) {
+          currentSkillsAnalysis = data.result.competencies_analysis;
 
-              var len = _.min([MAX_SKILLS, currentSkillsAnalysis.skills.length]);
-              for(var i = 0; i < len; i++) {
-                var skill = {
-                  name: currentSkillsAnalysis.skills[i][0],
-                  id: "skill" + i
-                }
-                skills.push(skill);
+          if(currentSkillsAnalysis.skills && currentSkillsAnalysis.skills.length) {
+            var skills = [];
+
+            var len = _.min([MAX_SKILLS, currentSkillsAnalysis.skills.length]);
+            for(var i = 0; i < len; i++) {
+              var skill = {
+                name: currentSkillsAnalysis.skills[i][0],
+                id: "skill" + i
               }
-
-              renderSkillSet("Soft Skills", skills, "soft-skills");
+              skills.push(skill);
             }
 
-            if(currentSkillsAnalysis.tools && currentSkillsAnalysis.tools.length) {
-              var tools = [];
-
-              var len = _.min([MAX_SKILLS, currentSkillsAnalysis.tools.length]);
-              for(var i = 0; i < len; i++) {
-                var tool = {
-                  name: currentSkillsAnalysis.tools[i].title,
-                  id: "tool" + i
-                }
-                tools.push(tool);
-              }
-
-              renderSkillSet("Hard Skills", tools, "hard-skills");
-            }
+            renderSkillSet("Soft Skills", skills, "soft-skills");
           }
-        });
+
+          if(currentSkillsAnalysis.tools && currentSkillsAnalysis.tools.length) {
+            var tools = [];
+
+            var len = _.min([MAX_SKILLS, currentSkillsAnalysis.tools.length]);
+            for(var i = 0; i < len; i++) {
+              var tool = {
+                name: currentSkillsAnalysis.tools[i].title,
+                id: "tool" + i
+              }
+              tools.push(tool);
+            }
+
+            renderSkillSet("Hard Skills", tools, "hard-skills");
+          }
+        }
       });
     }
 
