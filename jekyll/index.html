@@ -29,7 +29,7 @@ layout: page
 
   <div class="line-input" id="employment_type">
       <h3>What is the employment type?</h3>
-      <select>
+      <select id="select-employment-type">
           <option value="fullTime">Full-Time</option>
           <option value="partTime">Part-Time</option>
           <option value="casual">Casual</option>
@@ -140,8 +140,65 @@ layout: page
   </div>
 
   <div class="skillsNextContainer">
-    <button class="skillsNext" data-control="previousPageButton">BACK</button>
+    <button class="skillsNext" data-control="gotoPage1Button">BACK</button>
     <button class="skillsNext" data-control="exportPostingPageButton">EXPORT</button>
+  </div>
+
+</div>
+
+<div id="page_3" style="display:none;">
+
+  <script type="text/x-template" data-template="fullJobPosting">
+  {#companyDescription}
+    <h4>Company Description</h4>
+    {companyDescription}
+  {/companyDescription}
+
+  {#jobDescription}
+    <h4>Job Description</h4>
+    {jobDescription}
+  {/jobDescription}
+
+  {#location}
+    <br><strong>Location:</strong> {location}
+  {/location}
+
+  {#employmentType}
+    <br><strong>Employment Type:</strong> {employmentType}
+  {/employmentType}
+
+  {#applicationMethod}
+    <h4>How to Apply</h4>
+    {applicationMethod}
+  {/applicationMethod}
+
+  {#positionTitle}
+    <br><strong>Position Title:</strong> {positionTitle}
+  {/positionTitle}
+
+  {#requiredSkills.length}
+    <h4>Required Skills</h4>
+    <ul>
+      {#requiredSkills}<li>{name}</li>{/requiredSkills}
+    </ul>
+  {/requiredSkills.length}
+
+  {#preferredSkills.length}
+    <h4>Preferred Skills</h4>
+    <ul>
+      {#preferredSkills}<li>{name}</li>{/preferredSkills}
+    </ul>
+  {/preferredSkills.length}
+
+  {#trainingOffered}
+    <br><strong>Training Offered:</strong> {trainingOffered}
+  {/trainingOffered}
+  </script>
+
+  <div id="final-posting"></div>
+
+  <div class="skillsNextContainer">
+    <button class="skillsNext" data-control="gotoPage2Button">BACK</button>
   </div>
 
 </div>
