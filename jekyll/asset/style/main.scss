@@ -331,7 +331,7 @@ footer p{
 .reading-level-small {
 }
 
-.reading-level-total {
+.reading-level-average {
     width:100%;
     background-color: #E0E0E0;
     margin: 15px 0 0 0;
@@ -348,11 +348,6 @@ footer p{
 	font-weight: bold;
 	margin: 0 0 0 15px;
 	font-size: 1.2em;
-}
-.reading-level .circle {
-	background-color: #cc0000;
-	float: left;
-	margin: -5px 15px 0 25px;
 }
 
 // Count chart

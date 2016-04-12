@@ -29,21 +29,18 @@
               </li>
       </ul>
       <div class="clear"></div>
-      <div data-control="averageRLOutput" class="reading-level reading-level-total">
+      <div data-control="averageRLOutput" class="reading-level reading-level-average">
   	    <script type="text/x-template" data-template="readingLevel">
-  			<span class="circle">
-  			   <span class="number">?</span>
-  			</span>
-	    	<h4><span class="{level}">Reading level: {readingLevel}</span></h4>
-         <div class="tooltip info-tooltip" data-control="infoTooltip">
+	    	  <h4><span class="{level}">Reading level: {readingLevel}</span></h4>
+          <div class="tooltip info-tooltip" data-control="infoTooltip">
             <p>
                 {#tooHigh}
                 <span class="solution">Try using simpler words and shorter sentences.</span>
                 {/tooHigh}
                 <span class="reason">Most people are comfortable reading at a 5-7 grade reading level. If your job posting is a level much higher than that you may have trouble reaching enough job seekers.</span>
             </p>
-        </div>
-	    </script>
+          </div>
+        </script>
       </div>
     </div>
     <div class="clear"></div>
