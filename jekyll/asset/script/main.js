@@ -252,36 +252,36 @@
         };
         element.innerHTML = templates.readingLevel.render(readingLevelSummary);
         cuff(element);
-        $(document).trigger('update-average', [id, results.readingLevel]);
+        updateAverageReadingLevel(id, results.readingLevel);
       });
     }
 
-    function averageRLOutputControl(element) {
+    var readingLevels = {};
 
-      var levels = {};
+    function updateAverageReadingLevel(levelId, readingLevel) {
+      if (readingLevel < 0) {
+        delete readingLevels[levelId];
+      } else {
+        readingLevels[levelId] = readingLevel;
+      }
+
+      var average = Object.keys(readingLevels).length === 0 ? -1
+                                                     : _.round(_.mean(_.values(readingLevels)), 1);
+
+      var tooHigh = average >= 9;
+      var readingLevelSummary = {
+        "readingLevel": average < 0 ? 'N/A' : average,
+        "tooHigh": tooHigh,
+        "level": tooHigh ? "error-highlight" : "info-highlight"
+      };
+      var element = $(document).find('[data-control=averageRLOutput]')[0];
+      element.innerHTML = templates.readingLevel.render(readingLevelSummary);
+      cuff(element);
+    }
+
+    function averageRLOutputControl(element) {
       element.innerHTML = templates.readingLevel.render({"readingLevel" : 'N/A'});
       cuff(element);
-
-      $(document).on('update-average', function (event, levelId, readingLevel) {
-
-        if (readingLevel < 0) {
-          delete levels[levelId];
-        } else {
-          levels[levelId] = readingLevel;
-        }
-
-        var average = Object.keys(levels).length === 0 ? -1
-                                                       : _.round(_.mean(_.values(levels)), 1);
-
-        var tooHigh = average >= 9;
-        var readingLevelSummary = {
-          "readingLevel": average < 0 ? 'N/A' : average,
-          "tooHigh": tooHigh,
-          "level": tooHigh ? "error-highlight" : "info-highlight"
-        };
-        element.innerHTML = templates.readingLevel.render(readingLevelSummary);
-        cuff(element);
-      });
     }
 
     function loadSkillsPageControl(element) {
