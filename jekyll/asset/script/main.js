@@ -236,43 +236,54 @@
     }
 
     function readingLevelOutputControl(element) {
-        $(document).on('lint-results', function (event, results, id) {
 
-            // trying to match the results to the counters
-            if (element.className.indexOf(id) < 0) {
-              return;
-            }
+      element.innerHTML = templates.readingLevel.render({"readingLevel" : 'N/A'});
+      cuff(element);
+        
+      $(document).on('lint-results', function (event, results, id) {
+        // trying to match the results to the counters
+        if (element.className.indexOf(id) < 0) {
+          return;
+        }
 
-            var tooHigh = results.readingLevel >= 9;
-            var readingLevelSummary = {
-              "readingLevel": results.readingLevel,
-              "tooHigh": tooHigh,
-              "level": tooHigh ? "error-highlight" : "info-highlight"
-            };
-            element.innerHTML = templates.readingLevel.render(readingLevelSummary);
-            cuff(element);
-            $(document).trigger('update-average', [id, results.readingLevel]);
-        });
+        var tooHigh = results.readingLevel >= 9;
+        var readingLevelSummary = {
+          "readingLevel": results.readingLevel < 0 ? 'N/A' : results.readingLevel,
+          "tooHigh": tooHigh,
+          "level": tooHigh ? "error-highlight" : "info-highlight"
+        };
+        element.innerHTML = templates.readingLevel.render(readingLevelSummary);
+        cuff(element);
+        updateAverageReadingLevel(id, results.readingLevel);
+      });
+    }
+
+    var readingLevels = {};
+
+    function updateAverageReadingLevel(levelId, readingLevel) {
+      if (readingLevel < 0) {
+        delete readingLevels[levelId];
+      } else {
+        readingLevels[levelId] = readingLevel;
+      }
+
+      var average = Object.keys(readingLevels).length === 0 ? -1
+                                                     : _.round(_.mean(_.values(readingLevels)), 1);
+
+      var tooHigh = average >= 9;
+      var readingLevelSummary = {
+        "readingLevel": average < 0 ? 'N/A' : average,
+        "tooHigh": tooHigh,
+        "level": tooHigh ? "error-highlight" : "info-highlight"
+      };
+      var element = $(document).find('[data-control=averageRLOutput]')[0];
+      element.innerHTML = templates.readingLevel.render(readingLevelSummary);
+      cuff(element);
     }
 
     function averageRLOutputControl(element) {
-
-        var levels = {};
-
-        $(document).on('update-average', function (event, levelId, readingLevel) {
-
-            levels[levelId] = readingLevel;
-            var average = _.round(_.mean(_.values(levels)), 1);
-
-            var tooHigh = average >= 9;
-            var readingLevelSummary = {
-              "readingLevel": average,
-              "tooHigh": tooHigh,
-              "level": tooHigh ? "error-highlight" : "info-highlight"
-            };
-            element.innerHTML = templates.readingLevel.render(readingLevelSummary);
-            cuff(element);
-        });
+      element.innerHTML = templates.readingLevel.render({"readingLevel" : 'N/A'});
+      cuff(element);
     }
 
     function loadSkillsPageControl(element) {
@@ -319,7 +330,7 @@
               var skill = {
                 name: currentSkillsAnalysis.skills[i][0],
                 id: "skill" + i
-              }
+              };
               skills.push(skill);
               currentSkillSet[skill.id] = skill.name;
             }
@@ -335,7 +346,7 @@
               var tool = {
                 name: currentSkillsAnalysis.tools[i].title,
                 id: "tool" + i
-              }
+              };
               tools.push(tool);
               currentSkillSet[tool.id] = tool.name;
             }
@@ -447,9 +458,13 @@
     }
 
     function buildReadingLevel (text) {
+      if (text) { // apparently if text == "", this is false
         var ts = textstatistics(text);
         var gradeLevel = ts.fleschKincaidGradeLevel();
         return gradeLevel;
+      } else {
+        return -1;
+      }
     }
 
     function getSkillsEngineCompetencies (text, callback) {
