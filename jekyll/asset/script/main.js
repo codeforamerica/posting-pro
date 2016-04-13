@@ -309,9 +309,9 @@
     function showPage(pageId) {
       _.forEach(pages, function(page) {
         if(page == pageId) {
-          $("#page_"+page).show();
+          $("#page_" + page).show();
         } else {
-          $("#page_"+page).hide();
+          $("#page_" + page).hide();
         }
       });
     }
@@ -395,7 +395,7 @@
       var requiredSkills = [];
       var preferredSkills = [];
       _.forOwn(currentSkillSet, function(skillName, skillId) {
-        var skillSwitchEl = $("input:radio[name=switch-"+ skillId +"]:checked");
+        var skillSwitchEl = $("input:radio[name=switch-" + skillId + "]:checked");
         if(skillSwitchEl) {
           switch(skillSwitchEl.val()) {
             case 'required':
@@ -434,7 +434,7 @@
         skills: skills
       };
 
-      $("#"+id)[0].innerHTML = templates.skillSet.render(skillSet, templates);
+      $("#" + id)[0].innerHTML = templates.skillSet.render(skillSet, templates);
     }
 
     function generateLintId (results) {
