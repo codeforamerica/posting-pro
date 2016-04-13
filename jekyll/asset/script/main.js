@@ -4,6 +4,7 @@
     var templates = {};
     var acceptedTypes = ["tech", "sexism", "realism"];
     var currentSkillsAnalysis = {};
+    var pages = ['1', '2', '3'];
 
     if (!isSupportedBrowser()) {
         document.getElementById('unsupported').style.display = 'block';
@@ -239,7 +240,7 @@
 
       element.innerHTML = templates.readingLevel.render({"readingLevel" : 'N/A'});
       cuff(element);
-        
+
       $(document).on('lint-results', function (event, results, id) {
         // trying to match the results to the counters
         if (element.className.indexOf(id) < 0) {
@@ -288,25 +289,30 @@
 
     function loadSkillsPageControl(element) {
       $(element).bind('click', function() {
-        $("#page_1").hide();
         generateSkillsControl();
-        $("#page_2").show();
+        showPage('2');
       });
     }
 
     function gotoPage1Control(element) {
       $(element).bind('click', function() {
-        $("#page_2").hide();
-        $("#page_3").hide();
-        $("#page_1").show();
+        showPage('1');
       });
     }
 
     function gotoPage2Control(element) {
       $(element).bind('click', function() {
-        $("#page_3").hide();
-        $("#page_1").hide();
-        $("#page_2").show();
+        showPage('2');
+      });
+    }
+
+    function showPage(pageId) {
+      _.forEach(pages, function(page) {
+        if(page == pageId) {
+          $("#page_"+page).show();
+        } else {
+          $("#page_"+page).hide();
+        }
       });
     }
 
@@ -359,10 +365,9 @@
 
     function exportPostingPageControl(element) {
       $(element).bind('click', function() {
-        $("#page_2").hide();
         var content = composePostingFromFields();
         $("#final-posting")[0].innerHTML = content;
-        $("#page_3").show();
+        showPage('3');
       });
     }
 
