@@ -1,0 +1,47 @@
+<script type="text/x-template" data-template="fullJobPosting">
+{#companyDescription}
+
+  <h5>Company Description</h5>
+  {companyDescription}
+{/companyDescription}
+
+{#jobDescription}
+  <h5>Job Description</h5>
+  {jobDescription}
+{/jobDescription}
+
+{#location}
+  <br><strong>Location:</strong> {location}
+{/location}
+
+{#employmentType}
+  <br><strong>Employment Type:</strong> {employmentType}
+{/employmentType}
+
+{#applicationMethod}
+  <h5>How to Apply</h5>
+  {applicationMethod}
+{/applicationMethod}
+
+{#positionTitle}
+  <br><strong>Position Title:</strong> {positionTitle}
+{/positionTitle}
+
+{#requiredSkills.length}
+  <h5>Required Skills</h5>
+  <ul>
+    {#requiredSkills}<li>{name}</li>{/requiredSkills}
+  </ul>
+{/requiredSkills.length}
+
+{#preferredSkills.length}
+  <h5>Preferred Skills</h5>
+  <ul>
+    {#preferredSkills}<li>{name}</li>{/preferredSkills}
+  </ul>
+{/preferredSkills.length}
+
+{#trainingOffered}
+  <br><strong>Training Offered:</strong> {trainingOffered}
+{/trainingOffered}
+</script>

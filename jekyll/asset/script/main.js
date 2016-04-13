@@ -4,6 +4,7 @@
     var templates = {};
     var acceptedTypes = ["tech", "sexism", "realism"];
     var currentSkillsAnalysis = {};
+    var pages = ['1', '2', '3'];
 
     if (!isSupportedBrowser()) {
         document.getElementById('unsupported').style.display = 'block';
@@ -37,7 +38,9 @@
         cuff.controls.errorTooltip = errorTooltipControl;
         cuff.controls.infoTooltip = infoTooltipControl;
         cuff.controls.loadSkillsPageButton = loadSkillsPageControl;
-        cuff.controls.previousPageButton = previousPageControl;
+        cuff.controls.gotoPage1Button = gotoPage1Control;
+        cuff.controls.gotoPage2Button = gotoPage2Control;
+        cuff.controls.exportPostingPageButton = exportPostingPageControl;
         cuff();
     }
 
@@ -237,7 +240,7 @@
 
       element.innerHTML = templates.readingLevel.render({"readingLevel" : 'N/A'});
       cuff(element);
-        
+
       $(document).on('lint-results', function (event, results, id) {
         // trying to match the results to the counters
         if (element.className.indexOf(id) < 0) {
@@ -286,24 +289,42 @@
 
     function loadSkillsPageControl(element) {
       $(element).bind('click', function() {
-        $("#page_1").hide();
         generateSkillsControl();
-        $("#page_2").show();
+        showPage('2');
       });
     }
 
-    function previousPageControl(element) {
+    function gotoPage1Control(element) {
       $(element).bind('click', function() {
-        $("#page_2").hide();
-        $("#page_1").show();
+        showPage('1');
       });
     }
+
+    function gotoPage2Control(element) {
+      $(element).bind('click', function() {
+        showPage('2');
+      });
+    }
+
+    function showPage(pageId) {
+      _.forEach(pages, function(page) {
+        if(page == pageId) {
+          $("#page_" + page).show();
+        } else {
+          $("#page_" + page).hide();
+        }
+      });
+    }
+
+    var currentSkillSet = {};
 
     function generateSkillsControl() {
       var MAX_SKILLS = 5;
       var jobDescription = $("#job-desc-input").val();
 
       getSkillsEngineCompetencies(jobDescription, function(data) {
+        currentSkillSet = {}; // reset data
+
         if(data && data.result && data.result.competencies_analysis) {
           currentSkillsAnalysis = data.result.competencies_analysis;
 
@@ -317,6 +338,7 @@
                 id: "skill" + i
               };
               skills.push(skill);
+              currentSkillSet[skill.id] = skill.name;
             }
 
             renderSkillSet("Soft Skills", skills, "soft-skills");
@@ -332,12 +354,77 @@
                 id: "tool" + i
               };
               tools.push(tool);
+              currentSkillSet[tool.id] = tool.name;
             }
 
             renderSkillSet("Hard Skills", tools, "hard-skills");
           }
         }
       });
+    }
+
+    function exportPostingPageControl(element) {
+      $(element).bind('click', function() {
+        var content = composePostingFromFields();
+        $("#final-posting")[0].innerHTML = content;
+        showPage('3');
+      });
+    }
+
+    function composePostingFromFields() {
+      var postingData = {};
+
+      var companyDescriptionEl = $("#company-desc-input");
+      if(companyDescriptionEl) postingData.companyDescription = companyDescriptionEl.val();
+
+      var jobDescriptionEl = $("#job-desc-input");
+      if(jobDescriptionEl) postingData.jobDescription = jobDescriptionEl.val();
+
+      var locationEl = $("#locationinput");
+      if(locationEl) postingData.location = locationEl.val();
+
+      var employmentTypeEl = $("#select-employment-type option:selected");
+      if(employmentTypeEl) postingData.employmentType = employmentTypeEl.text();
+
+      var applicationMethodEl = $("#positionapply");
+      if(applicationMethodEl) postingData.applicationMethod = applicationMethodEl.val();
+
+      var positionTitleEl = $("#positiontitle");
+      if(positionTitleEl) postingData.positionTitle = positionTitleEl.val();
+
+      var requiredSkills = [];
+      var preferredSkills = [];
+      _.forOwn(currentSkillSet, function(skillName, skillId) {
+        var skillSwitchEl = $("input:radio[name=switch-" + skillId + "]:checked");
+        if(skillSwitchEl) {
+          switch(skillSwitchEl.val()) {
+            case 'required':
+              requiredSkills.push({
+                name: skillName
+              });
+              break;
+
+            case 'preferred':
+              preferredSkills.push({
+                name: skillName
+              });
+              break;
+
+            case 'na':
+            default:
+              break;
+          }
+        }
+      });
+      postingData.requiredSkills = requiredSkills;
+      postingData.preferredSkills = preferredSkills;
+
+      // Also include Certs
+
+      var trainingOfferedEl = $("input:radio[name=training]:checked");
+      if(trainingOfferedEl) postingData.trainingOffered = trainingOfferedEl.val();
+
+      return templates.fullJobPosting.render(postingData, templates);
     }
 
     function renderSkillSet(name, skills, id) {
@@ -347,7 +434,7 @@
         skills: skills
       };
 
-      $("#"+id)[0].innerHTML = templates.skillSet.render(skillSet, templates);
+      $("#" + id)[0].innerHTML = templates.skillSet.render(skillSet, templates);
     }
 
     function generateLintId (results) {
