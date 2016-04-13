@@ -1,5 +1,5 @@
-set :public_dir, Proc.new { File.join(root, "_site") }
-set :views, Proc.new { File.join(File.dirname(__FILE__), "views") }
+set :public_dir, proc { File.join(root, '_site') }
+set :views, proc { File.join(File.dirname(__FILE__), 'views') }
 enable :sessions
 set :session_secret, ENV['SINATRA_SESSION_SECRET']
 
@@ -21,20 +21,17 @@ post '/api/skillsengine/competencies' do
 end
 
 before do
-    response.headers['Cache-Control'] = 'public, max-age=36000'
+  response.headers['Cache-Control'] = 'public, max-age=36000'
 end
 
 # remove all trailing slashes
 get %r{(/.*)\/$} do
-  redirect "#{params[:captures].first}"
+  redirect params[:captures].first.to_s
 end
 
 # serve the jekyll site from the _site folder
 get '/*' do
-    file_name = "_site#{request.path_info}/index.html".gsub(%r{\/+},'/')
-    if File.exists?(file_name)
+  file_name = "_site#{request.path_info}/index.html".gsub(%r{\/+}, '/')
+  raise Sinatra::NotFound unless File.exist?(file_name)
   File.read(file_name)
-    else
-  raise Sinatra::NotFound
-    end
 end
