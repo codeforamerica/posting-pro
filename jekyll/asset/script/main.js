@@ -41,6 +41,7 @@
         cuff.controls.gotoPage1Button = gotoPage1Control;
         cuff.controls.gotoPage2Button = gotoPage2Control;
         cuff.controls.exportPostingPageButton = exportPostingPageControl;
+        cuff.controls.addCertButton = duplicateCertControl;
         cuff();
     }
 
@@ -360,6 +361,18 @@
             renderSkillSet("Hard Skills", tools, "hard-skills");
           }
         }
+      });
+    }
+
+    function duplicateCertControl(element) {
+
+      var original = $('#cert-needed')[0];
+      var i = 1;
+
+      $(element).bind('click', function() {
+        var clone = original.cloneNode(true);
+        clone.id = original.id + i++;
+        $(clone).insertBefore('#add-cert');
       });
     }
 
