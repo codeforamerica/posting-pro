@@ -1,8 +1,8 @@
 require 'rest-client'
 require 'json'
 
+# Wrap calls to the SkillsEngine API & handle auth
 class SkillsEngine
-
   attr_reader :token_expiry, :has_updated_token
 
   def initialize(access_token, token_expiry)
@@ -13,33 +13,29 @@ class SkillsEngine
 
   def access_token
     t = Time.now
-    if @access_token.nil? || t.to_i >= @token_expiry
-      result = fetch_new_access_token
-    end
-
+    update_access_token if @access_token.nil? || t.to_i >= @token_expiry
     @access_token
   end
 
   def analyze_competencies(text)
     response = RestClient.post('https://api.skillsengine.com/v2/competencies/analyze',
-      { text: text },
-      { 'Authorization': "Bearer #{access_token}", 'Accept-Encoding': 'gzip,deflate' })
-
+                               { text: text },
+                               'Authorization': "Bearer #{access_token}", 'Accept-Encoding': 'gzip,deflate')
     response.body
   end
 
   private
-    def fetch_new_access_token
-      response = RestClient.post('https://api.skillsengine.com/oauth/token', {
-        grant_type: 'client_credentials',
-        client_id: ENV['SKILLS_ENGINE_ID'],
-        client_secret: ENV['SKILLS_ENGINE_SECRET']
-      })
 
-      json_response = JSON.parse(response)
-      @token_expiry = json_response['created_at'] + json_response['expires_in']
-      @access_token = json_response['access_token']
-      @has_updated_token = true
-    end
+  def update_access_token
+    response = RestClient.post('https://api.skillsengine.com/oauth/token',
+                               grant_type: 'client_credentials',
+                               client_id: ENV['SKILLS_ENGINE_ID'],
+                               client_secret: ENV['SKILLS_ENGINE_SECRET']
+                              )
 
+    json_response = JSON.parse(response)
+    @token_expiry = json_response['created_at'] + json_response['expires_in']
+    @access_token = json_response['access_token']
+    @has_updated_token = true
+  end
 end

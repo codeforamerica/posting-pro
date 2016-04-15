@@ -41,6 +41,13 @@
   </ul>
 {/preferredSkills.length}
 
+{#certificationsNeeded.length}
+  <h5>Certifcations Needed</h5>
+  <ul>
+    {#certificationsNeeded}<li>{name}</li>{/certificationsNeeded}
+  </ul>
+{/certificationsNeeded.length}
+
 {#trainingOffered}
   <br><strong>Training Offered:</strong> {trainingOffered}
 {/trainingOffered}

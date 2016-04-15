@@ -68,7 +68,7 @@ layout: page
 
   <div class="skillsEngine">
       <h3>Soft and Hard Skills</h3>
-      <p class="centered">These are common skills associated with the title and description of your position.</br>Please select, N/A, Preferred or Required for each skill listed. You may also add a skill that is not listed.</p>
+      <p class="centered">These are common skills associated with the title and description of your position.<br/>Please select N/A, Preferred or Required for each skill listed. You may also add a skill that is not listed.</p>
 
       {% include site/skillstemplates.html %}
 
@@ -77,11 +77,11 @@ layout: page
 
   </div>
 
-  <div class="line-input" id="certificated_needed">
+  <div class="line-input" id="certificates-needed">
       <h3>Are any certificates needed?</h3>
       <form>
-          <input type="text" id="certNeeded" name="certNeeded">
-          <span class="circle circle-plus">+</span>
+          <input type="text" id="cert-needed" name="certNeeded">
+          <span class="circle circle-plus" id="add-cert" data-control="addCertButton">+</span>
       </form>
   </div>
 

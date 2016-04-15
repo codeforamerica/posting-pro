@@ -41,6 +41,8 @@
         cuff.controls.gotoPage1Button = gotoPage1Control;
         cuff.controls.gotoPage2Button = gotoPage2Control;
         cuff.controls.exportPostingPageButton = exportPostingPageControl;
+        cuff.controls.addCertButton = duplicateCertControl;
+        cuff.controls.addSkillsButton = duplicateSkillControl;
         cuff();
     }
 
@@ -368,6 +370,29 @@
       });
     }
 
+    function duplicateCertControl(element) {
+      var original = $('#cert-needed')[0];
+      var i = 1;
+
+      $(element).bind('click', function() {
+        var clone = original.cloneNode(true);
+        clone.id = original.id + i++;
+        clone.value = "";
+        $(clone).insertBefore('#add-cert');
+      });
+    }
+
+    function duplicateSkillControl(element) {
+      var divId = $("div #" + element.id).parent("div")[0].id;
+      var i = 1;
+
+      $(element).bind('click', function() {
+        var newHTML = templates.skillAdder.render({id: divId + i++});
+        $("#" + divId + " ul")
+          .append($("<li>").append(newHTML));
+      });
+    }
+
     function exportPostingPageControl(element) {
       $(element).bind('click', function() {
         var content = composePostingFromFields();
@@ -399,6 +424,7 @@
 
       var requiredSkills = [];
       var preferredSkills = [];
+      collectAddedSkills();
       _.forOwn(currentSkillSet, function(skillName, skillId) {
         var skillSwitchEl = $("input:radio[name=switch-" + skillId + "]:checked");
         if(skillSwitchEl) {
@@ -424,12 +450,27 @@
       postingData.requiredSkills = requiredSkills;
       postingData.preferredSkills = preferredSkills;
 
-      // Also include Certs
+      var certificationsNeeded = [];
+      $('input[name=certNeeded]').each(function() {
+        if(this.value) {
+          certificationsNeeded.push({name: this.value});
+        }
+      });
+      postingData.certificationsNeeded = certificationsNeeded;
 
       var trainingOfferedEl = $("input:radio[name=training]:checked");
       if(trainingOfferedEl) postingData.trainingOffered = trainingOfferedEl.val();
 
       return templates.fullJobPosting.render(postingData, templates);
+    }
+
+    function collectAddedSkills() {
+      $('input.new-skill').each(function(){
+        if (this.value) {
+          var id = this.name.substring(7, this.name.length);
+          currentSkillSet[id] = this.value;
+        }
+      });
     }
 
     function renderSkillSet(name, skills, id) {
@@ -439,7 +480,9 @@
         skills: skills
       };
 
-      $("#" + id)[0].innerHTML = templates.skillSet.render(skillSet, templates);
+      var element = $("#" + id)[0];
+      element.innerHTML = templates.skillSet.render(skillSet, templates);
+      cuff(element);          
     }
 
     function generateLintId (results) {
