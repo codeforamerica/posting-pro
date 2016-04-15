@@ -154,6 +154,11 @@
         var tooltipOffset = calculateOffset(element);
         tooltipOffset.top += 20;
         tooltipOffset.left += 120;
+
+        if($(element).hasClass("static-left-offset")) {
+          tooltipOffset.left = -50;
+        }
+
         $(element).offset(tooltipOffset);
     }
 
@@ -278,12 +283,12 @@
         "level": tooHigh ? "error-highlight" : "info-highlight"
       };
       var element = $(document).find('[data-control=averageRLOutput]')[0];
-      element.innerHTML = templates.readingLevel.render(readingLevelSummary);
+      element.innerHTML = templates.averageReadingLevel.render(readingLevelSummary);
       cuff(element);
     }
 
     function averageRLOutputControl(element) {
-      element.innerHTML = templates.readingLevel.render({"readingLevel" : 'N/A'});
+      element.innerHTML = templates.averageReadingLevel.render({"readingLevel" : 'N/A'});
       cuff(element);
     }
 
