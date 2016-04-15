@@ -11,7 +11,7 @@
           {>skillAdder}
         </li>
     </ul>
-    <span class="circle circle-plus">+</span>
+    <span class="circle circle-plus" data-control="addSkillsButton" id="add-{id}">+</span>
   {/skills.length}
 </script>
 
@@ -31,7 +31,7 @@
 
 <script type="text/x-template" data-template="skillAdder">
   <form>
-      <fieldset class="switch-field">
+      <fieldset class="switch-field add-skill">
           <input type="radio" id="switch-center-add-{id}" name="switch-add-{id}" value="preferred" checked/>
           <label for="switch-center-add-{id}">Preferred</label>
           <input type="radio" id="switch-right-add-{id}" name="switch-add-{id}" value="required" />

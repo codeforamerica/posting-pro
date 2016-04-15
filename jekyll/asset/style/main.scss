@@ -185,6 +185,7 @@ footer p{
     width: 96%;
     padding: 2%;
     font-size:1.6rem;
+    margin-bottom: 5px;
 }
 .line-input select{
     width: 250px;
@@ -474,16 +475,20 @@ footer p{
     transition:         all 0.2s ease-in-out;
 }
 .skillsNext:first-child { margin-left: 0px; }
-.skillsNext:hover{background-color:#D1D1D1;}
-.skillsEngine{width: 840px; margin: 0 auto;}
-.skillsEngine h4{text-align: center;}
-.skillsEngine h4:last-of-type{margin: 50px 0 0 0;}
-.skillsEngine p{float:left; padding: 10px 0 0;}
-.skillsEngine p.centered{float:none; padding: 0;}
-.skillsEngine ul{list-style-type: none;}
-.skillsEngine input{margin: 10px 0 0;}
-.skillsEngine ul li{width:500px; margin: 0 auto;}
-.skillsEngine ul li:last-of-type fieldset{margin-left:110px;}
+.skillsNext:hover {background-color:#D1D1D1;}
+.skillsEngine {width: 840px; margin: 0 auto;}
+.skillsEngine h4  {text-align: center;}
+.skillsEngine h4:last-of-type {margin: 50px 0 0 0;}
+.skillsEngine p {float:left; padding: 10px 0 0;}
+.skillsEngine p.centered {float:none; padding: 0;}
+.skillsEngine ul {list-style-type: none;}
+.skillsEngine input {margin: 10px 0 0;}
+.skillsEngine ul li {
+    width:500px; 
+    margin: 0 auto; 
+    overflow: hidden;
+}
+.skillsEngine ul li fieldset.add-skill {margin-left:110px;}
 .switch-field {
     margin: 0 20px 0;
     float: left;

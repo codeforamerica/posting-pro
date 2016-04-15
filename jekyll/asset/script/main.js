@@ -365,7 +365,6 @@
     }
 
     function duplicateCertControl(element) {
-
       var original = $('#cert-needed')[0];
       var i = 1;
 
@@ -373,6 +372,18 @@
         var clone = original.cloneNode(true);
         clone.id = original.id + i++;
         $(clone).insertBefore('#add-cert');
+      });
+    }
+
+    function duplicateSkillControl(element) {
+      var divId = $("div #" + element.id).parent("div")[0].id;
+      var i = 1;
+
+      $(element).bind('click', function() {
+        console.log("clicked skillz button for " + divId);
+        var newHTML = templates.skillAdder.render({id: divId + i++});
+        $("#" + divId + " ul")
+          .append($("<li>").append(newHTML));
       });
     }
 
@@ -433,6 +444,7 @@
       postingData.preferredSkills = preferredSkills;
 
       // Also include Certs
+      // var certsEl = $("input")
 
       var trainingOfferedEl = $("input:radio[name=training]:checked");
       if(trainingOfferedEl) postingData.trainingOffered = trainingOfferedEl.val();
@@ -447,7 +459,10 @@
         skills: skills
       };
 
-      $("#" + id)[0].innerHTML = templates.skillSet.render(skillSet, templates);
+      var element = $("#" + id)[0];
+      element.innerHTML = templates.skillSet.render(skillSet, templates);
+      cuff.controls.addSkillsButton = duplicateSkillControl;
+      cuff(element);          
     }
 
     function generateLintId (results) {
