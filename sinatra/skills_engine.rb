@@ -9,6 +9,8 @@ class SkillsEngine
     @access_token = access_token
     @token_expiry = token_expiry
     @has_updated_token = false
+
+    @test_json = File.read('./sinatra/test/sample.json') if dev_mode?
   end
 
   def access_token
@@ -18,6 +20,8 @@ class SkillsEngine
   end
 
   def analyze_competencies(text)
+    return @test_json if dev_mode?
+
     response = RestClient.post('https://api.skillsengine.com/v2/competencies/analyze',
                                { text: text },
                                'Authorization': "Bearer #{access_token}", 'Accept-Encoding': 'gzip,deflate')
@@ -37,5 +41,9 @@ class SkillsEngine
     @token_expiry = json_response['created_at'] + json_response['expires_in']
     @access_token = json_response['access_token']
     @has_updated_token = true
+  end
+
+  def dev_mode?
+    ENV['RACK_ENV'] == 'development'
   end
 end

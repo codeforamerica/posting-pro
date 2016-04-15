@@ -2,16 +2,16 @@
 Job posting builder with bias analysis. We split the front end off of [codeforamerica/joblint](https://github.com/codeforamerica/joblint/) because it's going to diverge quite a bit.
 
 - Stable/production: https://posting-pro.herokuapp.com/
-- Staging (most recent changes): https://posting-pro-staging.herokuapp.com/
+- Staging (most recent changes, based on master): https://posting-pro-staging.herokuapp.com/
 
 [existing/similar resources](https://docs.google.com/document/d/1dtsNGx81HCnRR2mNZxi86TJsm67hCo7UqtoN2FzSXZ0/edit)
 
 ### Developing
-This is more or less a [Jekyll](https://jekyllrb.com/) site.
+This is more or less a [Jekyll](https://jekyllrb.com/) site but with a lot of javascript.
 
-After cloning, run `bundle install`.
+After cloning, run `bundle install` and get a `.env` file from an existing contributer.
 
-`jekyll build` compiles the site and `foreman start` runs it at http://0.0.0.0:4000](http://0.0.0.0:4000).
+`jekyll build --watch` compiles the site (& sees html/css/js changes) and `foreman start` runs it at [http://0.0.0.0:5000](http://0.0.0.0:5000).
 
 ### Deploying
 Commits to master automagically push to [staging](https://posting-pro-staging.herokuapp.com/). From there, code can be pushed to production via the heroku pipeline.
