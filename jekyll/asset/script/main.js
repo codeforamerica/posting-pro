@@ -371,6 +371,7 @@
       $(element).bind('click', function() {
         var clone = original.cloneNode(true);
         clone.id = original.id + i++;
+        clone.value = "";
         $(clone).insertBefore('#add-cert');
       });
     }
@@ -380,7 +381,6 @@
       var i = 1;
 
       $(element).bind('click', function() {
-        console.log("clicked skillz button for " + divId);
         var newHTML = templates.skillAdder.render({id: divId + i++});
         $("#" + divId + " ul")
           .append($("<li>").append(newHTML));
@@ -418,6 +418,7 @@
 
       var requiredSkills = [];
       var preferredSkills = [];
+      collectAddedSkills();
       _.forOwn(currentSkillSet, function(skillName, skillId) {
         var skillSwitchEl = $("input:radio[name=switch-" + skillId + "]:checked");
         if(skillSwitchEl) {
@@ -443,13 +444,27 @@
       postingData.requiredSkills = requiredSkills;
       postingData.preferredSkills = preferredSkills;
 
-      // Also include Certs
-      // var certsEl = $("input")
+      var certificationsNeeded = [];
+      $('input[name=certNeeded]').each(function() {
+        if(this.value) {
+          certificationsNeeded.push({name: this.value});
+        }
+      });
+      postingData.certificationsNeeded = certificationsNeeded;
 
       var trainingOfferedEl = $("input:radio[name=training]:checked");
       if(trainingOfferedEl) postingData.trainingOffered = trainingOfferedEl.val();
 
       return templates.fullJobPosting.render(postingData, templates);
+    }
+
+    function collectAddedSkills() {
+      $('form + input').each(function(){
+        if (this.value) {
+          var id = this.name.substring(7, this.name.length);
+          currentSkillSet[id] = this.value;
+        }
+      });
     }
 
     function renderSkillSet(name, skills, id) {
