@@ -42,6 +42,7 @@
         cuff.controls.gotoPage2Button = gotoPage2Control;
         cuff.controls.exportPostingPageButton = exportPostingPageControl;
         cuff.controls.addCertButton = duplicateCertControl;
+        cuff.controls.addSkillsButton = duplicateSkillControl;
         cuff();
     }
 
@@ -459,7 +460,7 @@
     }
 
     function collectAddedSkills() {
-      $('form + input').each(function(){
+      $('input.new-skill').each(function(){
         if (this.value) {
           var id = this.name.substring(7, this.name.length);
           currentSkillSet[id] = this.value;
@@ -476,7 +477,6 @@
 
       var element = $("#" + id)[0];
       element.innerHTML = templates.skillSet.render(skillSet, templates);
-      cuff.controls.addSkillsButton = duplicateSkillControl;
       cuff(element);          
     }
 
