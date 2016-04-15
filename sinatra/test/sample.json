@@ -1,0 +1,2371 @@
+{
+  "result": {
+    "competencies_analysis": {
+      "metadata": {
+        "text_size": 35,
+        "parse_time": 0.0297985882498324,
+        "bias": 1
+      },
+      "occupations": [
+        {
+          "code": "15-1134",
+          "title": "Web Developers",
+          "score": 37
+        }
+      ],
+      "general_work_activities": [
+        {
+          "guid": "ad5e9c56-5f7b-4790-81b1-3526f1c57424",
+          "element_id": "4.A.2.b.2",
+          "score": 59.29,
+          "title": "Thinking Creatively",
+          "intermediate_work_activities": [
+            {
+              "guid": "010f5b21-c7dd-4913-9f15-3ea1028d6f04",
+              "element_id": "4.A.2.b.2.I02",
+              "score": 83.21,
+              "title": "Design computer or information systems or applications",
+              "detailed_work_activities": [
+                {
+                  "guid": "9ed85b9b-a89f-4fee-b619-8bf8bffbdc09",
+                  "score": 33.33,
+                  "title": "Develop mathematical or computer languages"
+                },
+                {
+                  "guid": "ed2dd1fd-0663-45ef-95a9-803211d05441",
+                  "score": 33.33,
+                  "title": "Design websites or web applications"
+                },
+                {
+                  "guid": "96aa68b4-b36e-4aa1-bebd-8636e40e7318",
+                  "score": 33.33,
+                  "title": "Design data processing systems"
+                },
+                {
+                  "guid": "38e47b58-36fd-4d33-9d58-6cf279d8d130",
+                  "score": 33.33,
+                  "title": "Design data security systems"
+                },
+                {
+                  "guid": "b265ba18-7132-4ad2-971f-9a53ab00b6c6",
+                  "score": 33.33,
+                  "title": "Design software or user interface"
+                }
+              ]
+            },
+            {
+              "guid": "e097eeb7-eddd-40a9-bdb7-653413193ac7",
+              "element_id": "4.A.2.b.2.I06",
+              "score": 36.98,
+              "title": "Design databases",
+              "detailed_work_activities": [
+                {
+                  "guid": "9a3d6826-f767-4926-81ea-f3477bd3c74b",
+                  "score": 50,
+                  "title": "Develop simple financial data repositories or databases"
+                },
+                {
+                  "guid": "ad1a4ea9-07ed-41bb-817c-5dd75a10e2fb",
+                  "score": 50,
+                  "title": "Develop simple operational data repositories or databases"
+                },
+                {
+                  "guid": "a472981a-cb88-4c5d-9f8d-f826965514ea",
+                  "score": 50,
+                  "title": "Create databases to store electronic data"
+                },
+                {
+                  "guid": "ce275dd8-11d5-4354-b117-0ab9f3b6d1bc",
+                  "score": 50,
+                  "title": "Develop simple informational data repositories or databases"
+                }
+              ]
+            },
+            {
+              "guid": "f842cef5-5624-4595-b026-67ae72195dda",
+              "element_id": "4.A.2.b.2.I18",
+              "score": 27.74,
+              "title": "Create visual designs or displays",
+              "detailed_work_activities": [
+                {
+                  "guid": "dc513d26-423b-4fda-9b24-0fadc336889c",
+                  "score": 57.74,
+                  "title": "Prepare graphics or other visual representations of information"
+                },
+                {
+                  "guid": "bb8fba80-2f4d-42ad-8c27-c1e5f59959a6",
+                  "score": 57.74,
+                  "title": "Develop diagrams or flow charts of system operation"
+                },
+                {
+                  "guid": "9de42482-0500-4752-8618-9ff7c82657d1",
+                  "score": 57.74,
+                  "title": "Create mathematical or statistical diagrams, charts, or tables"
+                }
+              ]
+            },
+            {
+              "guid": "6ed95909-6d80-4e34-afae-900c8b71df77",
+              "element_id": "4.A.2.b.4.I01",
+              "score": 18.49,
+              "title": "Develop organizational policies, systems, or processes",
+              "detailed_work_activities": [
+                {
+                  "guid": "510cd85e-a008-49ea-b01b-6a788a9cd587",
+                  "score": 70.71,
+                  "title": "Develop records management systems"
+                },
+                {
+                  "guid": "9210772d-65ac-479f-b1ca-923f4ec43f15",
+                  "score": 70.71,
+                  "title": "Develop management control systems"
+                }
+              ]
+            },
+            {
+              "guid": "1e019c4a-f9a5-47ce-af91-806477f1bc40",
+              "element_id": "4.A.2.b.4.I03",
+              "score": 18.49,
+              "title": "Develop operational or technical procedures or standards",
+              "detailed_work_activities": [
+                {
+                  "guid": "be27c968-0ab1-4834-8d68-14763afb4ecd",
+                  "score": 70.71,
+                  "title": "Establish project performance metrics"
+                },
+                {
+                  "guid": "9fb4957b-ab67-4ea3-bb1a-9c7d7bef4c8e",
+                  "score": 70.71,
+                  "title": "Develop testing routines or procedures"
+                }
+              ]
+            },
+            {
+              "guid": "43a171be-0e8a-436f-a371-acd4127eb71a",
+              "element_id": "4.A.2.b.2.I26",
+              "score": 9.25,
+              "title": "Develop scientific or mathematical theories or models",
+              "detailed_work_activities": [
+                {
+                  "guid": "4b4b9444-b450-4c95-b278-bd029a189dd3",
+                  "score": 100,
+                  "title": "Develop mathematical ideas or interpretations"
+                }
+              ]
+            },
+            {
+              "guid": "6c3ee469-cbbd-48bf-bffd-cad6c1b9b67d",
+              "element_id": "4.A.2.b.2.I14",
+              "score": 9.25,
+              "title": "Design industrial systems or equipment",
+              "detailed_work_activities": [
+                {
+                  "guid": "7efa8cb9-4f41-4b09-a04b-3a696aaa903d",
+                  "score": 100,
+                  "title": "Design industrial or manufacturing machinery or equipment"
+                }
+              ]
+            },
+            {
+              "guid": "745e89cb-71e4-4f0e-810e-700f218ab8bc",
+              "element_id": "4.A.3.b.6.I07",
+              "score": 9.25,
+              "title": "Prepare proposals or grant applications",
+              "detailed_work_activities": [
+                {
+                  "guid": "12ee37ad-6acb-4e09-85b1-46f617f1b206",
+                  "score": 100,
+                  "title": "Write business project or bid proposals"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "guid": "f8297512-b8a5-46d9-8cbb-ba7c276c526b",
+          "element_id": "4.A.3.b.1",
+          "score": 56.71,
+          "title": "Interacting With Computers",
+          "intermediate_work_activities": [
+            {
+              "guid": "3d18298c-7967-46d6-aac0-81cb9924a801",
+              "element_id": "4.A.3.b.1.I04",
+              "score": 70,
+              "title": "Resolve computer problems",
+              "detailed_work_activities": [
+                {
+                  "guid": "28d8125a-1b84-4bf4-b35b-39fd9b3da5c7",
+                  "score": 37.8,
+                  "title": "Troubleshoot computer, network, or database problems"
+                },
+                {
+                  "guid": "edafbe01-58fa-458d-a5cb-86df3fa87db4",
+                  "score": 37.8,
+                  "title": "Solve computer program or software problems"
+                },
+                {
+                  "guid": "b46f0ac0-7c54-4abf-9973-39abc623cdd7",
+                  "score": 37.8,
+                  "title": "Assist users with software or hardware problems"
+                },
+                {
+                  "guid": "43ff0682-8825-4fd9-b6b6-e7c8552ea18a",
+                  "score": 37.8,
+                  "title": "Maintain computer software, programs, or code"
+                },
+                {
+                  "guid": "d9083430-6f25-450c-abaa-4693602538f1",
+                  "score": 37.8,
+                  "title": "Debug computer programs, software, or systems"
+                },
+                {
+                  "guid": "bdee3635-f009-4b88-9073-7421a7d9a0ea",
+                  "score": 37.8,
+                  "title": "Maintain internet website"
+                },
+                {
+                  "guid": "c93089ef-f765-4f00-898e-31003fae9065",
+                  "score": 37.8,
+                  "title": "Maintain complex computer databases"
+                }
+              ]
+            },
+            {
+              "guid": "f5405033-5a00-43e9-83cb-15dfe02b187d",
+              "element_id": "4.A.3.b.1.I03",
+              "score": 50,
+              "title": "Set up computer systems, networks, or other information systems",
+              "detailed_work_activities": [
+                {
+                  "guid": "1b05994d-d1cb-4d7e-b8c1-5e7869e5f99d",
+                  "score": 44.72,
+                  "title": "Integrate software or hardware into a variety of environments"
+                },
+                {
+                  "guid": "63f15710-3a5c-4d83-bdd0-b95e35398852",
+                  "score": 44.72,
+                  "title": "Configure computer networks"
+                },
+                {
+                  "guid": "40b8c00e-723f-40cf-8fce-6161b785d7ff",
+                  "score": 44.72,
+                  "title": "Install programs onto computer or computer-controlled equipment"
+                },
+                {
+                  "guid": "4366c64b-3b21-4055-9ccc-cb49dba680ac",
+                  "score": 44.72,
+                  "title": "Install hardware, software, or peripheral equipment"
+                },
+                {
+                  "guid": "d22931a4-8d16-4e60-8750-813826e8aaf4",
+                  "score": 44.72,
+                  "title": "Configure computer operating systems"
+                }
+              ]
+            },
+            {
+              "guid": "47364c16-bff0-4156-9df8-bce8bcef36c0",
+              "element_id": "4.A.3.b.1.I01",
+              "score": 30,
+              "title": "Program computer systems or production equipment",
+              "detailed_work_activities": [
+                {
+                  "guid": "93045623-ee1c-4bb6-a203-ce3bed366b85",
+                  "score": 57.74,
+                  "title": "Modify network systems"
+                },
+                {
+                  "guid": "3a73b692-5947-4076-94d7-40d227723b8d",
+                  "score": 57.74,
+                  "title": "Implement changes in computer systems"
+                },
+                {
+                  "guid": "ab71240f-0340-4fa9-9963-585d5b10541a",
+                  "score": 57.74,
+                  "title": "Configure data center applications and controls"
+                }
+              ]
+            },
+            {
+              "guid": "ce665c05-9cd2-4446-a8ff-6a8f13312ea4",
+              "element_id": "4.A.3.b.1.I05",
+              "score": 30,
+              "title": "Operate computer systems or computerized equipment",
+              "detailed_work_activities": [
+                {
+                  "guid": "7d959f2c-5be8-4b6d-b71b-551aa0bcafc2",
+                  "score": 66.67,
+                  "title": "Upload data to website or online server for information sharing"
+                },
+                {
+                  "guid": "1740f08b-1dde-43cd-8297-dc6efce61844",
+                  "score": 66.67,
+                  "title": "Operate computers to enter, calculate, access, and retrieve data"
+                },
+                {
+                  "guid": "1d4dd466-68f7-4d37-9738-2e14a81b288f",
+                  "score": 33.33,
+                  "title": "Assist with program or software data entry"
+                }
+              ]
+            },
+            {
+              "guid": "9ab56d0e-f4ce-4ac3-8861-218b7a623348",
+              "element_id": "4.A.3.b.1.I06",
+              "score": 20,
+              "title": "Process digital or online data",
+              "detailed_work_activities": [
+                {
+                  "guid": "a05855b5-a981-4301-91db-afa31d51238a",
+                  "score": 70.71,
+                  "title": "Create electronic data backup to prevent loss of information"
+                },
+                {
+                  "guid": "9e1a57c0-1b70-4a9b-8e05-3f4d56f98cf0",
+                  "score": 70.71,
+                  "title": "Code data or other information"
+                }
+              ]
+            },
+            {
+              "guid": "2dbfe338-c4a5-45e7-a2f4-8a5d4d0f701b",
+              "element_id": "4.A.3.b.1.I02",
+              "score": 20,
+              "title": "Implement security measures for computer or information systems",
+              "detailed_work_activities": [
+                {
+                  "guid": "b4317e75-2840-4183-b596-152adcbc8f40",
+                  "score": 70.71,
+                  "title": "Plan computer security measures"
+                },
+                {
+                  "guid": "c7d04364-ce8a-4e49-a941-82d08cb2cad5",
+                  "score": 70.71,
+                  "title": "Implement security measures for computer or information systems"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "guid": "7aebeec6-14fe-4694-a9bd-805f86dd4db7",
+          "element_id": "4.A.2.a.4",
+          "score": 28.35,
+          "title": "Analyzing Data or Information",
+          "intermediate_work_activities": [
+            {
+              "guid": "56be2f99-e69f-4ef5-bd70-8b1a98ff50ae",
+              "element_id": "4.A.2.a.4.I12",
+              "score": 62.55,
+              "title": "Analyze performance of systems or equipment",
+              "detailed_work_activities": [
+                {
+                  "guid": "1845a043-fb49-40fb-a490-f922c4f2c519",
+                  "score": 72.76,
+                  "title": "Perform software crash analysis"
+                },
+                {
+                  "guid": "52bb5db6-aa53-49e4-97ea-25fbfe54966e",
+                  "score": 48.51,
+                  "title": "Analyze effectiveness of safety systems or procedures"
+                },
+                {
+                  "guid": "386032ee-9966-4d87-9144-2474a4e1f611",
+                  "score": 48.51,
+                  "title": "Analyze computer systems"
+                }
+              ]
+            },
+            {
+              "guid": "d4ba45e5-72fb-408f-86eb-6426165e7939",
+              "element_id": "4.A.2.a.4.I04",
+              "score": 62.55,
+              "title": "Analyze scientific or applied data using mathematical principles",
+              "detailed_work_activities": [
+                {
+                  "guid": "93b43084-e0ec-4b19-b2ea-6688f7aeeb4b",
+                  "score": 57.74,
+                  "title": "Analyze business problems"
+                },
+                {
+                  "guid": "ec66c47f-1253-4fd3-972d-3524ec950136",
+                  "score": 57.74,
+                  "title": "Analyze scientific or investigative findings"
+                },
+                {
+                  "guid": "325fba0b-d315-4a02-8b8b-7df56ad8526e",
+                  "score": 57.74,
+                  "title": "Analyze technical problems"
+                }
+              ]
+            },
+            {
+              "guid": "61463b4d-f335-4de6-82f4-5251e1e81ce7",
+              "element_id": "4.A.2.a.4.I09",
+              "score": 20.85,
+              "title": "Assess characteristics or impacts of regulations or policies",
+              "detailed_work_activities": [
+                {
+                  "guid": "c522aa48-870f-4a64-be88-954c014f68ae",
+                  "score": 100,
+                  "title": "Determine regulatory limitations on project"
+                }
+              ]
+            },
+            {
+              "guid": "55c5bfd5-8ca8-4b7c-a4a7-9d7fdc339b6e",
+              "element_id": "4.A.2.a.4.I07",
+              "score": 20.85,
+              "title": "Analyze data to improve operations",
+              "detailed_work_activities": [
+                {
+                  "guid": "36c30158-b38e-4976-9abc-f7fcb50b98da",
+                  "score": 100,
+                  "title": "Analyze non-design engineering problems"
+                }
+              ]
+            },
+            {
+              "guid": "e03bd7c0-91cf-4ab3-b8eb-0d6a0f1e40e2",
+              "element_id": "4.A.2.a.4.I01",
+              "score": 20.85,
+              "title": "Analyze environmental or geospatial data",
+              "detailed_work_activities": [
+                {
+                  "guid": "2fa9069d-a6da-498b-9190-9fc9d866b04b",
+                  "score": 100,
+                  "title": "Analyze ecosystem data"
+                }
+              ]
+            },
+            {
+              "guid": "998cad91-bb44-43aa-b2c2-14e49208bc13",
+              "element_id": "4.A.2.a.4.I11",
+              "score": 20.85,
+              "title": "Analyze business or financial data",
+              "detailed_work_activities": [
+                {
+                  "guid": "98128fe3-4a55-4bee-8c7a-2a0229806269",
+                  "score": 100,
+                  "title": "Analyze business, operational, or management reports"
+                }
+              ]
+            },
+            {
+              "guid": "93120ae5-c355-47f2-9f20-2352afbb9910",
+              "element_id": "4.A.2.a.4.I05",
+              "score": 20.85,
+              "title": "Evaluate designs, specifications, or other technical data",
+              "detailed_work_activities": [
+                {
+                  "guid": "b100c918-5210-4e5f-94ef-110d40b91118",
+                  "score": 100,
+                  "title": "Evaluate designs or specifications to ensure quality"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "guid": "abe6cddd-0679-4491-ad7a-a672d72ceffb",
+          "element_id": "4.A.4.b.6",
+          "score": 20.62,
+          "title": "Provide Consultation and Advice to Others",
+          "intermediate_work_activities": [
+            {
+              "guid": "3b5f6ca0-62d0-479d-a468-adaf23e58bf7",
+              "element_id": "4.A.4.b.6.I04",
+              "score": 63.96,
+              "title": "Advise others on the design or use of technologies",
+              "detailed_work_activities": [
+                {
+                  "guid": "d9fbeb30-118a-4cb2-9bc6-e366b936cb62",
+                  "score": 57.74,
+                  "title": "Provide technical support for computer network issues"
+                },
+                {
+                  "guid": "6e64ffb7-d049-46ad-a8ca-3fff29173d93",
+                  "score": 57.74,
+                  "title": "Provide technical support and information"
+                },
+                {
+                  "guid": "f3566f22-55f4-4146-b15f-64f4b10f36fb",
+                  "score": 57.74,
+                  "title": "Recommend solutions to technical problems"
+                }
+              ]
+            },
+            {
+              "guid": "205e11dc-6adb-4cbb-b7fe-6d7afb1862aa",
+              "element_id": "4.A.4.b.6.I05",
+              "score": 63.96,
+              "title": "Advise others on business or operational matters",
+              "detailed_work_activities": [
+                {
+                  "guid": "0fba0ea9-4f5e-429a-8c90-54c9170f3925",
+                  "score": 57.74,
+                  "title": "Recommend changes to improve computer or information systems"
+                },
+                {
+                  "guid": "ed2baea4-fde5-4fae-98a0-f7e602a1ac44",
+                  "score": 57.74,
+                  "title": "Advise clients and customers on technical or procedural matters"
+                },
+                {
+                  "guid": "12c2f97a-d575-4129-8119-1f3161ed0372",
+                  "score": 57.74,
+                  "title": "Advise internal stakeholders on technical or procedural matters"
+                }
+              ]
+            },
+            {
+              "guid": "0cb36e6a-df8d-4ef4-8540-4f62f61b674e",
+              "element_id": "4.A.4.b.6.I02",
+              "score": 42.64,
+              "title": "Advise others on products or services",
+              "detailed_work_activities": [
+                {
+                  "guid": "c9cb4e3a-cc35-42ff-bccc-6a4792899057",
+                  "score": 70.71,
+                  "title": "Provide recommendations to others about computer hardware or software"
+                },
+                {
+                  "guid": "f8d86b52-34a4-4324-a70e-0e3460c95458",
+                  "score": 70.71,
+                  "title": "Offer purchase, repair, or modification recommendations of furnishings or equipment"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "guid": "18837600-2d79-4b6a-8b8f-40e01f04f059",
+          "element_id": "4.A.3.b.6",
+          "score": 18.04,
+          "title": "Documenting/Recording Information",
+          "intermediate_work_activities": [
+            {
+              "guid": "82a49dd8-69f8-4e25-bf23-256f251d66d9",
+              "element_id": "4.A.3.b.6.I09",
+              "score": 98.64,
+              "title": "Document technical designs, procedures, or activities",
+              "detailed_work_activities": [
+                {
+                  "guid": "67277ffd-cea1-471b-b08c-6f613dabc9c1",
+                  "score": 40.82,
+                  "title": "Write technical specifications for software or applications"
+                },
+                {
+                  "guid": "6a3e0b52-3088-44ac-a8b0-7e6cedc8ffbb",
+                  "score": 40.82,
+                  "title": "Employ computer application flow charts"
+                },
+                {
+                  "guid": "66502191-bc3d-4859-ac08-591252d234fb",
+                  "score": 40.82,
+                  "title": "Write documentation for computer programming or operation"
+                },
+                {
+                  "guid": "7a9f8913-c5b1-4ef3-b9f3-4ab66ae1ed9c",
+                  "score": 40.82,
+                  "title": "Write technical specifications for computer systems"
+                },
+                {
+                  "guid": "4138ef66-9b66-45dc-9e18-a529af2276bc",
+                  "score": 40.82,
+                  "title": "Document network-related activities or tasks"
+                },
+                {
+                  "guid": "d28349e2-8085-41e8-9adc-b8a0145574ca",
+                  "score": 40.82,
+                  "title": "Document design or development procedures"
+                }
+              ]
+            },
+            {
+              "guid": "4cc27ad6-914c-4a53-99e9-011e34ed1d14",
+              "element_id": "4.A.3.b.6.I15",
+              "score": 16.44,
+              "title": "Prepare reports of operational or procedural activities",
+              "detailed_work_activities": [
+                {
+                  "guid": "4c27712b-18d2-438b-9998-8580000368de",
+                  "score": 100,
+                  "title": "Prepare post project assessment report"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "guid": "e095cf92-c0de-4603-b5d2-d7a5bd036620",
+          "element_id": "4.A.1.b.2",
+          "score": 18.04,
+          "title": "Inspecting Equipment, Structures, or Material",
+          "intermediate_work_activities": [
+            {
+              "guid": "ff906428-39cd-44cf-b1ca-5b4a338ee857",
+              "element_id": "4.A.1.b.2.I08",
+              "score": 91.77,
+              "title": "Test performance of computer or information systems",
+              "detailed_work_activities": [
+                {
+                  "guid": "8ca2d9aa-4bab-4592-9b42-7e2f9c31ac84",
+                  "score": 50,
+                  "title": "Test data communications systems"
+                },
+                {
+                  "guid": "2c061e0f-4297-4fe6-8ff6-c6262b9b1965",
+                  "score": 50,
+                  "title": "Test computer programs or systems"
+                },
+                {
+                  "guid": "93bae909-4db2-4e6b-8a18-081c0674e977",
+                  "score": 50,
+                  "title": "Conduct computer diagnostics"
+                },
+                {
+                  "guid": "fbb59acc-718b-4273-be87-61a51e8da975",
+                  "score": 50,
+                  "title": "Test software performance"
+                }
+              ]
+            },
+            {
+              "guid": "be2c222d-dfd5-4008-b7e0-084f59d8b98b",
+              "element_id": "4.A.1.b.2.I12",
+              "score": 22.94,
+              "title": "Test performance of equipment or systems",
+              "detailed_work_activities": [
+                {
+                  "guid": "b2ff3452-d86d-4b11-b02e-37b603359941",
+                  "score": 100,
+                  "title": "Conduct performance testing"
+                }
+              ]
+            },
+            {
+              "guid": "b1a75d21-de12-459e-8793-c5204107d92b",
+              "element_id": "4.A.1.b.2.I05",
+              "score": 22.94,
+              "title": "Inspect facilities or equipment",
+              "detailed_work_activities": [
+                {
+                  "guid": "7ff75b2d-8400-4db4-b4e3-7ba58f59cede",
+                  "score": 100,
+                  "title": "Perform tests to assess compliance with standards"
+                }
+              ]
+            },
+            {
+              "guid": "d5352cf4-0629-4f54-a8cf-4ed26b26dc17",
+              "element_id": "4.A.1.b.2.I03",
+              "score": 22.94,
+              "title": "Test characteristics of materials or products",
+              "detailed_work_activities": [
+                {
+                  "guid": "5a4061de-a183-4567-97b9-63e828f01d9a",
+                  "score": 100,
+                  "title": "Perform quality assurance testing"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "guid": "9b023b06-d7d0-49d8-bf03-702c643bb485",
+          "element_id": "4.A.1.a.2",
+          "score": 15.47,
+          "title": "Monitor Processes, Materials, or Surroundings",
+          "intermediate_work_activities": [
+            {
+              "guid": "ae951493-9bb7-4ad0-82e0-a9f90d1059cf",
+              "element_id": "4.A.1.a.2.I10",
+              "score": 80.18,
+              "title": "Monitor operation of computer or information technologies",
+              "detailed_work_activities": [
+                {
+                  "guid": "808deff1-9bac-456f-a1ba-85cc6f3e3930",
+                  "score": 57.74,
+                  "title": "Monitor use of computer data files to safeguard information"
+                },
+                {
+                  "guid": "0e9cb25f-df27-4603-b7f2-bf4c4cb4dcc2",
+                  "score": 57.74,
+                  "title": "Monitor computer operation"
+                },
+                {
+                  "guid": "595efe98-acbb-488b-bc3c-f55e763ee355",
+                  "score": 57.74,
+                  "title": "Monitor message or event logs for computer systems"
+                }
+              ]
+            },
+            {
+              "guid": "8caabbed-c6d1-4562-9654-ab3cad70203f",
+              "element_id": "4.A.1.a.2.I11",
+              "score": 53.45,
+              "title": "Monitor operations to ensure compliance with regulations or standards",
+              "detailed_work_activities": [
+                {
+                  "guid": "2522c5a0-e324-4111-b66b-e5041ba583b4",
+                  "score": 70.71,
+                  "title": "Monitor the security of digital information"
+                },
+                {
+                  "guid": "5f31bdb3-f97a-4791-98b2-89c5699f0bf7",
+                  "score": 70.71,
+                  "title": "Maintain physical security of classified hardware or software"
+                }
+              ]
+            },
+            {
+              "guid": "456b40b5-89a6-415d-b05b-d0ceac20f40c",
+              "element_id": "4.A.1.a.2.I02",
+              "score": 26.73,
+              "title": "Monitor operations to ensure adequate performance",
+              "detailed_work_activities": [
+                {
+                  "guid": "516b59ca-40fb-4faf-9e1f-5f9da10b3939",
+                  "score": 100,
+                  "title": "Monitor operating conditions"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "guid": "939cd543-c708-4b3f-9fa5-53075f3d9f49",
+          "element_id": "4.A.1.a.1",
+          "score": 15.47,
+          "title": "Getting Information",
+          "intermediate_work_activities": [
+            {
+              "guid": "9f67d0a2-686a-4dc9-9383-4040fccb4fe4",
+              "element_id": "4.A.1.a.1.I02",
+              "score": 80.18,
+              "title": "Read documents or materials to inform work processes",
+              "detailed_work_activities": [
+                {
+                  "guid": "d3a7a6d4-6e7d-4902-957d-12bd2c4ea3e5",
+                  "score": 57.74,
+                  "title": "Review codes and specifications"
+                },
+                {
+                  "guid": "e9cd4bde-d544-446f-955d-1e717a042a91",
+                  "score": 57.74,
+                  "title": "Read technical, operating, service, or repair manuals or publications"
+                },
+                {
+                  "guid": "14d662d3-93f0-4a0c-83e8-f10bf0499093",
+                  "score": 57.74,
+                  "title": "Interpret information from blueprints, diagrams, schematics, or technical drawings"
+                }
+              ]
+            },
+            {
+              "guid": "fde99286-d900-464f-81b1-231de7fdc4a6",
+              "element_id": "4.A.1.a.1.I04",
+              "score": 53.45,
+              "title": "Gather information from physical or electronic sources",
+              "detailed_work_activities": [
+                {
+                  "guid": "64673f1e-3b56-4e78-bf53-893df7cb892b",
+                  "score": 70.71,
+                  "title": "Collect statistical data"
+                },
+                {
+                  "guid": "0b73018a-6475-472e-99d8-604db3ffb46d",
+                  "score": 70.71,
+                  "title": "Collect scientific or technical data"
+                }
+              ]
+            },
+            {
+              "guid": "2ba20a65-fe5c-4606-b1d4-4f011e4a00e8",
+              "element_id": "4.A.1.a.1.I17",
+              "score": 26.73,
+              "title": "Obtain formal documentation or authorization",
+              "detailed_work_activities": [
+                {
+                  "guid": "b090940d-5e25-4c0b-bd97-e1a41c730860",
+                  "score": 100,
+                  "title": "Obtain approval for project plans"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "guid": "cf8a6005-c705-45b7-bd4a-cd93382dc662",
+          "element_id": "4.A.3.b.2",
+          "score": 10.31,
+          "title": "Drafting, Laying Out, and Specifying Technical Devices, Parts, and Equipment",
+          "intermediate_work_activities": [
+            {
+              "guid": "6508ceaf-ab0d-47bc-a68a-31a97570ac53",
+              "element_id": "4.A.2.b.2.I07",
+              "score": 100,
+              "title": "Develop technical specifications for products or operations",
+              "detailed_work_activities": [
+                {
+                  "guid": "c0bb429a-d17b-433b-abfd-60d5812dd950",
+                  "score": 50,
+                  "title": "Develop computer performance standards"
+                },
+                {
+                  "guid": "1242900c-db5f-4e6b-bef9-22c2621f58fe",
+                  "score": 50,
+                  "title": "Develop specifications or procedures for website development or maintenance"
+                },
+                {
+                  "guid": "2985e9cc-0948-42d4-818d-4ef8e92466be",
+                  "score": 50,
+                  "title": "Develop system requirements"
+                },
+                {
+                  "guid": "e4471f92-7fa6-4887-afaa-f55e0108e140",
+                  "score": 50,
+                  "title": "Analyze project data to determine specifications or requirements"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "guid": "588bdef4-b8f2-4a0a-88ce-61aba343b32f",
+          "element_id": "4.A.2.a.1",
+          "score": 10.31,
+          "title": "Judging the Qualities of Things, Services, or People",
+          "intermediate_work_activities": [
+            {
+              "guid": "685bc9d7-d3f8-4325-a09b-72a6ffd2fb5b",
+              "element_id": "4.A.2.a.1.I07",
+              "score": 70.71,
+              "title": "Evaluate the characteristics, usefulness, or performance of products or technologies",
+              "detailed_work_activities": [
+                {
+                  "guid": "04b142d4-7fa4-4e2c-b930-30596b593d25",
+                  "score": 70.71,
+                  "title": "Evaluate computer system user requests or requirements"
+                },
+                {
+                  "guid": "bd1a469d-6752-4902-bdee-bb1db9fcdfe4",
+                  "score": 70.71,
+                  "title": "Evaluate prototype software"
+                }
+              ]
+            },
+            {
+              "guid": "b51ab00f-235e-4957-9ee9-28dd5917e6f9",
+              "element_id": "4.A.2.a.1.I10",
+              "score": 70.71,
+              "title": "Evaluate project feasibility",
+              "detailed_work_activities": [
+                {
+                  "guid": "53efac5d-5f32-4a7c-8510-6ef9dea86652",
+                  "score": 83.21,
+                  "title": "Analyze project proposals or data to determine feasibility, cost, or time"
+                },
+                {
+                  "guid": "c0f63d5f-6693-4bfe-856a-5be97ea4ef4e",
+                  "score": 55.47,
+                  "title": "Evaluate utility of software or hardware technologies"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "guid": "2e603185-6389-4d71-8789-538d3ff65f04",
+          "element_id": "4.A.3.a.2",
+          "score": 10.31,
+          "title": "Handling and Moving Objects",
+          "intermediate_work_activities": [
+            {
+              "guid": "0ef02ae9-162a-4900-80dc-12fc0818bbd4",
+              "element_id": "4.A.3.a.2.I20",
+              "score": 100,
+              "title": "Install commercial or production equipment",
+              "detailed_work_activities": [
+                {
+                  "guid": "8a63b672-eb0d-4f7b-8655-d63cf16e5f8e",
+                  "score": 50,
+                  "title": "Install security equipment or systems"
+                },
+                {
+                  "guid": "722fe401-479d-43f2-9c4f-d5a313afc342",
+                  "score": 50,
+                  "title": "Install power or communication lines and cables"
+                },
+                {
+                  "guid": "54f6e4d5-7b67-4d92-a95b-a705e69c4460",
+                  "score": 50,
+                  "title": "Install communication line switching devices"
+                },
+                {
+                  "guid": "1f0ac729-fe83-4111-894c-2ad719e75657",
+                  "score": 50,
+                  "title": "Install electronic power, communication, or control equipment or systems"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "guid": "5825a946-9466-4abf-8fd8-fe5c4a2be1ba",
+          "element_id": "4.A.3.b.5",
+          "score": 10.31,
+          "title": "Repairing and Maintaining Electronic Equipment",
+          "intermediate_work_activities": [
+            {
+              "guid": "9079d4ec-8fa7-4e38-aff8-d75ef9fa61c3",
+              "element_id": "4.A.3.b.4.I04",
+              "score": 70.71,
+              "title": "Maintain electronic, computer, or other technical equipment",
+              "detailed_work_activities": [
+                {
+                  "guid": "6286dfc1-3748-4b52-ba52-84a3671dbb3d",
+                  "score": 70.71,
+                  "title": "Splice electric or communications cables or trunk lines"
+                },
+                {
+                  "guid": "14ff8e4a-d2ae-4b37-b1cd-dc56d8fc4ddb",
+                  "score": 70.71,
+                  "title": "Maintain computers or related equipment"
+                }
+              ]
+            },
+            {
+              "guid": "5be545f2-eb92-4a2c-8aae-f001e9a3e6cb",
+              "element_id": "4.A.3.b.4.I03",
+              "score": 70.71,
+              "title": "Repair electrical or electronic equipment",
+              "detailed_work_activities": [
+                {
+                  "guid": "b11c7902-d7b1-47ec-b262-ddb92b734aa1",
+                  "score": 70.71,
+                  "title": "Perform minor repairs to hardware, software, or peripheral equipment"
+                },
+                {
+                  "guid": "976f62d4-6f2f-4823-b923-a25c6d30daaa",
+                  "score": 70.71,
+                  "title": "Repair computer controlled manufacturing systems"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "guid": "32e466ee-7438-4375-a691-a46d81e5f15e",
+          "element_id": "4.A.4.a.2",
+          "score": 7.73,
+          "title": "Communicating with Supervisors, Peers, or Subordinates",
+          "intermediate_work_activities": [
+            {
+              "guid": "90fad4f4-8fc8-46c8-86bb-2873af52daf6",
+              "element_id": "4.A.4.a.2.I03",
+              "score": 89.44,
+              "title": "Communicate with others about operational plans or activities",
+              "detailed_work_activities": [
+                {
+                  "guid": "f72030dd-5db9-4f4d-bd99-f0d8a8fc1922",
+                  "score": 70.71,
+                  "title": "Collaborate with others to resolve information technology issues"
+                },
+                {
+                  "guid": "d37d3b7a-73d9-40ce-9235-dfcb87694b60",
+                  "score": 70.71,
+                  "title": "Collaborate with organizational members on marketing activities"
+                }
+              ]
+            },
+            {
+              "guid": "e7cc67e3-7891-4c73-a28d-5af540654a38",
+              "element_id": "4.A.4.a.2.I09",
+              "score": 44.72,
+              "title": "Communicate with others about specifications or project details",
+              "detailed_work_activities": [
+                {
+                  "guid": "4aacb08e-a655-41b5-9af2-63433ac68ee9",
+                  "score": 100,
+                  "title": "Collaborate with stakeholders to incorporate requirements into contracts"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "guid": "4fc014b3-52d3-4965-8739-f154c4c20825",
+          "element_id": "4.A.2.b.3",
+          "score": 7.73,
+          "title": "Updating and Using Relevant Knowledge",
+          "intermediate_work_activities": [
+            {
+              "guid": "2367edf2-52ca-4cb1-b34e-576b8f32769e",
+              "element_id": "4.A.2.b.3.I01",
+              "score": 100,
+              "title": "Maintain current knowledge in area of expertise",
+              "detailed_work_activities": [
+                {
+                  "guid": "6ed1cabb-7f13-4499-8464-c94555b7adc6",
+                  "score": 57.74,
+                  "title": "Update knowledge about emerging industry or technology trends"
+                },
+                {
+                  "guid": "492d8dfb-f297-4cdc-ac2c-fd3119513a50",
+                  "score": 57.74,
+                  "title": "Attend professional conferences and events"
+                },
+                {
+                  "guid": "d31eb3b7-6658-4b12-b9f2-33e08c426876",
+                  "score": 57.74,
+                  "title": "Perform continuing education to maintain licenses, certifications, qualifications, and knowledge currency"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "guid": "0527bd16-b219-4b2d-9ca5-464ebaa69610",
+          "element_id": "4.A.4.b.4",
+          "score": 7.73,
+          "title": "Guiding, Directing, and Motivating Subordinates",
+          "intermediate_work_activities": [
+            {
+              "guid": "c9480c74-d8bd-4b5b-a73a-14ecadf487c4",
+              "element_id": "4.A.4.b.4.I12",
+              "score": 89.44,
+              "title": "Direct organizational operations, activities, or procedures",
+              "detailed_work_activities": [
+                {
+                  "guid": "66ac4e2a-a9b6-4d33-ae2a-2a46c6460ed9",
+                  "score": 70.71,
+                  "title": "Direct network personnel in remote site configuration"
+                },
+                {
+                  "guid": "94aa6e5e-31c3-4d2f-a08a-41a5b27c887b",
+                  "score": 70.71,
+                  "title": "Manage quality control activities"
+                }
+              ]
+            },
+            {
+              "guid": "5ade0dd8-db01-4dda-90d7-f6968a020f5e",
+              "element_id": "4.A.4.b.4.I01",
+              "score": 44.72,
+              "title": "Supervise personnel activities",
+              "detailed_work_activities": [
+                {
+                  "guid": "d2437b92-ce18-41cf-a118-fccc2d49d6e1",
+                  "score": 100,
+                  "title": "Supervise subordinate personnel or contractors"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "guid": "073cc097-39c5-4384-b410-2195e609634e",
+          "element_id": "4.A.4.b.3",
+          "score": 7.73,
+          "title": "Training and Teaching Others",
+          "intermediate_work_activities": [
+            {
+              "guid": "62beb3d6-95f7-444d-be76-d360e9c63da4",
+              "element_id": "4.A.3.b.6.I12",
+              "score": 89.44,
+              "title": "Prepare informational or instructional materials",
+              "detailed_work_activities": [
+                {
+                  "guid": "f65ee4d0-9ccc-4b8d-b52f-ec2a12018037",
+                  "score": 70.71,
+                  "title": "Prepare instruction manuals"
+                },
+                {
+                  "guid": "d87375b7-cd9d-4366-9466-b15d70cfd321",
+                  "score": 70.71,
+                  "title": "Prepare scientific or technical reports or presentations"
+                }
+              ]
+            },
+            {
+              "guid": "74616b31-ee96-47ca-994c-bf3234623871",
+              "element_id": "4.A.4.b.3.I05",
+              "score": 44.72,
+              "title": "Train others to use equipment or products",
+              "detailed_work_activities": [
+                {
+                  "guid": "85e8aa34-0734-4115-819d-75abd644e09e",
+                  "score": 100,
+                  "title": "Train others in use of equipment or computers"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "guid": "8a4aed48-2130-4829-94bc-9fd794380133",
+          "element_id": "4.A.1.b.3",
+          "score": 7.73,
+          "title": "Estimating the Quantifiable Characteristics of Products, Events, or Information",
+          "intermediate_work_activities": [
+            {
+              "guid": "109a89b4-7316-45ff-8fd9-55c3bcc75903",
+              "element_id": "4.A.2.b.1.I08",
+              "score": 89.44,
+              "title": "Determine resource needs of projects or operations",
+              "detailed_work_activities": [
+                {
+                  "guid": "a95d4afb-1569-4e7e-b89d-28d2b2b41607",
+                  "score": 70.71,
+                  "title": "Determine equipment, tool, or material requirements for jobs"
+                },
+                {
+                  "guid": "57c9169b-f66b-48b8-ad48-a101ef1b57eb",
+                  "score": 70.71,
+                  "title": "Estimate project time requirements"
+                }
+              ]
+            },
+            {
+              "guid": "0cb10f29-260e-4341-8b31-224ea9e4053f",
+              "element_id": "4.A.1.b.3.I02",
+              "score": 44.72,
+              "title": "Estimate project development or operational costs",
+              "detailed_work_activities": [
+                {
+                  "guid": "9673bc96-962d-43d4-90ab-de7d3585f2da",
+                  "score": 100,
+                  "title": "Estimate project costs"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "guid": "fa728943-c902-4784-8107-d7da08c56cdb",
+          "element_id": "4.A.2.a.2",
+          "score": 7.73,
+          "title": "Processing Information",
+          "intermediate_work_activities": [
+            {
+              "guid": "b3f773b2-98bc-4b13-81ec-cd34d6619713",
+              "element_id": "4.A.2.a.2.I03",
+              "score": 89.44,
+              "title": "Compile records, documentation, or other data",
+              "detailed_work_activities": [
+                {
+                  "guid": "0d341179-936c-45af-bd45-e22583b2faec",
+                  "score": 70.71,
+                  "title": "Compile operational data"
+                },
+                {
+                  "guid": "3ca2a27d-ef38-482d-8dad-204418589d05",
+                  "score": 70.71,
+                  "title": "Compile numerical or statistical data"
+                }
+              ]
+            },
+            {
+              "guid": "6048e2df-769a-4eab-a130-5a0355feb68a",
+              "element_id": "4.A.1.b.3.I03",
+              "score": 44.72,
+              "title": "Calculate financial data",
+              "detailed_work_activities": [
+                {
+                  "guid": "c2d9effc-3aa2-481e-91df-92f3c40d512f",
+                  "score": 100,
+                  "title": "Compute state and federal taxes"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "guid": "3288b812-9cc6-4f0f-a346-75526ab16271",
+          "element_id": "4.A.1.b.1",
+          "score": 5.16,
+          "title": "Identifying Objects, Actions, and Events",
+          "intermediate_work_activities": [
+            {
+              "guid": "3179096c-aa13-4f0c-addf-83ba288430fc",
+              "element_id": "4.A.2.b.1.I10",
+              "score": 100,
+              "title": "Select materials or equipment for operations or projects",
+              "detailed_work_activities": [
+                {
+                  "guid": "c9821852-5085-4e06-8604-fad896381103",
+                  "score": 89.44,
+                  "title": "Identify software needed for specific project or task"
+                },
+                {
+                  "guid": "facf91a3-30d4-4803-8354-333e24441ef7",
+                  "score": 44.72,
+                  "title": "Select business applications for computers"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "guid": "ddf8df11-8dc3-4ffc-86db-10a3455c0dbc",
+          "element_id": "4.A.2.b.6",
+          "score": 5.16,
+          "title": "Organizing, Planning, and Prioritizing Work",
+          "intermediate_work_activities": [
+            {
+              "guid": "f732ef32-0931-4811-861a-246c9ae88f1e",
+              "element_id": "4.A.2.b.2.I19",
+              "score": 70.71,
+              "title": "Develop contingency or emergency response plans",
+              "detailed_work_activities": [
+                {
+                  "guid": "9a29f709-740a-4735-8186-f6d8e9b62a3f",
+                  "score": 100,
+                  "title": "Develop project contingency plans"
+                }
+              ]
+            },
+            {
+              "guid": "52c80e65-f966-471f-b68c-8d858817f739",
+              "element_id": "4.A.2.b.6.I02",
+              "score": 70.71,
+              "title": "Plan work activities",
+              "detailed_work_activities": [
+                {
+                  "guid": "9ae5f5ed-ef6d-449b-aef4-cad0530c20c5",
+                  "score": 100,
+                  "title": "Manage projects to keep within time, cost, and quality guidelines"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "guid": "d539590b-7f14-4572-8601-45dc13d39a40",
+          "element_id": "4.A.4.a.1",
+          "score": 5.16,
+          "title": "Interpreting the Meaning of Information for Others",
+          "intermediate_work_activities": [
+            {
+              "guid": "f8a780ab-9288-450f-b522-59eba1153a93",
+              "element_id": "4.A.3.b.6.I03",
+              "score": 100,
+              "title": "Present research or technical information",
+              "detailed_work_activities": [
+                {
+                  "guid": "7be78409-3bc4-49b4-8697-13a6cdc88b60",
+                  "score": 70.71,
+                  "title": "Conduct informational presentations"
+                },
+                {
+                  "guid": "8bd5629d-54e4-4670-ac8c-db659efad7e3",
+                  "score": 70.71,
+                  "title": "Communicate technical or scientific information"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "guid": "da1c5ffc-9327-4b5b-a2de-7c555e6c8833",
+          "element_id": "4.A.4.b.1",
+          "score": 2.58,
+          "title": "Coordinating the Work and Activities of Others",
+          "intermediate_work_activities": [
+            {
+              "guid": "5a7d3819-a12e-4356-a42b-6d3667177d2c",
+              "element_id": "4.A.4.a.2.I11",
+              "score": 100,
+              "title": "Coordinate activities with clients, agencies, or organizations",
+              "detailed_work_activities": [
+                {
+                  "guid": "31063f2c-d251-43f1-8ac5-3c4811f9ea9e",
+                  "score": 100,
+                  "title": "Coordinate project-related activities with employees, contractors, or suppliers"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "guid": "ca8fa3dd-447f-4741-9b63-a16f47fd9752",
+          "element_id": "4.A.2.b.1",
+          "score": 2.58,
+          "title": "Making Decisions and Solving Problems",
+          "intermediate_work_activities": [
+            {
+              "guid": "43379d28-0333-44f8-b0cc-2ccd3fe4e787",
+              "element_id": "4.A.2.b.1.I04",
+              "score": 100,
+              "title": "Determine operational methods or procedures",
+              "detailed_work_activities": [
+                {
+                  "guid": "ee6663dd-3800-4f94-baf1-4ad3ad0de7a7",
+                  "score": 100,
+                  "title": "Determine project methods and procedures"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "guid": "80444ffe-6e3f-4952-8bc5-d9f2350d5791",
+          "element_id": "4.A.4.c.1",
+          "score": 2.58,
+          "title": "Performing Administrative Activities",
+          "intermediate_work_activities": [
+            {
+              "guid": "d6097c92-e543-4322-82a4-6d4824b3a092",
+              "element_id": "4.A.4.c.1.I01",
+              "score": 100,
+              "title": "Perform administrative or clerical activities",
+              "detailed_work_activities": [
+                {
+                  "guid": "f178497e-ded7-48aa-8ea5-ad310639b828",
+                  "score": 100,
+                  "title": "Route computer output to specified users"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "guid": "601f987c-5db9-4a3a-8a67-03ee87e687c5",
+          "element_id": "4.A.2.a.3",
+          "score": 2.58,
+          "title": "Evaluating Information to Determine Compliance with Standards",
+          "intermediate_work_activities": [
+            {
+              "guid": "3992c5d0-0a17-448a-a2aa-a12725820341",
+              "element_id": "4.A.2.a.3.I01",
+              "score": 100,
+              "title": "Examine materials or documentation for accuracy or compliance",
+              "detailed_work_activities": [
+                {
+                  "guid": "8c0bfebb-2590-4f82-a121-66c0ed7dbe6b",
+                  "score": 100,
+                  "title": "Verify completeness or accuracy of data"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "guid": "39a8b26c-e339-460a-982d-d59e701df663",
+          "element_id": "4.A.4.a.4",
+          "score": 2.58,
+          "title": "Establishing and Maintaining Interpersonal Relationships",
+          "intermediate_work_activities": [
+            {
+              "guid": "aded44f0-3143-4c0a-8e05-bd021424f927",
+              "element_id": "4.A.4.a.4.I01",
+              "score": 100,
+              "title": "Develop professional relationships or networks",
+              "detailed_work_activities": [
+                {
+                  "guid": "af28e8f0-5992-43d0-99d7-e15408e56c81",
+                  "score": 100,
+                  "title": "Maintain relationships with employees and co-workers"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "guid": "19bcb492-7d4f-4a42-9a3c-ecfdea0cc3b3",
+          "element_id": "4.A.4.a.3",
+          "score": 2.58,
+          "title": "Communicating with Persons Outside Organization",
+          "intermediate_work_activities": [
+            {
+              "guid": "1c83a6fe-402e-45a0-99a1-452704c63871",
+              "element_id": "4.A.4.a.2.I13",
+              "score": 100,
+              "title": "Confer with clients to determine needs or order specifications",
+              "detailed_work_activities": [
+                {
+                  "guid": "b3603a06-7428-4d20-bc16-2d4d22b69f2f",
+                  "score": 100,
+                  "title": "Consult with customers concerning needs"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "guid": "aa1f3efd-0685-4a1e-a472-71b9fded092d",
+          "element_id": "4.A.4.a.8",
+          "score": 2.58,
+          "title": "Performing for or Working Directly with the Public",
+          "intermediate_work_activities": [
+            {
+              "guid": "b51a34b0-7a70-405d-844e-12bf22e93752",
+              "element_id": "4.A.4.a.5.I10",
+              "score": 100,
+              "title": "Provide general assistance to others, such as customers, patrons, or motorists",
+              "detailed_work_activities": [
+                {
+                  "guid": "a4258683-4bc5-4c2c-aa12-213bbcffba9a",
+                  "score": 100,
+                  "title": "Provide customer service"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "workplace_essentials": [
+        [
+          "Critical Thinking",
+          64.15
+        ],
+        [
+          "Information Gathering",
+          52.98
+        ],
+        [
+          "Attention to Detail",
+          29.5
+        ],
+        [
+          "Technology and Tool Usage",
+          24.04
+        ],
+        [
+          "Following Directions",
+          18.05
+        ],
+        [
+          "Problem-solving",
+          17.76
+        ],
+        [
+          "Decision-making",
+          14.88
+        ],
+        [
+          "Written Communication",
+          14.59
+        ],
+        [
+          "Creativity",
+          13.18
+        ],
+        [
+          "Oral Communication",
+          10.89
+        ],
+        [
+          "Organization",
+          7.72
+        ],
+        [
+          "Numerical and Arithmetic Application",
+          7.44
+        ],
+        [
+          "Adaptability",
+          6.31
+        ],
+        [
+          "Initiative",
+          4.58
+        ],
+        [
+          "Leadership",
+          4.58
+        ],
+        [
+          "Customer Service",
+          4.3
+        ],
+        [
+          "Work Ethic",
+          3.14
+        ],
+        [
+          "Integrity",
+          2.86
+        ],
+        [
+          "Thoughtful Reflection",
+          2.86
+        ],
+        [
+          "Professionalism",
+          2.57
+        ],
+        [
+          "Pride in Work",
+          2.29
+        ],
+        [
+          "Resource Allocation",
+          2.29
+        ],
+        [
+          "Teamwork",
+          1.44
+        ],
+        [
+          "Multi-tasking",
+          0.85
+        ],
+        [
+          "Time Management",
+          0.56
+        ]
+      ],
+      "knowledges": [
+        [
+          "Computers and Electronics",
+          89.54
+        ],
+        [
+          "Administration and Management",
+          36.7
+        ],
+        [
+          "Engineering and Technology",
+          14.68
+        ],
+        [
+          "Customer and Personal Service",
+          13.21
+        ],
+        [
+          "Mathematics",
+          8.81
+        ],
+        [
+          "Mechanical",
+          7.34
+        ],
+        [
+          "Law and Government",
+          5.87
+        ],
+        [
+          "Clerical",
+          5.87
+        ],
+        [
+          "Education and Training",
+          4.4
+        ],
+        [
+          "Design",
+          2.94
+        ],
+        [
+          "Public Safety and Security",
+          1.47
+        ],
+        [
+          "Telecommunications",
+          1.47
+        ],
+        [
+          "Biology",
+          1.47
+        ],
+        [
+          "Chemistry",
+          1.47
+        ],
+        [
+          "Communications and Media",
+          1.47
+        ],
+        [
+          "Sales and Marketing",
+          1.47
+        ],
+        [
+          "English Language",
+          1.47
+        ],
+        [
+          "Production and Processing",
+          1.47
+        ]
+      ],
+      "skills": [
+        [
+          "Complex Problem Solving",
+          59.13
+        ],
+        [
+          "Critical Thinking",
+          53.99
+        ],
+        [
+          "Writing",
+          28.28
+        ],
+        [
+          "Programming",
+          23.14
+        ],
+        [
+          "Operation and Control",
+          20.57
+        ],
+        [
+          "Installation",
+          18
+        ],
+        [
+          "Speaking",
+          18
+        ],
+        [
+          "Quality Control Analysis",
+          18
+        ],
+        [
+          "Coordination",
+          12.85
+        ],
+        [
+          "Reading Comprehension",
+          12.85
+        ],
+        [
+          "Operations Monitoring",
+          7.71
+        ],
+        [
+          "Troubleshooting",
+          7.71
+        ],
+        [
+          "Judgment and Decision Making",
+          7.71
+        ],
+        [
+          "Mathematics",
+          7.71
+        ],
+        [
+          "Repairing",
+          7.71
+        ],
+        [
+          "Service Orientation",
+          7.71
+        ],
+        [
+          "Monitoring",
+          5.14
+        ],
+        [
+          "Equipment Maintenance",
+          5.14
+        ],
+        [
+          "Management of Material Resources",
+          5.14
+        ],
+        [
+          "Active Learning",
+          5.14
+        ],
+        [
+          "Management of Personnel Resources",
+          5.14
+        ],
+        [
+          "Systems Analysis",
+          2.57
+        ],
+        [
+          "Equipment Selection",
+          2.57
+        ],
+        [
+          "Science",
+          2.57
+        ],
+        [
+          "Social Perceptiveness",
+          2.57
+        ],
+        [
+          "Active Listening",
+          2.57
+        ],
+        [
+          "Instructing",
+          2.57
+        ]
+      ],
+      "abilities": [
+        [
+          "Deductive Reasoning",
+          61.18
+        ],
+        [
+          "Inductive Reasoning",
+          42.19
+        ],
+        [
+          "Oral Expression",
+          35.86
+        ],
+        [
+          "Information Ordering",
+          31.64
+        ],
+        [
+          "Problem Sensitivity",
+          29.53
+        ],
+        [
+          "Written Comprehension",
+          23.21
+        ],
+        [
+          "Written Expression",
+          18.99
+        ],
+        [
+          "Mathematical Reasoning",
+          12.66
+        ],
+        [
+          "Manual Dexterity",
+          10.55
+        ],
+        [
+          "Finger Dexterity",
+          10.55
+        ],
+        [
+          "Wrist-Finger Speed",
+          4.22
+        ],
+        [
+          "Category Flexibility",
+          2.11
+        ],
+        [
+          "Fluency of Ideas",
+          2.11
+        ],
+        [
+          "Originality",
+          2.11
+        ],
+        [
+          "Oral Comprehension",
+          2.11
+        ]
+      ],
+      "tools": [
+        {
+          "score": 8.91,
+          "classification": "technology",
+          "category": "Network monitoring software",
+          "title": "Wireshark"
+        },
+        {
+          "score": 8.91,
+          "classification": "technology",
+          "category": "Operating system software",
+          "title": "UNIX"
+        },
+        {
+          "score": 8.91,
+          "classification": "technology",
+          "category": "Requirements analysis and system architecture software",
+          "title": "Unified modeling language UML"
+        },
+        {
+          "score": 8.91,
+          "classification": "technology",
+          "category": "Data base user interface and query software",
+          "title": "Transact-SQL"
+        },
+        {
+          "score": 8.91,
+          "classification": "technology",
+          "category": "Business intelligence and data analysis software",
+          "title": "Tableau software"
+        },
+        {
+          "score": 8.91,
+          "classification": "technology",
+          "category": "Data base management system software",
+          "title": "Sybase software"
+        },
+        {
+          "score": 8.91,
+          "classification": "technology",
+          "category": "Development environment software",
+          "title": "Sun Microsystems Java 2 Platform Enterprise Edition J2EE"
+        },
+        {
+          "score": 8.91,
+          "classification": "technology",
+          "category": "Object or component oriented development software",
+          "title": "Sun Microsystems Java"
+        },
+        {
+          "score": 8.91,
+          "classification": "technology",
+          "category": "Development environment software",
+          "title": "Subversion"
+        },
+        {
+          "score": 8.91,
+          "classification": "technology",
+          "category": "Data base user interface and query software",
+          "title": "Structured query language SQL"
+        },
+        {
+          "score": 8.91,
+          "classification": "technology",
+          "category": "Web platform development software",
+          "title": "Spring Framework"
+        },
+        {
+          "score": 8.91,
+          "classification": "technology",
+          "category": "Enterprise system management software",
+          "title": "Splunk Enterprise"
+        },
+        {
+          "score": 8.91,
+          "classification": "technology",
+          "category": "Content workflow software",
+          "title": "Sitecore CMS"
+        },
+        {
+          "score": 8.91,
+          "classification": "technology",
+          "category": "Data base reporting software",
+          "title": "SAP BusinessObjects Crystal Reports"
+        },
+        {
+          "score": 8.91,
+          "classification": "technology",
+          "category": "Enterprise resource planning ERP software",
+          "title": "SAP Business Objects software"
+        },
+        {
+          "score": 8.91,
+          "classification": "technology",
+          "category": "Web platform development software",
+          "title": "Ruby on Rails"
+        },
+        {
+          "score": 8.91,
+          "classification": "technology",
+          "category": "Data base management system software",
+          "title": "Relational database management software"
+        },
+        {
+          "score": 8.91,
+          "classification": "technology",
+          "category": "Application server software",
+          "title": "Red Hat WildFly"
+        },
+        {
+          "score": 8.91,
+          "classification": "technology",
+          "category": "Operating system software",
+          "title": "Red Hat Enterprise Linux"
+        },
+        {
+          "score": 8.91,
+          "classification": "technology",
+          "category": "Business intelligence and data analysis software",
+          "title": "Qlik Tech QlikView"
+        },
+        {
+          "score": 8.91,
+          "classification": "technology",
+          "category": "Object or component oriented development software",
+          "title": "Python"
+        },
+        {
+          "score": 8.91,
+          "classification": "technology",
+          "category": "Configuration management software",
+          "title": "Puppet"
+        },
+        {
+          "score": 8.91,
+          "classification": "technology",
+          "category": "Object or component oriented development software",
+          "title": "Practical extraction and reporting language Perl"
+        },
+        {
+          "score": 8.91,
+          "classification": "technology",
+          "category": "Object oriented data base management software",
+          "title": "PostgreSQL software"
+        },
+        {
+          "score": 8.91,
+          "classification": "technology",
+          "category": "Web platform development software",
+          "title": "PHP: Hypertext Preprocessor"
+        },
+        {
+          "score": 8.91,
+          "classification": "technology",
+          "category": "Application server software",
+          "title": "Oracle WebLogic Server"
+        },
+        {
+          "score": 8.91,
+          "classification": "technology",
+          "category": "Operating system software",
+          "title": "Oracle Solaris"
+        },
+        {
+          "score": 8.91,
+          "classification": "technology",
+          "category": "Data base management system software",
+          "title": "Oracle PL/SQL"
+        },
+        {
+          "score": 8.91,
+          "classification": "technology",
+          "category": "Data base user interface and query software",
+          "title": "Oracle JDBC"
+        },
+        {
+          "score": 8.91,
+          "classification": "technology",
+          "category": "Web platform development software",
+          "title": "Oracle JavaServer Pages JSP"
+        },
+        {
+          "score": 8.91,
+          "classification": "technology",
+          "category": "Object or component oriented development software",
+          "title": "Oracle Java"
+        },
+        {
+          "score": 8.91,
+          "classification": "technology",
+          "category": "Object or component oriented development software",
+          "title": "Objective C"
+        },
+        {
+          "score": 8.91,
+          "classification": "technology",
+          "category": "Data base management system software",
+          "title": "NoSQL software"
+        },
+        {
+          "score": 8.91,
+          "classification": "technology",
+          "category": "Web platform development software",
+          "title": "Node.js"
+        },
+        {
+          "score": 8.91,
+          "classification": "technology",
+          "category": "Network monitoring software",
+          "title": "Nagios"
+        },
+        {
+          "score": 8.91,
+          "classification": "technology",
+          "category": "Data base user interface and query software",
+          "title": "MySQL software"
+        },
+        {
+          "score": 8.91,
+          "classification": "technology",
+          "category": "Data base management system software",
+          "title": "MongoDB"
+        },
+        {
+          "score": 8.91,
+          "classification": "technology",
+          "category": "Operating system software",
+          "title": "Microsoft Windows"
+        },
+        {
+          "score": 8.91,
+          "classification": "technology",
+          "category": "Development environment software",
+          "title": "Microsoft Visual Studio"
+        },
+        {
+          "score": 8.91,
+          "classification": "technology",
+          "category": "Development environment software",
+          "title": "Microsoft Visual SourceSafe"
+        },
+        {
+          "score": 8.91,
+          "classification": "technology",
+          "category": "Web platform development software",
+          "title": "Microsoft Visual InterDev"
+        },
+        {
+          "score": 8.91,
+          "classification": "technology",
+          "category": "Object or component oriented development software",
+          "title": "Microsoft Visual C# .NET"
+        },
+        {
+          "score": 8.91,
+          "classification": "technology",
+          "category": "Object or component oriented development software",
+          "title": "Microsoft Visual Basic.NET"
+        },
+        {
+          "score": 8.91,
+          "classification": "technology",
+          "category": "Development environment software",
+          "title": "Microsoft Visual Basic Scripting Edition VBScript"
+        },
+        {
+          "score": 8.91,
+          "classification": "technology",
+          "category": "Development environment software",
+          "title": "Microsoft Visual Basic"
+        },
+        {
+          "score": 8.91,
+          "classification": "technology",
+          "category": "Graphics or photo imaging software",
+          "title": "Microsoft Visio"
+        },
+        {
+          "score": 8.91,
+          "classification": "technology",
+          "category": "Data base user interface and query software",
+          "title": "Microsoft SQL Server software"
+        },
+        {
+          "score": 8.91,
+          "classification": "technology",
+          "category": "Data base reporting software",
+          "title": "Microsoft SQL Server Reporting Services"
+        },
+        {
+          "score": 8.91,
+          "classification": "technology",
+          "category": "Project management software",
+          "title": "Microsoft SharePoint software"
+        },
+        {
+          "score": 8.91,
+          "classification": "technology",
+          "category": "Desktop publishing software",
+          "title": "Microsoft Publisher"
+        },
+        {
+          "score": 8.91,
+          "classification": "technology",
+          "category": "Office suite software",
+          "title": "Microsoft Office software"
+        },
+        {
+          "score": 8.91,
+          "classification": "technology",
+          "category": "Network conferencing software",
+          "title": "Microsoft Office SharePoint Server MOSS"
+        },
+        {
+          "score": 8.91,
+          "classification": "technology",
+          "category": "Transaction server software",
+          "title": "Microsoft Internet Information Service IIS"
+        },
+        {
+          "score": 8.91,
+          "classification": "technology",
+          "category": "Spreadsheet software",
+          "title": "Microsoft Excel"
+        },
+        {
+          "score": 8.91,
+          "classification": "technology",
+          "category": "Enterprise resource planning ERP software",
+          "title": "Microsoft Dynamics software"
+        },
+        {
+          "score": 8.91,
+          "classification": "technology",
+          "category": "Web platform development software",
+          "title": "Microsoft Commerce Server"
+        },
+        {
+          "score": 8.91,
+          "classification": "technology",
+          "category": "Web platform development software",
+          "title": "Microsoft ASP.NET"
+        },
+        {
+          "score": 8.91,
+          "classification": "technology",
+          "category": "Object or component oriented development software",
+          "title": "Microsoft ActiveX"
+        },
+        {
+          "score": 8.91,
+          "classification": "technology",
+          "category": "Web platform development software",
+          "title": "Microsoft Active Server Pages ASP"
+        },
+        {
+          "score": 8.91,
+          "classification": "technology",
+          "category": "Data base user interface and query software",
+          "title": "Microsoft Access"
+        },
+        {
+          "score": 8.91,
+          "classification": "technology",
+          "category": "Development environment software",
+          "title": "Microsoft .NET Framework"
+        },
+        {
+          "score": 8.91,
+          "classification": "technology",
+          "category": "Operating system software",
+          "title": "Linux"
+        },
+        {
+          "score": 8.91,
+          "classification": "technology",
+          "category": "Operating system software",
+          "title": "KornShell"
+        },
+        {
+          "score": 8.91,
+          "classification": "technology",
+          "category": "Program testing software",
+          "title": "Junit"
+        },
+        {
+          "score": 8.91,
+          "classification": "technology",
+          "category": "Object or component oriented development software",
+          "title": "jQuery"
+        },
+        {
+          "score": 8.91,
+          "classification": "technology",
+          "category": "Web platform development software",
+          "title": "JavaScript"
+        },
+        {
+          "score": 8.91,
+          "classification": "technology",
+          "category": "Development environment software",
+          "title": "Integrated development environment IDE software"
+        },
+        {
+          "score": 8.91,
+          "classification": "technology",
+          "category": "Enterprise application integration software",
+          "title": "IBM WebSphere"
+        },
+        {
+          "score": 8.91,
+          "classification": "technology",
+          "category": "Development environment software",
+          "title": "IBM Rational Rose"
+        },
+        {
+          "score": 8.91,
+          "classification": "technology",
+          "category": "Enterprise system management software",
+          "title": "IBM Power Systems software"
+        },
+        {
+          "score": 8.91,
+          "classification": "technology",
+          "category": "Object oriented data base management software",
+          "title": "IBM Informix"
+        },
+        {
+          "score": 8.91,
+          "classification": "technology",
+          "category": "Communications server software",
+          "title": "IBM Domino"
+        },
+        {
+          "score": 8.91,
+          "classification": "technology",
+          "category": "Web platform development software",
+          "title": "Hypertext markup language HTML"
+        },
+        {
+          "score": 8.91,
+          "classification": "technology",
+          "category": "Object oriented data base management software",
+          "title": "Hibernate ORM"
+        },
+        {
+          "score": 8.91,
+          "classification": "technology",
+          "category": "Program testing software",
+          "title": "Hewlett Packard LoadRunner"
+        },
+        {
+          "score": 8.91,
+          "classification": "technology",
+          "category": "Operating system software",
+          "title": "Hewlett Packard HP-UX"
+        },
+        {
+          "score": 8.91,
+          "classification": "technology",
+          "category": "Data mining software",
+          "title": "Google Analytics"
+        },
+        {
+          "score": 8.91,
+          "classification": "technology",
+          "category": "Sales and marketing software",
+          "title": "Google AdWords"
+        },
+        {
+          "score": 8.91,
+          "classification": "technology",
+          "category": "Map creation software",
+          "title": "Geographic information system GIS software"
+        },
+        {
+          "score": 8.91,
+          "classification": "technology",
+          "category": "Data base user interface and query software",
+          "title": "FileMaker Pro software"
+        },
+        {
+          "score": 8.91,
+          "classification": "technology",
+          "category": "Enterprise application integration software",
+          "title": "Extensible stylesheet language XSL"
+        },
+        {
+          "score": 8.91,
+          "classification": "technology",
+          "category": "Web platform development software",
+          "title": "Extensible stylesheet language transformations XSLT"
+        },
+        {
+          "score": 8.91,
+          "classification": "technology",
+          "category": "Enterprise application integration software",
+          "title": "Extensible markup language XML"
+        },
+        {
+          "score": 8.91,
+          "classification": "technology",
+          "category": "Web platform development software",
+          "title": "Extensible HyperText Markup Language XHTML"
+        },
+        {
+          "score": 8.91,
+          "classification": "technology",
+          "category": "Web platform development software",
+          "title": "Ext JS"
+        },
+        {
+          "score": 8.91,
+          "classification": "technology",
+          "category": "Map creation software",
+          "title": "ESRI ArcGIS software"
+        },
+        {
+          "score": 8.91,
+          "classification": "technology",
+          "category": "Web platform development software",
+          "title": "Enterprise JavaBeans"
+        },
+        {
+          "score": 8.91,
+          "classification": "technology",
+          "category": "Development environment software",
+          "title": "Eclipse software"
+        },
+        {
+          "score": 8.91,
+          "classification": "technology",
+          "category": "Web platform development software",
+          "title": "Dynamic hypertext markup language DHTML"
+        },
+        {
+          "score": 8.91,
+          "classification": "technology",
+          "category": "Web platform development software",
+          "title": "Drupal"
+        },
+        {
+          "score": 8.91,
+          "classification": "technology",
+          "category": "Transaction server software",
+          "title": "Customer information control system CCIS"
+        },
+        {
+          "score": 8.91,
+          "classification": "technology",
+          "category": "Enterprise application integration software",
+          "title": "Common gateway interface CGI"
+        },
+        {
+          "score": 8.91,
+          "classification": "technology",
+          "category": "Development environment software",
+          "title": "Common business oriented language COBOL"
+        },
+        {
+          "score": 8.91,
+          "classification": "technology",
+          "category": "Web platform development software",
+          "title": "Cascading Style Sheets CSS"
+        },
+        {
+          "score": 8.91,
+          "classification": "technology",
+          "category": "Object or component oriented development software",
+          "title": "C++"
+        },
+        {
+          "score": 8.91,
+          "classification": "technology",
+          "category": "Object or component oriented development software",
+          "title": "C#"
+        },
+        {
+          "score": 8.91,
+          "classification": "technology",
+          "category": "Development environment software",
+          "title": "C"
+        },
+        {
+          "score": 8.91,
+          "classification": "technology",
+          "category": "Data base user interface and query software",
+          "title": "Blackboard software"
+        },
+        {
+          "score": 8.91,
+          "classification": "technology",
+          "category": "Web platform development software",
+          "title": "Asynchronous JavaScript and XML AJAX"
+        },
+        {
+          "score": 8.91,
+          "classification": "technology",
+          "category": "Video creation and editing software",
+          "title": "Apple Final Cut Pro"
+        }
+      ]
+    }
+  }
+}
