@@ -30,10 +30,8 @@
 
     function initControls () {
         cuff.controls.postInput = postInputControl;
-        cuff.controls.totalCountOutput = totalOutputControl;
         cuff.controls.countOutput = countOutputControl;
         cuff.controls.readingLevelOutput = readingLevelOutputControl;
-        cuff.controls.averageRLOutput = averageRLOutputControl;
         cuff.controls.contextOutput = contextOutputControl;
         cuff.controls.errorTooltip = errorTooltipControl;
         cuff.controls.infoTooltip = infoTooltipControl;
@@ -216,33 +214,6 @@
         });
     }
 
-    function totalOutputControl (element) {
-        var counters = {};
-        var countersArray = [];
-        $(element).find('[data-role=count]').each(function () {
-            var type = this.getAttribute('data-type');
-            var counter = this.querySelector('[data-role=number]');
-            counters[type] = counter;
-            countersArray.push(counter);
-        });
-
-        $(document).on('update-totals', function (event) {
-
-            countersArray.forEach(function (counter) {
-                counter.innerHTML =  0;
-            });
-
-            $('.count-chart-small').children().each(function() {
-              var type = this.getAttribute('data-type');
-              if (counters[type]) {
-                var subCount = $(this).find('[data-role=number]')[0].innerHTML * 1;
-                counters[type].innerHTML = counters[type].innerHTML * 1 + subCount;
-              }
-            });
-
-        });
-    }
-
     function readingLevelOutputControl(element) {
 
       element.innerHTML = templates.readingLevel.render({"readingLevel" : 'N/A'});
@@ -262,36 +233,7 @@
         };
         element.innerHTML = templates.readingLevel.render(readingLevelSummary);
         cuff(element);
-        updateAverageReadingLevel(id, results.readingLevel);
       });
-    }
-
-    var readingLevels = {};
-
-    function updateAverageReadingLevel(levelId, readingLevel) {
-      if (readingLevel < 0) {
-        delete readingLevels[levelId];
-      } else {
-        readingLevels[levelId] = readingLevel;
-      }
-
-      var average = Object.keys(readingLevels).length === 0 ? -1
-                                                     : _.round(_.mean(_.values(readingLevels)), 1);
-
-      var tooHigh = average >= 9;
-      var readingLevelSummary = {
-        "readingLevel": average < 0 ? 'N/A' : average,
-        "tooHigh": tooHigh,
-        "level": tooHigh ? "error-highlight" : "info-highlight"
-      };
-      var element = $(document).find('[data-control=averageRLOutput]')[0];
-      element.innerHTML = templates.averageReadingLevel.render(readingLevelSummary);
-      cuff(element);
-    }
-
-    function averageRLOutputControl(element) {
-      element.innerHTML = templates.averageReadingLevel.render({"readingLevel" : 'N/A'});
-      cuff(element);
     }
 
     function loadSkillsPageControl(element) {
@@ -404,20 +346,8 @@
     function composePostingFromFields() {
       var postingData = {};
 
-      var companyDescriptionEl = $("#company-desc-input");
-      if(companyDescriptionEl) postingData.companyDescription = companyDescriptionEl.val();
-
       var jobDescriptionEl = $("#job-desc-input");
       if(jobDescriptionEl) postingData.jobDescription = jobDescriptionEl.val();
-
-      var locationEl = $("#locationinput");
-      if(locationEl) postingData.location = locationEl.val();
-
-      var employmentTypeEl = $("#select-employment-type option:selected");
-      if(employmentTypeEl) postingData.employmentType = employmentTypeEl.text();
-
-      var applicationMethodEl = $("#positionapply");
-      if(applicationMethodEl) postingData.applicationMethod = applicationMethodEl.val();
 
       var positionTitleEl = $("#positiontitle");
       if(positionTitleEl) postingData.positionTitle = positionTitleEl.val();
@@ -457,9 +387,6 @@
         }
       });
       postingData.certificationsNeeded = certificationsNeeded;
-
-      var trainingOfferedEl = $("input:radio[name=training]:checked");
-      if(trainingOfferedEl) postingData.trainingOffered = trainingOfferedEl.val();
 
       return templates.fullJobPosting.render(postingData, templates);
     }
