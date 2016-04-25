@@ -15,9 +15,9 @@ layout: page
 
   <h3>Please describe the functions and responsibilities</h3>
   {% include site/analysisboxes.html %}
-  <div class="inform-small">
-    {% include site/readinglevel.html id="job-desc" %}
-    {% include site/counters.html id="job-desc" %}
+  <div class="inform">
+    {% include site/readinglevel.html %}
+    {% include site/counters.html %}
   </div>
 
   <div class="skillsNextContainer"><button class="skillsNext" data-control="loadSkillsButton">Generate Skills</button></div>
@@ -37,7 +37,8 @@ layout: page
     </div>
 
     <div class="line-input" id="certificates-needed">
-        <h3>Are any certificates needed?</h3>
+        <h3>Qualifiers</h3>
+        <p class="centered">Education, experience, certifications needed</p>
         <form>
             <input type="text" id="cert-needed" name="certNeeded">
             <span class="circle circle-plus" id="add-cert" data-control="addCertButton">+</span>

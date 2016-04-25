@@ -40,6 +40,7 @@
         cuff.controls.exportPostingPageButton = exportPostingPageControl;
         cuff.controls.addCertButton = duplicateCertControl;
         cuff.controls.addSkillsButton = duplicateSkillControl;
+        cuff.controls.removeSkillButton = removeSkillControl;
         cuff();
     }
 
@@ -53,7 +54,7 @@
             results.readingLevel = buildReadingLevel(element.value);
             var lintId = generateLintId(results);
             saveSession(element.value, element.id);
-            $document.trigger('lint-results', [results, element.id.replace("-input", "")]);
+            $document.trigger('lint-results', results);
         });
         var session = loadSession(element.id);
         if (session) {
@@ -67,13 +68,13 @@
     function contextOutputControl (element) {
 
       var typeTranslation = {
-        tech: "jargon",
-        sexism: "gender",
-        realism: "expectations"
+        tech: "Jargon",
+        sexism: "Gender",
+        realism: "Expectations"
       };
 
-      $(document).on('lint-results', function(event, results, descId) {
-          var inputElement = $(document).find('#' + descId + '-input')[0];
+      $(document).on('lint-results', function(event, results) {
+          var inputElement = $(document).find('#job-desc-input')[0];
           var baseText = inputElement.value.replace(/\n/g, "<br>");
 
           // sort array by the position of the issue
@@ -103,7 +104,7 @@
             }
           });
 
-          element = document.getElementById(descId + '-output');
+          element = document.getElementById('job-desc-output');
 
           element.innerHTML = baseText;
           cuff(element); // only apply bindings for children of this element
@@ -180,37 +181,14 @@
     }
 
     function countOutputControl (element) {
-        var counters = {};
-        var countersArray = [];
-        $(element).find('[data-role=count]').each(function () {
-            var type = this.getAttribute('data-type');
-            var counter = this.querySelector('[data-role=number]');
-            counters[type] = counter;
-            countersArray.push(counter);
-        });
 
-        $(document).on('lint-results', function (event, results, id) {
+      element.innerHTML = templates.issueCount.render({"issueCount" : "0"});
+      cuff(element);
 
-            // trying to match the results to the counters
-            if (countersArray[0].className.indexOf(id) < 0) {
-              return;
-            }
-
-            countersArray.forEach(function (counter) {
-                counter.innerHTML = 0;
-            });
-
-            _.forEach(acceptedTypes, function(acceptedType) {
-              results.counts[acceptedType] = results.counts[acceptedType] || 0;
-            });
-
-            Object.keys(results.counts).forEach(function (type) {
-                if (counters[type]) {
-                    counters[type].innerHTML = results.counts[type];
-                }
-            });
-            $(document).trigger('update-totals');
-        });
+      $(document).on('lint-results', function (event, results) {
+        element.innerHTML = templates.issueCount.render({ "issueCount" : results.issues.length});
+        cuff(element);
+      });
     }
 
     function readingLevelOutputControl(element) {
@@ -218,11 +196,7 @@
       element.innerHTML = templates.readingLevel.render({"readingLevel" : 'N/A'});
       cuff(element);
 
-      $(document).on('lint-results', function (event, results, id) {
-        // trying to match the results to the counters
-        if (element.className.indexOf(id) < 0) {
-          return;
-        }
+      $(document).on('lint-results', function (event, results) {
 
         var tooHigh = results.readingLevel >= 9;
         var readingLevelSummary = {
@@ -334,6 +308,16 @@
         $("#final-posting")[0].innerHTML = content;
         showPage('2');
       });
+    }
+
+    function removeSkillControl(element) {
+      // remove html
+      // remove from currentSkillSet if necessary
+
+      // use an html attribute like the count thing used to
+      // data-type="sexism" was accessible via jquery with this.getAttribute('data-type')
+      // also could maybe be smarter about the id-ing of the preferred/req'd clickers
+
     }
 
     function composePostingFromFields() {
