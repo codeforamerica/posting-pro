@@ -35,9 +35,8 @@
         cuff.controls.contextOutput = contextOutputControl;
         cuff.controls.errorTooltip = errorTooltipControl;
         cuff.controls.infoTooltip = infoTooltipControl;
-        cuff.controls.loadSkillsPageButton = loadSkillsPageControl;
+        cuff.controls.loadSkillsButton = loadSkillsControl;
         cuff.controls.gotoPage1Button = gotoPage1Control;
-        cuff.controls.gotoPage2Button = gotoPage2Control;
         cuff.controls.exportPostingPageButton = exportPostingPageControl;
         cuff.controls.addCertButton = duplicateCertControl;
         cuff.controls.addSkillsButton = duplicateSkillControl;
@@ -236,22 +235,16 @@
       });
     }
 
-    function loadSkillsPageControl(element) {
+    function loadSkillsControl(element) {
       $(element).bind('click', function() {
         generateSkillsControl();
-        showPage('2');
+        $("#skillsSection").show();
       });
     }
 
     function gotoPage1Control(element) {
       $(element).bind('click', function() {
         showPage('1');
-      });
-    }
-
-    function gotoPage2Control(element) {
-      $(element).bind('click', function() {
-        showPage('2');
       });
     }
 
@@ -339,7 +332,7 @@
       $(element).bind('click', function() {
         var content = composePostingFromFields();
         $("#final-posting")[0].innerHTML = content;
-        showPage('3');
+        showPage('2');
       });
     }
 

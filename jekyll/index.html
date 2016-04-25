@@ -13,53 +13,52 @@ layout: page
       </form>
   </div>
 
-  <h3>Please describe this position to a job seeker.</h3>
-  {% include site/analysisboxes.html descType="job" %}
+  <h3>Please describe the functions and responsibilities</h3>
+  {% include site/analysisboxes.html %}
   <div class="inform-small">
     {% include site/readinglevel.html id="job-desc" %}
     {% include site/counters.html id="job-desc" %}
   </div>
 
-  <div class="skillsNextContainer"><button class="skillsNext" data-control="loadSkillsPageButton">NEXT</button></div>
+  <div class="skillsNextContainer"><button class="skillsNext" data-control="loadSkillsButton">Generate Skills</button></div>
 
+  <div id="skillsSection" style="display:none;">
+
+    <div class="skillsEngine">
+        <h3>Skills</h3>
+        <p class="centered">These are common skills associated with the title and description you've provided for this position. Please select "Preferred" or "Required" for each skill. You may also add a skill that is not listed.</p>
+        <p class="centered"><em>Powered by <a href="https://skillsengine.com/home">SkillsEngine</a></em></p>
+
+        {% include site/skillstemplates.html %}
+
+    		<div id="soft-skills"></div>
+    		<div id="hard-skills"></div>
+
+    </div>
+
+    <div class="line-input" id="certificates-needed">
+        <h3>Are any certificates needed?</h3>
+        <form>
+            <input type="text" id="cert-needed" name="certNeeded">
+            <span class="circle circle-plus" id="add-cert" data-control="addCertButton">+</span>
+        </form>
+    </div>
+
+    <div class="skillsNextContainer">
+      <button class="skillsNext" data-control="exportPostingPageButton">EXPORT</button>
+    </div>
+
+  </div>
 </div>
 
 <div id="page_2" style="display:none;">
-
-  <div class="skillsEngine">
-      <h3>Soft and Hard Skills</h3>
-      <p class="centered">These are common skills associated with the title and description of your position.<br/>Please select N/A, Preferred or Required for each skill listed. You may also add a skill that is not listed.</p>
-
-      {% include site/skillstemplates.html %}
-
-  		<div id="soft-skills"></div>
-  		<div id="hard-skills"></div>
-
-  </div>
-
-  <div class="line-input" id="certificates-needed">
-      <h3>Are any certificates needed?</h3>
-      <form>
-          <input type="text" id="cert-needed" name="certNeeded">
-          <span class="circle circle-plus" id="add-cert" data-control="addCertButton">+</span>
-      </form>
-  </div>
-
-  <div class="skillsNextContainer">
-    <button class="skillsNext" data-control="gotoPage1Button">BACK</button>
-    <button class="skillsNext" data-control="exportPostingPageButton">EXPORT</button>
-  </div>
-
-</div>
-
-<div id="page_3" style="display:none;">
 
   {% include site/jobpostingtemplate.html %}
 
   <div id="final-posting" class="line-input"></div>
 
   <div class="skillsNextContainer">
-    <button class="skillsNext" data-control="gotoPage2Button">BACK</button>
+    <button class="skillsNext" data-control="gotoPage1Button">BACK</button>
   </div>
 
 </div>
