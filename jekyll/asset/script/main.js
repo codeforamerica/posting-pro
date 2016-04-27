@@ -30,19 +30,18 @@
 
     function initControls () {
         cuff.controls.postInput = postInputControl;
-        cuff.controls.totalCountOutput = totalOutputControl;
         cuff.controls.countOutput = countOutputControl;
         cuff.controls.readingLevelOutput = readingLevelOutputControl;
-        cuff.controls.averageRLOutput = averageRLOutputControl;
         cuff.controls.contextOutput = contextOutputControl;
         cuff.controls.errorTooltip = errorTooltipControl;
         cuff.controls.infoTooltip = infoTooltipControl;
-        cuff.controls.loadSkillsPageButton = loadSkillsPageControl;
+        cuff.controls.loadSkillsButton = loadSkillsControl;
         cuff.controls.gotoPage1Button = gotoPage1Control;
-        cuff.controls.gotoPage2Button = gotoPage2Control;
         cuff.controls.exportPostingPageButton = exportPostingPageControl;
         cuff.controls.addCertButton = duplicateCertControl;
         cuff.controls.addSkillsButton = duplicateSkillControl;
+        cuff.controls.removeSkillButton = removeSkillControl;
+        cuff.controls.removeCertButton = removeCertControl;
         cuff();
     }
 
@@ -56,7 +55,7 @@
             results.readingLevel = buildReadingLevel(element.value);
             var lintId = generateLintId(results);
             saveSession(element.value, element.id);
-            $document.trigger('lint-results', [results, element.id.replace("-input", "")]);
+            $document.trigger('lint-results', results);
         });
         var session = loadSession(element.id);
         if (session) {
@@ -70,13 +69,13 @@
     function contextOutputControl (element) {
 
       var typeTranslation = {
-        tech: "jargon",
-        sexism: "gender",
-        realism: "expectations"
+        tech: "Jargon",
+        sexism: "Gender",
+        realism: "Expectations"
       };
 
-      $(document).on('lint-results', function(event, results, descId) {
-          var inputElement = $(document).find('#' + descId + '-input')[0];
+      $(document).on('lint-results', function(event, results) {
+          var inputElement = $(document).find('#job-desc-input')[0];
           var baseText = inputElement.value.replace(/\n/g, "<br>");
 
           // sort array by the position of the issue
@@ -106,7 +105,7 @@
             }
           });
 
-          element = document.getElementById(descId + '-output');
+          element = document.getElementById('job-desc-output');
 
           element.innerHTML = baseText;
           cuff(element); // only apply bindings for children of this element
@@ -183,64 +182,14 @@
     }
 
     function countOutputControl (element) {
-        var counters = {};
-        var countersArray = [];
-        $(element).find('[data-role=count]').each(function () {
-            var type = this.getAttribute('data-type');
-            var counter = this.querySelector('[data-role=number]');
-            counters[type] = counter;
-            countersArray.push(counter);
-        });
 
-        $(document).on('lint-results', function (event, results, id) {
+      element.innerHTML = templates.issueCount.render({"issueCount" : "0"});
+      cuff(element);
 
-            // trying to match the results to the counters
-            if (countersArray[0].className.indexOf(id) < 0) {
-              return;
-            }
-
-            countersArray.forEach(function (counter) {
-                counter.innerHTML = 0;
-            });
-
-            _.forEach(acceptedTypes, function(acceptedType) {
-              results.counts[acceptedType] = results.counts[acceptedType] || 0;
-            });
-
-            Object.keys(results.counts).forEach(function (type) {
-                if (counters[type]) {
-                    counters[type].innerHTML = results.counts[type];
-                }
-            });
-            $(document).trigger('update-totals');
-        });
-    }
-
-    function totalOutputControl (element) {
-        var counters = {};
-        var countersArray = [];
-        $(element).find('[data-role=count]').each(function () {
-            var type = this.getAttribute('data-type');
-            var counter = this.querySelector('[data-role=number]');
-            counters[type] = counter;
-            countersArray.push(counter);
-        });
-
-        $(document).on('update-totals', function (event) {
-
-            countersArray.forEach(function (counter) {
-                counter.innerHTML =  0;
-            });
-
-            $('.count-chart-small').children().each(function() {
-              var type = this.getAttribute('data-type');
-              if (counters[type]) {
-                var subCount = $(this).find('[data-role=number]')[0].innerHTML * 1;
-                counters[type].innerHTML = counters[type].innerHTML * 1 + subCount;
-              }
-            });
-
-        });
+      $(document).on('lint-results', function (event, results) {
+        element.innerHTML = templates.issueCount.render({ "issueCount" : results.issues.length});
+        cuff(element);
+      });
     }
 
     function readingLevelOutputControl(element) {
@@ -248,11 +197,7 @@
       element.innerHTML = templates.readingLevel.render({"readingLevel" : 'N/A'});
       cuff(element);
 
-      $(document).on('lint-results', function (event, results, id) {
-        // trying to match the results to the counters
-        if (element.className.indexOf(id) < 0) {
-          return;
-        }
+      $(document).on('lint-results', function (event, results) {
 
         var tooHigh = results.readingLevel >= 9;
         var readingLevelSummary = {
@@ -262,54 +207,20 @@
         };
         element.innerHTML = templates.readingLevel.render(readingLevelSummary);
         cuff(element);
-        updateAverageReadingLevel(id, results.readingLevel);
       });
     }
 
-    var readingLevels = {};
-
-    function updateAverageReadingLevel(levelId, readingLevel) {
-      if (readingLevel < 0) {
-        delete readingLevels[levelId];
-      } else {
-        readingLevels[levelId] = readingLevel;
-      }
-
-      var average = Object.keys(readingLevels).length === 0 ? -1
-                                                     : _.round(_.mean(_.values(readingLevels)), 1);
-
-      var tooHigh = average >= 9;
-      var readingLevelSummary = {
-        "readingLevel": average < 0 ? 'N/A' : average,
-        "tooHigh": tooHigh,
-        "level": tooHigh ? "error-highlight" : "info-highlight"
-      };
-      var element = $(document).find('[data-control=averageRLOutput]')[0];
-      element.innerHTML = templates.averageReadingLevel.render(readingLevelSummary);
-      cuff(element);
-    }
-
-    function averageRLOutputControl(element) {
-      element.innerHTML = templates.averageReadingLevel.render({"readingLevel" : 'N/A'});
-      cuff(element);
-    }
-
-    function loadSkillsPageControl(element) {
+    function loadSkillsControl(element) {
       $(element).bind('click', function() {
         generateSkillsControl();
-        showPage('2');
+        renderCertification("cert");
+        $("#skillsSection").show();
       });
     }
 
     function gotoPage1Control(element) {
       $(element).bind('click', function() {
         showPage('1');
-      });
-    }
-
-    function gotoPage2Control(element) {
-      $(element).bind('click', function() {
-        showPage('2');
       });
     }
 
@@ -326,7 +237,7 @@
     var currentSkillSet = {};
 
     function generateSkillsControl() {
-      var MAX_SKILLS = 5;
+      var MAX_SKILLS = 3;
       var jobDescription = $("#job-desc-input").val();
 
       getSkillsEngineCompetencies(jobDescription, function(data) {
@@ -335,50 +246,40 @@
         if(data && data.result && data.result.competencies_analysis) {
           currentSkillsAnalysis = data.result.competencies_analysis;
 
+          var skillsAndTools = [];
+          
           if(currentSkillsAnalysis.skills && currentSkillsAnalysis.skills.length) {
-            var skills = [];
-
             var len = _.min([MAX_SKILLS, currentSkillsAnalysis.skills.length]);
             for(var i = 0; i < len; i++) {
               var skill = {
                 name: currentSkillsAnalysis.skills[i][0],
                 id: "skill" + i
               };
-              skills.push(skill);
+              skillsAndTools.push(skill);
               currentSkillSet[skill.id] = skill.name;
             }
-
-            renderSkillSet("Soft Skills", skills, "soft-skills");
           }
 
           if(currentSkillsAnalysis.tools && currentSkillsAnalysis.tools.length) {
-            var tools = [];
-
             var len = _.min([MAX_SKILLS, currentSkillsAnalysis.tools.length]);
             for(var i = 0; i < len; i++) {
               var tool = {
                 name: currentSkillsAnalysis.tools[i].title,
                 id: "tool" + i
               };
-              tools.push(tool);
+              skillsAndTools.push(tool);
               currentSkillSet[tool.id] = tool.name;
             }
-
-            renderSkillSet("Hard Skills", tools, "hard-skills");
           }
+          renderSkillSet(skillsAndTools, "skills-and-tools");
         }
       });
     }
 
     function duplicateCertControl(element) {
-      var original = $('#cert-needed')[0];
       var i = 1;
-
       $(element).bind('click', function() {
-        var clone = original.cloneNode(true);
-        clone.id = original.id + i++;
-        clone.value = "";
-        $(clone).insertBefore('#add-cert');
+        renderCertification("cert" + i++);
       });
     }
 
@@ -388,8 +289,9 @@
 
       $(element).bind('click', function() {
         var newHTML = templates.skillAdder.render({id: divId + i++});
-        $("#" + divId + " ul")
-          .append($("<li>").append(newHTML));
+        var list = $("#" + divId + " ul");
+        list.append($("<li>").append(newHTML));
+        cuff(list[0]); // makes the remove button work
       });
     }
 
@@ -397,27 +299,29 @@
       $(element).bind('click', function() {
         var content = composePostingFromFields();
         $("#final-posting")[0].innerHTML = content;
-        showPage('3');
+        showPage('2');
+      });
+    }
+
+    function removeSkillControl(element) {
+      $(element).bind('click', function() {
+        var skillId = element.id;
+        delete currentSkillSet[skillId];
+        $("#" + skillId).parent().remove();        
+      });
+    }
+
+    function removeCertControl(element) {
+      $(element).bind('click', function(){
+        $("#" + element.id).parents('li').remove();
       });
     }
 
     function composePostingFromFields() {
       var postingData = {};
 
-      var companyDescriptionEl = $("#company-desc-input");
-      if(companyDescriptionEl) postingData.companyDescription = companyDescriptionEl.val();
-
       var jobDescriptionEl = $("#job-desc-input");
       if(jobDescriptionEl) postingData.jobDescription = jobDescriptionEl.val();
-
-      var locationEl = $("#locationinput");
-      if(locationEl) postingData.location = locationEl.val();
-
-      var employmentTypeEl = $("#select-employment-type option:selected");
-      if(employmentTypeEl) postingData.employmentType = employmentTypeEl.text();
-
-      var applicationMethodEl = $("#positionapply");
-      if(applicationMethodEl) postingData.applicationMethod = applicationMethodEl.val();
 
       var positionTitleEl = $("#positiontitle");
       if(positionTitleEl) postingData.positionTitle = positionTitleEl.val();
@@ -440,8 +344,6 @@
                 name: skillName
               });
               break;
-
-            case 'na':
             default:
               break;
           }
@@ -456,11 +358,8 @@
           certificationsNeeded.push({name: this.value});
         }
       });
+
       postingData.certificationsNeeded = certificationsNeeded;
-
-      var trainingOfferedEl = $("input:radio[name=training]:checked");
-      if(trainingOfferedEl) postingData.trainingOffered = trainingOfferedEl.val();
-
       return templates.fullJobPosting.render(postingData, templates);
     }
 
@@ -473,16 +372,21 @@
       });
     }
 
-    function renderSkillSet(name, skills, id) {
+    function renderSkillSet(skills, id) {
       var skillSet = {
         id: id,
-        type: name,
         skills: skills
       };
 
       var element = $("#" + id)[0];
       element.innerHTML = templates.skillSet.render(skillSet, templates);
       cuff(element);          
+    }
+
+    function renderCertification(id) {
+      var certList = $('#cert-list');
+      certList.append(templates.certNeeded.render({"id": id}));
+      cuff(certList[0]);
     }
 
     function generateLintId (results) {

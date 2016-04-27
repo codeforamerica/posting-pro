@@ -6,46 +6,6 @@ layout: page
 
 <div id="page_1">
 
-  <div class="line-input" id="company_name">
-      <h3>What's your company  name?</h3>
-      <form>
-          <input type="text" id="companyname" name="companyname">
-      </form>
-  </div>
-
-  <h3>Please describe your company to a job seeker.</h3>
-  {% include site/analysisboxes.html descType="company" %}
-  <div class="inform-small">
-    {% include site/readinglevel.html id="company-desc" %}
-    {% include site/counters.html id="company-desc" %}
-  </div>
-
-  <div class="line-input" id="location">
-      <h3>What location will this position mostly be working from?</h3>
-      <form>
-          <input type="text" id="locationinput" name="locationinput">
-      </form>
-  </div>
-
-  <div class="line-input" id="employment_type">
-      <h3>What is the employment type?</h3>
-      <select id="select-employment-type">
-          <option value="fullTime">Full-Time</option>
-          <option value="partTime">Part-Time</option>
-          <option value="casual">Casual</option>
-          <option value="contractor">Contractor</option>
-          <option value="intern">Intern</option>
-          <option value="other">Other</option>
-      </select>
-  </div>
-
-  <div class="line-input" id="position_apply">
-      <h3>How does a job seeker apply?</h3>
-      <form>
-          <textarea name="positionapply" id="positionapply" rows="5"></textarea>
-      </form>
-  </div>
-
   <div class="line-input" id="position_title">
       <h3>What is the position title?</h3>
       <form>
@@ -53,66 +13,60 @@ layout: page
       </form>
   </div>
 
-  <h3>Please describe this position to a job seeker.</h3>
-  {% include site/analysisboxes.html descType="job" %}
-  <div class="inform-small">
-    {% include site/readinglevel.html id="job-desc" %}
-    {% include site/counters.html id="job-desc" %}
+  <h3>Please describe the functions and responsibilities</h3>
+  {% include site/analysisboxes.html %}
+  <div class="inform">
+    {% include site/readinglevel.html %}
+    {% include site/counters.html %}
   </div>
 
-  <div class="skillsNextContainer"><button class="skillsNext" data-control="loadSkillsPageButton">NEXT</button></div>
+  <div class="skillsNextContainer"><button class="skillsNext" data-control="loadSkillsButton">Generate Skills</button></div>
 
+  <div id="skillsSection" style="display:none;">
+
+    <div class="skillsEngine">
+        <h3>Skills</h3>
+        <p class="centered">These are common skills associated with the title and description you've provided for this position. Please select "Preferred" or "Required" for each skill. You may also add a skill that is not listed.</p>
+        <p class="centered"><em>Powered by <a href="https://skillsengine.com/home">SkillsEngine</a></em></p>
+
+        {% include site/skillstemplates.html %}
+
+    		<div id="skills-and-tools"></div>
+
+    </div>
+
+    <div class="certifications" id="certificates-needed">
+      <h3>Qualifications</h3>
+      <p class="centered">Education, experience, certifications needed</p>
+      <ul id="cert-list">
+        <script type="text/x-template" data-template="certNeeded">
+          <li>
+            <form>
+              <input type="text" id="new-{id}" name="certNeeded">
+              <span class="circle circle-remove" data-control="removeCertButton" id="{id}">x</span>
+            </form>
+            <div class="clear"/>
+          </li>
+        </script>
+      </ul>
+      <span class="circle circle-plus" id="add-cert" data-control="addCertButton">+</span>
+    </div>
+
+    <div class="skillsNextContainer">
+      <button class="skillsNext" data-control="exportPostingPageButton">EXPORT</button>
+    </div>
+
+  </div>
 </div>
 
 <div id="page_2" style="display:none;">
-
-  <div class="skillsEngine">
-      <h3>Soft and Hard Skills</h3>
-      <p class="centered">These are common skills associated with the title and description of your position.<br/>Please select N/A, Preferred or Required for each skill listed. You may also add a skill that is not listed.</p>
-
-      {% include site/skillstemplates.html %}
-
-  		<div id="soft-skills"></div>
-  		<div id="hard-skills"></div>
-
-  </div>
-
-  <div class="line-input" id="certificates-needed">
-      <h3>Are any certificates needed?</h3>
-      <form>
-          <input type="text" id="cert-needed" name="certNeeded">
-          <span class="circle circle-plus" id="add-cert" data-control="addCertButton">+</span>
-      </form>
-  </div>
-
-  <div class="line-input" id="training_offered">
-      <h3>Is training offered on the job?</h3>
-      <form>
-          <fieldset class="switch-field">
-              <input type="radio" id="switch_leftTrain" name="training" value="yes" checked/>
-              <label for="switch_leftTrain">Yes</label>
-              <input type="radio" id="switch_rightTrain" name="training" value="no" />
-              <label for="switch_rightTrain">No</label>
-          </fieldset>
-      </form>
-      <div class="clear"></div>
-  </div>
-
-  <div class="skillsNextContainer">
-    <button class="skillsNext" data-control="gotoPage1Button">BACK</button>
-    <button class="skillsNext" data-control="exportPostingPageButton">EXPORT</button>
-  </div>
-
-</div>
-
-<div id="page_3" style="display:none;">
 
   {% include site/jobpostingtemplate.html %}
 
   <div id="final-posting" class="line-input"></div>
 
   <div class="skillsNextContainer">
-    <button class="skillsNext" data-control="gotoPage2Button">BACK</button>
+    <button class="skillsNext" data-control="gotoPage1Button">BACK</button>
   </div>
 
 </div>

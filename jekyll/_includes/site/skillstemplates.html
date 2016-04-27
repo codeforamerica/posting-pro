@@ -1,6 +1,5 @@
 <script type="text/x-template" data-template="skillSet">
   {#skills.length}
-    <h4>{type}</h4>
     <ul>
         {#skills}
           <li>
@@ -11,32 +10,32 @@
           {>skillAdder}
         </li>
     </ul>
-    <span class="circle circle-plus" data-control="addSkillsButton" id="add-{id}">+</span>
+    <span class="circle circle-plus" data-control="addSkillsButton" id="add-new-{id}">+</span>
   {/skills.length}
 </script>
 
 <script type="text/x-template" data-template="skillImportanceSwitcher">
     <form>
         <fieldset class="switch-field">
-            <input type="radio" id="switch-left-{id}" name="switch-{id}" value="na" checked/>
-            <label for="switch-left-{id}">N/A</label>
-            <input type="radio" id="switch-center-{id}" name="switch-{id}" value="preferred" />
-            <label for="switch-center-{id}">Preferred</label>
+            <input type="radio" id="switch-left-{id}" name="switch-{id}" value="preferred" checked/>
+            <label for="switch-left-{id}">Preferred</label>
             <input type="radio" id="switch-right-{id}" name="switch-{id}" value="required" />
             <label for="switch-right-{id}">Required</label>
         </fieldset>
     </form>
-    <p>{name}</p><div class="clear"></div>
+    <p>{name}</p><span class="circle circle-remove" data-control="removeSkillButton" id="{id}">x</span>
+    <div class="clear"></div>
 </script>
 
 <script type="text/x-template" data-template="skillAdder">
   <form>
-      <fieldset class="switch-field add-skill">
-          <input type="radio" id="switch-center-add-{id}" name="switch-add-{id}" value="preferred" checked/>
-          <label for="switch-center-add-{id}">Preferred</label>
-          <input type="radio" id="switch-right-add-{id}" name="switch-add-{id}" value="required" />
-          <label for="switch-right-add-{id}">Required</label>
+      <fieldset class="switch-field">
+          <input type="radio" id="switch-left-new-{id}" name="switch-new-{id}" value="preferred" checked/>
+          <label for="switch-right-new-{id}">Preferred</label>
+          <input type="radio" id="switch-right-new-{id}" name="switch-new-{id}" value="required" />
+          <label for="switch-right-new-{id}">Required</label>
       </fieldset>
   </form>
-  <input type="text" name="switch-add-{id}" class="new-skill">
+  <input type="text" name="switch-new-{id}" class="new-skill" placeholder="Type a new skill here">
+  <span class="circle circle-remove" data-control="removeSkillButton" id="new-{id}">x</span>
 </script>
