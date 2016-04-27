@@ -41,6 +41,7 @@
         cuff.controls.addCertButton = duplicateCertControl;
         cuff.controls.addSkillsButton = duplicateSkillControl;
         cuff.controls.removeSkillButton = removeSkillControl;
+        cuff.controls.removeCertButton = removeCertControl;
         cuff();
     }
 
@@ -212,6 +213,7 @@
     function loadSkillsControl(element) {
       $(element).bind('click', function() {
         generateSkillsControl();
+        renderCertification("cert");
         $("#skillsSection").show();
       });
     }
@@ -280,14 +282,9 @@
     }
 
     function duplicateCertControl(element) {
-      var original = $('#cert-needed')[0];
       var i = 1;
-
       $(element).bind('click', function() {
-        var clone = original.cloneNode(true);
-        clone.id = original.id + i++;
-        clone.value = "";
-        $(clone).insertBefore('#add-cert');
+        renderCertification("cert" + i++);
       });
     }
 
@@ -297,8 +294,9 @@
 
       $(element).bind('click', function() {
         var newHTML = templates.skillAdder.render({id: divId + i++});
-        $("#" + divId + " ul")
-          .append($("<li>").append(newHTML));
+        var list = $("#" + divId + " ul");
+        list.append($("<li>").append(newHTML));
+        cuff(list[0]); // makes the remove button work
       });
     }
 
@@ -311,13 +309,17 @@
     }
 
     function removeSkillControl(element) {
-      // remove html
-      // remove from currentSkillSet if necessary
+      $(element).bind('click', function() {
+        var skillId = element.id;
+        delete currentSkillSet[skillId];
+        $("#" + skillId).parent().remove();        
+      });
+    }
 
-      // use an html attribute like the count thing used to
-      // data-type="sexism" was accessible via jquery with this.getAttribute('data-type')
-      // also could maybe be smarter about the id-ing of the preferred/req'd clickers
-
+    function removeCertControl(element) {
+      $(element).bind('click', function(){
+        $("#" + element.id).parents('li').remove();
+      });
     }
 
     function composePostingFromFields() {
@@ -347,8 +349,6 @@
                 name: skillName
               });
               break;
-
-            case 'na':
             default:
               break;
           }
@@ -363,8 +363,8 @@
           certificationsNeeded.push({name: this.value});
         }
       });
-      postingData.certificationsNeeded = certificationsNeeded;
 
+      postingData.certificationsNeeded = certificationsNeeded;
       return templates.fullJobPosting.render(postingData, templates);
     }
 
@@ -387,6 +387,12 @@
       var element = $("#" + id)[0];
       element.innerHTML = templates.skillSet.render(skillSet, templates);
       cuff(element);          
+    }
+
+    function renderCertification(id) {
+      var certList = $('#cert-list');
+      certList.append(templates.certNeeded.render({"id": id}));
+      cuff(certList[0]);
     }
 
     function generateLintId (results) {

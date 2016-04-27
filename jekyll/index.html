@@ -36,13 +36,21 @@ layout: page
 
     </div>
 
-    <div class="line-input" id="certificates-needed">
-        <h3>Qualifiers</h3>
-        <p class="centered">Education, experience, certifications needed</p>
-        <form>
-            <input type="text" id="cert-needed" name="certNeeded">
-            <span class="circle circle-plus" id="add-cert" data-control="addCertButton">+</span>
-        </form>
+    <div class="certifications" id="certificates-needed">
+      <h3>Qualifications</h3>
+      <p class="centered">Education, experience, certifications needed</p>
+      <ul id="cert-list">
+        <script type="text/x-template" data-template="certNeeded">
+          <li>
+            <form>
+              <input type="text" id="new-{id}" name="certNeeded">
+              <span class="circle circle-remove" data-control="removeCertButton" id="{id}">x</span>
+            </form>
+            <div class="clear"/>
+          </li>
+        </script>
+      </ul>
+      <span class="circle circle-plus" id="add-cert" data-control="addCertButton">+</span>
     </div>
 
     <div class="skillsNextContainer">
