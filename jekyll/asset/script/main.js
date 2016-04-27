@@ -237,7 +237,7 @@
     var currentSkillSet = {};
 
     function generateSkillsControl() {
-      var MAX_SKILLS = 5;
+      var MAX_SKILLS = 3;
       var jobDescription = $("#job-desc-input").val();
 
       getSkillsEngineCompetencies(jobDescription, function(data) {
@@ -246,37 +246,32 @@
         if(data && data.result && data.result.competencies_analysis) {
           currentSkillsAnalysis = data.result.competencies_analysis;
 
+          var skillsAndTools = [];
+          
           if(currentSkillsAnalysis.skills && currentSkillsAnalysis.skills.length) {
-            var skills = [];
-
             var len = _.min([MAX_SKILLS, currentSkillsAnalysis.skills.length]);
             for(var i = 0; i < len; i++) {
               var skill = {
                 name: currentSkillsAnalysis.skills[i][0],
                 id: "skill" + i
               };
-              skills.push(skill);
+              skillsAndTools.push(skill);
               currentSkillSet[skill.id] = skill.name;
             }
-
-            renderSkillSet("Soft Skills", skills, "soft-skills");
           }
 
           if(currentSkillsAnalysis.tools && currentSkillsAnalysis.tools.length) {
-            var tools = [];
-
             var len = _.min([MAX_SKILLS, currentSkillsAnalysis.tools.length]);
             for(var i = 0; i < len; i++) {
               var tool = {
                 name: currentSkillsAnalysis.tools[i].title,
                 id: "tool" + i
               };
-              tools.push(tool);
+              skillsAndTools.push(tool);
               currentSkillSet[tool.id] = tool.name;
             }
-
-            renderSkillSet("Hard Skills", tools, "hard-skills");
           }
+          renderSkillSet(skillsAndTools, "skills-and-tools");
         }
       });
     }
@@ -377,10 +372,9 @@
       });
     }
 
-    function renderSkillSet(name, skills, id) {
+    function renderSkillSet(skills, id) {
       var skillSet = {
         id: id,
-        type: name,
         skills: skills
       };
 
