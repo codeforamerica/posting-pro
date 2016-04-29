@@ -46,7 +46,8 @@ h2 {
 }
 h3 {
     @include rem(font-size, 22px);
-    line-height: 3.5em;
+    line-height: 2.2em;
+    padding: 1.2em 0;
     text-align: center;
     margin: 20px 0 0 0;
 }
@@ -133,14 +134,14 @@ footer p{
 }
 
 // Columns
-.columnWrapper{width: 880px; margin: 0 auto;}
+.columnWrapper{width: 100%; margin: 0 auto;}
 .column {
     float: left;
     box-sizing: border-box;
     height: 100%;
 }
 
-@media only screen and (max-width: 720px) {
+@media only screen and (max-width: 935px) {
     .column {
         float: none;
         height: auto;
@@ -149,8 +150,17 @@ footer p{
 
 // Input area
 .input-area {
-    width: 430px;
-	margin: 0 20px 0 0;
+  min-width: 420px;
+  max-width: 45%;
+  width: 100%;
+	margin: 0 2% 0 4%;
+}
+
+@media only screen and (max-width: 935px) {
+    .input-area {
+        width: auto;
+        margin: 0 auto;
+    }
 }
 
 .post-input {
@@ -170,7 +180,7 @@ footer p{
 }
 
 //Input form
-.line-input{width: 600px; margin: 0 auto;
+.line-input{width: 100%; margin: 0 auto;
 }
 .line-input form{width: 350px; margin: 0 auto;}
 .line-input form input{
@@ -194,7 +204,9 @@ footer p{
 // Output area
 
 .output-area {
-    width: 430px;
+    min-width: 420px;
+    max-width: 45%;
+    margin-right: 4%;
 }
 .output-tally, .output-issues {
     box-sizing: border-box;
@@ -208,20 +220,14 @@ footer p{
     overflow: auto;
 }
 
-@media only screen and (max-width: 720px) {
+@media only screen and (max-width: 935px) {
     .output-area {
         width: auto;
+        margin: 0 auto;
     }
     .output-tally, .output-issues {
         float: left;
         width: 50%;
-    }
-}
-
-@media only screen and (max-width: 550px) {
-    .output-tally, .output-issues {
-        float: none;
-        width: auto;
     }
 }
 
@@ -305,11 +311,19 @@ footer p{
 // Reading level & analysis
 
 .inform {
-    width: 880px;
+    max-width: 880px;
     height: 85px;
     margin: 0 auto;
     text-align: right;
 }
+
+
+@media only screen and (max-width: 720px) {
+    .inform {
+        text-align: center
+    }
+}
+
 
 .analysis {
     display: inline-block;
@@ -377,14 +391,19 @@ footer p{
 }
 .skillsNext:first-child { margin-left: 0px; }
 .skillsNext:hover {background-color:#D1D1D1;}
-.skillsEngine {width: 840px; margin: 0 auto;}
+.skillsEngine {width: auto; margin: 0 auto; padding: 0 40px}
 .skillsEngine p {float:left; padding: 10px 0 0;}
 .skillsEngine p.centered {float:none; padding: 0;}
 .skillsEngine input {margin: 10px 0 0;}
 .skillsEngine ul li {
-    width: 60%; 
-    margin: 0 auto; 
+    width: 60%;
+    margin: 0 auto;
     overflow: hidden;
+}
+@media only screen and (max-width: 935px) {
+    .skillsEngine ul li {
+        width: 100%;
+    }
 }
 .switch-field {
     margin: 0 20px 0;
@@ -419,7 +438,7 @@ footer p{
 .switch-field label:last-of-type {border-radius: 0 4px 4px 0;}
 
 .certifications {
-    width: 840px;
+    width: auto;
     margin: 0 auto;
  }
 .certifications form {
