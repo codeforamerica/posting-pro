@@ -7,6 +7,7 @@
 $jargonIssueColor: #0074FF;
 $genderIssueColor: #4EB200;
 $expectationsIssueColor: #3C1488;
+$buttonColor: #666;
 $greyBkgrnd: #E0E0E0;
 $blackText: #333;
 
@@ -46,7 +47,7 @@ h2 {
 }
 h3 {
     @include rem(font-size, 22px);
-    line-height: 2.2em;
+    line-height: 1.7em;
     padding: 1.2em 0;
     text-align: center;
     margin: 20px 0 0 0;
@@ -111,6 +112,7 @@ body {
 }
 .tagline {
     margin:20px 0 0 0;
+    line-height: 4rem;
 }
 .dashboard{
 	width: 270px;
@@ -120,7 +122,7 @@ body {
 }
 
 // Footer
-
+footer{margin: 50px 0 0 0;}
 footer p{
 	width: 1450px;
 	margin: 0 auto;
@@ -134,14 +136,14 @@ footer p{
 }
 
 // Columns
-.columnWrapper{width: 100%; margin: 0 auto;}
+.columnWrapper{width: 80%; margin: 0 10%;}
 .column {
     float: left;
     box-sizing: border-box;
     height: 100%;
 }
 
-@media only screen and (max-width: 935px) {
+@media only screen and (max-width: 990px) {
     .column {
         float: none;
         height: auto;
@@ -150,16 +152,15 @@ footer p{
 
 // Input area
 .input-area {
-  min-width: 420px;
-  max-width: 45%;
-  width: 100%;
-	margin: 0 2% 0 4%;
+    width:49%;
+    max-width:550px;
+    margin: 0 2% 0 0;
 }
 
-@media only screen and (max-width: 935px) {
+@media only screen and (max-width: 990px) {
     .input-area {
         width: auto;
-        margin: 0 auto;
+        margin: 0 auto 10px;
     }
 }
 
@@ -204,9 +205,8 @@ footer p{
 // Output area
 
 .output-area {
-    min-width: 420px;
-    max-width: 45%;
-    margin-right: 4%;
+    width:49%;
+    max-width:550px;
 }
 .output-tally, .output-issues {
     box-sizing: border-box;
@@ -220,7 +220,7 @@ footer p{
     overflow: auto;
 }
 
-@media only screen and (max-width: 935px) {
+@media only screen and (max-width: 990px) {
     .output-area {
         width: auto;
         margin: 0 auto;
@@ -311,19 +311,18 @@ footer p{
 // Reading level & analysis
 
 .inform {
-    max-width: 880px;
+    width:49%;
+    float: right;
     height: 85px;
-    margin: 0 auto;
-    text-align: right;
 }
-
-
-@media only screen and (max-width: 720px) {
+.inform h4{font-weight: normal;}
+@media only screen and (max-width: 990px) {
     .inform {
-        text-align: center
+        float: none;
+        margin: 10px auto 0;
+        text-align: center;
     }
 }
-
 
 .analysis {
     display: inline-block;
@@ -337,12 +336,10 @@ footer p{
     p { margin: 0px; }
 }
 
-@media only screen and (max-width: 750px) {
+@media only screen and (max-width: 990px) {
     .analysis {
-		float: none;
-		border-left: none;
-		margin: 0 auto;
-	}
+        margin: 0 auto;
+    }
 }
 
 .circle {
@@ -370,27 +367,21 @@ footer p{
 }
 
 //skills engine
-.skillsNextContainer {
-    margin: 50px auto 0;
-    display: block;
-    text-align: center;
-}
+.skillsNextContainer{margin: 20px 0 0 0;}
 .skillsNext{
     width:200px;
     font-family: 'Trebuchet MS', 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Tahoma, sans-serif;;
     color: $blackText;
     font-size: 20px;
     font-weight: bold;
-    background: $greyBkgrnd;
-    box-shadow: none;
-    border: none;
+    background-color: #fff;
+    border: 5px solid $buttonColor;
     padding:15px;
-    margin-left: 15px;
-    display: inline-block;
+    margin: 0 auto;
+    display: block;
     @include transitions;
 }
-.skillsNext:first-child { margin-left: 0px; }
-.skillsNext:hover {background-color:#D1D1D1;}
+.skillsNext:hover {background-color:$buttonColor; color:#fff;}
 .skillsEngine {width: auto; margin: 0 auto; padding: 0 40px}
 .skillsEngine p {float:left; padding: 10px 0 0;}
 .skillsEngine p.centered {float:none; padding: 0;}
@@ -400,7 +391,7 @@ footer p{
     margin: 0 auto;
     overflow: hidden;
 }
-@media only screen and (max-width: 935px) {
+@media only screen and (max-width: 990px) {
     .skillsEngine ul li {
         width: 100%;
     }
