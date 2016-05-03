@@ -18,16 +18,17 @@ layout: page
   <div class="inform">
     {% include site/readinglevel.html %}
     {% include site/counters.html %}
-  </div>
-
-  <div class="skillsNextContainer"><button class="skillsNext" data-control="loadSkillsButton">Generate Skills</button></div>
-
-  <div id="skillsSection" style="display:none;">
+  </div> 
+  <div class="clear"></div>
+    
+  <div id="skillsSection">
+  <h3>Commonly Associated Skills</h3>
+  <p class="centered">To see common skills associated with the title and description you've provided for this position, click the Generate Skills button below. Then select "Preferred" or "Required" for each skill. You may also add a skill that is not listed.</p>
+  <p class="centered"><em>Powered by <a href="https://skillsengine.com/home">SkillsEngine</a></em></p>
+    
+  <div class="skillsNextContainer" id="generateSkills"><button class="skillsNext" data-control="loadSkillsButton">Generate Skills</button></div>
 
     <div class="skillsEngine">
-        <h3>Skills</h3>
-        <p class="centered">These are common skills associated with the title and description you've provided for this position. Please select "Preferred" or "Required" for each skill. You may also add a skill that is not listed.</p>
-        <p class="centered"><em>Powered by <a href="https://skillsengine.com/home">SkillsEngine</a></em></p>
 
         {% include site/skillstemplates.html %}
 
@@ -37,7 +38,7 @@ layout: page
 
     <div class="certifications" id="certificates-needed">
       <h3>Qualifications</h3>
-      <p class="centered">Education, experience, certifications needed</p>
+      <p class="centered">Add any necessary education, experience, certificates and/or certifications.</p>
       <ul id="cert-list">
         <script type="text/x-template" data-template="certNeeded">
           <li>
@@ -52,7 +53,7 @@ layout: page
       <span class="circle circle-plus" id="add-cert" data-control="addCertButton">+</span>
     </div>
 
-    <div class="skillsNextContainer">
+    <div class="skillsNextContainer" id="generateExport">
       <button class="skillsNext" data-control="exportPostingPageButton">EXPORT</button>
     </div>
 

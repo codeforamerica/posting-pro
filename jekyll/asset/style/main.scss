@@ -7,6 +7,8 @@
 $jargonIssueColor: #0074FF;
 $genderIssueColor: #4EB200;
 $expectationsIssueColor: #3C1488;
+$switchButtonColor: #CCC;
+$buttonColor: #666;
 $greyBkgrnd: #E0E0E0;
 $blackText: #333;
 
@@ -46,7 +48,7 @@ h2 {
 }
 h3 {
     @include rem(font-size, 22px);
-    line-height: 2.2em;
+    line-height: 1.7em;
     padding: 1.2em 0;
     text-align: center;
     margin: 20px 0 0 0;
@@ -111,6 +113,7 @@ body {
 }
 .tagline {
     margin:20px 0 0 0;
+    line-height: 4rem;
 }
 .dashboard{
 	width: 270px;
@@ -120,7 +123,7 @@ body {
 }
 
 // Footer
-
+footer{margin: 50px 0 0 0;}
 footer p{
 	width: 1450px;
 	margin: 0 auto;
@@ -134,14 +137,14 @@ footer p{
 }
 
 // Columns
-.columnWrapper{width: 100%; margin: 0 auto;}
+.columnWrapper{width: 80%; margin: 0 10%;}
 .column {
     float: left;
     box-sizing: border-box;
     height: 100%;
 }
 
-@media only screen and (max-width: 935px) {
+@media only screen and (max-width: 990px) {
     .column {
         float: none;
         height: auto;
@@ -150,16 +153,15 @@ footer p{
 
 // Input area
 .input-area {
-  min-width: 420px;
-  max-width: 45%;
-  width: 100%;
-	margin: 0 2% 0 4%;
+    width:49%;
+    max-width:550px;
+    margin: 0 2% 0 0;
 }
 
-@media only screen and (max-width: 935px) {
+@media only screen and (max-width: 990px) {
     .input-area {
         width: auto;
-        margin: 0 auto;
+        margin: 0 auto 10px;
     }
 }
 
@@ -204,9 +206,8 @@ footer p{
 // Output area
 
 .output-area {
-    min-width: 420px;
-    max-width: 45%;
-    margin-right: 4%;
+    width:49%;
+    max-width:550px;
 }
 .output-tally, .output-issues {
     box-sizing: border-box;
@@ -220,7 +221,7 @@ footer p{
     overflow: auto;
 }
 
-@media only screen and (max-width: 935px) {
+@media only screen and (max-width: 990px) {
     .output-area {
         width: auto;
         margin: 0 auto;
@@ -311,19 +312,17 @@ footer p{
 // Reading level & analysis
 
 .inform {
-    max-width: 880px;
-    height: 85px;
-    margin: 0 auto;
-    text-align: right;
+    width:49%;
+    float: right;
 }
-
-
-@media only screen and (max-width: 720px) {
+.inform h4{font-weight: normal;}
+@media only screen and (max-width: 990px) {
     .inform {
-        text-align: center
+        float: none;
+        margin: 10px auto 0;
+        text-align: center;
     }
 }
-
 
 .analysis {
     display: inline-block;
@@ -337,76 +336,76 @@ footer p{
     p { margin: 0px; }
 }
 
-@media only screen and (max-width: 750px) {
+@media only screen and (max-width: 990px) {
     .analysis {
-		float: none;
-		border-left: none;
-		margin: 0 auto;
-	}
+        margin: 0 auto;
+    }
 }
 
 .circle {
   display: block;
   position: relative;
   border-radius: 50%;
-  width: 35px;
-  height: 35px;
-  margin: 0 auto;
-  background-color: $greyBkgrnd;
+  width: 25px;
+  height: 25px;
+  margin: 5px auto;
+  border: 2px solid $greyBkgrnd;
+  background-color: #fff;
   color: #888;
-  font-size:30px;
-  line-height: 1.1em;
+  font-weight: bold;
+  font-size:24px;
+  line-height: .9em;
   text-align: center;
   cursor: pointer;
   @include transitions;
-  &:hover{color: $blackText; background-color: #0CE8D7;}
+  &:hover{color: $blackText; background-color: $greyBkgrnd; }
 }
 .circle-plus {
+    font-size: 34px;
     font-weight: bold;
     margin: 10px auto;
+    line-height: .7em;
 }
 .circle-remove {
     float: right;
 }
 
 //skills engine
-.skillsNextContainer {
-    margin: 50px auto 0;
-    display: block;
-    text-align: center;
-}
+#skillsSection p {font-weight: bold; float:left; padding: 10px 0 0;}
+#skillsSection p.centered {font-weight: normal; max-width: 750px; float:none; padding: 0; margin: 0 auto 20px;}
+.skillsNextContainer{margin: 40px 0 0 0;}
+#generateExport{display: none;}
 .skillsNext{
     width:200px;
     font-family: 'Trebuchet MS', 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Tahoma, sans-serif;;
     color: $blackText;
     font-size: 20px;
     font-weight: bold;
-    background: $greyBkgrnd;
-    box-shadow: none;
-    border: none;
+    background-color: #fff;
+    border: 5px solid $buttonColor;
     padding:15px;
-    margin-left: 15px;
-    display: inline-block;
+    margin: 0 auto;
+    display: block;
     @include transitions;
 }
-.skillsNext:first-child { margin-left: 0px; }
-.skillsNext:hover {background-color:#D1D1D1;}
-.skillsEngine {width: auto; margin: 0 auto; padding: 0 40px}
-.skillsEngine p {float:left; padding: 10px 0 0;}
-.skillsEngine p.centered {float:none; padding: 0;}
-.skillsEngine input {margin: 10px 0 0;}
+.skillsNext:hover {background-color:$buttonColor; color:#fff;}
+.skillsEngine {width: auto; margin: 0 auto; padding: 0 40px; display: none;}
+.skillsEngine input {min-width:50%; margin: 5px 0 0; padding: 5px;}
 .skillsEngine ul li {
     width: 60%;
     margin: 0 auto;
     overflow: hidden;
+    border-bottom: 1px solid #ccc;
+    padding: 10px 0 0 0;
 }
-@media only screen and (max-width: 935px) {
+.skillsEngine ul li:last-child {border-bottom: none;}
+@media only screen and (max-width: 990px) {
     .skillsEngine ul li {
         width: 100%;
     }
 }
 .switch-field {
-    margin: 0 20px 0;
+    margin: 0 20px 0 0;
     float: left;
     border: none;
     overflow: hidden;
@@ -416,21 +415,21 @@ footer p{
 .switch-field label {
     display: inline-block;
     width: 60px;
-    color:#888;
-    background-color: $greyBkgrnd;
+    color:#999;
+    background-color: $switchButtonColor;
     text-align: center;
     text-shadow: none;
     padding: 6px 14px;
-    border: 1px solid rgba(0, 0, 0, 0.2);
-    -webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.1);
-    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(0, 0, 0, 0.2);
+    -webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5), 0 1px rgba(255, 255, 255, 0.1);
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5), 0 1px rgba(255, 255, 255, 0.1);
     @include transitions;
 }
 .switch-field label:hover {cursor: pointer;}
 .switch-field input:checked + label {
     color: $blackText;
     font-weight: bold;
-    background-color: #0CE8D7;
+    background-color: #fff;
     -webkit-box-shadow: none;
     box-shadow: none;
 }
@@ -440,6 +439,7 @@ footer p{
 .certifications {
     width: auto;
     margin: 0 auto;
+    display: none;
  }
 .certifications form {
     width: 400px;
@@ -452,9 +452,12 @@ footer p{
     }
 }
 
-#final-posting ul {
-    list-style-type: disc;
-}
+// Export Posting
+
+#final-posting{width: 85%; max-width: 850px;}
+#final-posting h3{margin: 25px 0 0; padding: 10px 0; line-height: 1em; }
+#final-posting h4{margin: 25px 0 5px 0;}
+#final-posting ul {list-style-type: disc; margin: 0 0 0 15px;}
 
 // Overlays
 

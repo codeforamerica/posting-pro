@@ -214,7 +214,8 @@
       $(element).bind('click', function() {
         generateSkillsControl();
         renderCertification("cert");
-        $("#skillsSection").show();
+        $(".skillsEngine, .certifications, #generateExport").fadeIn();
+        $("#generateSkills").hide();
       });
     }
 
