@@ -219,7 +219,7 @@
       });
     }
 
-    function gotoPage1Control(element) {certNeeded
+    function gotoPage1Control(element) {
       $(element).bind('click', function() {
         showPage('1');
       });
