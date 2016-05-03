@@ -214,11 +214,12 @@
       $(element).bind('click', function() {
         generateSkillsControl();
         renderCertification("cert");
-        $("#skillsSection").show();
+        $(".skillsEngine, .certifications, #generateExport").fadeIn();
+        $("#generateSkills").hide();
       });
     }
 
-    function gotoPage1Control(element) {
+    function gotoPage1Control(element) {certNeeded
       $(element).bind('click', function() {
         showPage('1');
       });

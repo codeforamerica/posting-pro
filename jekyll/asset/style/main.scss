@@ -7,6 +7,7 @@
 $jargonIssueColor: #0074FF;
 $genderIssueColor: #4EB200;
 $expectationsIssueColor: #3C1488;
+$switchButtonColor: #CCC;
 $buttonColor: #666;
 $greyBkgrnd: #E0E0E0;
 $blackText: #333;
@@ -313,7 +314,6 @@ footer p{
 .inform {
     width:49%;
     float: right;
-    height: 85px;
 }
 .inform h4{font-weight: normal;}
 @media only screen and (max-width: 990px) {
@@ -346,28 +346,35 @@ footer p{
   display: block;
   position: relative;
   border-radius: 50%;
-  width: 35px;
-  height: 35px;
-  margin: 0 auto;
-  background-color: $greyBkgrnd;
+  width: 25px;
+  height: 25px;
+  margin: 5px auto;
+  border: 2px solid $greyBkgrnd;
+  background-color: #fff;
   color: #888;
-  font-size:30px;
-  line-height: 1.1em;
+  font-weight: bold;
+  font-size:24px;
+  line-height: .9em;
   text-align: center;
   cursor: pointer;
   @include transitions;
-  &:hover{color: $blackText; background-color: #0CE8D7;}
+  &:hover{color: $blackText; background-color: $greyBkgrnd; }
 }
 .circle-plus {
+    font-size: 34px;
     font-weight: bold;
     margin: 10px auto;
+    line-height: .7em;
 }
 .circle-remove {
     float: right;
 }
 
 //skills engine
-.skillsNextContainer{margin: 20px 0 0 0;}
+#skillsSection p {font-weight: bold; float:left; padding: 10px 0 0;}
+#skillsSection p.centered {font-weight: normal; max-width: 750px; float:none; padding: 0; margin: 0 auto 20px;}
+.skillsNextContainer{margin: 40px 0 0 0;}
+#generateExport{display: none;}
 .skillsNext{
     width:200px;
     font-family: 'Trebuchet MS', 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Tahoma, sans-serif;;
@@ -382,22 +389,23 @@ footer p{
     @include transitions;
 }
 .skillsNext:hover {background-color:$buttonColor; color:#fff;}
-.skillsEngine {width: auto; margin: 0 auto; padding: 0 40px}
-.skillsEngine p {float:left; padding: 10px 0 0;}
-.skillsEngine p.centered {float:none; padding: 0;}
-.skillsEngine input {margin: 10px 0 0;}
+.skillsEngine {width: auto; margin: 0 auto; padding: 0 40px; display: none;}
+.skillsEngine input {min-width:50%; margin: 5px 0 0; padding: 5px;}
 .skillsEngine ul li {
     width: 60%;
     margin: 0 auto;
     overflow: hidden;
+    border-bottom: 1px solid #ccc;
+    padding: 10px 0 0 0;
 }
+.skillsEngine ul li:last-child {border-bottom: none;}
 @media only screen and (max-width: 990px) {
     .skillsEngine ul li {
         width: 100%;
     }
 }
 .switch-field {
-    margin: 0 20px 0;
+    margin: 0 20px 0 0;
     float: left;
     border: none;
     overflow: hidden;
@@ -407,21 +415,21 @@ footer p{
 .switch-field label {
     display: inline-block;
     width: 60px;
-    color:#888;
-    background-color: $greyBkgrnd;
+    color:#999;
+    background-color: $switchButtonColor;
     text-align: center;
     text-shadow: none;
     padding: 6px 14px;
-    border: 1px solid rgba(0, 0, 0, 0.2);
-    -webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.1);
-    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(0, 0, 0, 0.2);
+    -webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5), 0 1px rgba(255, 255, 255, 0.1);
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5), 0 1px rgba(255, 255, 255, 0.1);
     @include transitions;
 }
 .switch-field label:hover {cursor: pointer;}
 .switch-field input:checked + label {
     color: $blackText;
     font-weight: bold;
-    background-color: #0CE8D7;
+    background-color: #fff;
     -webkit-box-shadow: none;
     box-shadow: none;
 }
@@ -431,6 +439,7 @@ footer p{
 .certifications {
     width: auto;
     margin: 0 auto;
+    display: none;
  }
 .certifications form {
     width: 400px;
@@ -443,9 +452,12 @@ footer p{
     }
 }
 
-#final-posting ul {
-    list-style-type: disc;
-}
+// Export Posting
+
+#final-posting{width: 85%; max-width: 850px;}
+#final-posting h3{margin: 25px 0 0; padding: 10px 0; line-height: 1em; }
+#final-posting h4{margin: 25px 0 5px 0;}
+#final-posting ul {list-style-type: disc; margin: 0 0 0 15px;}
 
 // Overlays
 
