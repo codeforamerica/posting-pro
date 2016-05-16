@@ -34,7 +34,6 @@
         cuff.controls.readingLevelOutput = readingLevelOutputControl;
         cuff.controls.contextOutput = contextOutputControl;
         cuff.controls.errorTooltip = errorTooltipControl;
-        cuff.controls.infoTooltip = infoTooltipControl;
         cuff.controls.loadSkillsButton = loadSkillsControl;
         cuff.controls.gotoPage1Button = gotoPage1Control;
         cuff.controls.exportPostingPageButton = exportPostingPageControl;
@@ -112,8 +111,7 @@
       });
     }
 
-    function calculateOffset(element) {
-      var parent = $(element).parent();
+    function calculateOffset(parent, tooltip) {
       var parentOffset = parent.offset();
       var parentWidth = parent.width();
       var documentWidth = $(document).width();
@@ -135,40 +133,41 @@
 
     function errorTooltipControl (element) {
       var parent = $(element).parent();
+
+      // move tooltip to body so that it doesn't get cut off
+      var tooltip = $(element).detach();
+      $('body').append(tooltip);
+
+      // save reference to hideTooltip event since we'll use it frequently
+      var hideEvent = function() { hideTooltip(tooltip); };
+
       parent.hover(
-        function() { showTooltip(element); },
-        function() { hideTooltip(element); }
+        function() { showTooltip(tooltip, parent); },
+        hideEvent
       );
 
-      var tooltipOffset = calculateOffset(element);
-      $(element).position(tooltipOffset);
+      // hide tooltip if container scrolls so that it doesn't get unaligned
+      parent.parent().on('scroll', hideEvent);
+
+      // when the text is changed, make sure to remove tooltip from DOM and any referencing events
+      parent.bind('DOMNodeRemoved', function(event) {
+        parent.parent().off('scroll', hideEvent);
+        tooltip.remove();
+      });
     }
 
-    function infoTooltipControl(element) {
-        var parent = $(element).parent();
+    function showTooltip(tooltip, parent) {
+      tooltip.addClass("tooltip-show");
 
-        parent.hover(
-            function() { showTooltip(element); },
-            function() { hideTooltip(element); }
-        );
-
-        var tooltipOffset = calculateOffset(element);
-        tooltipOffset.top += 20;
-        tooltipOffset.left += 120;
-
-        if($(element).hasClass("static-left-offset")) {
-          tooltipOffset.left = -50;
-        }
-
-        $(element).offset(tooltipOffset);
+      // if a parent element was passed in, readjust offset
+      if(parent) {
+        var tooltipOffset = calculateOffset(parent, tooltip);
+        tooltip.offset(tooltipOffset);
+      }
     }
 
-    function showTooltip(element) {
-      $(element).addClass("tooltip-show");
-    }
-
-    function hideTooltip(element) {
-      $(element).removeClass("tooltip-show");
+    function hideTooltip(tooltip) {
+      tooltip.removeClass("tooltip-show");
     }
 
     function issuesOutputControl (element) {
@@ -248,7 +247,7 @@
           currentSkillsAnalysis = data.result.competencies_analysis;
 
           var skillsAndTools = [];
-          
+
           if(currentSkillsAnalysis.skills && currentSkillsAnalysis.skills.length) {
             var len = _.min([MAX_SKILLS, currentSkillsAnalysis.skills.length]);
             for(var i = 0; i < len; i++) {
@@ -308,7 +307,7 @@
       $(element).bind('click', function() {
         var skillId = element.id;
         delete currentSkillSet[skillId];
-        $("#" + skillId).parent().remove();        
+        $("#" + skillId).parent().remove();
       });
     }
 
@@ -381,7 +380,7 @@
 
       var element = $("#" + id)[0];
       element.innerHTML = templates.skillSet.render(skillSet, templates);
-      cuff(element);          
+      cuff(element);
     }
 
     function renderCertification(id) {
