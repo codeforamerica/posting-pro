@@ -6,14 +6,14 @@ layout: page
 
 <div id="page_1">
   <section>
-    <h3>What is the position title?</h3>
+    <h3>1. What is the position title?</h3>
     <form>
       <input type="text" name="positiontitle">
     </form>
   </section>
 
   <section>
-    <h3>Please describe the functions and responsibilities</h3>
+    <h3>2. Please describe the functions and responsibilities</h3>
       {% include site/analysisboxes.html %}
       <div class="inform">
         {% include site/counters.html %}
@@ -21,9 +21,9 @@ layout: page
   </section>
 
   <section id="skillsSection">
-    <h3>Commonly Associated Skills</h3>
-    <p class="centered">To see common skills associated with the title and description you've provided for this position, click the Generate Skills button below. Then select "Preferred" or "Required" for each skill. You may also add a skill that is not listed.</p>
-    <p class="centered"><em>Powered by <a href="https://skillsengine.com/home">SkillsEngine</a></em></p>
+    <h3>3. Commonly Associated Skills</h3>
+    <p>To see common skills associated with the title and description you've provided for this position, click the Generate Skills button below. Then select "Preferred" or "Required" for each skill. You may also add a skill that is not listed.</p>
+    <p><em>Powered by <a href="https://skillsengine.com/home">SkillsEngine</a></em></p>
 
     <button data-control="loadSkillsButton" id="generateSkills">Generate Skills</button>
     <div class="skillsEngine">
@@ -33,8 +33,8 @@ layout: page
   </section>
 
   <section id="qualificationsNeeded">
-      <h3>Qualifications</h3>
-      <p class="centered">Add any necessary education, experience, certificates and/or certifications.</p>
+      <h3>4. Qualifications</h3>
+      <p>Add any necessary education, experience, certificates and/or certifications.</p>
       <ul id="cert-list">
         <script type="text/x-template" data-template="certNeeded">
           <li>
@@ -56,6 +56,7 @@ layout: page
 <div id="page_2" style="display:none;">
   {% include site/jobpostingtemplate.html %}
   <section id="final-posting"></section>
+
   <section>
     <button data-control="gotoPage1Button">BACK</button>
   </section>

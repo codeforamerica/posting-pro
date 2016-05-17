@@ -11,23 +11,27 @@ $switchButtonColor: #CCC;
 $buttonColor: #666;
 $greyBkgrnd: #E0E0E0;
 $blackText: #333;
+$transition: all 0.2s ease-in-out;
 
 @mixin transitions() {
-  -webkit-transition: all 0.2s ease-in-out;
-  -moz-transition:    all 0.2s ease-in-out;
-  -ms-transition:     all 0.2s ease-in-out;
-  -o-transition:      all 0.2s ease-in-out;
-  transition:         all 0.2s ease-in-out;
+  -webkit-transition: $transition;
+  -moz-transition:    $transition;
+  -ms-transition:     $transition;
+  -o-transition:      $transition;
+  transition:         $transition;
 }
-
+@mixin border-radius ($radius) {
+  -webkit-border-radius:  $radius;
+  -moz-border-radius:     $radius;
+  -ms-border-radius:      $radius;
+  border-radius:          $radius;
+}
 
 // Typography //
 
-html {
-    font-size: 62.5%;
-}
+html { font-size: 62.5%; }
 body {
-    font-family: 'Trebuchet MS', 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Tahoma, sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
     font-size: 140%;
     line-height: 1.3;
     color: $blackText;
@@ -38,21 +42,19 @@ h1, h2, h3, p, ul {
     font-weight: normal;
     list-style-type: none;
     padding: 0;
+    @extend .centered;
 }
 h1 {
     @include rem(font-size, 72px);
-    text-align: center;
     line-height: 1.5em;
 }
 h2 {
     @include rem(font-size, 26px);
-    text-align: center;
     line-height: 2.5em;
 }
 h3 {
     @include rem(font-size, 22px);
     line-height: 4em;
-    text-align: center;
     margin: 20px 0 0 0;
 }
 h4 {
@@ -60,77 +62,67 @@ h4 {
     line-height: .5em;
     font-weight: bold;
 }
-a {
-    color: inherit;
+p {
+    @include rem(font-size, 14px);
+    line-height: .5em;
 }
-.centered{
+a { color: inherit; }
+.centered {
     text-align: center;
+    margin: 0 auto;
 }
-p.remove-margin {
-    margin: 0;
-}
+p.remove-margin { margin: 0; }
 
 
 // Basic layout styles //
-
-html {
-    height: 100%;
-}
+html { height: 100%; }
 body {
     height: 100%;
     background-color: #fff;
 }
-header, .main, section, footer {
-    @extend .clearfix;
-}
-header, footer {
-    padding: 15px 2%;
-}
-footer{
+header, .main, section, footer { @extend .clearfix; }
+header, footer { padding: 15px 2%; }
+footer {
     margin-top:40px;
     border-top: 1px solid $greyBkgrnd;
 }
-.main {
+main {
     width:1450px;
     margin: 0 auto;
 }
 @media only screen and (max-width: 1450px) {
-  .main {
-		width: 100%;
-	}
+  main { width: 100%; }
 }
 @media only screen and (max-width: 720px) {
-    .main {
-      height: auto;
-    }
+    main { height: auto; }
 }
-section{
+section {
     width: 100%;
     margin: 0 auto;
     padding: 1.2em 0;
 }
-form{
+form {
     width: 350px;
     margin: 0 auto;
 }
-form input{
+form input {
     width: 96%;
     padding: 2%;
     font-size:1.6rem;
     margin-bottom: 5px;
 }
-select{
+select {
     width: 250px;
     font-size:1.6rem;
     margin: 0 auto;
     display: block;
 }
-textarea{
+textarea {
     width: 96%;
     padding: 2%;
     border: 2px solid $greyBkgrnd !important;
 }
-button{
+button {
     width:200px;
     font-family: 'Trebuchet MS', 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Tahoma, sans-serif;;
     color: $blackText;
@@ -142,25 +134,21 @@ button{
     margin: 0 auto;
     display: block;
     @include transitions;
+    &:hover{ background-color:$buttonColor; color:#fff; }
 }
-button:hover {background-color:$buttonColor; color:#fff;}
+
 
 // Clearfix //
-
-.clearfix {
-    zoom: 1;
-}
+.clearfix { zoom: 1; }
 .clearfix:before, .clearfix:after {
     display: table;
     content: '';
 }
-.clearfix:after {
-    clear: both;
-}
+.clearfix:after { clear: both; }
 
 
 // Job Description //
-.columnWrapper{width: 80%; margin: 0 10%;}
+.columnWrapper { width: 80%; margin: 0 10%; }
 .column {
     float: left;
     box-sizing: border-box;
@@ -195,9 +183,7 @@ button:hover {background-color:$buttonColor; color:#fff;}
     @include rem(font-size, 16px);
     line-height: 1.8;
 }
-#job-desc-input:focus {
-    outline: none;
-}
+#job-desc-input:focus { outline: none; }
 .output-area {
     width:49%;
     max-width:550px;
@@ -233,9 +219,7 @@ button:hover {background-color:$buttonColor; color:#fff;}
     display: none;
     z-index: 100;
 
-  &.tooltip-show {
-    display: block;
-  }
+  &.tooltip-show { display: block; }
 }
 
 
@@ -248,13 +232,10 @@ button:hover {background-color:$buttonColor; color:#fff;}
     &.issue-sexism { border-color: $genderIssueColor; color: $genderIssueColor; }
     &.issue-realism { border-color: $expectationsIssueColor; color: $expectationsIssueColor}
     &.issue-tech { border-color: $jargonIssueColor; color: $jargonIssueColor; }
+
+    p { color: $blackText !important; }
 }
-.issue p{
-	  color: $blackText !important;
-}
-.reason {
-    font-style: italic;
-}
+.reason { font-style: italic; }
 
 
 // Reading level & analysis //
@@ -262,13 +243,14 @@ button:hover {background-color:$buttonColor; color:#fff;}
     width:49%;
     float: right;
     margin: 20px 0 0 0;
+
+    h4 { font-weight: normal; }
 }
-.inform h4{font-weight: normal;}
 @media only screen and (max-width: 990px) {
     .inform {
         float: none;
         margin: 10px auto 0;
-        text-align: center;
+        @extend .centered;
     }
 }
 .analysis {
@@ -276,101 +258,101 @@ button:hover {background-color:$buttonColor; color:#fff;}
     margin-right: 10px;
     background: $greyBkgrnd;
     padding: 0 15px;
+
+    h4 span{ margin: 0 0 0 5px; }
 }
-.analysis h4 span{margin: 0 0 0 5px;}
 @media only screen and (max-width: 990px) {
-    .analysis {
-        margin: 5px auto;
-    }
+    .analysis { margin: 5px auto; }
 }
 
 
 // Skills Engine //
-#skillsSection p {
-    font-weight: bold;
-    float:left;
-    padding: 10px 0 0;
-}
-#skillsSection p.centered {
-    font-weight: normal;
-    max-width: 750px;
-    float:none;
-    padding: 0;
-    margin: 0 auto 20px;
-}
-#skillsSection button{
-  margin-top: 40px;
+#skillsSection {
+    p {
+        font-weight: bold;
+        float:left;
+        padding: 10px 0 0;
+    }
+    .centered {
+        font-weight: normal;
+        max-width: 750px;
+        float:none;
+        padding: 0;
+        margin: 0 auto 20px;
+    }
+    button { margin-top: 40px; }
 }
 .skillsEngine {
     width: auto;
     margin: 0 auto;
     display: none;
+    ul {
+        max-width: 700px;
+        margin: 0 auto;
+    }
+    li {
+        overflow: hidden;
+        border-bottom: 1px solid #ccc;
+        padding: 10px 0 0 0;
+    }
+    li:last-child { border-bottom: none; }
+    form { margin: 0; }
+    input {
+        min-width:50%;
+        margin: 5px 0 0;
+        padding: 5px;
+    }
 }
-.skillsEngine ul {
-  max-width: 700px;
-  margin: 0 auto;
-}
-.skillsEngine ul li {
-    overflow: hidden;
-    border-bottom: 1px solid #ccc;
-    padding: 10px 0 0 0;
-}
-.skillsEngine ul li:last-child {border-bottom: none;}
 @media only screen and (max-width: 990px) {
     .skillsEngine ul li {
         width: 95%;
         margin: 0 auto;
     }
 }
-.skillsEngine ul li form{margin: 0;}
 .switch-field {
     margin: 0 20px 0 0;
     float: left;
     border: none;
     overflow: hidden;
-}
-.switch-field input {display: none;}
-.switch-field label {float: left;}
-.switch-field label {
-    display: inline-block;
-    width: 60px;
-    color:#999;
-    background-color: $switchButtonColor;
-    text-align: center;
-    text-shadow: none;
-    padding: 6px 14px;
-    border: 2px solid rgba(0, 0, 0, 0.2);
-    -webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5), 0 1px rgba(255, 255, 255, 0.1);
-    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5), 0 1px rgba(255, 255, 255, 0.1);
-    @include transitions;
-}
-.switch-field label:hover {cursor: pointer;}
-.switch-field input:checked + label {
-    color: $blackText;
-    font-weight: bold;
-    background-color: #fff;
-    -webkit-box-shadow: none;
-    box-shadow: none;
-}
-.switch-field label:first-of-type {border-radius: 4px 0 0 4px;}
-.switch-field label:last-of-type {border-radius: 0 4px 4px 0;}
-.skillsEngine input {
-    min-width:50%;
-    margin: 5px 0 0;
-    padding: 5px;
+    input { display: none; }
+    label {
+          width: 60px;
+          color:#999;
+          background-color: $switchButtonColor;
+          @extend .centered;
+          text-shadow: none;
+          padding: 6px 14px;
+          border: 2px solid rgba(0, 0, 0, 0.2);
+          -webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5), 0 1px rgba(255, 255, 255, 0.1);
+          box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5), 0 1px rgba(255, 255, 255, 0.1);
+          @include transitions;
+          cursor: pointer;
+          float: left;
+    }
+    label:first-of-type { @include border-radius(4px 0 0 4px); }
+    label:last-of-type { @include border-radius(0 4px 4px 0); }
+    input:checked + label {
+        color: $blackText;
+        font-weight: bold;
+        background-color: #fff;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+    }
 }
 
 
 // Certifications //
-#qualificationsNeeded {display: none;}
-#qualificationsNeeded form input{width: 80%;}
+#qualificationsNeeded {
+    display: none;
+    form input{width: 80%;}
+}
 
 
 // Circle styles //
 .circle {
     display: block;
     position: relative;
-    border-radius: 50%;
+    @include border-radius(50%);
     width: 25px;
     height: 25px;
     margin: 5px auto;
@@ -380,10 +362,10 @@ button:hover {background-color:$buttonColor; color:#fff;}
     font-weight: bold;
     font-size:24px;
     line-height: .9em;
-    text-align: center;
+    @extend .centered;
     cursor: pointer;
     @include transitions;
-    &:hover{color: $blackText; background-color: $greyBkgrnd; }
+    &:hover{ color: $blackText; background-color: $greyBkgrnd; }
 }
 .circle-plus {
     font-size: 34px;
@@ -391,20 +373,28 @@ button:hover {background-color:$buttonColor; color:#fff;}
     margin: 10px auto;
     line-height: .7em;
 }
-.circle-remove {
-    float: right;
-}
+.circle-remove { float: right; }
 
 
 // Export Button //
-#exportButton{display: none;}
+#exportButton{ display: none; }
 
 
 // Export Posting //
-#final-posting{width: 85%; max-width: 850px;}
-#final-posting h3{margin: 25px 0 0; padding: 10px 0; line-height: 1em; }
-#final-posting h4{margin: 25px 0 5px 0;}
-#final-posting ul {list-style-type: disc; margin: 0 0 0 15px;}
+#final-posting{
+  width: 85%;
+  max-width: 850px;
+  h3 {
+      margin: 25px 0 0;
+      padding: 10px 0;
+      line-height: 1em;
+  }
+  h4 { margin: 25px 0 5px 0; }
+  ul {
+      list-style-type: disc;
+      margin: 0 0 0 15px;
+  }
+}
 
 
 // Overlays //
@@ -431,20 +421,18 @@ button:hover {background-color:$buttonColor; color:#fff;}
     padding: 20px;
     background-color: #33353a;
     @include rem(font-size, 16px);
-}
-.overlay-inner a {
-    color: #ddd;
+    a { color: #ddd; }
 }
 
 
 // Footer  //
-footer p{
-    text-align: center;
+footer p {
+    @extend .centered;
 	  width: 1450px;
 	  margin: 0 auto;
 }
 @media only screen and (max-width: 1450px) {
-    footer p{
+    footer p {
 		width: 100%;
 	}
 }

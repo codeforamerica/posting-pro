@@ -14,6 +14,7 @@
     <!--<![endif]-->
     <link rel="icon" href="{{site.baseurl}}/favicon.png" type="image/png"/>
     <link rel="shortcut icon" href="{{site.baseurl}}/favicon.ico"/>
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
 
     <script>
         if (/^(www\.)?posting-pro.herokuapp.com$/.test(document.location.host)) {
@@ -43,9 +44,9 @@
       {% include site/header.html %}
     </header>
 
-    <div role="main" class="main">
+    <main role="main"">
       {{content}}
-    </div>
+    </main>
 
     <footer role="contentinfo" >
       {% include site/footer.html %}
