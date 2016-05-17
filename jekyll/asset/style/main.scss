@@ -20,7 +20,8 @@ $blackText: #333;
   transition:         all 0.2s ease-in-out;
 }
 
-// Typography
+
+// Typography //
 
 html {
     font-size: 62.5%;
@@ -39,8 +40,8 @@ h1, h2, h3, p, ul {
     padding: 0;
 }
 h1 {
-    text-align: center;
     @include rem(font-size, 72px);
+    text-align: center;
     line-height: 1.5em;
 }
 h2 {
@@ -57,20 +58,21 @@ h3 {
 }
 h4 {
     @include rem(font-size, 16px);
+    line-height: .5em;
+    font-weight: bold;
 }
 a {
     color: inherit;
 }
-.clear{
-	clear: both;
+.centered{
+    text-align: center;
 }
-.centered{text-align: center;}
-
 p.remove-margin {
-  margin: 0;
+    margin: 0;
 }
 
-// Basic layout styles
+
+// Basic layout styles //
 
 html {
     height: 100%;
@@ -79,17 +81,16 @@ body {
     height: 100%;
     background-color: #fff;
 }
-header, .main, footer {
+header, .main, section, footer {
     @extend .clearfix;
 }
 header, footer {
     padding: 15px 2%;
 }
 .main {
-	width:1450px;
-	margin: 0 auto;
+    width:1450px;
+    margin: 0 auto;
 }
-
 @media only screen and (max-width: 1450px) {
   .main {
 		width: 100%;
@@ -101,12 +102,12 @@ header, footer {
     }
 }
 section{
-  width: 100%;
-  margin: 0 auto;
+    width: 100%;
+    margin: 0 auto;
 }
 form{
-  width: 350px;
-  margin: 0 auto;
+    width: 350px;
+    margin: 0 auto;
 }
 form input{
     width: 96%;
@@ -125,264 +126,7 @@ textarea{
     padding: 2%;
     border: 2px solid $greyBkgrnd !important;
 }
-
-// Header
-
-
-// Footer
-footer{margin: 50px 0 0 0;}
-footer p{
-  text-align: center;
-	width: 1450px;
-	margin: 0 auto;
-}
-
-@media only screen and (max-width: 1450px) {
-    footer p{
-		width: 100%;
-	}
-}
-
-// Columns
-.columnWrapper{width: 80%; margin: 0 10%;}
-.column {
-    float: left;
-    box-sizing: border-box;
-    height: 100%;
-}
-
-@media only screen and (max-width: 990px) {
-    .column {
-        float: none;
-        height: auto;
-    }
-}
-
-// Input area
-.input-area {
-    width:49%;
-    max-width:550px;
-    margin: 0 2% 0 0;
-}
-
-@media only screen and (max-width: 990px) {
-    .input-area {
-        width: auto;
-        margin: 0 auto 10px;
-    }
-}
-
-.post-input {
-    box-sizing: border-box;
-    width: 100%;
-    height: 350px;
-    padding: 20px;
-    resize: none;
-    background-color: #fff;
-    border: 3px solid $greyBkgrnd !important;
-    border: none;
-    @include rem(font-size, 16px);
-    line-height: 1.8;
-}
-.post-input:focus {
-    outline: none;
-}
-
-//Input form
-.line-input{width: 100%; margin: 0 auto;
-}
-.line-input form{width: 350px; margin: 0 auto;}
-.line-input form input{
-    width: 96%;
-    padding: 2%;
-    font-size:1.6rem;
-    margin-bottom: 5px;
-}
-.line-input select{
-    width: 250px;
-    font-size:1.6rem;
-    margin: 0 auto;
-    display: block;
-}
-.line-input textarea{
-    width: 96%;
-    padding: 2%;
-    border: 2px solid $greyBkgrnd !important;
-}
-
-// Output area
-
-.output-area {
-    width:49%;
-    max-width:550px;
-}
-.output-tally, .output-issues {
-    box-sizing: border-box;
-    @extend .clearfix;
-}
-
-.post-output {
-    @extend .post-input;
-    position: relative;
-    background-color: $greyBkgrnd;
-    overflow: auto;
-}
-
-@media only screen and (max-width: 990px) {
-    .output-area {
-        width: auto;
-        margin: 0 auto;
-    }
-    .output-tally, .output-issues {
-        float: left;
-        width: 50%;
-    }
-}
-
-// Context output
-
-.error-highlight {
-  cursor: pointer;
-  position: relative;
-  border-bottom: 5px solid #cc0000;
-  &.error-sexism { border-color: $genderIssueColor; }
-  &.error-realism { border-color: $expectationsIssueColor; }
-  &.error-tech { border-color: $jargonIssueColor; }
-}
-
-.tooltip, .error-tooltip {
-  position:absolute;
-  width: 300px;
-  height: auto;
-  display: none;
-  z-index: 100;
-
-  &.tooltip-show {
-    display: block;
-  }
-}
-
-.info-tooltip {
-    padding: 10px;
-    background-color: white;
-    border: 2px solid #cc0000;
-}
-
-// Issues
-.issue {
-    padding: 10px;
-    background-color: #fff;
-	border: 2px solid red;
-	color: red;
-    &.issue-sexism { border-color: $genderIssueColor; color: $genderIssueColor; }
-    &.issue-realism { border-color: $expectationsIssueColor; color: $expectationsIssueColor}
-    &.issue-tech { border-color: $jargonIssueColor; color: $jargonIssueColor; }
-}
-.issue h3{
-	font-size: 1.2em;
-	font-weight: bold;
-}
-.issue p{
-	color: $blackText !important;
-}
-.issue h3, .issue p {
-    @include rem(margin-bottom, 10px);
-}
-.issue p:last-child {
-    margin-bottom: 0;
-}
-.level {
-    text-transform: none;
-    color: rgba(255, 255, 255, .6);
-}
-.context {
-    padding: 10px;
-    background-color: #1d1e20;
-    color: rgba(255, 255, 255, .6);
-    @include rem(font-size, 16px);
-    line-height: 1.5;
-}
-.occurrence {
-    display: inline-block;
-    padding: 2px 5px;
-    background-color: #693434;
-    font-style: normal;
-    color: #fff;
-}
-.reason {
-    font-style: italic;
-	display: block;
-	padding: 5px 0 0 0;
-	border-top: 1px solid #ddd;
-}
-
-// Reading level & analysis
-
-.inform {
-    width:49%;
-    float: right;
-}
-.inform h4{font-weight: normal;}
-@media only screen and (max-width: 990px) {
-    .inform {
-        float: none;
-        margin: 10px auto 0;
-        text-align: center;
-    }
-}
-
-.analysis {
-    display: inline-block;
-    margin-right: 10px;
-
-    span {
-        background: $greyBkgrnd;
-        padding: 15px;
-    }
-
-    p { margin: 0px; }
-}
-
-@media only screen and (max-width: 990px) {
-    .analysis {
-        margin: 0 auto;
-    }
-}
-
-.circle {
-  display: block;
-  position: relative;
-  border-radius: 50%;
-  width: 25px;
-  height: 25px;
-  margin: 5px auto;
-  border: 2px solid $greyBkgrnd;
-  background-color: #fff;
-  color: #888;
-  font-weight: bold;
-  font-size:24px;
-  line-height: .9em;
-  text-align: center;
-  cursor: pointer;
-  @include transitions;
-  &:hover{color: $blackText; background-color: $greyBkgrnd; }
-}
-.circle-plus {
-    font-size: 34px;
-    font-weight: bold;
-    margin: 10px auto;
-    line-height: .7em;
-}
-.circle-remove {
-    float: right;
-}
-
-//skills engine
-#skillsSection p {font-weight: bold; float:left; padding: 10px 0 0;}
-#skillsSection p.centered {font-weight: normal; max-width: 750px; float:none; padding: 0; margin: 0 auto 20px;}
-.skillsNextContainer{margin: 40px 0 0 0;}
-#generateExport{display: none;}
-.skillsNext{
+button{
     width:200px;
     font-family: 'Trebuchet MS', 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Tahoma, sans-serif;;
     color: $blackText;
@@ -395,9 +139,175 @@ footer p{
     display: block;
     @include transitions;
 }
-.skillsNext:hover {background-color:$buttonColor; color:#fff;}
-.skillsEngine {width: auto; margin: 0 auto; padding: 0 40px; display: none;}
-.skillsEngine input {min-width:50%; margin: 5px 0 0; padding: 5px;}
+button:hover {background-color:$buttonColor; color:#fff;}
+
+// Clearfix //
+
+.clearfix {
+    zoom: 1;
+}
+.clearfix:before, .clearfix:after {
+    display: table;
+    content: '';
+}
+.clearfix:after {
+    clear: both;
+}
+
+
+// Job Description //
+.columnWrapper{width: 80%; margin: 0 10%;}
+.column {
+    float: left;
+    box-sizing: border-box;
+    height: 100%;
+}
+@media only screen and (max-width: 990px) {
+    .column {
+        float: none;
+        height: auto;
+    }
+}
+.input-area {
+    width:49%;
+    max-width:550px;
+    margin: 0 2% 0 0;
+}
+@media only screen and (max-width: 990px) {
+    .input-area {
+        width: auto;
+        margin: 0 auto 10px;
+    }
+}
+#job-desc-input {
+    box-sizing: border-box;
+    width: 100%;
+    height: 350px;
+    padding: 20px;
+    resize: none;
+    background-color: #fff;
+    border: 3px solid $greyBkgrnd !important;
+    border: none;
+    @include rem(font-size, 16px);
+    line-height: 1.8;
+}
+#job-desc-input:focus {
+    outline: none;
+}
+.output-area {
+    width:49%;
+    max-width:550px;
+}
+#job-desc-output {
+    @extend #job-desc-input;
+    position: relative;
+    background-color: $greyBkgrnd;
+    overflow: auto;
+}
+@media only screen and (max-width: 990px) {
+    .output-area {
+        width: auto;
+        margin: 0 auto;
+    }
+}
+
+
+// Context output //
+.error-highlight {
+    cursor: pointer;
+    position: relative;
+    border-bottom: 5px solid #cc0000;
+    &.error-sexism { border-color: $genderIssueColor; }
+    &.error-realism { border-color: $expectationsIssueColor; }
+    &.error-tech { border-color: $jargonIssueColor; }
+}
+
+.tooltip, .error-tooltip {
+    position:absolute;
+    width: 300px;
+    height: auto;
+    display: none;
+    z-index: 100;
+
+  &.tooltip-show {
+    display: block;
+  }
+}
+
+
+// Issues //
+.issue {
+    padding: 0 10px;
+    background-color: #fff;
+	  border: 2px solid red;
+	  color: $blackText;
+    &.issue-sexism { border-color: $genderIssueColor; color: $genderIssueColor; }
+    &.issue-realism { border-color: $expectationsIssueColor; color: $expectationsIssueColor}
+    &.issue-tech { border-color: $jargonIssueColor; color: $jargonIssueColor; }
+}
+.issue p{
+	  color: $blackText !important;
+}
+.reason {
+    font-style: italic;
+}
+
+
+// Reading level & analysis //
+.inform {
+    width:49%;
+    float: right;
+    margin: 20px 0 0 0;
+}
+.inform h4{font-weight: normal;}
+@media only screen and (max-width: 990px) {
+    .inform {
+        float: none;
+        margin: 10px auto 0;
+        text-align: center;
+    }
+}
+.analysis {
+    display: inline-block;
+    margin-right: 10px;
+    background: $greyBkgrnd;
+    padding: 0 15px;
+}
+.analysis h4 span{margin: 0 0 0 5px;}
+@media only screen and (max-width: 990px) {
+    .analysis {
+        margin: 0 auto;
+    }
+}
+
+
+// Skills Engine //
+#skillsSection p {
+    font-weight: bold;
+    float:left;
+    padding: 10px 0 0;
+}
+#skillsSection p.centered {
+    font-weight: normal;
+    max-width: 750px;
+    float:none;
+    padding: 0;
+    margin: 0 auto 20px;
+}
+#skillsSection button{
+  margin-top: 40px;
+}
+.skillsEngine {
+    width: auto;
+    margin: 0 auto;
+    padding: 0 40px;
+    display: none;
+}
+.skillsEngine input {
+    min-width:50%;
+    margin: 5px 0 0;
+    padding: 5px;
+}
 .skillsEngine ul li {
     width: 60%;
     margin: 0 auto;
@@ -458,16 +368,58 @@ footer p{
         margin-bottom: 5px;
     }
 }
+.circle {
+    display: block;
+    position: relative;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    margin: 5px auto;
+    border: 2px solid $greyBkgrnd;
+    background-color: #fff;
+    color: #888;
+    font-weight: bold;
+    font-size:24px;
+    line-height: .9em;
+    text-align: center;
+    cursor: pointer;
+    @include transitions;
+    &:hover{color: $blackText; background-color: $greyBkgrnd; }
+}
+.circle-plus {
+    font-size: 34px;
+    font-weight: bold;
+    margin: 10px auto;
+    line-height: .7em;
+}
+.circle-remove {
+    float: right;
+}
+#exportButton{display: none;}
 
-// Export Posting
 
+// Footer
+footer{margin: 50px 0 0 0;}
+footer p{
+    text-align: center;
+	   width: 1450px;
+	    margin: 0 auto;
+}
+@media only screen and (max-width: 1450px) {
+    footer p{
+		width: 100%;
+	}
+}
+
+
+// Export Posting //
 #final-posting{width: 85%; max-width: 850px;}
 #final-posting h3{margin: 25px 0 0; padding: 10px 0; line-height: 1em; }
 #final-posting h4{margin: 25px 0 5px 0;}
 #final-posting ul {list-style-type: disc; margin: 0 0 0 15px;}
 
-// Overlays
 
+// Overlays //
 .modal, .overlay {
     width: 100%;
     height: 100%;
@@ -494,28 +446,4 @@ footer p{
 }
 .overlay-inner a {
     color: #ddd;
-}
-
-
-// Clearfix
-
-.clearfix {
-    zoom: 1;
-}
-.clearfix:before, .clearfix:after {
-    display: table;
-    content: '';
-}
-.clearfix:after {
-    clear: both;
-}
-
-
-// Hiding
-
-.visually-hidden {
-    width: 1px;
-    height: 1px;
-    position: absolute !important;
-    clip: rect(1px, 1px, 1px, 1px);
 }

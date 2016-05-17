@@ -5,36 +5,34 @@ layout: page
 ---
 
 <div id="page_1">
-  <section id="position_title">
+  <section>
     <h3>What is the position title?</h3>
     <form>
-      <input type="text" id="positiontitle" name="positiontitle">
+      <input type="text" name="positiontitle">
     </form>
   </section>
 
-  <h3>Please describe the functions and responsibilities</h3>
-  {% include site/analysisboxes.html %}
-  <div class="inform">
-    {% include site/readinglevel.html %}
-    {% include site/counters.html %}
-  </div>
-  <div class="clear"></div>
+  <section>
+    <h3>Please describe the functions and responsibilities</h3>
+      {% include site/analysisboxes.html %}
+      <div class="inform">
+        {% include site/counters.html %}
+      </div>
+  </section>
 
-  <div id="skillsSection">
-  <h3>Commonly Associated Skills</h3>
-  <p class="centered">To see common skills associated with the title and description you've provided for this position, click the Generate Skills button below. Then select "Preferred" or "Required" for each skill. You may also add a skill that is not listed.</p>
-  <p class="centered"><em>Powered by <a href="https://skillsengine.com/home">SkillsEngine</a></em></p>
+  <section id="skillsSection">
+    <h3>Commonly Associated Skills</h3>
+    <p class="centered">To see common skills associated with the title and description you've provided for this position, click the Generate Skills button below. Then select "Preferred" or "Required" for each skill. You may also add a skill that is not listed.</p>
+    <p class="centered"><em>Powered by <a href="https://skillsengine.com/home">SkillsEngine</a></em></p>
 
-  <div class="skillsNextContainer" id="generateSkills"><button class="skillsNext" data-control="loadSkillsButton">Generate Skills</button></div>
-
+    <button data-control="loadSkillsButton" id="generateSkills">Generate Skills</button>
     <div class="skillsEngine">
-
-        {% include site/skillstemplates.html %}
-
-    		<div id="skills-and-tools"></div>
-
+      {% include site/skillstemplates.html %}
+      <div id="skills-and-tools"></div>
     </div>
+  </section>
 
+  <section>
     <div class="certifications" id="certificates-needed">
       <h3>Qualifications</h3>
       <p class="centered">Add any necessary education, experience, certificates and/or certifications.</p>
@@ -51,12 +49,12 @@ layout: page
       </ul>
       <span class="circle circle-plus" id="add-cert" data-control="addCertButton">+</span>
     </div>
+  </section>
 
-    <div class="skillsNextContainer" id="generateExport">
-      <button class="skillsNext" data-control="exportPostingPageButton">EXPORT</button>
-    </div>
+  <section id="exportButton">
+    <button data-control="exportPostingPageButton">EXPORT</button>
+  </section>
 
-  </div>
 </div>
 
 <div id="page_2" style="display:none;">
@@ -65,8 +63,8 @@ layout: page
 
   <div id="final-posting" class="line-input"></div>
 
-  <div class="skillsNextContainer">
+  <section class="skillsNextContainer">
     <button class="skillsNext" data-control="gotoPage1Button">BACK</button>
   </div>
 
-</div>
+</section>
