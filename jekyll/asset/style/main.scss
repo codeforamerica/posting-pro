@@ -7,69 +7,76 @@
 $jargonIssueColor: #0074FF;
 $genderIssueColor: #4EB200;
 $expectationsIssueColor: #3C1488;
-$switchButtonColor: #CCC;
-$buttonColor: #666;
-$greyBkgrnd: #E0E0E0;
+$lightGrey: #E0E0E0;
+$darkGrey: #666;
 $blackText: #333;
 $transition: all 0.2s ease-in-out;
 
 @mixin transitions() {
-  -webkit-transition: $transition;
-  -moz-transition:    $transition;
-  -ms-transition:     $transition;
-  -o-transition:      $transition;
-  transition:         $transition;
+    -webkit-transition: $transition;
+    -moz-transition:    $transition;
+    -ms-transition:     $transition;
+    -o-transition:      $transition;
+    transition:         $transition;
 }
 @mixin border-radius ($radius) {
-  -webkit-border-radius:  $radius;
-  -moz-border-radius:     $radius;
-  -ms-border-radius:      $radius;
-  border-radius:          $radius;
+    -webkit-border-radius:  $radius;
+    -moz-border-radius:     $radius;
+    -ms-border-radius:      $radius;
+    border-radius:          $radius;
+}
+@mixin centered() {
+    text-align: center;
+    margin: 0 auto;
 }
 
-// Typography //
 
+// Typography //
 html { font-size: 62.5%; }
 body {
-    font-family: 'Source Sans Pro', sans-serif;
-    font-size: 140%;
+    font: 140% 'Source Sans Pro', sans-serif;
     line-height: 1.3;
     color: $blackText;
 }
 h1, h2, h3, p, ul {
-    margin: 0;
     @include rem(margin-bottom, 14px);
+    @include centered;
     font-weight: normal;
-    list-style-type: none;
+    margin: 0;
     padding: 0;
-    @extend .centered;
+    list-style-type: none;
 }
 h1 {
     @include rem(font-size, 72px);
-    line-height: 1.5em;
+    font-weight: bold;
+    margin: 0 0 15px 0;
 }
 h2 {
-    @include rem(font-size, 26px);
-    line-height: 2.5em;
+    @include rem(font-size, 28px);
 }
 h3 {
-    @include rem(font-size, 22px);
-    line-height: 4em;
-    margin: 20px 0 0 0;
+    @include rem(font-size, 24px);
+    line-height: 1.5em;
+    margin: 20px 0;
 }
 h4 {
-    @include rem(font-size, 16px);
-    line-height: .5em;
+    @include rem(font-size, 18px);
+    line-height: 2.3em;
     font-weight: bold;
+    margin: 0;
+    padding: 0 10px;
 }
 p {
-    @include rem(font-size, 14px);
-    line-height: .5em;
+    @include rem(font-size, 18px);
+    max-width: 750px;
+    margin-bottom: .6em !important;
 }
-a { color: inherit; }
-.centered {
-    text-align: center;
-    margin: 0 auto;
+li {
+    @include rem(font-size, 18px);
+}
+a {
+    color: inherit;
+    &:hover{ @include transitions; color: red;}
 }
 p.remove-margin { margin: 0; }
 
@@ -83,58 +90,59 @@ body {
 header, .main, section, footer { @extend .clearfix; }
 header, footer { padding: 15px 2%; }
 footer {
-    margin-top:40px;
-    border-top: 1px solid $greyBkgrnd;
+    margin-top: 60px;
+    border-top: 1px solid $lightGrey;
 }
 main {
-    width:1450px;
-    margin: 0 auto;
+    @include centered;
+    width: 1450px;
 }
 @media only screen and (max-width: 1450px) {
-  main { width: 100%; }
+    main { width: 100%; }
 }
 @media only screen and (max-width: 720px) {
     main { height: auto; }
 }
 section {
     width: 100%;
-    margin: 0 auto;
-    padding: 1.2em 0;
+    padding: 5px 0;
+    margin: 25px 0 0 0;
 }
 form {
+    @include centered;
     width: 350px;
-    margin: 0 auto;
 }
-form input {
+input {
+    @include rem(font-size, 18px);
     width: 96%;
     padding: 2%;
-    font-size:1.6rem;
     margin-bottom: 5px;
+    border: 2px solid $lightGrey !important;
 }
 select {
+    @include centered;
     width: 250px;
-    font-size:1.6rem;
-    margin: 0 auto;
+    @include rem(font-size, 18px);
     display: block;
 }
 textarea {
+    @include rem(font-size, 18px);
     width: 96%;
     padding: 2%;
-    border: 2px solid $greyBkgrnd !important;
+    border: 2px solid $lightGrey !important;
 }
 button {
-    width:200px;
-    font-family: 'Trebuchet MS', 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Tahoma, sans-serif;;
+    @include centered;
+    @include transitions;
+    width: 200px;
+    font: 20px 'Source Sans Pro', sans-serif;
     color: $blackText;
-    font-size: 20px;
     font-weight: bold;
     background-color: #fff;
-    border: 5px solid $buttonColor;
+    border: 5px solid $darkGrey;
     padding:15px;
-    margin: 0 auto;
     display: block;
-    @include transitions;
-    &:hover{ background-color:$buttonColor; color:#fff; }
+    &:hover{ background-color: $darkGrey; color: #fff; }
 }
 
 
@@ -148,56 +156,57 @@ button {
 
 
 // Job Description //
-.columnWrapper { width: 80%; margin: 0 10%; }
+.columnWrapper { margin: 0 10%; }
 .column {
+    height: 100%;
     float: left;
     box-sizing: border-box;
-    height: 100%;
 }
 @media only screen and (max-width: 990px) {
     .column {
-        float: none;
         height: auto;
+        float: none;
     }
 }
 .input-area {
-    width:49%;
-    max-width:550px;
-    margin: 0 2% 0 0;
+    width: 49%;
+    max-width: 550px;
+    margin: 0 10px 0 0;
 }
 @media only screen and (max-width: 990px) {
     .input-area {
+        @include centered;
         width: auto;
-        margin: 0 auto 10px;
+        margin-bottom: 10px;
     }
 }
 #job-desc-input {
-    box-sizing: border-box;
     width: 100%;
     height: 350px;
+    line-height: 1.8;
+    box-sizing: border-box;
     padding: 20px;
     resize: none;
     background-color: #fff;
-    border: 3px solid $greyBkgrnd !important;
-    border: none;
-    @include rem(font-size, 16px);
-    line-height: 1.8;
+    border: 3px solid $lightGrey !important;
 }
 #job-desc-input:focus { outline: none; }
 .output-area {
-    width:49%;
-    max-width:550px;
+    width: 49%;
+    max-width: 550px;
 }
 #job-desc-output {
     @extend #job-desc-input;
+    @include rem(font-size, 18px);
+    text-align: left;
     position: relative;
-    background-color: $greyBkgrnd;
+    background-color: $lightGrey;
     overflow: auto;
 }
 @media only screen and (max-width: 990px) {
     .output-area {
+        @include centered;
         width: auto;
-        margin: 0 auto;
     }
 }
 
@@ -207,19 +216,19 @@ button {
     cursor: pointer;
     position: relative;
     border-bottom: 5px solid #cc0000;
+
     &.error-sexism { border-color: $genderIssueColor; }
     &.error-realism { border-color: $expectationsIssueColor; }
     &.error-tech { border-color: $jargonIssueColor; }
 }
-
 .tooltip, .error-tooltip {
-    position:absolute;
+    position: absolute;
     width: 300px;
     height: auto;
     display: none;
     z-index: 100;
 
-  &.tooltip-show { display: block; }
+    &.tooltip-show { display: block; }
 }
 
 
@@ -228,7 +237,7 @@ button {
     padding: 0 10px;
     background-color: #fff;
 	  border: 2px solid red;
-	  color: $blackText;
+
     &.issue-sexism { border-color: $genderIssueColor; color: $genderIssueColor; }
     &.issue-realism { border-color: $expectationsIssueColor; color: $expectationsIssueColor}
     &.issue-tech { border-color: $jargonIssueColor; color: $jargonIssueColor; }
@@ -240,26 +249,26 @@ button {
 
 // Reading level & analysis //
 .inform {
-    width:49%;
-    float: right;
-    margin: 20px 0 0 0;
+    width: 49%;
+    max-width: 550px;
+    float: left;
+    margin: 10px 0 0 0;
 
     h4 { font-weight: normal; }
 }
 @media only screen and (max-width: 990px) {
     .inform {
+        @include centered;
         float: none;
-        margin: 10px auto 0;
-        @extend .centered;
+        margin-top: 10px;
     }
 }
 .analysis {
     display: inline-block;
     margin-right: 10px;
-    background: $greyBkgrnd;
-    padding: 0 15px;
+    background: $lightGrey;
 
-    h4 span{ margin: 0 0 0 5px; }
+    h4 span{ font-weight: bold; margin: 0 0 0 5px; }
 }
 @media only screen and (max-width: 990px) {
     .analysis { margin: 5px auto; }
@@ -268,27 +277,22 @@ button {
 
 // Skills Engine //
 #skillsSection {
-    p {
-        font-weight: bold;
-        float:left;
-        padding: 10px 0 0;
-    }
-    .centered {
-        font-weight: normal;
-        max-width: 750px;
-        float:none;
-        padding: 0;
-        margin: 0 auto 20px;
-    }
     button { margin-top: 40px; }
+    p { @include centered; }
 }
 .skillsEngine {
     width: auto;
-    margin: 0 auto;
     display: none;
+    margin-top: 30px;
+
+    p{
+        text-align: left !important;
+        margin: 10px 0 0 !important;
+        float: left;
+    }
     ul {
+        @include centered;
         max-width: 700px;
-        margin: 0 auto;
     }
     li {
         overflow: hidden;
@@ -298,15 +302,17 @@ button {
     li:last-child { border-bottom: none; }
     form { margin: 0; }
     input {
-        min-width:50%;
-        margin: 5px 0 0;
+        width: 100%;
+        max-width: 400px;
         padding: 5px;
+        margin: 5px 0 0;
+        float: left;
     }
 }
 @media only screen and (max-width: 990px) {
     .skillsEngine ul li {
+        @include centered;
         width: 95%;
-        margin: 0 auto;
     }
 }
 .switch-field {
@@ -314,18 +320,20 @@ button {
     float: left;
     border: none;
     overflow: hidden;
+
     input { display: none; }
     label {
+          @include centered;
+          @include transitions;
           width: 60px;
-          color:#999;
-          background-color: $switchButtonColor;
-          @extend .centered;
+          @include rem(font-size, 16px);
+          color: #999;
+          background-color: $lightGrey;
           text-shadow: none;
           padding: 6px 14px;
           border: 2px solid rgba(0, 0, 0, 0.2);
           -webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5), 0 1px rgba(255, 255, 255, 0.1);
           box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5), 0 1px rgba(255, 255, 255, 0.1);
-          @include transitions;
           cursor: pointer;
           float: left;
     }
@@ -344,32 +352,34 @@ button {
 // Certifications //
 #qualificationsNeeded {
     display: none;
-    form input{width: 80%;}
+
+    p{ @include centered; }
+    form { margin-top: 20px; }
+    form input{ width: 80%; }
 }
 
 
 // Circle styles //
 .circle {
-    display: block;
-    position: relative;
     @include border-radius(50%);
+    @include transitions;
+    @include centered;
     width: 25px;
     height: 25px;
-    margin: 5px auto;
-    border: 2px solid $greyBkgrnd;
-    background-color: #fff;
     color: #888;
-    font-weight: bold;
-    font-size:24px;
-    line-height: .9em;
-    @extend .centered;
+    font: bold 24px sans-serif;
+    display: block;
+    position: relative;
+    margin: 5px auto;
+    border: 2px solid $lightGrey;
+    background-color: #fff;
+    line-height: 1em;
     cursor: pointer;
-    @include transitions;
-    &:hover{ color: $blackText; background-color: $greyBkgrnd; }
+
+    &:hover{ color: $blackText; background-color: $lightGrey; }
 }
 .circle-plus {
-    font-size: 34px;
-    font-weight: bold;
+    font: bold 30px sans-serif;
     margin: 10px auto;
     line-height: .7em;
 }
@@ -377,25 +387,23 @@ button {
 
 
 // Export Button //
-#exportButton{ display: none; }
+#exportButton{ margin-top: 20px; display: none; }
 
 
 // Export Posting //
 #final-posting{
-  width: 85%;
-  max-width: 850px;
-  h3 {
-      margin: 25px 0 0;
-      padding: 10px 0;
-      line-height: 1em;
-  }
-  h4 { margin: 25px 0 5px 0; }
-  ul {
-      list-style-type: disc;
-      margin: 0 0 0 15px;
-  }
-}
+    @include centered;
+    width:96%;
+    max-width: 750px;
+    margin: 40px auto;
+    padding: 0 2%;
 
+    h3, p, li { text-align: left; }
+    ul {
+        list-style-type: disc;
+        margin: 0 0 0 15px;
+    }
+}
 
 // Overlays //
 .modal, .overlay {
@@ -415,21 +423,22 @@ button {
     z-index: 501;
 }
 .overlay-inner {
+    @include rem(font-size, 16px);
     width: auto;
     max-width: 400px;
-    margin: 100px auto;
     padding: 20px;
+    margin: 100px auto;
     background-color: #33353a;
-    @include rem(font-size, 16px);
+
     a { color: #ddd; }
 }
 
 
 // Footer  //
 footer p {
-    @extend .centered;
+    @include centered;
+    @include rem(font-size, 16px);
 	  width: 1450px;
-	  margin: 0 auto;
 }
 @media only screen and (max-width: 1450px) {
     footer p {
