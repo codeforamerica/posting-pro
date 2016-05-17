@@ -38,26 +38,23 @@
         </div>
     <![endif]-->
 
-    <div role="banner" class="header">
-        <header>
-            {% include site/header.html %}
-        </header>
-    </div>
+
+    <header role="banner">
+      {% include site/header.html %}
+    </header>
 
     <div role="main" class="main">
-        {{content}}
+      {{content}}
     </div>
 
-    <div role="contentinfo" class="footer">
-        <footer>
-            {% include site/footer.html %}
-        </footer>
-    </div>
+    <footer role="contentinfo" >
+      {% include site/footer.html %}
+    </footer>
 
     <div id="unsupported" style="display: none;">
         <div class="overlay">
             <div class="overlay-inner">
-                Sorry, your browser is not supported by Joblint.
+                Sorry, your browser is not supported.
                 Please consider using the
                 <a href="https://github.com/rowanmanning/joblint">command-line tool</a>
                 or for a faster and safer browsing experience,
@@ -70,7 +67,7 @@
     <noscript>
         <div class="overlay">
             <div class="overlay-inner">
-                Sorry, Joblint requires JavaScript to run.
+                Sorry, this website requires JavaScript to run.
                 Please consider using the
                 <a href="https://github.com/rowanmanning/joblint">command-line tool</a>
                 if you don't wish to enable JavaScript.

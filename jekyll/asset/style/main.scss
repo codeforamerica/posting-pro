@@ -39,7 +39,9 @@ h1, h2, h3, p, ul {
     padding: 0;
 }
 h1 {
-    @include rem(font-size, 42px);
+    text-align: center;
+    @include rem(font-size, 72px);
+    line-height: 1.5em;
 }
 h2 {
     @include rem(font-size, 26px);
@@ -77,57 +79,62 @@ body {
     height: 100%;
     background-color: #fff;
 }
-.header, .main, .footer {
+header, .main, footer {
     @extend .clearfix;
 }
-.header, .footer {
+header, footer {
     padding: 15px 2%;
 }
 .main {
 	width:1450px;
 	margin: 0 auto;
-    background-color: #fff;
 }
 
 @media only screen and (max-width: 1450px) {
-    .main {
+  .main {
 		width: 100%;
 	}
 }
 @media only screen and (max-width: 720px) {
     .main {
-        height: auto;
+      height: auto;
     }
+}
+section{
+  width: 100%;
+  margin: 0 auto;
+}
+form{
+  width: 350px;
+  margin: 0 auto;
+}
+form input{
+    width: 96%;
+    padding: 2%;
+    font-size:1.6rem;
+    margin-bottom: 5px;
+}
+select{
+    width: 250px;
+    font-size:1.6rem;
+    margin: 0 auto;
+    display: block;
+}
+textarea{
+    width: 96%;
+    padding: 2%;
+    border: 2px solid $greyBkgrnd !important;
 }
 
 // Header
 
-.site-name, .tagline {
-    @include rem(line-height, 24px);
-    margin-bottom: 0;
-}
-.site-name {
-    text-align: center;
-    font-size: 5em !important;
-    line-height: 1.5em;
-}
-.tagline {
-    margin:20px 0 0 0;
-    line-height: 4rem;
-}
-.dashboard{
-	width: 270px;
-    position: fixed;
-    top:20px;
-    right: 20px;
-}
 
 // Footer
 footer{margin: 50px 0 0 0;}
 footer p{
+  text-align: center;
 	width: 1450px;
 	margin: 0 auto;
-    float: left;
 }
 
 @media only screen and (max-width: 1450px) {
