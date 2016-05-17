@@ -51,8 +51,7 @@ h2 {
 }
 h3 {
     @include rem(font-size, 22px);
-    line-height: 1.7em;
-    padding: 1.2em 0;
+    line-height: 4em;
     text-align: center;
     margin: 20px 0 0 0;
 }
@@ -87,6 +86,10 @@ header, .main, section, footer {
 header, footer {
     padding: 15px 2%;
 }
+footer{
+    margin-top:40px;
+    border-top: 1px solid $greyBkgrnd;
+}
 .main {
     width:1450px;
     margin: 0 auto;
@@ -104,6 +107,7 @@ header, footer {
 section{
     width: 100%;
     margin: 0 auto;
+    padding: 1.2em 0;
 }
 form{
     width: 350px;
@@ -276,7 +280,7 @@ button:hover {background-color:$buttonColor; color:#fff;}
 .analysis h4 span{margin: 0 0 0 5px;}
 @media only screen and (max-width: 990px) {
     .analysis {
-        margin: 0 auto;
+        margin: 5px auto;
     }
 }
 
@@ -300,17 +304,13 @@ button:hover {background-color:$buttonColor; color:#fff;}
 .skillsEngine {
     width: auto;
     margin: 0 auto;
-    padding: 0 40px;
     display: none;
 }
-.skillsEngine input {
-    min-width:50%;
-    margin: 5px 0 0;
-    padding: 5px;
+.skillsEngine ul {
+  max-width: 700px;
+  margin: 0 auto;
 }
 .skillsEngine ul li {
-    width: 60%;
-    margin: 0 auto;
     overflow: hidden;
     border-bottom: 1px solid #ccc;
     padding: 10px 0 0 0;
@@ -318,9 +318,11 @@ button:hover {background-color:$buttonColor; color:#fff;}
 .skillsEngine ul li:last-child {border-bottom: none;}
 @media only screen and (max-width: 990px) {
     .skillsEngine ul li {
-        width: 100%;
+        width: 95%;
+        margin: 0 auto;
     }
 }
+.skillsEngine ul li form{margin: 0;}
 .switch-field {
     margin: 0 20px 0 0;
     float: left;
@@ -352,22 +354,19 @@ button:hover {background-color:$buttonColor; color:#fff;}
 }
 .switch-field label:first-of-type {border-radius: 4px 0 0 4px;}
 .switch-field label:last-of-type {border-radius: 0 4px 4px 0;}
-
-.certifications {
-    width: auto;
-    margin: 0 auto;
-    display: none;
- }
-.certifications form {
-    width: 400px;
-    margin: 0 auto;
-    input {
-        width: 80%;
-        padding: 2%;
-        font-size:1.6rem;
-        margin-bottom: 5px;
-    }
+.skillsEngine input {
+    min-width:50%;
+    margin: 5px 0 0;
+    padding: 5px;
 }
+
+
+// Certifications //
+#qualificationsNeeded {display: none;}
+#qualificationsNeeded form input{width: 80%;}
+
+
+// Circle styles //
 .circle {
     display: block;
     position: relative;
@@ -395,21 +394,10 @@ button:hover {background-color:$buttonColor; color:#fff;}
 .circle-remove {
     float: right;
 }
+
+
+// Export Button //
 #exportButton{display: none;}
-
-
-// Footer
-footer{margin: 50px 0 0 0;}
-footer p{
-    text-align: center;
-	   width: 1450px;
-	    margin: 0 auto;
-}
-@media only screen and (max-width: 1450px) {
-    footer p{
-		width: 100%;
-	}
-}
 
 
 // Export Posting //
@@ -446,4 +434,17 @@ footer p{
 }
 .overlay-inner a {
     color: #ddd;
+}
+
+
+// Footer  //
+footer p{
+    text-align: center;
+	  width: 1450px;
+	  margin: 0 auto;
+}
+@media only screen and (max-width: 1450px) {
+    footer p{
+		width: 100%;
+	}
 }

@@ -213,7 +213,7 @@
       $(element).bind('click', function() {
         generateSkillsControl();
         renderCertification("cert");
-        $(".skillsEngine, .certifications, #exportButton").fadeIn();
+        $(".skillsEngine, #qualificationsNeeded, #exportButton").fadeIn();
         $("#generateSkills").hide();
       });
     }
