@@ -14,6 +14,7 @@
     <!--<![endif]-->
     <link rel="icon" href="{{site.baseurl}}/favicon.png" type="image/png"/>
     <link rel="shortcut icon" href="{{site.baseurl}}/favicon.ico"/>
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
 
     <script>
         if (/^(www\.)?posting-pro.herokuapp.com$/.test(document.location.host)) {
@@ -38,26 +39,23 @@
         </div>
     <![endif]-->
 
-    <div role="banner" class="header">
-        <header>
-            {% include site/header.html %}
-        </header>
-    </div>
 
-    <div role="main" class="main">
-        {{content}}
-    </div>
+    <header role="banner">
+      {% include site/header.html %}
+    </header>
 
-    <div role="contentinfo" class="footer">
-        <footer>
-            {% include site/footer.html %}
-        </footer>
-    </div>
+    <main role="main"">
+      {{content}}
+    </main>
+
+    <footer role="contentinfo" >
+      {% include site/footer.html %}
+    </footer>
 
     <div id="unsupported" style="display: none;">
         <div class="overlay">
             <div class="overlay-inner">
-                Sorry, your browser is not supported by Joblint.
+                Sorry, your browser is not supported.
                 Please consider using the
                 <a href="https://github.com/rowanmanning/joblint">command-line tool</a>
                 or for a faster and safer browsing experience,
@@ -70,7 +68,7 @@
     <noscript>
         <div class="overlay">
             <div class="overlay-inner">
-                Sorry, Joblint requires JavaScript to run.
+                Sorry, this website requires JavaScript to run.
                 Please consider using the
                 <a href="https://github.com/rowanmanning/joblint">command-line tool</a>
                 if you don't wish to enable JavaScript.

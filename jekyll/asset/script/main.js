@@ -213,7 +213,7 @@
       $(element).bind('click', function() {
         generateSkillsControl();
         renderCertification("cert");
-        $(".skillsEngine, .certifications, #generateExport").fadeIn();
+        $(".skillsEngine, #qualificationsNeeded, #exportButton").fadeIn();
         $("#generateSkills").hide();
       });
     }
@@ -323,7 +323,7 @@
       var jobDescriptionEl = $("#job-desc-input");
       if(jobDescriptionEl) postingData.jobDescription = jobDescriptionEl.val();
 
-      var positionTitleEl = $("#positiontitle");
+      var positionTitleEl = $("input[name='positiontitle']");
       if(positionTitleEl) postingData.positionTitle = positionTitleEl.val();
 
       var requiredSkills = [];

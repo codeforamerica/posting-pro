@@ -1,12 +1,10 @@
 <div class="columnWrapper">
-<div class="column input-area">
-    <label class="visually-hidden" for="post-input">Paste or write your job description here</label>
-    <textarea id="job-desc-input" class="post-input" data-control="postInput" placeholder="Paste or write your job description here"></textarea>
-</div>
+  <div class="column input-area">
+    <textarea id="job-desc-input" data-control="postInput" placeholder="Paste or write your job description here"></textarea>
+  </div>
 
-<div class="column output-area">
-    <div id="job-desc-output" class="post-output" data-control="contextOutput">
-
+  <div class="column output-area">
+    <div id="job-desc-output" data-control="contextOutput">
         <script type="text/x-template" data-template="highlight">
 
             <div style="display:inline-block">
@@ -19,13 +17,11 @@
 
             <div class="error-tooltip issue issue-{type}" data-control="errorTooltip">
                 <h4>{typeTranslation}</h4>
-                <p>
-                    <span class="solution">{solution}</span>
-                    <span class="reason">{reason}</span>
-                </p>
+                <p class="solution">{solution}</p>
+                <hr>
+                <p class="reason">{reason}</p>
             </div>
         </script>
     </div>
-</div>
-    <div class="clear"></div>
+  </div>
 </div>
