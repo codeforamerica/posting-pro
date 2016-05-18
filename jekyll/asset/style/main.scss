@@ -84,7 +84,9 @@ li {
 }
 a {
     color: inherit;
-    &:hover{ @include transitions; color: $accent;}
+    text-decoration: none;
+    border-bottom: 2px solid $lightGrey;
+    &:hover{ @include transitions; border-color: $darkGrey; }
 }
 p.remove-margin { margin: 0; }
 
@@ -253,6 +255,7 @@ button {
     margin: 5px 0 0;
 
     h4 { font-weight: normal; }
+    a { border-color: #fff; &:hover{ border-color: $darkGrey; }}
 }
 .analysis {
     display: inline-block;
