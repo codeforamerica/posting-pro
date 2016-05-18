@@ -8,8 +8,10 @@ $jargonIssueColor: #0074FF;
 $genderIssueColor: #4EB200;
 $expectationsIssueColor: #3C1488;
 $lightGrey: #E0E0E0;
+$mediumGrey: #BBB;
 $darkGrey: #666;
 $blackText: #333;
+$accent: #fff;
 $transition: all 0.2s ease-in-out;
 
 @mixin transitions() {
@@ -71,12 +73,18 @@ p {
     max-width: 750px;
     margin-bottom: .6em !important;
 }
+@media only screen and (max-width: 990px) {
+    p {
+        width: 96%;
+        margin: .6em 2%;
+    }
+}
 li {
     @include rem(font-size, 18px);
 }
 a {
     color: inherit;
-    &:hover{ @include transitions; color: red;}
+    &:hover{ @include transitions; color: $accent;}
 }
 p.remove-margin { margin: 0; }
 
@@ -156,28 +164,26 @@ button {
 
 
 // Job Description //
-.columnWrapper { margin: 0 10%; }
+.columnWrapper {
+    margin: 0 auto;
+    display: inline-block;
+}
 .column {
+    width: 550px;
     height: 100%;
     float: left;
+    display: inline-block;
     box-sizing: border-box;
+    &:first-child{ margin-right: 10px; }
 }
-@media only screen and (max-width: 990px) {
+@media only screen and (max-width: 1120px) {
+    .columnWrapper { display: block; }
     .column {
         height: auto;
         float: none;
-    }
-}
-.input-area {
-    width: 49%;
-    max-width: 550px;
-    margin: 0 10px 0 0;
-}
-@media only screen and (max-width: 990px) {
-    .input-area {
-        @include centered;
-        width: auto;
-        margin-bottom: 10px;
+        display: block;
+        margin:0 auto;
+        &:first-child{ margin-right: auto; }
     }
 }
 #job-desc-input {
@@ -189,11 +195,7 @@ button {
     resize: none;
     background-color: #fff;
     border: 3px solid $lightGrey !important;
-}
-#job-desc-input:focus { outline: none; }
-.output-area {
-    width: 49%;
-    max-width: 550px;
+    &:focus { outline: none; }
 }
 #job-desc-output {
     @extend #job-desc-input;
@@ -202,12 +204,6 @@ button {
     position: relative;
     background-color: $lightGrey;
     overflow: auto;
-}
-@media only screen and (max-width: 990px) {
-    .output-area {
-        @include centered;
-        width: auto;
-    }
 }
 
 
@@ -249,29 +245,30 @@ button {
 
 // Reading level & analysis //
 .inform {
-    width: 49%;
-    max-width: 550px;
-    float: left;
-    margin: 10px 0 0 0;
+    width: 50%;
+    width: -webkit-calc(50% - 10px);
+    width:    -moz-calc(50% - 10px);
+    width:         calc(50% - 10px);
+    float: right;
+    margin: 5px 0 0;
 
     h4 { font-weight: normal; }
 }
-@media only screen and (max-width: 990px) {
-    .inform {
-        @include centered;
-        float: none;
-        margin-top: 10px;
-    }
-}
 .analysis {
     display: inline-block;
+    float: left;
     margin-right: 10px;
     background: $lightGrey;
 
     h4 span{ font-weight: bold; margin: 0 0 0 5px; }
 }
-@media only screen and (max-width: 990px) {
-    .analysis { margin: 5px auto; }
+@media only screen and (max-width: 1120px) {
+    .inform, .analysis{
+        width:215px;
+        float: none;
+    }
+    .inform{ margin: 10px auto; }
+    .analysis{ margin: 5px }
 }
 
 
@@ -298,22 +295,26 @@ button {
         overflow: hidden;
         border-bottom: 1px solid #ccc;
         padding: 10px 0 0 0;
+        &:last-child { border-bottom: none; }
     }
-    li:last-child { border-bottom: none; }
     form { margin: 0; }
     input {
-        width: 100%;
-        max-width: 400px;
+        width: 350px;
         padding: 5px;
         margin: 5px 0 0;
         float: left;
     }
 }
 @media only screen and (max-width: 990px) {
-    .skillsEngine ul li {
-        @include centered;
-        width: 95%;
+    .skillsEngine {
+        p{ width: auto; }
+        li{
+            @include centered;
+            width: 95%;
+        }
+        input{width:50%;}
     }
+
 }
 .switch-field {
     margin: 0 20px 0 0;
@@ -325,26 +326,22 @@ button {
     label {
           @include centered;
           @include transitions;
-          width: 60px;
-          @include rem(font-size, 16px);
-          color: #999;
-          background-color: $lightGrey;
+          width: auto;
+          @include rem(font-size, 18px);
+          color: $mediumGrey;
+          background-color: #fff;
           text-shadow: none;
           padding: 6px 14px;
-          border: 2px solid rgba(0, 0, 0, 0.2);
-          -webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5), 0 1px rgba(255, 255, 255, 0.1);
-          box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5), 0 1px rgba(255, 255, 255, 0.1);
+          margin: 0 2px;
+          border: 2px solid $mediumGrey;
           cursor: pointer;
           float: left;
+          position: relative;
     }
-    label:first-of-type { @include border-radius(4px 0 0 4px); }
-    label:last-of-type { @include border-radius(0 4px 4px 0); }
     input:checked + label {
-        color: $blackText;
-        font-weight: bold;
-        background-color: #fff;
-        -webkit-box-shadow: none;
-        box-shadow: none;
+        color: $darkGrey;
+        background-color: $lightGrey;
+        border: 2px solid $darkGrey;
     }
 }
 
