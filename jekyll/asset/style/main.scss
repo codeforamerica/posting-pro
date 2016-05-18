@@ -62,11 +62,10 @@ h3 {
     margin: 20px 0;
 }
 h4 {
-    @include rem(font-size, 18px);
+    @include rem(font-size, 20px);
     line-height: 2.3em;
     font-weight: bold;
     margin: 0;
-    padding: 0 10px;
 }
 p {
     @include rem(font-size, 18px);
@@ -240,7 +239,7 @@ button {
     &.issue-realism { border-color: $expectationsIssueColor; color: $expectationsIssueColor}
     &.issue-tech { border-color: $jargonIssueColor; color: $jargonIssueColor; }
 
-    p { color: $blackText !important; }
+    p { text-align: left; color: $blackText !important; }
 }
 .reason { font-style: italic; }
 
@@ -254,16 +253,15 @@ button {
     float: right;
     margin: 5px 0 0;
 
-    h4 { font-weight: normal; }
     a { border-color: #fff; &:hover{ border-color: $darkGrey; }}
 }
 .analysis {
     display: inline-block;
     float: left;
     margin-right: 10px;
-    background: $lightGrey;
 
-    h4 span{ font-weight: bold; margin: 0 0 0 5px; }
+    p{ padding: 10px; background: $lightGrey; }
+    p span{ font-weight: bold; margin: 0 0 0 5px; }
 }
 @media only screen and (max-width: 1120px) {
     .inform, .analysis{
