@@ -4,7 +4,7 @@
     var templates = {};
     var acceptedTypes = ["tech", "sexism", "realism"];
     var currentSkillsAnalysis = {};
-    var pages = ['1', '2', '3'];
+    var pages = ['1', '2'];
 
     if (!isSupportedBrowser()) {
         document.getElementById('unsupported').style.display = 'block';
@@ -37,6 +37,7 @@
         cuff.controls.loadSkillsButton = loadSkillsControl;
         cuff.controls.gotoPage1Button = gotoPage1Control;
         cuff.controls.exportPostingPageButton = exportPostingPageControl;
+        cuff.controls.startOverButton = startOverControl;
         cuff.controls.addCertButton = duplicateCertControl;
         cuff.controls.addSkillsButton = duplicateSkillControl;
         cuff.controls.removeSkillButton = removeSkillControl;
@@ -210,11 +211,24 @@
     }
 
     function loadSkillsControl(element) {
-      $(element).bind('click', function() {
+      var $generateButton = $(element);
+      $generateButton.bind('click', function() {
         generateSkillsControl();
-        renderCertification("cert");
+        if ( $generateButton.hasClass('generate') ) { // i.e. we're not *re*generating
+          renderCertification("cert");
+        }
         $(".skillsEngine, #qualificationsNeeded, #exportButton").fadeIn();
-        $("#generateSkills").hide();
+        $("#generateSkills").addClass('regenerate').removeClass('generate').text('Regenerate Skills');
+      });
+    }
+
+    function startOverControl(element) {
+      $(element).bind('click', function() {
+        currentSkillSet = {}; // clear skills data just in case user tries to export
+        $("#job-desc-input").val('').trigger('keyup'); // keyup triggers clearing right-hand results box
+        $("[name=positiontitle]").val('');
+        $(".skillsEngine, #qualificationsNeeded, #exportButton").fadeOut();
+        $("#generateSkills").addClass('generate').removeClass('regenerate').text('Generate Skills');
       });
     }
 
@@ -378,15 +392,15 @@
         skills: skills
       };
 
-      var element = $("#" + id)[0];
-      element.innerHTML = templates.skillSet.render(skillSet, templates);
-      cuff(element);
+      var $element = $("#" + id)[0];
+      $element.innerHTML = templates.skillSet.render(skillSet, templates);
+      cuff($element);
     }
 
     function renderCertification(id) {
-      var certList = $('#cert-list');
-      certList.append(templates.certNeeded.render({"id": id}));
-      cuff(certList[0]);
+      var $certList = $('#cert-list');
+      $certList.append(templates.certNeeded.render({"id": id}));
+      cuff($certList[0]);
     }
 
     function generateLintId (results) {
