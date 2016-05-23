@@ -150,7 +150,7 @@ button {
     background-color: #fff;
     border: 5px solid $darkGrey;
     padding:15px;
-    display: block;
+    display: inline-block;
     &:hover{ background-color: $darkGrey; color: #fff; }
 }
 
