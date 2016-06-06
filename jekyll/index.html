@@ -25,7 +25,7 @@ layout: page
     <p>To see common skills associated with the title and description you've provided for this position, click the Generate Skills button below. Then select "Preferred" or "Required" for each skill. You may also add a skill that is not listed.</p>
     <p><em>Powered by <a href="https://skillsengine.com/home">SkillsEngine</a></em></p>
 
-    <button data-control="loadSkillsButton" id="generateSkills" class="generate">Generate Skills</button>
+    <button data-control="loadSkillsButton" id="generateSkills" class="generate" data-event-category="skills" data-event-action="generate skills">Generate Skills</button>
     <div class="skillsEngine">
       {% include site/skillstemplates.html %}
       <div id="skills-and-tools"></div>
@@ -40,17 +40,17 @@ layout: page
           <li>
             <form>
               <input type="text" id="new-{id}" name="certNeeded">
-              <span class="circle circle-remove" data-control="removeCertButton" id="{id}">x</span>
+              <span class="circle circle-remove" data-control="removeCertButton" id="{id}" data-event-category="qualifications" data-event-action="remove one" data-event-label="qualification">x</span>
             </form>
           </li>
         </script>
       </ul>
-      <span class="circle circle-plus" id="add-cert" data-control="addCertButton">+</span>
+      <span class="circle circle-plus" id="add-cert" data-control="addCertButton" data-event-category="qualifications" data-event-action="add new" data-event-label="qualification">+</span>
   </section>
 
   <section id="exportButton">
-    <button data-control="startOverButton">START OVER</button>
-    <button data-control="exportPostingPageButton">EXPORT</button>
+    <button data-control="startOverButton" data-event-category="navigate" data-event-action="start over">START OVER</button>
+    <button data-control="exportPostingPageButton" data-event-category="navigate" data-event-action="export">EXPORT</button>
   </section>
 </div>
 
@@ -59,6 +59,6 @@ layout: page
   <section id="final-posting"></section>
 
   <section>
-    <button data-control="gotoPage1Button">BACK</button>
+    <button data-control="gotoPage1Button" data-event-category="navigate" data-event-action="back">BACK</button>
   </section>
 </div>
