@@ -75,8 +75,8 @@
       };
 
       $(document).on('lint-results', function(event, results) {
-          var inputElement = $(document).find('#job-desc-input')[0];
-          var baseText = inputElement.value.replace(/\n/g, "<br>");
+          var $inputElement = $(document).find('#job-desc-input')[0];
+          var baseText = $inputElement.value.replace(/\n/g, "<br>");
 
           // sort array by the position of the issue
           var issues = _.sortBy(results.issues, function(issue) {
@@ -112,9 +112,9 @@
       });
     }
 
-    function calculateOffset(parent, tooltip) {
-      var parentOffset = parent.offset();
-      var parentWidth = parent.width();
+    function calculateOffset($parent) {
+      var parentOffset = $parent.offset();
+      var parentWidth = $parent.width();
       var documentWidth = $(document).width();
 
       var tooltipOffset = {
@@ -133,42 +133,42 @@
     }
 
     function errorTooltipControl (element) {
-      var parent = $(element).parent();
+      var $parent = $(element).parent();
 
       // move tooltip to body so that it doesn't get cut off
-      var tooltip = $(element).detach();
-      $('body').append(tooltip);
+      var $tooltip = $(element).detach();
+      $('body').append($tooltip);
 
       // save reference to hideTooltip event since we'll use it frequently
-      var hideEvent = function() { hideTooltip(tooltip); };
+      var hideEvent = function() { hideTooltip($tooltip); };
 
-      parent.hover(
-        function() { showTooltip(tooltip, parent); },
+      $parent.hover(
+        function() { showTooltip($tooltip, $parent); },
         hideEvent
       );
 
       // hide tooltip if container scrolls so that it doesn't get unaligned
-      parent.parent().on('scroll', hideEvent);
+      $parent.parent().on('scroll', hideEvent);
 
       // when the text is changed, make sure to remove tooltip from DOM and any referencing events
-      parent.bind('DOMNodeRemoved', function(event) {
-        parent.parent().off('scroll', hideEvent);
-        tooltip.remove();
+      $parent.bind('DOMNodeRemoved', function(event) {
+        $parent.parent().off('scroll', hideEvent);
+        $tooltip.remove();
       });
     }
 
-    function showTooltip(tooltip, parent) {
-      tooltip.addClass("tooltip-show");
+    function showTooltip($tooltip, $parent) {
+      $tooltip.addClass("tooltip-show");
 
       // if a parent element was passed in, readjust offset
-      if(parent) {
-        var tooltipOffset = calculateOffset(parent, tooltip);
-        tooltip.offset(tooltipOffset);
+      if($parent) {
+        var tooltipOffset = calculateOffset($parent);
+        $tooltip.offset(tooltipOffset);
       }
     }
 
-    function hideTooltip(tooltip) {
-      tooltip.removeClass("tooltip-show");
+    function hideTooltip($tooltip) {
+      $tooltip.removeClass("tooltip-show");
     }
 
     function issuesOutputControl (element) {
@@ -303,9 +303,9 @@
 
       $(element).bind('click', function() {
         var newHTML = templates.skillAdder.render({id: divId + i++});
-        var list = $("#" + divId + " ul");
-        list.append($("<li>").append(newHTML));
-        cuff(list[0]); // makes the remove button work
+        var $list = $("#" + divId + " ul");
+        $list.append($("<li>").append(newHTML));
+        cuff($list[0]); // makes the remove button work
       });
     }
 
@@ -334,19 +334,19 @@
     function composePostingFromFields() {
       var postingData = {};
 
-      var jobDescriptionEl = $("#job-desc-input");
-      if(jobDescriptionEl) postingData.jobDescription = jobDescriptionEl.val();
+      var $jobDescriptionEl = $("#job-desc-input");
+      if($jobDescriptionEl) postingData.jobDescription = $jobDescriptionEl.val();
 
-      var positionTitleEl = $("input[name='positiontitle']");
-      if(positionTitleEl) postingData.positionTitle = positionTitleEl.val();
+      var $positionTitleEl = $("input[name='positiontitle']");
+      if($positionTitleEl) postingData.positionTitle = $positionTitleEl.val();
 
       var requiredSkills = [];
       var preferredSkills = [];
       collectAddedSkills();
       _.forOwn(currentSkillSet, function(skillName, skillId) {
-        var skillSwitchEl = $("input:radio[name=switch-" + skillId + "]:checked");
-        if(skillSwitchEl) {
-          switch(skillSwitchEl.val()) {
+        var $skillSwitchEl = $("input:radio[name=switch-" + skillId + "]:checked");
+        if($skillSwitchEl) {
+          switch($skillSwitchEl.val()) {
             case 'required':
               requiredSkills.push({
                 name: skillName
