@@ -335,7 +335,10 @@
       var postingData = {};
 
       var $jobDescriptionEl = $("#job-desc-input");
-      if($jobDescriptionEl) postingData.jobDescription = $jobDescriptionEl.val();
+      if($jobDescriptionEl) {
+        var jobDescription = $jobDescriptionEl.val() || "";
+        postingData.jobDescription = jobDescription.replace(/\n/g, "<br>");;
+      }
 
       var $positionTitleEl = $("input[name='positiontitle']");
       if($positionTitleEl) postingData.positionTitle = $positionTitleEl.val();
