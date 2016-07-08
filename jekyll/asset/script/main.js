@@ -5,6 +5,7 @@
     var acceptedTypes = ["tech", "sexism", "realism"];
     var currentSkillsAnalysis = {};
     var pages = ['1', '2'];
+    var convertedDocument;
 
     if (!isSupportedBrowser()) {
         document.getElementById('unsupported').style.display = 'block';
@@ -42,6 +43,7 @@
         cuff.controls.addSkillsButton = duplicateSkillControl;
         cuff.controls.removeSkillButton = removeSkillControl;
         cuff.controls.removeCertButton = removeCertControl;
+        cuff.controls.saveAsWordDocButton = saveAsWordDocControl;
         cuff();
     }
 
@@ -314,6 +316,13 @@
         var content = composePostingFromFields();
         $("#final-posting")[0].innerHTML = content;
         showPage('2');
+        convertedDocument = htmlDocx.asBlob(content);
+      });
+    }
+
+    function saveAsWordDocControl(element) {
+      $(element).bind('click', function() {
+        saveAs(convertedDocument, 'jobposting.docx');
       });
     }
 
