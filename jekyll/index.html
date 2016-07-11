@@ -50,16 +50,18 @@ layout: page
 
   <section id="exportButton">
     <button data-control="startOverButton" data-event-category="navigate" data-event-action="start over">START OVER</button>
-    <button data-control="exportPostingPageButton" data-event-category="navigate" data-event-action="export">EXPORT</button>
+    <button data-control="exportPostingPageButton" data-event-category="navigate" data-event-action="export">REVIEW</button>
   </section>
 </div>
 
 <div id="page_2" style="display:none;">
   {% include site/jobpostingtemplate.html %}
+  <section>
+    <button data-control="saveAsWordDocButton" data-event-category="navigate" data-event-action="save as word doc">SAVE AS WORD DOCUMENT</button>
+  </section>
   <section id="final-posting"></section>
 
   <section>
     <button data-control="gotoPage1Button" data-event-category="navigate" data-event-action="back">BACK</button>
-    <button data-control="saveAsWordDocButton" data-event-category="navigate" data-event-action="save as word doc">WORD DOCUMENT</button>
   </section>
 </div>
