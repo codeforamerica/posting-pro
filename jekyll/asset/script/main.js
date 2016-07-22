@@ -47,7 +47,7 @@
     }
 
     function analysisFieldControl(element) {
-      element.innerHTML = templates.analysisField.render({"id" : element.id, "placeholder" : "Insert text here." });
+      element.innerHTML = templates.analysisField.render({"id" : element.id, "placeholder" : element.getAttributeNode("placeholder").value });
       cuff(element);
     }
 
