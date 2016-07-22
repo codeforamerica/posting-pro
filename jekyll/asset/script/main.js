@@ -34,7 +34,7 @@
         cuff.controls.countOutput = countOutputControl;
         cuff.controls.readingLevelOutput = readingLevelOutputControl;
         cuff.controls.errorTooltip = errorTooltipControl;
-        cuff.controls.gotoPage1Button = gotoPage1Control;
+        cuff.controls.getStartedButton = getStartedControl;
         cuff.controls.gotoPage2Button = gotoPage2Control;
         cuff.controls.exportPostingPageButton = exportPostingPageControl;
         cuff.controls.startOverButton = startOverControl;
@@ -157,16 +157,15 @@
 
     function startOverControl(element) {
       $(element).bind('click', function() {
+        $("[name=positiontitle]").val('');
         $("#company-desc-input").val('').trigger('keyup'); // keyup triggers clearing right-hand results box
         $("#job-desc-input").val('').trigger('keyup'); // keyup triggers clearing right-hand results box
-        $("[name=positiontitle]").val('');
-        showPage('1');
-        // add more clearing
-      });
-    }
-
-    function gotoPage1Control(element) {
-      $(element).bind('click', function() {
+        $("#reqcomp-occupation-list")[0].innerHTML = '';
+        $("#reqcomp-foundation-list")[0].innerHTML = '';
+        $("#prefcomp-occupation-list")[0].innerHTML = '';
+        $("#prefcomp-foundation-list")[0].innerHTML = '';
+        $("#activity-list")[0].innerHTML = '';
+        $("#cert-list")[0].innerHTML = '';
         showPage('1');
       });
     }
@@ -174,7 +173,13 @@
     function gotoPage2Control(element) {
       $(element).bind('click', function() {
         showPage('2');
+      });
+    }
+
+    function getStartedControl(element) {
+      $(element).bind('click', function() {
         populateFields();
+        showPage('2');
       });
     }
 
