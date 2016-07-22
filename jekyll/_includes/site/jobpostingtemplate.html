@@ -14,47 +14,47 @@
   <p>{& jobDescription}</p>
 {/jobDescription}
 
-<h3>Required Competencies</h3>
-{#requiredFoundationalCompetencies.length}
-  <h4>Foundational</h4>
-  <ul>
-    {#requiredFoundationalCompetencies}<li>{name} {description}</li>{/requiredFoundationalCompetencies}
-  </ul>
-{/requiredFoundationalCompetencies.length}
-{#requiredOccupationalCompetencies.length}
+{#hasRequiredCompetencies}<h3>Required Competencies</h3>{/hasRequiredCompetencies}
+{#requiredOccupationalCompetencies}
   <h4>Occupational</h4>
   <ul>
-    {#requiredOccupationalCompetencies}<li>{name} {description}</li>{/requiredOccupationalCompetencies}
+    {#requiredOccupationalCompetencies}<li><strong>{name}</strong>{#description}: {description}{/description}</li>{/requiredOccupationalCompetencies}
   </ul>
-{/requiredOccupationalCompetencies.length}
-
-<h3>Preferred Competencies</h3>
-{#preferredFoundationalCompetencies.length}
+{/requiredOccupationalCompetencies}
+{#requiredFoundationalCompetencies}
   <h4>Foundational</h4>
   <ul>
-    {#preferredFoundationalCompetencies}<li>{name} {description}</li>{/preferredFoundationalCompetencies}
+    {#requiredFoundationalCompetencies}<li>{name}</strong>{#description}: {description}{/description}</li>{/requiredFoundationalCompetencies}
   </ul>
-{/preferredFoundationalCompetencies.length}
-{#preferredOccupationalCompetencies.length}
+{/requiredFoundationalCompetencies}
+
+{#hasPreferredCompetencies}<h3>Preferred Competencies</h3>{/hasPreferredCompetencies}
+{#preferredOccupationalCompetencies}
   <h4>Occupational</h4>
   <ul>
-    {#preferredOccupationalCompetencies}<li>{name} {description}</li>{/preferredOccupationalCompetencies}
+    {#preferredOccupationalCompetencies}<li><strong>{name}</strong>{#description}: {description}{/description}</li>{/preferredOccupationalCompetencies}
   </ul>
-{/preferredOccupationalCompetencies.length}
+{/preferredOccupationalCompetencies}
+{#preferredFoundationalCompetencies}
+  <h4>Foundational</h4>
+  <ul>
+    {#preferredFoundationalCompetencies}<li><strong>{name}</strong>{#description}: {description}{/description}</li>{/preferredFoundationalCompetencies}
+  </ul>
+{/preferredFoundationalCompetencies}
 
-{#exampleActivities.length}
+{#exampleActivities}
   <h3>Example Activities</h3>
   <ul>
     {#exampleActivities}<li>{name}</li>{/exampleActivities}
   </ul>
-{/exampleActivities.length}
+{/exampleActivities}
 
 
-{#certificationsNeeded.length}
+{#certificationsNeeded}
   <h3>Required Certifications</h3>
   <ul>
     {#certificationsNeeded}<li>{name}</li>{/certificationsNeeded}
   </ul>
-{/certificationsNeeded.length}
+{/certificationsNeeded}
 
 </script>

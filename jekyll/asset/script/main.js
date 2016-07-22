@@ -247,11 +247,13 @@
       if($positionTitleEl) postingData.positionTitle = $positionTitleEl.val();
 
       postingData.companyDescription = captureFormattedField("company-desc-input");
-      postingData.jobDescription = captureFormattedField("job-desc.output");
+      postingData.jobDescription = captureFormattedField("job-desc-output");
       postingData.requiredFoundationalCompetencies = captureDoubleFieldValues('reqcomp-foundation');
       postingData.requiredOccupationalCompetencies = captureDoubleFieldValues('reqcomp-occupation');
+      postingData.hasRequiredCompetencies = postingData.requiredFoundationalCompetencies.length || postingData.requiredOccupationalCompetencies.length;
       postingData.preferredFoundationalCompetencies = captureDoubleFieldValues('prefcomp-foundation');
-      postingData.preferredOccupationalCompetencies = captureDoubleFieldValues('reqcomp-occupation');
+      postingData.preferredOccupationalCompetencies = captureDoubleFieldValues('prefcomp-occupation');
+      postingData.hasPreferredCompetencies = postingData.preferredFoundationalCompetencies.length || postingData.preferredOccupationalCompetencies.length;
       postingData.exampleActivities = captureSingleFieldValues('activity');
       postingData.certificationsNeeded = captureSingleFieldValues('cert');
 
@@ -275,7 +277,7 @@
 
       $('form[name='+name+'-form]').each(function() {
         var inputs = $(this).find('input[name=value]');
-        if(inputs && inputs.length) {
+        if(inputs && inputs.length && inputs[0].value) {
             fieldValues.push({name: inputs[0].value});
         }
       });
@@ -283,13 +285,14 @@
       return fieldValues;
     }
 
-    function captureDoubleFieldValues() {
+    function captureDoubleFieldValues(name) {
       var fieldValues = [];
 
       $('form[name='+name+'-form]').each(function() {
         var nameInputs = $(this).find('input[name=name]');
         var descriptionInputs = $(this).find('input[name=description]');
-        if(nameInputs && nameInputs.length && descriptionInputs && descriptionInputs.length) {
+
+        if(nameInputs && nameInputs.length && nameInputs[0].value && descriptionInputs && descriptionInputs.length) {
             fieldValues.push({name: nameInputs[0].value, description: descriptionInputs[0].value });
         }
       });

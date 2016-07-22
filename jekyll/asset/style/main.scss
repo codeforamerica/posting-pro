@@ -404,10 +404,9 @@ button {
 
 // Export Posting //
 #final-posting{
-    @include centered;
     width:96%;
     max-width: 750px;
-    margin: 40px auto;
+    margin: 40px 0;
     padding: 0 2%;
 
     h3, p, li { text-align: left; }
