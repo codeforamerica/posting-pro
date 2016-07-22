@@ -12,25 +12,6 @@ layout: page
 
 <div id="page_2" style="display:none;">
 
-  <script type="text/x-template" data-template="singleFieldTemplate">
-    <li>
-      <form name="{name}-form">
-        <input type="text" id="new-{id}" name="value">
-        <span class="circle circle-remove" data-control="removeSingleFieldButton" id="{id}" data-event-category="qualifications" data-event-action="remove one" data-event-label="qualification">x</span>
-      </form>
-    </li>
-  </script>
-
-  <script type="text/x-template" data-template="doubleFieldTemplate">
-    <li>
-      <form name="{name}-form">
-        <input type="text" id="new-{id}-name" name="name">
-        <input type="text" id="new-{id}-description" name="description">
-        <span class="circle circle-remove" data-control="removeSingleFieldButton" id="{id}" data-event-category="qualifications" data-event-action="remove one" data-event-label="qualification">x</span>
-      </form>
-    </li>
-  </script>
-
 <section>
   <h3>Job Title</h3>
   <form>
@@ -40,18 +21,12 @@ layout: page
 
 <section>
   <h3>Company Overview</h3>
-  {% include site/analysisboxes.html %}
-  <div class="inform">
-    {% include site/counters.html %}
-  </div>
+  <div id="company-desc" data-control="analysisField"></div>
 </section>
 
 <section>
   <h3>Job Summary and Responsibilities</h3>
-  {% include site/analysisboxes.html %}
-  <div class="inform">
-    {% include site/counters.html %}
-  </div>
+  <div id="job-desc" data-control="analysisField"></div>
 </section>
 
 <section>
@@ -95,7 +70,7 @@ layout: page
 
 <div id="page_3" style="display:none;">
   <h2>Final Job Posting</h2>
-  {% include site/jobpostingtemplate.html %}
+
   <section>
     <button data-control="saveAsWordDocButton" data-event-category="navigate" data-event-action="save as word doc">SAVE AS WORD DOCUMENT</button>
   </section>
@@ -105,3 +80,7 @@ layout: page
     <button data-control="gotoPage2Button" data-event-category="navigate" data-event-action="back">BACK</button>
   </section>
 </div>
+
+{% include site/analysisfield.html %}
+{% include site/simplefields.html %}
+{% include site/jobpostingtemplate.html %}

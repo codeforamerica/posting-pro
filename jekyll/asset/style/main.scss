@@ -206,7 +206,7 @@ button {
         &:first-child{ margin-right: auto; }
     }
 }
-#job-desc-input {
+.analysis-input {
     width: 100%;
     height: 350px;
     line-height: 1.8;
@@ -216,14 +216,6 @@ button {
     background-color: #fff;
     border: 3px solid $lightGrey !important;
     &:focus { outline: none; }
-}
-#job-desc-output {
-    @extend #job-desc-input;
-    @include rem(font-size, 18px);
-    text-align: left;
-    position: relative;
-    background-color: $lightGrey;
-    overflow: auto;
 }
 
 

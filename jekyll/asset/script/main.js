@@ -29,10 +29,10 @@
     }
 
     function initControls () {
+        cuff.controls.analysisField = analysisFieldControl;
         cuff.controls.postInput = postInputControl;
         cuff.controls.countOutput = countOutputControl;
         cuff.controls.readingLevelOutput = readingLevelOutputControl;
-        cuff.controls.contextOutput = contextOutputControl;
         cuff.controls.errorTooltip = errorTooltipControl;
         cuff.controls.gotoPage1Button = gotoPage1Control;
         cuff.controls.gotoPage2Button = gotoPage2Control;
@@ -46,6 +46,11 @@
         cuff();
     }
 
+    function analysisFieldControl(element) {
+      element.innerHTML = templates.analysisField.render({"id" : element.id, "placeholder" : "Insert text here." });
+      cuff(element);
+    }
+
     function postInputControl (element) {
         var $document = $(document);
         var $element = $(element);
@@ -55,53 +60,39 @@
             var results = joblint(inputValue);
             results.readingLevel = buildReadingLevel(element.value);
             var lintId = generateLintId(results);
-            $document.trigger('lint-results', results);
+            var eventId = element.getAttributeNode("event-id").value;
+            $document.trigger('lint-results-' + eventId, results);
         });
     }
 
-    function contextOutputControl (element) {
+    function countOutputControl (element) {
 
-      var typeTranslation = {
-        tech: "Jargon",
-        sexism: "Gender",
-        realism: "Expectations"
-      };
+      element.innerHTML = templates.issueCount.render({"issueCount" : "0"});
+      cuff(element);
 
-      $(document).on('lint-results', function(event, results) {
-          var $inputElement = $(document).find('#job-desc-input')[0];
-          var baseText = $inputElement.value.replace(/\n/g, "<br>");
+      var eventId = element.getAttributeNode("event-id").value;
+      $(document).on('lint-results-' + eventId, function (event, results) {
+        element.innerHTML = templates.issueCount.render({ "issueCount" : results.issues.length});
+        cuff(element);
+      });
+    }
 
-          // sort array by the position of the issue
-          var issues = _.sortBy(results.issues, function(issue) {
-              return issue.position;
-          });
-          issues.reverse(); // now the issues are sorted by last to first
+    function readingLevelOutputControl(element) {
 
-          issues.forEach(function(issue) {
+      element.innerHTML = templates.readingLevel.render({"readingLevel" : 'N/A'});
+      cuff(element);
 
-            _.forEach(acceptedTypes, function(acceptedType) { // iterate through potentially defined issue types
-                if(_.has(issue.increment, acceptedType)) { // if we're supposed to increment one of these
-                  issue.type = acceptedType; // create new property with that type
-                  issue.typeTranslation = typeTranslation[acceptedType];
-                  return false; // exit loop
-                }
-            });
+      var eventId = element.getAttributeNode("event-id").value;
+      $(document).on('lint-results-' + eventId, function (event, results) {
+        var tooHigh = results.readingLevel >= 9;
+        var readingLevelSummary = {
+          "readingLevel": results.readingLevel < 0 ? 'N/A' : results.readingLevel,
+          "tooHigh": tooHigh,
+          "level": tooHigh ? "error-highlight" : "info-highlight"
+        };
 
-            if(issue.type) {
-              var occurrenceLength = issue.occurrence.length;
-
-              var beginning = baseText.slice(0, issue.position);
-              var end = baseText.slice(issue.position + occurrenceLength);
-
-              var highlight = templates.highlight.render(issue, templates);
-              baseText = beginning + highlight + end;
-            }
-          });
-
-          element = document.getElementById('job-desc-output');
-
-          element.innerHTML = baseText;
-          cuff(element); // only apply bindings for children of this element
+        element.innerHTML = templates.readingLevel.render(readingLevelSummary);
+        cuff(element);
       });
     }
 
@@ -162,45 +153,6 @@
 
     function hideTooltip($tooltip) {
       $tooltip.removeClass("tooltip-show");
-    }
-
-    function issuesOutputControl (element) {
-        $(document).on('lint-results', function (event, results) {
-            results.issues.forEach(function (issue) {
-                var occurrenceHtml = templates.occurrence.render(issue);
-                issue.contextHtml = issue.context.replace('{{occurrence}}', occurrenceHtml);
-            });
-            element.innerHTML = templates.issues.render(results, templates);
-        });
-    }
-
-    function countOutputControl (element) {
-
-      element.innerHTML = templates.issueCount.render({"issueCount" : "0"});
-      cuff(element);
-
-      $(document).on('lint-results', function (event, results) {
-        element.innerHTML = templates.issueCount.render({ "issueCount" : results.issues.length});
-        cuff(element);
-      });
-    }
-
-    function readingLevelOutputControl(element) {
-
-      element.innerHTML = templates.readingLevel.render({"readingLevel" : 'N/A'});
-      cuff(element);
-
-      $(document).on('lint-results', function (event, results) {
-
-        var tooHigh = results.readingLevel >= 9;
-        var readingLevelSummary = {
-          "readingLevel": results.readingLevel < 0 ? 'N/A' : results.readingLevel,
-          "tooHigh": tooHigh,
-          "level": tooHigh ? "error-highlight" : "info-highlight"
-        };
-        element.innerHTML = templates.readingLevel.render(readingLevelSummary);
-        cuff(element);
-      });
     }
 
     function startOverControl(element) {
