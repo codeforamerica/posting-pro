@@ -6,55 +6,94 @@ layout: page
 
 <div id="page_1">
   <section>
-    <h3>1. What is the position title?</h3>
-    <form>
-      <input type="text" name="positiontitle">
-    </form>
-  </section>
-
-  <section>
-    <h3>2. Please describe the functions and responsibilities</h3>
-      {% include site/analysisboxes.html %}
-      <div class="inform">
-        {% include site/counters.html %}
-      </div>
-  </section>
-
-  <section id="skillsSection">
-    <h3>3. Commonly Associated Skills</h3>
-    <p>To see common skills associated with the title and description you've provided for this position, click the Generate Skills button below. Then select "Preferred" or "Required" for each skill. You may also add a skill that is not listed.</p>
-    <p><em>Powered by <a href="https://skillsengine.com/home">SkillsEngine</a></em></p>
-
-    <button data-control="loadSkillsButton" id="generateSkills" class="generate" data-event-category="skills" data-event-action="generate skills">Generate Skills</button>
-    <div class="skillsEngine">
-      {% include site/skillstemplates.html %}
-      <div id="skills-and-tools"></div>
-    </div>
-  </section>
-
-  <section id="qualificationsNeeded">
-      <h3>4. Qualifications</h3>
-      <p>Add any necessary education, experience, certificates and/or certifications.</p>
-      <ul id="cert-list">
-        <script type="text/x-template" data-template="certNeeded">
-          <li>
-            <form>
-              <input type="text" id="new-{id}" name="certNeeded">
-              <span class="circle circle-remove" data-control="removeCertButton" id="{id}" data-event-category="qualifications" data-event-action="remove one" data-event-label="qualification">x</span>
-            </form>
-          </li>
-        </script>
-      </ul>
-      <span class="circle circle-plus" id="add-cert" data-control="addCertButton" data-event-category="qualifications" data-event-action="add new" data-event-label="qualification">+</span>
-  </section>
-
-  <section id="exportButton">
-    <button data-control="startOverButton" data-event-category="navigate" data-event-action="start over">START OVER</button>
-    <button data-control="exportPostingPageButton" data-event-category="navigate" data-event-action="export">REVIEW</button>
+    <button data-control="gotoPage2Button" data-event-category="navigate" data-event-action="start">START</button>
   </section>
 </div>
 
 <div id="page_2" style="display:none;">
+
+  <script type="text/x-template" data-template="singleFieldTemplate">
+    <li>
+      <form name="{name}-form">
+        <input type="text" id="new-{id}" name="value">
+        <span class="circle circle-remove" data-control="removeSingleFieldButton" id="{id}" data-event-category="qualifications" data-event-action="remove one" data-event-label="qualification">x</span>
+      </form>
+    </li>
+  </script>
+
+  <script type="text/x-template" data-template="doubleFieldTemplate">
+    <li>
+      <form name="{name}-form">
+        <input type="text" id="new-{id}-name" name="name">
+        <input type="text" id="new-{id}-description" name="description">
+        <span class="circle circle-remove" data-control="removeSingleFieldButton" id="{id}" data-event-category="qualifications" data-event-action="remove one" data-event-label="qualification">x</span>
+      </form>
+    </li>
+  </script>
+
+<section>
+  <h3>Job Title</h3>
+  <form>
+    <input type="text" name="positiontitle">
+  </form>
+</section>
+
+<section>
+  <h3>Company Overview</h3>
+  {% include site/analysisboxes.html %}
+  <div class="inform">
+    {% include site/counters.html %}
+  </div>
+</section>
+
+<section>
+  <h3>Job Summary and Responsibilities</h3>
+  {% include site/analysisboxes.html %}
+  <div class="inform">
+    {% include site/counters.html %}
+  </div>
+</section>
+
+<section>
+  <h3>Required Competencies</h3>
+  <h4>Occupational Competencies</h4>
+  <ul id="reqcomp-occupation-list"></ul>
+  <span class="circle circle-plus" id="reqcomp-occupation" data-control="addDoubleFieldButton" data-event-category="qualifications" data-event-action="add new" data-event-label="qualification">+</span>
+  <h4>Foundational Competencies</h4>
+  <ul id="reqcomp-foundation-list"></ul>
+  <span class="circle circle-plus" id="reqcomp-foundation" data-control="addDoubleFieldButton" data-event-category="qualifications" data-event-action="add new" data-event-label="qualification">+</span>
+</section>
+
+<section>
+  <h3>Preferred Competencies</h3>
+  <h4>Occupational Competencies</h4>
+  <ul id="prefcomp-occupation-list"></ul>
+  <span class="circle circle-plus" id="prefcomp-occupation" data-control="addDoubleFieldButton" data-event-category="qualifications" data-event-action="add new" data-event-label="qualification">+</span>
+  <h4>Foundational Competencies</h4>
+  <ul id="prefcomp-foundation-list"></ul>
+  <span class="circle circle-plus" id="prefcomp-foundation" data-control="addDoubleFieldButton" data-event-category="qualifications" data-event-action="add new" data-event-label="qualification">+</span>
+</section>
+
+<section>
+  <h3>Example Activities</h3>
+  <ul id="activity-list"></ul>
+  <span class="circle circle-plus" id="activity" data-control="addSingleFieldButton" data-event-category="qualifications" data-event-action="add new" data-event-label="qualification">+</span>
+</section>
+
+<section>
+  <h3>Required Certifications</h3>
+  <ul id="cert-list"></ul>
+  <span class="circle circle-plus" id="cert" data-control="addSingleFieldButton" data-event-category="qualifications" data-event-action="add new" data-event-label="qualification">+</span>
+</section>
+
+<section id="exportButton">
+  <button data-control="startOverButton" data-event-category="navigate" data-event-action="start over">START OVER</button>
+  <button data-control="exportPostingPageButton" data-event-category="navigate" data-event-action="export">REVIEW</button>
+</section>
+
+</div>
+
+<div id="page_3" style="display:none;">
   <h2>Final Job Posting</h2>
   {% include site/jobpostingtemplate.html %}
   <section>
@@ -63,6 +102,6 @@ layout: page
   <section id="final-posting"></section>
 
   <section>
-    <button data-control="gotoPage1Button" data-event-category="navigate" data-event-action="back">BACK</button>
+    <button data-control="gotoPage2Button" data-event-category="navigate" data-event-action="back">BACK</button>
   </section>
 </div>

@@ -37,12 +37,13 @@
         cuff.controls.errorTooltip = errorTooltipControl;
         cuff.controls.loadSkillsButton = loadSkillsControl;
         cuff.controls.gotoPage1Button = gotoPage1Control;
+        cuff.controls.gotoPage2Button = gotoPage2Control;
         cuff.controls.exportPostingPageButton = exportPostingPageControl;
         cuff.controls.startOverButton = startOverControl;
-        cuff.controls.addCertButton = duplicateCertControl;
-        cuff.controls.addSkillsButton = duplicateSkillControl;
-        cuff.controls.removeSkillButton = removeSkillControl;
-        cuff.controls.removeCertButton = removeCertControl;
+        cuff.controls.addSingleFieldButton = addSingleFieldControl;
+        cuff.controls.addDoubleFieldButton = addDoubleFieldControl;
+        cuff.controls.removeSingleFieldButton = removeSingleFieldControl;
+        cuff.controls.removeDoubleFieldButton = removeDoubleFieldControl;
         cuff.controls.saveAsWordDocButton = saveAsWordDocControl;
         cuff();
     }
@@ -56,16 +57,8 @@
             var results = joblint(inputValue);
             results.readingLevel = buildReadingLevel(element.value);
             var lintId = generateLintId(results);
-            saveSession(element.value, element.id);
             $document.trigger('lint-results', results);
         });
-        var session = loadSession(element.id);
-        if (session) {
-            element.value = session;
-            setTimeout(function () {
-                $element.trigger('keyup');
-            }, 1);
-        }
     }
 
     function contextOutputControl (element) {
@@ -216,9 +209,6 @@
       var $generateButton = $(element);
       $generateButton.bind('click', function() {
         generateSkillsControl();
-        if ( $generateButton.hasClass('generate') ) { // i.e. we're not *re*generating
-          renderCertification("cert");
-        }
         $(".skillsEngine, #qualificationsNeeded, #exportButton").fadeIn();
         $("#generateSkills").addClass('regenerate').removeClass('generate').text('Regenerate Skills');
       });
@@ -227,10 +217,12 @@
     function startOverControl(element) {
       $(element).bind('click', function() {
         currentSkillSet = {}; // clear skills data just in case user tries to export
+        $("#company-desc-input").val('').trigger('keyup'); // keyup triggers clearing right-hand results box
         $("#job-desc-input").val('').trigger('keyup'); // keyup triggers clearing right-hand results box
         $("[name=positiontitle]").val('');
         $(".skillsEngine, #qualificationsNeeded, #exportButton").fadeOut();
         $("#generateSkills").addClass('generate').removeClass('regenerate').text('Generate Skills');
+        // add more clearing and move to page 1
       });
     }
 
@@ -238,6 +230,22 @@
       $(element).bind('click', function() {
         showPage('1');
       });
+    }
+
+    function gotoPage2Control(element) {
+      $(element).bind('click', function() {
+        showPage('2');
+        populateFields();
+      });
+    }
+
+    function populateFields() {
+      renderField("doubleFieldTemplate", "reqcomp-occupation");
+      renderField("doubleFieldTemplate", "reqcomp-foundation");
+      renderField("doubleFieldTemplate", "prefcomp-occupation");
+      renderField("doubleFieldTemplate", "prefcomp-foundation");
+      renderField("singleFieldTemplate", "activity");
+      renderField("singleFieldTemplate", "cert");
     }
 
     function showPage(pageId) {
@@ -292,30 +300,11 @@
       });
     }
 
-    function duplicateCertControl(element) {
-      var i = 1;
-      $(element).bind('click', function() {
-        renderCertification("cert" + i++);
-      });
-    }
-
-    function duplicateSkillControl(element) {
-      var divId = $("div #" + element.id).parent("div")[0].id;
-      var i = 1;
-
-      $(element).bind('click', function() {
-        var newHTML = templates.skillAdder.render({id: divId + i++});
-        var $list = $("#" + divId + " ul");
-        $list.append($("<li>").append(newHTML));
-        cuff($list[0]); // makes the remove button work
-      });
-    }
-
     function exportPostingPageControl(element) {
       $(element).bind('click', function() {
         var content = composePostingFromFields();
         $("#final-posting")[0].innerHTML = content;
-        showPage('2');
+        showPage('3');
         convertedDocument = htmlDocx.asBlob(content);
       });
     }
@@ -326,15 +315,29 @@
       });
     }
 
-    function removeSkillControl(element) {
+    function addSingleFieldControl(element) {
+      var i = 1;
       $(element).bind('click', function() {
-        var skillId = element.id;
-        delete currentSkillSet[skillId];
-        $("#" + skillId).parent().remove();
+        var elementId = element.id;
+        renderField("singleFieldTemplate", elementId, i++);
       });
     }
 
-    function removeCertControl(element) {
+    function addDoubleFieldControl(element) {
+      var i = 1;
+      $(element).bind('click', function() {
+        var elementId = element.id;
+        renderField("doubleFieldTemplate", elementId, i++);
+      });
+    }
+
+    function removeSingleFieldControl(element) {
+      $(element).bind('click', function(){
+        $("#" + element.id).parents('li').remove();
+      });
+    }
+
+    function removeDoubleFieldControl(element) {
       $(element).bind('click', function(){
         $("#" + element.id).parents('li').remove();
       });
@@ -343,92 +346,68 @@
     function composePostingFromFields() {
       var postingData = {};
 
+      var $positionTitleEl = $("input[name='positiontitle']");
+      if($positionTitleEl) postingData.positionTitle = $positionTitleEl.val();
+
+      var $companyDescriptionEl = $("#company-desc-input");
+      if($companyDescriptionEl) {
+        var companyDescription = $companyDescriptionEl.val() || "";
+        postingData.companyDescription = companyDescription.replace(/\n/g, "<br>");;
+      }
+
       var $jobDescriptionEl = $("#job-desc-input");
       if($jobDescriptionEl) {
         var jobDescription = $jobDescriptionEl.val() || "";
         postingData.jobDescription = jobDescription.replace(/\n/g, "<br>");;
       }
 
-      var $positionTitleEl = $("input[name='positiontitle']");
-      if($positionTitleEl) postingData.positionTitle = $positionTitleEl.val();
+      postingData.requiredFoundationalCompetencies = captureDoubleFieldValues('reqcomp-foundation');
+      postingData.requiredOccupationalCompetencies = captureDoubleFieldValues('reqcomp-occupation');
+      postingData.preferredFoundationalCompetencies = captureDoubleFieldValues('prefcomp-foundation');
+      postingData.preferredOccupationalCompetencies = captureDoubleFieldValues('reqcomp-occupation');
+      postingData.exampleActivities = captureSingleFieldValues('activity');
+      postingData.certificationsNeeded = captureSingleFieldValues('cert');
 
-      var requiredSkills = [];
-      var preferredSkills = [];
-      collectAddedSkills();
-      _.forOwn(currentSkillSet, function(skillName, skillId) {
-        var $skillSwitchEl = $("input:radio[name=switch-" + skillId + "]:checked");
-        if($skillSwitchEl) {
-          switch($skillSwitchEl.val()) {
-            case 'required':
-              requiredSkills.push({
-                name: skillName
-              });
-              break;
-
-            case 'preferred':
-              preferredSkills.push({
-                name: skillName
-              });
-              break;
-            default:
-              break;
-          }
-        }
-      });
-      postingData.requiredSkills = requiredSkills;
-      postingData.preferredSkills = preferredSkills;
-
-      var certificationsNeeded = [];
-      $('input[name=certNeeded]').each(function() {
-        if(this.value) {
-          certificationsNeeded.push({name: this.value});
-        }
-      });
-
-      postingData.certificationsNeeded = certificationsNeeded;
       return templates.fullJobPosting.render(postingData, templates);
     }
 
-    function collectAddedSkills() {
-      $('input.new-skill').each(function(){
-        if (this.value) {
-          var id = this.name.substring(7, this.name.length);
-          currentSkillSet[id] = this.value;
+    function captureSingleFieldValues(name) {
+      var fieldValues = [];
+
+      $('form[name='+name+'-form]').each(function() {
+        var inputs = $(this).find('input[name=value]');
+        if(inputs && inputs.length) {
+            fieldValues.push({name: inputs[0].value});
         }
       });
+
+      return fieldValues;
     }
 
-    function renderSkillSet(skills, id) {
-      var skillSet = {
-        id: id,
-        skills: skills
-      };
+    function captureDoubleFieldValues() {
+      var fieldValues = [];
 
-      var $element = $("#" + id)[0];
-      $element.innerHTML = templates.skillSet.render(skillSet, templates);
-      cuff($element);
+      $('form[name='+name+'-form]').each(function() {
+        var nameInputs = $(this).find('input[name=name]');
+        var descriptionInputs = $(this).find('input[name=description]');
+        if(nameInputs && nameInputs.length && descriptionInputs && descriptionInputs.length) {
+            fieldValues.push({name: nameInputs[0].value, description: descriptionInputs[0].value });
+        }
+      });
+
+      return fieldValues;
     }
 
-    function renderCertification(id) {
-      var $certList = $('#cert-list');
-      $certList.append(templates.certNeeded.render({"id": id}));
-      cuff($certList[0]);
+    function renderField(templateName, id, index, listReference) {
+      listReference = listReference || "#" + id + "-list";  // default to using "#id-list"
+      index = index || 0; // default to index 0
+      var $list = $(listReference);
+      $list.append(templates[templateName].render({"id": id+index, "name": id}));
+      cuff($list[0]);
     }
 
     function generateLintId (results) {
         return JSON.stringify(results);
-    }
-
-    function saveSession (postContent, elementId) {
-        if (typeof window.localStorage !== 'undefined') {
-            localStorage.setItem(elementId, postContent);
-        }
-    }
-
-    function loadSession (elementId) {
-        if (typeof window.localStorage !== 'undefined') {
-            return localStorage.getItem(elementId);
-        }
     }
 
     function isSupportedBrowser () {
