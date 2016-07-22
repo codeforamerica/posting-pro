@@ -3,7 +3,7 @@
 
     var templates = {};
     var acceptedTypes = ["tech", "sexism", "realism"];
-    var pages = ['1', '2'];
+    var pages = ['1', '2', '3'];
     var convertedDocument;
 
     if (!isSupportedBrowser()) {
@@ -160,7 +160,8 @@
         $("#company-desc-input").val('').trigger('keyup'); // keyup triggers clearing right-hand results box
         $("#job-desc-input").val('').trigger('keyup'); // keyup triggers clearing right-hand results box
         $("[name=positiontitle]").val('');
-        // add more clearing and move to page 1
+        showPage('1');
+        // add more clearing
       });
     }
 
@@ -245,18 +246,8 @@
       var $positionTitleEl = $("input[name='positiontitle']");
       if($positionTitleEl) postingData.positionTitle = $positionTitleEl.val();
 
-      var $companyDescriptionEl = $("#company-desc-input");
-      if($companyDescriptionEl) {
-        var companyDescription = $companyDescriptionEl.val() || "";
-        postingData.companyDescription = companyDescription.replace(/\n/g, "<br>");;
-      }
-
-      var $jobDescriptionEl = $("#job-desc-input");
-      if($jobDescriptionEl) {
-        var jobDescription = $jobDescriptionEl.val() || "";
-        postingData.jobDescription = jobDescription.replace(/\n/g, "<br>");;
-      }
-
+      postingData.companyDescription = captureFormattedField("company-desc-input");
+      postingData.jobDescription = captureFormattedField("job-desc.output");
       postingData.requiredFoundationalCompetencies = captureDoubleFieldValues('reqcomp-foundation');
       postingData.requiredOccupationalCompetencies = captureDoubleFieldValues('reqcomp-occupation');
       postingData.preferredFoundationalCompetencies = captureDoubleFieldValues('prefcomp-foundation');
@@ -265,6 +256,18 @@
       postingData.certificationsNeeded = captureSingleFieldValues('cert');
 
       return templates.fullJobPosting.render(postingData, templates);
+    }
+
+    function captureFormattedField(id) {
+      var description = "";
+
+      var $descriptionEl = $("#" + id);
+      if($descriptionEl) {
+        description = $descriptionEl.val() || "";
+        description = description.replace(/\n/g, "<br>");
+      }
+
+      return description;
     }
 
     function captureSingleFieldValues(name) {
