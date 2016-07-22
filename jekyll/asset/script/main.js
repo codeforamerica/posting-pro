@@ -3,7 +3,6 @@
 
     var templates = {};
     var acceptedTypes = ["tech", "sexism", "realism"];
-    var currentSkillsAnalysis = {};
     var pages = ['1', '2'];
     var convertedDocument;
 
@@ -35,7 +34,6 @@
         cuff.controls.readingLevelOutput = readingLevelOutputControl;
         cuff.controls.contextOutput = contextOutputControl;
         cuff.controls.errorTooltip = errorTooltipControl;
-        cuff.controls.loadSkillsButton = loadSkillsControl;
         cuff.controls.gotoPage1Button = gotoPage1Control;
         cuff.controls.gotoPage2Button = gotoPage2Control;
         cuff.controls.exportPostingPageButton = exportPostingPageControl;
@@ -205,23 +203,11 @@
       });
     }
 
-    function loadSkillsControl(element) {
-      var $generateButton = $(element);
-      $generateButton.bind('click', function() {
-        generateSkillsControl();
-        $(".skillsEngine, #qualificationsNeeded, #exportButton").fadeIn();
-        $("#generateSkills").addClass('regenerate').removeClass('generate').text('Regenerate Skills');
-      });
-    }
-
     function startOverControl(element) {
       $(element).bind('click', function() {
-        currentSkillSet = {}; // clear skills data just in case user tries to export
         $("#company-desc-input").val('').trigger('keyup'); // keyup triggers clearing right-hand results box
         $("#job-desc-input").val('').trigger('keyup'); // keyup triggers clearing right-hand results box
         $("[name=positiontitle]").val('');
-        $(".skillsEngine, #qualificationsNeeded, #exportButton").fadeOut();
-        $("#generateSkills").addClass('generate').removeClass('regenerate').text('Generate Skills');
         // add more clearing and move to page 1
       });
     }
@@ -254,48 +240,6 @@
           $("#page_" + page).show();
         } else {
           $("#page_" + page).hide();
-        }
-      });
-    }
-
-    var currentSkillSet = {};
-
-    function generateSkillsControl() {
-      var MAX_SKILLS = 3;
-      var jobDescription = $("#job-desc-input").val();
-
-      getSkillsEngineCompetencies(jobDescription, function(data) {
-        currentSkillSet = {}; // reset data
-
-        if(data && data.result && data.result.competencies_analysis) {
-          currentSkillsAnalysis = data.result.competencies_analysis;
-
-          var skillsAndTools = [];
-
-          if(currentSkillsAnalysis.skills && currentSkillsAnalysis.skills.length) {
-            var len = _.min([MAX_SKILLS, currentSkillsAnalysis.skills.length]);
-            for(var i = 0; i < len; i++) {
-              var skill = {
-                name: currentSkillsAnalysis.skills[i][0],
-                id: "skill" + i
-              };
-              skillsAndTools.push(skill);
-              currentSkillSet[skill.id] = skill.name;
-            }
-          }
-
-          if(currentSkillsAnalysis.tools && currentSkillsAnalysis.tools.length) {
-            var len = _.min([MAX_SKILLS, currentSkillsAnalysis.tools.length]);
-            for(var i = 0; i < len; i++) {
-              var tool = {
-                name: currentSkillsAnalysis.tools[i].title,
-                id: "tool" + i
-              };
-              skillsAndTools.push(tool);
-              currentSkillSet[tool.id] = tool.name;
-            }
-          }
-          renderSkillSet(skillsAndTools, "skills-and-tools");
         }
       });
     }
