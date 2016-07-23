@@ -34,7 +34,7 @@
         cuff.controls.countOutput = countOutputControl;
         cuff.controls.readingLevelOutput = readingLevelOutputControl;
         cuff.controls.errorTooltip = errorTooltipControl;
-        cuff.controls.getStartedButton = getStartedControl;
+        cuff.controls.freshStartButton = freshStartControl;
         cuff.controls.gotoPage2Button = gotoPage2Control;
         cuff.controls.exportPostingPageButton = exportPostingPageControl;
         cuff.controls.startOverButton = startOverControl;
@@ -176,14 +176,14 @@
       });
     }
 
-    function getStartedControl(element) {
+    function freshStartControl(element) {
       $(element).bind('click', function() {
-        populateFields();
+        populateBlankFields();
         showPage('2');
       });
     }
 
-    function populateFields() {
+    function populateBlankFields() {
       renderField("doubleFieldTemplate", "reqcomp-occupation");
       renderField("doubleFieldTemplate", "reqcomp-foundation");
       renderField("doubleFieldTemplate", "prefcomp-occupation");

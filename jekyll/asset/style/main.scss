@@ -157,6 +157,16 @@ button {
     display: inline-block;
     &:hover{ background-color: $darkGrey; color: #fff; }
 }
+.button-separator {
+  font: 20px 'Source Sans Pro', sans-serif;
+  color: $blackText;
+  display: inline-block;
+  height: 90px;
+  line-height: 90px;
+  width: 40px;
+  vertical-align: top;
+  text-align: center;
+}
 
 
 // Clearfix //

@@ -9,6 +9,7 @@ gem 'rest-client'
 gem 'json'
 gem 'docx'
 gem 'pg'
+gem 'sequel'
 
 group :development do
   gem 'jekyll'
