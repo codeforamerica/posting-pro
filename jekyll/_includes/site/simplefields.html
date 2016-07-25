@@ -1,0 +1,18 @@
+<script type="text/x-template" data-template="singleFieldTemplate">
+  <li>
+    <form name="{name}-form">
+      <input type="text" id="new-{id}" name="value">
+      <span class="circle circle-remove" data-control="removeSingleFieldButton" id="{id}" data-event-category="qualifications" data-event-action="remove one" data-event-label="qualification">x</span>
+    </form>
+  </li>
+</script>
+
+<script type="text/x-template" data-template="doubleFieldTemplate">
+  <li>
+    <form name="{name}-form" class="double-field">
+      <input type="text" id="new-{id}-name" name="name" class="short">
+      <input type="text" id="new-{id}-description" name="description">
+      <span class="circle circle-remove" data-control="removeSingleFieldButton" id="{id}" data-event-category="qualifications" data-event-action="remove one" data-event-label="qualification">x</span>
+    </form>
+  </li>
+</script>

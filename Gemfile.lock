@@ -13,6 +13,9 @@ GEM
     coffee-script-source (1.9.1.1)
     colorator (0.1)
     daemons (1.2.3)
+    docx (0.2.07)
+      nokogiri (~> 1.5)
+      rubyzip (~> 1.1.6)
     domain_name (0.5.20160310)
       unf (>= 0.0.5, < 1.0.0)
     eventmachine (1.2.0.1)
@@ -68,10 +71,16 @@ GEM
     mercenary (0.3.5)
     mime-types (2.99.1)
     mini_magick (4.5.1)
+    mini_portile2 (2.1.0)
     multi_json (1.11.2)
     netrc (0.11.0)
+    nokogiri (1.6.8)
+      mini_portile2 (~> 2.1.0)
+      pkg-config (~> 1.1.7)
     parslet (1.5.0)
       blankslate (~> 2.0)
+    pg (0.18.4)
+    pkg-config (1.1.7)
     posix-spawn (0.3.11)
     pygments.rb (0.6.3)
       posix-spawn (~> 0.3.6)
@@ -91,8 +100,10 @@ GEM
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 3.0)
       netrc (~> 0.7)
+    rubyzip (1.1.7)
     safe_yaml (1.0.4)
     sass (3.4.15)
+    sequel (4.36.0)
     sinatra (1.4.7)
       rack (~> 1.5)
       rack-protection (~> 1.4)
@@ -126,12 +137,15 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  docx
   foreman
   jekyll
   jekyll-assets
   json
+  pg
   rack-jekyll
   rest-client
+  sequel
   sinatra
   thin
 

@@ -5,6 +5,7 @@ set :session_secret, ENV['SINATRA_SESSION_SECRET']
 
 require './sinatra/skills_engine.rb'
 require 'json'
+require 'docx'
 
 # call the SkillsEngine API
 post '/api/skillsengine/competencies' do
@@ -27,6 +28,10 @@ end
 # remove all trailing slashes
 get %r{(/.*)\/$} do
   redirect params[:captures].first.to_s
+end
+
+post '/upload/word' do
+  # upload that stuff
 end
 
 # serve the jekyll site from the _site folder
