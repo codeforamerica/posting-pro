@@ -15,46 +15,46 @@
 {/jobDescription}
 
 {#hasRequiredCompetencies}<h3>Required Competencies</h3>{/hasRequiredCompetencies}
-{#requiredOccupationalCompetencies}
+{#requiredOccupationalCompetencies.length}
   <h4>Occupational</h4>
   <ul>
     {#requiredOccupationalCompetencies}<li><strong>{name}</strong>{#description}: {description}{/description}</li>{/requiredOccupationalCompetencies}
   </ul>
-{/requiredOccupationalCompetencies}
-{#requiredFoundationalCompetencies}
+{/requiredOccupationalCompetencies.length}
+{#requiredFoundationalCompetencies.length}
   <h4>Foundational</h4>
   <ul>
-    {#requiredFoundationalCompetencies}<li>{name}</strong>{#description}: {description}{/description}</li>{/requiredFoundationalCompetencies}
+    {#requiredFoundationalCompetencies}<li><strong>{name}</strong>{#description}: {description}{/description}</li>{/requiredFoundationalCompetencies}
   </ul>
-{/requiredFoundationalCompetencies}
+{/requiredFoundationalCompetencies.length}
 
 {#hasPreferredCompetencies}<h3>Preferred Competencies</h3>{/hasPreferredCompetencies}
-{#preferredOccupationalCompetencies}
+{#preferredOccupationalCompetencies.length}
   <h4>Occupational</h4>
   <ul>
     {#preferredOccupationalCompetencies}<li><strong>{name}</strong>{#description}: {description}{/description}</li>{/preferredOccupationalCompetencies}
   </ul>
-{/preferredOccupationalCompetencies}
-{#preferredFoundationalCompetencies}
+{/preferredOccupationalCompetencies.length}
+{#preferredFoundationalCompetencies.length}
   <h4>Foundational</h4>
   <ul>
     {#preferredFoundationalCompetencies}<li><strong>{name}</strong>{#description}: {description}{/description}</li>{/preferredFoundationalCompetencies}
   </ul>
-{/preferredFoundationalCompetencies}
+{/preferredFoundationalCompetencies.length}
 
-{#exampleActivities}
+{#exampleActivities.length}
   <h3>Example Activities</h3>
   <ul>
     {#exampleActivities}<li>{name}</li>{/exampleActivities}
   </ul>
-{/exampleActivities}
+{/exampleActivities.length}
 
 
-{#certificationsNeeded}
+{#certificationsNeeded.length}
   <h3>Required Certifications</h3>
   <ul>
     {#certificationsNeeded}<li>{name}</li>{/certificationsNeeded}
   </ul>
-{/certificationsNeeded}
+{/certificationsNeeded.length}
 
 </script>
