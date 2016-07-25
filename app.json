@@ -1,0 +1,35 @@
+{
+  "name": "posting-pro",
+  "scripts": {
+  },
+  "env": {
+    "GOOGLE_API_KEY": {
+      "required": true
+    },
+    "LANG": {
+      "required": true
+    },
+    "SINATRA_SESSION_SECRET": {
+      "required": true
+    },
+    "SKILLS_ENGINE_ID": {
+      "required": true
+    },
+    "SKILLS_ENGINE_SECRET": {
+      "required": true
+    }
+  },
+  "formation": {
+    "web": {
+      "quantity": 1
+    }
+  },
+  "addons": [
+
+  ],
+  "buildpacks": [
+    {
+      "url": "heroku/ruby"
+    }
+  ]
+}
