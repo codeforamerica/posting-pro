@@ -103,6 +103,7 @@ GEM
     rubyzip (1.1.7)
     safe_yaml (1.0.4)
     sass (3.4.15)
+    sequel (4.36.0)
     sinatra (1.4.7)
       rack (~> 1.5)
       rack-protection (~> 1.4)
@@ -144,6 +145,7 @@ DEPENDENCIES
   pg
   rack-jekyll
   rest-client
+  sequel
   sinatra
   thin
 
