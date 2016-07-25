@@ -4,7 +4,6 @@ enable :sessions
 set :session_secret, ENV['SINATRA_SESSION_SECRET']
 
 require './sinatra/skills_engine.rb'
-require './sinatra/job_posting_templates.rb'
 require 'json'
 require 'docx'
 
