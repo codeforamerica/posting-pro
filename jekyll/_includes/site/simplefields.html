@@ -1,7 +1,7 @@
 <script type="text/x-template" data-template="singleFieldTemplate">
   <li>
     <form name="{name}-form">
-      <input type="text" id="new-{id}" name="value">
+      <input type="text" id="new-{id}" name="value" value="{data}">
       <span class="circle circle-remove" data-control="removeSingleFieldButton" id="{id}" data-event-category="qualifications" data-event-action="remove one" data-event-label="qualification">x</span>
     </form>
   </li>
@@ -10,8 +10,8 @@
 <script type="text/x-template" data-template="doubleFieldTemplate">
   <li>
     <form name="{name}-form" class="double-field">
-      <input type="text" id="new-{id}-name" name="name" class="short">
-      <input type="text" id="new-{id}-description" name="description">
+      <input type="text" id="new-{id}-name" name="name" class="short" {#data}value="{name}"{/data}>
+      <input type="text" id="new-{id}-description" name="description" {#data}value="{description}"{/data}>
       <span class="circle circle-remove" data-control="removeSingleFieldButton" id="{id}" data-event-category="qualifications" data-event-action="remove one" data-event-label="qualification">x</span>
     </form>
   </li>

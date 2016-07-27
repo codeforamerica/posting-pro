@@ -52,14 +52,14 @@ post '/upload/word' do
   # upload that stuff
 end
 
-get '/templates' do
+get '/api/templates' do
   content_type :json
   dataset = database[:templates]
 
-  dataset.select_map([:id, :job_title]).to_json
+  dataset.select(:id, :job_title).all.to_json
 end
 
-get '/templates/:id' do
+get '/api/templates/:id' do
   content_type :json
   id = params[:id].to_i
   dataset = database[:templates]

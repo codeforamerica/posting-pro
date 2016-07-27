@@ -35,6 +35,8 @@
         cuff.controls.readingLevelOutput = readingLevelOutputControl;
         cuff.controls.errorTooltip = errorTooltipControl;
         cuff.controls.freshStartButton = freshStartControl;
+        cuff.controls.showTemplatesButton = showTemplatesControl;
+        cuff.controls.pickTemplateButton = pickTemplateControl;
         cuff.controls.gotoPage2Button = gotoPage2Control;
         cuff.controls.exportPostingPageButton = exportPostingPageControl;
         cuff.controls.startOverButton = startOverControl;
@@ -166,6 +168,8 @@
         $("#prefcomp-foundation-list")[0].innerHTML = '';
         $("#activity-list")[0].innerHTML = '';
         $("#cert-list")[0].innerHTML = '';
+        $("#template-or-new").show();
+        $("#template-shower").hide();
         showPage('1');
       });
     }
@@ -183,6 +187,33 @@
       });
     }
 
+    function showTemplatesControl(element) {
+      $(element).bind('click', function() {
+        getTemplateList(function(data) {
+          var pickerData = {};
+          pickerData.templates = data || [];
+          var $pickerContainer = $("#template-picker");
+          $pickerContainer[0].innerHTML = templates.templatePicker.render(pickerData);
+          cuff($pickerContainer[0]);
+        });
+
+        $("#template-or-new").hide();
+        $("#template-shower").show();
+      });
+    }
+
+    function pickTemplateControl(element) {
+      $(element).bind('click', function() {
+        var $templateSelector = $("#template-list");
+        var id = $templateSelector.val();
+
+        getTemplate(id, function(data) {
+          if(data) populateFieldsWithData(data);
+          showPage('2');
+        });
+      });
+    }
+
     function populateBlankFields() {
       renderField("doubleFieldTemplate", "reqcomp-occupation");
       renderField("doubleFieldTemplate", "reqcomp-foundation");
@@ -190,6 +221,27 @@
       renderField("doubleFieldTemplate", "prefcomp-foundation");
       renderField("singleFieldTemplate", "activity");
       renderField("singleFieldTemplate", "cert");
+    }
+
+    function populateFieldsWithData(data) {
+      $("[name=positiontitle]").val(data.job_title);
+      $("#company-desc-input").val(data.company_description);
+      $("#job-desc-input").val(data.job_description);
+
+      renderFieldWithData("doubleFieldTemplate", "reqcomp-occupation", data.req_occupational_skills);
+      renderFieldWithData("doubleFieldTemplate", "reqcomp-foundation", data.req_foundational_skills);
+      renderFieldWithData("doubleFieldTemplate", "prefcomp-occupation", data.pref_occupational_skills);
+      renderFieldWithData("doubleFieldTemplate", "prefcomp-foundation", data.pref_foundational_skills);
+      renderFieldWithData("singleFieldTemplate", "activity", data.example_activities);
+      renderFieldWithData("singleFieldTemplate", "cert", data.req_certifications);
+    }
+
+    function renderFieldWithData(templateName, id, data) {
+      if(data && data.length) {
+        data.forEach(function(entry, index) {
+          renderField(templateName, id, index, entry);
+        });
+      }
     }
 
     function showPage(pageId) {
@@ -218,7 +270,7 @@
     }
 
     function addSingleFieldControl(element) {
-      var i = 1;
+      var i = 100; //start ID at 100 to not conflict with template entries
       $(element).bind('click', function() {
         var elementId = element.id;
         renderField("singleFieldTemplate", elementId, i++);
@@ -226,7 +278,7 @@
     }
 
     function addDoubleFieldControl(element) {
-      var i = 1;
+      var i = 100; //start ID at 100 to not conflict with template entries
       $(element).bind('click', function() {
         var elementId = element.id;
         renderField("doubleFieldTemplate", elementId, i++);
@@ -305,11 +357,11 @@
       return fieldValues;
     }
 
-    function renderField(templateName, id, index, listReference) {
-      listReference = listReference || "#" + id + "-list";  // default to using "#id-list"
+    function renderField(templateName, id, index, data) {
+      var listReference = listReference || "#" + id + "-list";  // default to using "#id-list"
       index = index || 0; // default to index 0
       var $list = $(listReference);
-      $list.append(templates[templateName].render({"id": id+index, "name": id}));
+      $list.append(templates[templateName].render({"id": id+index, "name": id, "data": data }));
       cuff($list[0]);
     }
 
