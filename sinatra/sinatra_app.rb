@@ -64,7 +64,7 @@ get '/api/templates/:id' do
   id = params[:id].to_i
   dataset = database[:templates]
 
-  dataset[:id => id].to_json
+  dataset[id: id].to_json
 end
 
 # serve the jekyll site from the _site folder
