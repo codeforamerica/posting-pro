@@ -20,10 +20,9 @@ enable :sessions
 set :session_secret, ENV['SINATRA_SESSION_SECRET']
 
 # check for un-run migrations
-if ENV['RACK_ENV'].eql? 'development'
-  Sequel.extension :migration
-  Sequel::Migrator.check_current(database, 'sinatra/db/migrations')
-end
+Sequel.extension :migration
+Sequel::Migrator.check_current(database, 'sinatra/db/migrations')
+
 
 # call the SkillsEngine API
 post '/api/skillsengine/competencies' do
