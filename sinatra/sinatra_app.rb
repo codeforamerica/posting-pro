@@ -39,6 +39,19 @@ post '/api/skillsengine/competencies' do
   skills_engine_response
 end
 
+helpers do
+  def protected!
+    return if authorized?
+    headers['WWW-Authenticate'] = 'Basic realm="Restricted Area"'
+    halt 401, "Not authorized\n"
+  end
+
+  def authorized?
+    @auth ||=  Rack::Auth::Basic::Request.new(request.env)
+    @auth.provided? and @auth.basic? and @auth.credentials and @auth.credentials == ['admin', 'admin']
+  end
+end
+
 before do
   response.headers['Cache-Control'] = 'public, max-age=36000'
 end
@@ -50,6 +63,11 @@ end
 
 post '/upload/word' do
   # upload that stuff
+end
+
+get '/manage' do
+  protected!
+  "Welcome, authenticated client"
 end
 
 get '/api/templates' do
