@@ -1,0 +1,14 @@
+<script type="text/x-template" data-template="templatePicker">
+  {#templates.length}
+    <select id="template-list">
+      {#templates}<option value="{id}">{job_title}</option>{/templates}
+    </select>
+
+    <button data-control="pickTemplateButton">GET STARTED</button>
+  {/templates.length}
+
+  {^templates.length}
+    <h4>Sorry, there are curently no templates. Start a new posting instead!</h4>
+    <button data-control="freshStartButton">START FRESH</button>
+  {/templates.length}
+</script>

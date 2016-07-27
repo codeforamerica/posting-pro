@@ -1,11 +1,29 @@
+require 'sinatra'
+require 'sinatra/sequel'
+require 'json'
+require 'docx'
+require 'dotenv'
+
+require './sinatra/skills_engine.rb'
+
+Dotenv.load
+
+register Sinatra::SequelExtension
+configure do
+  set :database, ENV['DATABASE_URL']
+  database.extension :pg_array, :pg_json
+end
+
 set :public_dir, proc { File.join(root, '_site') }
 set :views, proc { File.join(File.dirname(__FILE__), 'views') }
 enable :sessions
 set :session_secret, ENV['SINATRA_SESSION_SECRET']
 
-require './sinatra/skills_engine.rb'
-require 'json'
-require 'docx'
+# check for un-run migrations
+if ENV['RACK_ENV'].eql? 'development'
+  Sequel.extension :migration
+  Sequel::Migrator.check_current(database, 'sinatra/db/migrations')
+end
 
 # call the SkillsEngine API
 post '/api/skillsengine/competencies' do
@@ -32,6 +50,21 @@ end
 
 post '/upload/word' do
   # upload that stuff
+end
+
+get '/api/templates' do
+  content_type :json
+  dataset = database[:templates]
+
+  dataset.select(:id, :job_title).all.to_json
+end
+
+get '/api/templates/:id' do
+  content_type :json
+  id = params[:id].to_i
+  dataset = database[:templates]
+
+  dataset[id: id].to_json
 end
 
 # serve the jekyll site from the _site folder

@@ -1,3 +1,11 @@
+GIT
+  remote: git://github.com/danascheider/sinatra-sequel_extension.git
+  revision: 394c9b3d9dd6d54e44bde492457da70daba1e63a
+  specs:
+    sinatra-sequel_extension (0.9.1)
+      sequel (>= 3.2)
+      sinatra (>= 0.9.4)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -18,6 +26,7 @@ GEM
       rubyzip (~> 1.1.6)
     domain_name (0.5.20160310)
       unf (>= 0.0.5, < 1.0.0)
+    dotenv (2.1.1)
     eventmachine (1.2.0.1)
     execjs (2.5.2)
     fast-stemmer (1.0.2)
@@ -104,6 +113,8 @@ GEM
     safe_yaml (1.0.4)
     sass (3.4.15)
     sequel (4.36.0)
+    sequel-seed (0.3.2)
+      sequel (>= 4.0)
     sinatra (1.4.7)
       rack (~> 1.5)
       rack-protection (~> 1.4)
@@ -138,6 +149,7 @@ PLATFORMS
 
 DEPENDENCIES
   docx
+  dotenv
   foreman
   jekyll
   jekyll-assets
@@ -146,7 +158,9 @@ DEPENDENCIES
   rack-jekyll
   rest-client
   sequel
+  sequel-seed
   sinatra
+  sinatra-sequel_extension!
   thin
 
 BUNDLED WITH

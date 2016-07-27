@@ -5,14 +5,15 @@ layout: page
 ---
 
 <div id="page_1">
-  <section>
+  <section id="template-or-new">
     <button data-control="freshStartButton" data-event-category="navigate" data-event-action="start">NEW JOB DESCRIPTION</button>
     <span class="button-separator">OR</span>
-    <button data-control="freshStartButton" data-event-category="navigate" data-event-action="start">START FROM TEMPLATE</button>
+    <button data-control="showTemplatesButton" data-event-category="navigate" data-event-action="start">START FROM TEMPLATE</button>
   </section>
 
-  <section>
-
+  <section id="template-shower" style="display:none;">
+    <h3>Select a Template:</h3>
+    <div id="template-picker"></div>
   </section>
 </div>
 
@@ -85,6 +86,7 @@ layout: page
   </section>
 </div>
 
+{% include site/templatepicker.html %}
 {% include site/analysisfield.html %}
 {% include site/simplefields.html %}
 {% include site/jobpostingtemplate.html %}
