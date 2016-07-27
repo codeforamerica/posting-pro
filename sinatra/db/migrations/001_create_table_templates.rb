@@ -1,4 +1,3 @@
-
 Sequel.migration do
   change do
     create_table(:templates) do
@@ -10,8 +9,8 @@ Sequel.migration do
       column :req_foundational_skills, :jsonb, default: Sequel.pg_json([])
       column :pref_occupational_skills, :jsonb, default: Sequel.pg_json([])
       column :pref_foundational_skills, :jsonb, default: Sequel.pg_json([])
-      column :example_activities, "text[]", :default=>"{}"
-      column :req_certifications, "text[]", :default=>"{}"
+      column :example_activities, "text[]", default: "{}"
+      column :req_certifications, "text[]", default: "{}"
     end
   end
 end
