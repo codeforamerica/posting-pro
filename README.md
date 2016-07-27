@@ -13,6 +13,11 @@ After cloning, run `bundle install` and get a `.env` file from an existing contr
 
 `jekyll build --watch` compiles the site (& sees html/css/js changes) and `foreman start` runs it at [http://0.0.0.0:5000](http://0.0.0.0:5000).
 
+### Database Setup
+Make sure [Postgres is installed](https://devcenter.heroku.com/articles/heroku-postgresql#set-up-postgres-on-mac): `which psql` should give a reasonable answer. Also create a file called `.env` with the line `DATABASE_URL=postgres://localhost:5432/postingpro`. (You may need to create a new DB in postgres called `postingpro`.)
+
+Run `rake db:migrate` and `rake db:seed` to set up the database structure and fill it with sample data. If the data doesn't show up, try running `rake db:reset` and `rake db:seed`.
+
 ### Deploying
 Commits to master automagically push to [staging](https://posting-pro-staging.herokuapp.com/). From there, code can be pushed to production via the heroku pipeline.
 

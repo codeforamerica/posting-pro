@@ -1,6 +1,7 @@
 {
   "name": "posting-pro",
   "scripts": {
+    "postdeploy": "bundle exec rake db:migrate"
   },
   "env": {
     "GOOGLE_API_KEY": {
@@ -16,6 +17,9 @@
       "required": true
     },
     "SKILLS_ENGINE_SECRET": {
+      "required": true
+    },
+    "DATABASE_URL": {
       "required": true
     }
   },

@@ -340,4 +340,12 @@
       $.postJSON('api/skillsengine/competencies', { text: text }, callback);
     }
 
+    function getTemplateList(callback) {
+      $.getJSON('api/templates', callback);
+    }
+
+    function getTemplate(id, callback) {
+      $.getJSON('api/templates/'+id, callback);
+    }
+
 }());
