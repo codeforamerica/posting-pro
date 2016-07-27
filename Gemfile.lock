@@ -113,6 +113,8 @@ GEM
     safe_yaml (1.0.4)
     sass (3.4.15)
     sequel (4.36.0)
+    sequel-seed (0.3.2)
+      sequel (>= 4.0)
     sinatra (1.4.7)
       rack (~> 1.5)
       rack-protection (~> 1.4)
@@ -156,6 +158,7 @@ DEPENDENCIES
   rack-jekyll
   rest-client
   sequel
+  sequel-seed
   sinatra
   sinatra-sequel_extension!
   thin

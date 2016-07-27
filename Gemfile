@@ -13,6 +13,7 @@ gem 'dotenv'
 gem 'pg'
 gem 'sequel'
 gem 'sinatra-sequel_extension', :git => 'git://github.com/danascheider/sinatra-sequel_extension.git'
+gem 'sequel-seed'
 
 group :development do
   gem 'jekyll'

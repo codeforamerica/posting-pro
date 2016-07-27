@@ -33,10 +33,24 @@ namespace :db do
     `pg_dump --schema-only #{database.url} > sinatra/db/schema.sql`
   end
 
+  desc 'Seed DB'
+  task :seed => :app do
+    require 'sequel/extensions/seed'
+    Sequel.extension :seed
+    Sequel::Seeder.apply(Sinatra::Application.database, 'sinatra/db')
+  end
+
   desc 'Reset DB (delete all data)'
   task :reset => :app do
     database = Sinatra::Application.database
     Sequel::Migrator.run(database, 'sinatra/db/migrations', :target => 0)
     Sequel::Migrator.run(database, 'sinatra/db/migrations')
+    database.run 'delete from schema_seeds'
+  end
+
+  desc 'Migrate & seed DB all in one'
+  task :setup => :app do
+    Rake::Task['db:migrate'].execute
+    Rake::Task['db:seed'].execute
   end
 end
