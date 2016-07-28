@@ -302,11 +302,16 @@
     function processNewTemplateControl(element) {
       $(element).bind('click', function() {
         var $newTemplateSelector = $("#new-template");
-        var file = $newTemplateSelector[0].files[0];
-        // make sure it's docx here
-        var reader = new FileReader();
-        reader.onload = processFileBuffer;
-        reader.readAsArrayBuffer(file);
+
+        if($newTemplateSelector[0].files && $newTemplateSelector[0].files.length) {
+
+          var file = $newTemplateSelector[0].files[0];
+          if(file.name.match(/\.docx$/)) { // if it's a docx file
+            var reader = new FileReader();
+            reader.onload = processFileBuffer;
+            reader.readAsArrayBuffer(file);
+          }
+        }
       });
     }
 
@@ -315,7 +320,6 @@
       var doc = new Docxgen(buffer);
       var text = doc.getFullText();
       var parsedPosting = parseMarkleTemplate(text);
-      console.log("HERE IS FINAL", parsedPosting);
     }
 
     function parseMarkleTemplate(text) {
