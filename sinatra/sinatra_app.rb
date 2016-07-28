@@ -14,7 +14,7 @@ configure do
   database.extension :pg_array, :pg_json
 end
 
-set :public_dir, proc { File.join(root, '_site') }
+set :public_dir, proc { File.join(root, '_site/asset') }
 set :views, proc { File.join(File.dirname(__FILE__), 'views') }
 enable :sessions
 set :session_secret, ENV['SINATRA_SESSION_SECRET']
@@ -62,12 +62,8 @@ get %r{(/.*)\/$} do
 end
 
 post '/upload/word' do
+    protected!
   # upload that stuff
-end
-
-get '/manage' do
-  protected!
-  "Welcome, authenticated client"
 end
 
 get '/api/templates' do
@@ -83,6 +79,14 @@ get '/api/templates/:id' do
   dataset = database[:templates]
 
   dataset[id: id].to_json
+end
+
+# serve secured section for 'manage' folder
+get '/manage' do
+  protected!
+  file_name = "_site#{request.path_info}/index.html".gsub(%r{\/+}, '/')
+  raise Sinatra::NotFound unless File.exist?(file_name)
+  File.read(file_name)
 end
 
 # serve the jekyll site from the _site folder
