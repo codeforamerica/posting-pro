@@ -7,7 +7,6 @@ gem 'sinatra'
 gem 'thin'
 gem 'rest-client'
 gem 'json'
-gem 'docx'
 gem 'dotenv'
 
 gem 'pg'

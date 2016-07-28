@@ -1,7 +1,6 @@
 require 'sinatra'
 require 'sinatra/sequel'
 require 'json'
-require 'docx'
 require 'dotenv'
 
 require './sinatra/skills_engine.rb'
@@ -61,10 +60,6 @@ get %r{(/.*)\/$} do
   redirect params[:captures].first.to_s
 end
 
-post '/upload/word' do
-    protected!
-  # upload that stuff
-end
 
 get '/api/templates' do
   content_type :json
@@ -79,6 +74,20 @@ get '/api/templates/:id' do
   dataset = database[:templates]
 
   dataset[id: id].to_json
+end
+
+post '/api/templates/:id/delete' do
+  protected!
+
+  id = params[:id].to_i
+  dataset = database[:templates]
+  dataset[id: id].delete
+end
+
+post '/api/templates/:id' do
+  protected!
+
+
 end
 
 # serve secured section for 'manage' folder

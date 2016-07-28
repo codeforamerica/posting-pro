@@ -45,6 +45,8 @@
         cuff.controls.removeSingleFieldButton = removeSingleFieldControl;
         cuff.controls.removeDoubleFieldButton = removeDoubleFieldControl;
         cuff.controls.saveAsWordDocButton = saveAsWordDocControl;
+
+        cuff.controls.processNewTemplateButton = processNewTemplateControl;
         cuff();
     }
 
@@ -295,6 +297,110 @@
       $(element).bind('click', function(){
         $("#" + element.id).parents('li').remove();
       });
+    }
+
+    function processNewTemplateControl(element) {
+      $(element).bind('click', function() {
+        var $newTemplateSelector = $("#new-template");
+        var file = $newTemplateSelector[0].files[0];
+        // make sure it's docx here
+        var reader = new FileReader();
+        reader.onload = processFileBuffer;
+        reader.readAsArrayBuffer(file);
+      });
+    }
+
+    function processFileBuffer(event) {
+      var buffer = event.target.result;
+      var doc = new Docxgen(buffer);
+      var text = doc.getFullText();
+      var parsedPosting = parseMarkleTemplate(text);
+      console.log("HERE IS FINAL", parsedPosting);
+    }
+
+    function parseMarkleTemplate(text) {
+      var parsedPosting = {};
+
+      var text = text.replace(/<([^<]*)>/g, ""); // remove all guidance in brackets
+
+      var headings = ["Job Posting", "Company Overview", "Job Summary and Responsibilities", "Required Competencies", "Preferred Competencies", "Example Activities", "Required Certifications", "Job Details"];
+      var competencyHeadings = ["Occupational Competencies", "Foundational Competencies"];
+      var sections = splitSectionsByHeading(text, headings, ":");
+
+      parsedPosting.job_title = sections["Job Posting"] || "";
+      parsedPosting.company_description = sections["Company Overview"] || "";
+      parsedPosting.job_description = sections["Job Summary and Responsibilities"] || "";
+
+      var requiredCompetencySection = sections["Required Competencies"] || "";
+      var requiredCompetencySubSections = splitSectionsByHeading(requiredCompetencySection, competencyHeadings);
+      var requiredOccupationalCompetencyList = getListFromSection(requiredCompetencySubSections["Occupational Competencies"] || "");
+      var requiredFoundationalCompetencyList = getListFromSection(requiredCompetencySubSections["Foundational Competencies"] || "");
+      parsedPosting.req_occupational_skills = splitListIntoCompetencyObjects(requiredOccupationalCompetencyList);
+      parsedPosting.req_foundational_skills = splitListIntoCompetencyObjects(requiredFoundationalCompetencyList);
+
+      var preferredCompetencySection = sections["Preferred Competencies"] || "";
+      var preferredCompetencySubSections = splitSectionsByHeading(preferredCompetencySection, competencyHeadings);
+      var preferredOccupationalCompetencyList = getListFromSection(preferredCompetencySubSections["Occupational Competencies"] || "");
+      var preferredFoundationalCompetencyList = getListFromSection(preferredCompetencySubSections["Foundational Competencies"] || "");
+      parsedPosting.pref_occupational_skills = splitListIntoCompetencyObjects(preferredOccupationalCompetencyList);
+      parsedPosting.pref_foundational_skills = splitListIntoCompetencyObjects(preferredFoundationalCompetencyList);
+
+      parsedPosting.example_activities = getListFromSection(sections["Example Activities"] || "");
+      parsedPosting.req_certifications = getListFromSection(sections["Required Certifications"] || "");
+
+      return parsedPosting;
+    }
+
+
+    function getListFromSection(section) {
+      var splitList = [];
+
+      if(section) {
+        splitList = section.split(/\.(?=\w)/); // split by periods that have no space after
+
+        for(var i=0; i < splitList.length; i++) {
+          if(i < splitList.length - 1) splitList[i] += '.'; // add back period because JS doesn't support lookbehind
+        }
+      }
+
+      return splitList;
+    }
+
+
+    function splitListIntoCompetencyObjects(list) {
+      var competencies = [];
+
+      list.forEach(function(item) {
+        var itemSections = item.split(": ");
+        var competency = {
+          name: itemSections[0],
+          description: itemSections[1]
+        };
+
+        competencies.push(competency);
+      });
+
+      return competencies;
+    }
+
+    function splitSectionsByHeading(text, headings, delimiter) {
+      var textCopy = text;
+      var sections = {};
+      var previousHeading;
+      delimiter = delimiter || "";
+
+      headings.forEach(function(heading) {
+        if(textCopy) {
+          var splitText = textCopy.split(heading+delimiter);
+          if(previousHeading) sections[previousHeading] = splitText[0].trim();
+          textCopy = splitText[1];
+          previousHeading = heading;
+        }
+      });
+
+      if(previousHeading && textCopy) sections[previousHeading] = textCopy.trim();
+
+      return sections;
     }
 
     function composePostingFromFields() {
