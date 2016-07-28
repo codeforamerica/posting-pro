@@ -299,6 +299,7 @@
       });
     }
 
+
     function processNewTemplateControl(element) {
       $(element).bind('click', function() {
         var $newTemplateSelector = $("#new-template");
@@ -320,6 +321,9 @@
       var doc = new Docxgen(buffer);
       var text = doc.getFullText();
       var parsedPosting = parseMarkleTemplate(text);
+      addTemplate(parsedPosting, function() {
+        console.log("UPLOADED!");
+      });
     }
 
     function parseMarkleTemplate(text) {
@@ -355,12 +359,11 @@
       return parsedPosting;
     }
 
-
     function getListFromSection(section) {
       var splitList = [];
 
       if(section) {
-        splitList = section.split(/\.(?=\w)/); // split by periods that have no space after
+        splitList = section.split(/\.(?=[A-Z])/); // split by periods that have no space after
 
         for(var i=0; i < splitList.length; i++) {
           if(i < splitList.length - 1) splitList[i] += '.'; // add back period because JS doesn't support lookbehind
@@ -369,7 +372,6 @@
 
       return splitList;
     }
-
 
     function splitListIntoCompetencyObjects(list) {
       var competencies = [];
@@ -426,6 +428,7 @@
 
       return templates.fullJobPosting.render(postingData, templates);
     }
+
 
     function captureFormattedField(id) {
       var description = "";
@@ -508,6 +511,10 @@
 
     function getTemplate(id, callback) {
       $.getJSON('api/templates/'+id, callback);
+    }
+
+    function addTemplate(data, callback) {
+      $.postJSON('api/templates', data, callback);
     }
 
 }());

@@ -84,10 +84,33 @@ post '/api/templates/:id/delete' do
   dataset[id: id].delete
 end
 
-post '/api/templates/:id' do
+post '/api/templates' do
   protected!
 
+  data = JSON.parse(request.body.read)
 
+  example_activities = "{}"
+  if data['example_activities'].any?
+    example_activities = Sequel.pg_array(data['example_activities'])
+  end
+
+  req_certifications = "{}"
+  if data['req_certifications'].any?
+    req_certifications = Sequel.pg_array(data['req_certifications'])
+  end
+
+  dataset = database[:templates]
+  dataset.insert(
+    job_title: data['job_title'],
+    company_description: data['company_description'],
+    job_description: data['job_description'],
+    req_occupational_skills: Sequel.pg_json(data['req_occupational_skills']),
+    req_foundational_skills: Sequel.pg_json(data['req_foundational_skills']),
+    pref_occupational_skills: Sequel.pg_json(data['pref_occupational_skills']),
+    pref_foundational_skills: Sequel.pg_json(data['pref_foundational_skills']),
+    example_activities: example_activities,
+    req_certifications: req_certifications
+  )
 end
 
 # serve secured section for 'manage' folder
