@@ -63,6 +63,7 @@ end
 
 get '/api/templates' do
   content_type :json
+  cache_control :no_cache
   dataset = database[:templates]
 
   dataset.select(:id, :job_title).all.to_json
