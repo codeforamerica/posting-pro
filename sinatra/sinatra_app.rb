@@ -78,14 +78,18 @@ end
 
 post '/api/templates/:id/delete' do
   protected!
+  content_type :json
 
   id = params[:id].to_i
   dataset = database[:templates]
   dataset.filter(id: id).delete
+
+  halt 200, { id: id }.to_json
 end
 
 post '/api/templates' do
   protected!
+  content_type :json
 
   data = JSON.parse(request.body.read)
 
@@ -111,6 +115,8 @@ post '/api/templates' do
     example_activities: example_activities,
     req_certifications: req_certifications
   )
+
+  halt 200, data.to_json
 end
 
 # serve secured section for 'manage' folder

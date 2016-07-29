@@ -316,9 +316,7 @@
     function deleteTemplateControl(element) {
       $(element).bind('click', function() {
           var id = element.getAttributeNode('template-id').value;
-          deleteTemplate(id, function() {
-            refreshTemplateList();
-          });
+          deleteTemplate(id, refreshTemplateList);
       });
     }
 
@@ -343,9 +341,7 @@
       var doc = new Docxgen(buffer);
       var text = doc.getFullText();
       var parsedPosting = parseMarkleTemplate(text);
-      addTemplate(parsedPosting, function() {
-        refreshTemplateList();
-      });
+      addTemplate(parsedPosting, refreshTemplateList);
     }
 
     function refreshTemplateList() {
