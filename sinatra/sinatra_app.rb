@@ -81,7 +81,7 @@ post '/api/templates/:id/delete' do
 
   id = params[:id].to_i
   dataset = database[:templates]
-  dataset[id: id].delete
+  dataset.filter(id: id).delete
 end
 
 post '/api/templates' do

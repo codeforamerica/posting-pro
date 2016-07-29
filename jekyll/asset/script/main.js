@@ -46,6 +46,8 @@
         cuff.controls.removeDoubleFieldButton = removeDoubleFieldControl;
         cuff.controls.saveAsWordDocButton = saveAsWordDocControl;
 
+        cuff.controls.templateListControl = templateListControl;
+        cuff.controls.deleteTemplateButton = deleteTemplateControl;
         cuff.controls.processNewTemplateButton = processNewTemplateControl;
         cuff();
     }
@@ -300,6 +302,26 @@
     }
 
 
+    function templateListControl(element) {
+      getTemplateList(function(data) {
+        var listData = {};
+        listData.templates = data || [];
+
+        element.innerHTML = templates.templateList.render(listData);
+        cuff(element);
+      });
+    };
+
+
+    function deleteTemplateControl(element) {
+      $(element).bind('click', function() {
+          var id = element.getAttributeNode('template-id').value;
+          deleteTemplate(id, function() {
+            refreshTemplateList();
+          });
+      });
+    }
+
     function processNewTemplateControl(element) {
       $(element).bind('click', function() {
         var $newTemplateSelector = $("#new-template");
@@ -322,8 +344,13 @@
       var text = doc.getFullText();
       var parsedPosting = parseMarkleTemplate(text);
       addTemplate(parsedPosting, function() {
-        console.log("UPLOADED!");
+        refreshTemplateList();
       });
+    }
+
+    function refreshTemplateList() {
+      var templateListEl = $("#template-list")[0];
+      templateListControl(templateListEl);
     }
 
     function parseMarkleTemplate(text) {
@@ -515,6 +542,10 @@
 
     function addTemplate(data, callback) {
       $.postJSON('api/templates', data, callback);
+    }
+
+    function deleteTemplate(id, callback) {
+      $.postJSON('api/templates/'+id+'/delete', {}, callback);
     }
 
 }());
