@@ -187,7 +187,7 @@ button {
   font-size: 1.25em;
 }
 
-.inputfile {
+.input-file {
 	width: 0.1px;
 	height: 0.1px;
 	opacity: 0;
@@ -195,7 +195,7 @@ button {
 	position: absolute;
 	z-index: -1;
 }
-.inputfile + label {
+.input-file + label {
     font-size: 1.25em;
     font-weight: 700;
     margin-right: 15px;
@@ -205,8 +205,8 @@ button {
     text-decoration: underline;
 }
 
-.inputfile:focus + label,
-.inputfile + label:hover {
+.input-file:focus + label,
+.input-file + label:hover {
     color: black;
 }
 
