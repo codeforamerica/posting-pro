@@ -46,6 +46,7 @@ h2 { @include rem(font-size, 42px); }
 h3 {
   @include rem(font-size, 36px);
   line-height: 1.5em;
+  margin-top: 0;
 }
 h4 {
   @include rem(font-size, 20px);
