@@ -46,6 +46,7 @@ h2 { @include rem(font-size, 42px); }
 h3 {
   @include rem(font-size, 36px);
   line-height: 1.5em;
+  margin-top: 0;
 }
 h4 {
   @include rem(font-size, 20px);
@@ -54,7 +55,7 @@ h4 {
   margin: 2rem 0 .5rem;
 }
 p {
-  @include rem(font-size, 18px);
+  @include rem(font-size, 16px);
   line-height: 1.5em;
   max-width: 550px;
   margin: 2rem 0;
@@ -68,7 +69,7 @@ a {
   &:hover{ border-color: $darkGrey; }
 }
 p.remove-margin { margin: 0; }
-
+.bold { font-weight: 700; }
 
 // Structure //
 html { height: 100%; }
@@ -87,9 +88,10 @@ header, .main, section, footer {
 }
 header {
   .tagline {
-    @include rem(font-size, 20px);
-    line-height: 1.5em;
+    @include rem(font-size, 24px);
+    line-height: 1.8em;
   }
+  p { max-width: 800px; }
 }
 footer {
   border-top: 1px solid $lightGrey;
@@ -255,7 +257,6 @@ button {
 
 // Context output //
 .error-highlight {
-  cursor: pointer;
   position: relative;
   border-bottom: 5px solid #cc0000;
 
@@ -343,5 +344,6 @@ button {
 
 // Footer  //
 footer p {
-  @include rem(font-size, 16px);
+  @include rem(font-size, 14px);
+  line-height: 1rem;
 }
