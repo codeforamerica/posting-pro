@@ -54,7 +54,7 @@ h4 {
   margin: 2rem 0 .5rem;
 }
 p {
-  @include rem(font-size, 18px);
+  @include rem(font-size, 16px);
   line-height: 1.5em;
   max-width: 550px;
   margin: 2rem 0;
@@ -344,5 +344,6 @@ button {
 
 // Footer  //
 footer p {
-  @include rem(font-size, 16px);
+  @include rem(font-size, 14px);
+  line-height: 1rem;
 }
