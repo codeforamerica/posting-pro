@@ -87,9 +87,10 @@ header, .main, section, footer {
 }
 header {
   .tagline {
-    @include rem(font-size, 20px);
-    line-height: 1.5em;
+    @include rem(font-size, 24px);
+    line-height: 1.8em;
   }
+  p { max-width: 800px; }
 }
 footer {
   border-top: 1px solid $lightGrey;
