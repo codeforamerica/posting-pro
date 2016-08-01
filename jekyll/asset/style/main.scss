@@ -130,10 +130,10 @@ input {
   }
 }
 select {
-  @include centered;
   width: 250px;
   @include rem(font-size, 18px);
   display: block;
+  margin: 3rem 0;
 }
 textarea {
   @include rem(font-size, 18px);
