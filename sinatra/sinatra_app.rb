@@ -85,7 +85,8 @@ post '/api/templates/:id/delete' do
   dataset = database[:templates]
   dataset.filter(id: id).delete
 
-  halt 200, { id: id }.to_json
+  status 200
+  { id: id }.to_json
 end
 
 post '/api/templates' do
@@ -117,7 +118,8 @@ post '/api/templates' do
     req_certifications: req_certifications
   )
 
-  halt 200, data.to_json
+  status 200
+  data.to_json
 end
 
 # serve secured section for 'manage' folder
