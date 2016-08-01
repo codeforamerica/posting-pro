@@ -48,6 +48,7 @@
 
         cuff.controls.templateListControl = templateListControl;
         cuff.controls.deleteTemplateButton = deleteTemplateControl;
+        cuff.controls.templateFileInputControl = templateFileInputControl;
         cuff.controls.processNewTemplateButton = processNewTemplateControl;
         cuff();
     }
@@ -320,6 +321,32 @@
       });
     }
 
+    function resetTemplateFileInput() {
+      $("#process-template").hide();
+      var fileName = $("#template-file-name");
+      fileName.text("");
+      fileName.hide();
+      $("#new-template").show();
+      $("#new-template-label").show();
+    }
+
+    function templateFileInputControl(element) {
+      $(element).change(function() {
+        var $newTemplateSelector = $(element);
+
+        if($newTemplateSelector[0].files && $newTemplateSelector[0].files.length) {
+
+          var file = $newTemplateSelector[0].files[0];
+          $("#process-template").show();
+          var fileName = $("#template-file-name");
+          fileName.text(file.name);
+          fileName.show();
+          $("#new-template").hide();
+          $("#new-template-label").hide();
+        }
+      });
+    }
+
     function processNewTemplateControl(element) {
       $(element).bind('click', function() {
         var $newTemplateSelector = $("#new-template");
@@ -331,7 +358,11 @@
             var reader = new FileReader();
             reader.onload = processFileBuffer;
             reader.readAsArrayBuffer(file);
+          } else {
+            resetTemplateFileInput();
           }
+        } else {
+          resetTemplateFileInput();
         }
       });
     }
@@ -342,6 +373,7 @@
       var text = doc.getFullText();
       var parsedPosting = parseMarkleTemplate(text);
       addTemplate(parsedPosting, refreshTemplateList);
+      resetTemplateFileInput();
     }
 
     function refreshTemplateList() {

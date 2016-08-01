@@ -4,13 +4,15 @@ description: Manage existing templates and add new ones
 layout: page
 ---
 
-<h3>Welcome to the Management Portal!</h3>
+<h3>Welcome to the Management Portal</h3>
 
 <h4>Current templates:</h4>
 <div id="template-list" data-control="templateListControl"></div>
 
 <h4>Add a new template:</h4>
-<input id="new-template" type="file">
-<button data-control="processNewTemplateButton">ADD</button>
+<input id="new-template" type="file" class="inputfile" data-control="templateFileInputControl">
+<label id="new-template-label" for="new-template">Choose a Microsoft Word Document</label>
+<span id="template-file-name" style="display:none;"></span>
+<button data-control="processNewTemplateButton" id="process-template" style="display:none;">PROCESS FILE</button>
 
 {% include site/templatelist.html %}

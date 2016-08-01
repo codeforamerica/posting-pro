@@ -1,5 +1,11 @@
 <script type="text/x-template" data-template="templateList">
   <ul>
-    {#templates}<li><span>{job_title}</span> | <span data-control="deleteTemplateButton" template-id="{id}" style="cursor:pointer; text-decoration:underline;">delete</span></li>{/templates}
+    {#templates}
+    <li>
+      <span>{job_title}</span>
+      <span class="removeTemplate" data-control="deleteTemplateButton" template-id="{id}" data-event-category="templates" data-event-action="remove one" data-event-label="templates"><i class="fa fa-times-circle" aria-hidden="true"></i></span>
+      <div class="clearfix"></div>
+    </li>
+    {/templates}
   </ul>
 </script>
