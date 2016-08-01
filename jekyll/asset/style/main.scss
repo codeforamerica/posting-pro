@@ -42,9 +42,9 @@ h1 {
   line-height: 8rem;
   font-weight: bold;
 }
-h2 { @include rem(font-size, 28px); }
+h2 { @include rem(font-size, 42px); }
 h3 {
-  @include rem(font-size, 24px);
+  @include rem(font-size, 36px);
   line-height: 1.5em;
 }
 h4 {
@@ -55,7 +55,9 @@ h4 {
 }
 p {
   @include rem(font-size, 18px);
-  max-width: 750px;
+  line-height: 1.5em;
+  max-width: 550px;
+  margin: 2rem 0;
 }
 ul { list-style-type:  none; }
 li { @include rem(font-size, 18px); }
@@ -82,6 +84,12 @@ body {
 header, .main, section, footer {
   @extend .clearfix;
   width: 100%;
+}
+header {
+  .tagline {
+    @include rem(font-size, 20px);
+    line-height: 1.5em;
+  }
 }
 footer {
   border-top: 1px solid $lightGrey;
