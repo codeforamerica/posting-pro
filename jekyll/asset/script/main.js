@@ -327,6 +327,7 @@
       fileName.text("");
       fileName.hide();
       $("#new-template").show();
+      $("#new-template").val('');
       $("#new-template-label").show();
     }
 
