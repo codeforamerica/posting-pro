@@ -15,6 +15,7 @@
     <link rel="icon" href="{{site.baseurl}}/favicon.png" type="image/png"/>
     <link rel="shortcut icon" href="{{site.baseurl}}/favicon.ico"/>
     <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" />
 
     <script>
         if (/^(www\.)?posting-pro.herokuapp.com$/.test(document.location.host)) {
@@ -41,18 +42,19 @@
     <![endif]-->
 
     <section id="global-alert">
-      <a class="alert-link" href="mailto:nola+postingpro@codeforamerica.org" target="_blank">
-        <span>!&nbsp;</span> We're testing a new website focused on you. Please give us your feedback here.
-      </a>
+      <div class="centered">
+        <i class="fa fa-comments" aria-hidden="true"></i> <a class="alert-link" href="mailto:nola+workforwardnola@codeforamerica.org" target="_blank">We're testing a new website focused on you. Please give us your feedback here.</a>
+      </div>
     </section>
+    <div id="bodyContainer">
+      <header role="banner">
+        {% include site/header.html %}
+      </header>
 
-    <header role="banner">
-      {% include site/header.html %}
-    </header>
-
-    <main role="main">
-      {{content}}
-    </main>
+      <main role="main">
+        {{content}}
+      </main>
+    </div>
 
     <footer role="contentinfo">
       {% include site/footer.html %}

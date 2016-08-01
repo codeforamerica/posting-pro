@@ -7,462 +7,341 @@
 $jargonIssueColor: #0074FF;
 $genderIssueColor: #4EB200;
 $expectationsIssueColor: #3C1488;
+$white: #fff;
 $lightGrey: #E0E0E0;
 $mediumGrey: #BBB;
 $darkGrey: #666;
 $blackText: #333;
-$accent: #fff;
-$transition: all 0.2s ease-in-out;
 
-@mixin transitions() {
-    -webkit-transition: $transition;
-    -moz-transition:    $transition;
-    -ms-transition:     $transition;
-    -o-transition:      $transition;
-    transition:         $transition;
-}
 @mixin border-radius ($radius) {
-    -webkit-border-radius:  $radius;
-    -moz-border-radius:     $radius;
-    -ms-border-radius:      $radius;
-    border-radius:          $radius;
+  -webkit-border-radius:  $radius;
+  -moz-border-radius:     $radius;
+  -ms-border-radius:      $radius;
+  border-radius:          $radius;
 }
 @mixin centered() {
-    text-align: center;
-    margin: 0 auto;
+  text-align: center;
+  margin: 0 auto;
 }
 
 
 // Typography //
 html { font-size: 62.5%; }
 body {
-    font: 140% 'Source Sans Pro', sans-serif;
-    line-height: 1.3;
-    color: $blackText;
+  font: 140% 'Source Sans Pro', sans-serif;
+  line-height: 1.3;
+  color: $blackText;
 }
 h1, h2, h3, p, ul {
-    @include rem(margin-bottom, 10px);
-    font-weight: normal;
-    margin: 0;
-    padding: 0;
-    list-style-type: none;
+  @include rem(margin-bottom, 10px);
+  font-weight: normal;
+  padding: 0;
 }
 h1 {
-    @include rem(font-size, 72px);
-    font-weight: bold;
-    margin: 0 0 15px 0;
+  @include rem(font-size, 72px);
+  line-height: 8rem;
+  font-weight: bold;
 }
-h2 {
-    @include rem(font-size, 28px);
-}
+h2 { @include rem(font-size, 42px); }
 h3 {
-    @include rem(font-size, 24px);
-    line-height: 1.5em;
-    margin: 10px 0;
+  @include rem(font-size, 36px);
+  line-height: 1.5em;
 }
 h4 {
-    @include rem(font-size, 20px);
-    line-height: 2.3em;
-    font-weight: bold;
-    margin: 0;
+  @include rem(font-size, 20px);
+  line-height: 2.3em;
+  font-weight: bold;
+  margin: 2rem 0 .5rem;
 }
 p {
-    @include rem(font-size, 18px);
-    max-width: 750px;
-    margin-bottom: .6em !important;
+  @include rem(font-size, 18px);
+  line-height: 1.5em;
+  max-width: 550px;
+  margin: 2rem 0;
 }
-@media only screen and (max-width: 990px) {
-    p {
-        width: 96%;
-        margin: .6em 2%;
-    }
-}
-li {
-    @include rem(font-size, 18px);
-}
+ul { list-style-type:  none; }
+li { @include rem(font-size, 18px); }
 a {
-    color: inherit;
-    text-decoration: none;
-    border-bottom: 2px solid $lightGrey;
-    &:hover{ @include transitions; border-color: $darkGrey; }
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 2px solid $lightGrey;
+  &:hover{ border-color: $darkGrey; }
 }
 p.remove-margin { margin: 0; }
 
 
-// Basic layout styles //
+// Structure //
 html { height: 100%; }
 body {
-    height: 100%;
-    background-color: #fff;
+  height: 100%;
+  background-color: #fff;
 }
-header, .main, section, footer { @extend .clearfix; }
-header, footer { padding: 15px 2%; }
+#bodyContainer {
+  max-width:800px;
+  min-height: 80%;
+  margin: 0 auto;
+}
+header, .main, section, footer {
+  @extend .clearfix;
+  width: 100%;
+}
+header {
+  .tagline {
+    @include rem(font-size, 20px);
+    line-height: 1.5em;
+  }
+}
 footer {
-    margin-top: 60px;
-    border-top: 1px solid $lightGrey;
-}
-main {
-    width: 1450px;
-    margin: 30px;
-}
-@media only screen and (max-width: 1450px) {
-    main { width: 100%; }
-}
-@media only screen and (max-width: 720px) {
-    main { height: auto; }
+  border-top: 1px solid $lightGrey;
+  margin: 50px 0 0 0;
 }
 section {
-    width: 100%;
-    padding: 5px 0;
-    margin: 25px 0 0 0;
+  margin: 25px 0 0 0;
+  position: relative;
 }
+.centered{
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+
+// Basic styles //
 form {
-    width: 450px;
-    &.double-field {
-      width: 550px;
-    }
+  width: 550px;
+  position: relative;
 }
 input {
-    @include rem(font-size, 18px);
-    width: 390px;
-    padding: 2%;
-    margin-bottom: 5px;
-    border: 2px solid $lightGrey !important;
+  @include rem(font-size, 18px);
+  width: 94%;
+  padding: 2%;
+  margin-bottom: 5px;
+  border: 2px solid $lightGrey !important;
+
+}
+.double-field {
+  position: relative;
+  input {
+    width: 67%;
+    float: left;
     &.short {
-      width: 65px;
+      width: 22%;
+      margin-right: 1%;
     }
+  }
 }
 select {
-    @include centered;
-    width: 250px;
-    @include rem(font-size, 18px);
-    display: block;
+  width: 250px;
+  @include rem(font-size, 18px);
+  display: block;
+  margin: 3rem 0;
 }
 textarea {
-    @include rem(font-size, 18px);
-    width: 96%;
-    padding: 2%;
-    border: 2px solid $lightGrey !important;
+  @include rem(font-size, 18px);
+  width: 94%;
+  height: 200px;
+  padding: 2%;
+  margin: 0 2% 0 0;
+  border: 2px solid $lightGrey !important;
 }
 button {
-    @include centered;
-    @include transitions;
-    width: 200px;
-    font: 20px 'Source Sans Pro', sans-serif;
-    color: $blackText;
-    font-weight: bold;
-    background-color: #fff;
-    border: 5px solid $darkGrey;
-    padding:15px;
-    display: inline-block;
-    &:hover{ background-color: $darkGrey; color: #fff; }
-}
-.button-separator {
-  font: 20px 'Source Sans Pro', sans-serif;
+  @include centered;
+  @include rem(font-size, 18px);
   color: $blackText;
+  font-weight: bold;
+  background-color: #fff;
+  border: 5px solid $lightGrey;
+  padding:15px;
   display: inline-block;
-  height: 90px;
-  line-height: 90px;
-  width: 40px;
-  vertical-align: top;
-  text-align: center;
+  &:hover{ border-color: $darkGrey; }
+}
+.columnWrapper { float: left; }
+.column {
+  width: 550px;
+  height: 100%;
+  box-sizing: border-box;
+
+  &:first-child{ margin-right: 10px; }
+}
+.addAnother {
+  max-width:125px;
+  cursor: pointer;
+  margin: 0;
+
+  .fa-plus-circle { margin-right: 3px; }
+}
+.removeInput {
+  position: absolute;
+  top: -5px;
+  right: -20px;
+  cursor: pointer;
 }
 
 
 // Clearfix //
 .clearfix { zoom: 1; }
 .clearfix:before, .clearfix:after {
-    display: table;
-    content: '';
+  display: table;
+  content: '';
 }
 .clearfix:after { clear: both; }
 
+
+// Overlays //
+.modal, .overlay {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+}
+.modal {
+  background-color: #000;
+  opacity: .5;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+  z-index: 500;
+}
+.overlay {
+  z-index: 501;
+}
+.overlay-inner {
+  @include rem(font-size, 16px);
+  width: auto;
+  max-width: 400px;
+  padding: 20px;
+  margin: 100px auto;
+  background-color: #33353a;
+
+  a { color: #ddd; }
+}
+
+
 // Global Alert //
 #global-alert{
-  text-align: center;
   @include rem(font-size, 16px);
   margin: 0;
   padding: 5px 0;
   background-color: $lightGrey;
 
-  a:hover { border-bottom: 0;}
-  span {
-    width: 10px;
-    height: 5px;
-    color: #fff;
-    padding: 0 4px 0 8px;
-    margin: 0 3px 0 0;
-    background-color: $darkGrey;
+  a { border-color: $darkGrey; }
+  a:hover { border-color: $white; }
+  .fa-comments {
+    color: $darkGrey;
+    margin: 0 5px 0 0;
+    padding: 5px;
+    background-color: $white;
     border-radius: 50%;
   }
 }
 
-// Job Description //
-.columnWrapper {
-    margin: 0 auto;
-    display: inline-block;
+
+// New or template //
+#template-or-new {
+  width: 480px;
+  margin: 50px auto 0;
 }
-.column {
-    width: 550px;
-    height: 100%;
-    float: left;
-    display: inline-block;
-    box-sizing: border-box;
-    &:first-child{ margin-right: 10px; }
+.button-separator {
+  @include rem(font-size, 18px);
+  color: $blackText;
+  display: inline-block;
+  height: 90px;
+  line-height: 90px;
+  width: 100px;
+  vertical-align: middle;
+  text-align: center;
 }
-@media only screen and (max-width: 1120px) {
-    .columnWrapper { display: block; }
-    .column {
-        height: auto;
-        float: none;
-        display: block;
-        margin:0 auto;
-        &:first-child{ margin-right: auto; }
-    }
-}
-.analysis-input {
-    width: 100%;
-    height: 200px;
-    line-height: 1.8;
-    box-sizing: border-box;
-    padding: 20px;
-    resize: none;
-    background-color: #fff;
-    border: 3px solid $lightGrey !important;
-    &:focus { outline: none; }
-}
+
+
 
 
 // Context output //
 .error-highlight {
-    cursor: pointer;
-    position: relative;
-    border-bottom: 5px solid #cc0000;
+  cursor: pointer;
+  position: relative;
+  border-bottom: 5px solid #cc0000;
 
-    &.error-sexism { border-color: $genderIssueColor; }
-    &.error-realism { border-color: $expectationsIssueColor; }
-    &.error-tech { border-color: $jargonIssueColor; }
+  &.error-sexism { border-color: $genderIssueColor; }
+  &.error-realism { border-color: $expectationsIssueColor; }
+  &.error-tech { border-color: $jargonIssueColor; }
 }
 .tooltip, .error-tooltip {
-    position: absolute;
-    width: 300px;
-    height: auto;
-    display: none;
-    z-index: 100;
+  position: absolute;
+  width: 300px;
+  height: auto;
+  display: none;
+  z-index: 100;
 
-    &.tooltip-show { display: block; }
+  &.tooltip-show { display: block; }
 }
 
 
 // Issues //
 .issue {
-    padding: 0 10px;
-    background-color: #fff;
-	  border: 2px solid red;
+  padding: 0 10px;
+  background-color: $white;
+  border: 2px solid red;
 
-    &.issue-sexism { border-color: $genderIssueColor; color: $genderIssueColor; }
-    &.issue-realism { border-color: $expectationsIssueColor; color: $expectationsIssueColor}
-    &.issue-tech { border-color: $jargonIssueColor; color: $jargonIssueColor; }
+  &.issue-sexism { border-color: $genderIssueColor; color: $genderIssueColor; }
+  &.issue-realism { border-color: $expectationsIssueColor; color: $expectationsIssueColor}
+  &.issue-tech { border-color: $jargonIssueColor; color: $jargonIssueColor; }
 
-    p { text-align: left; color: $blackText !important; }
+  p { text-align: left; color: $blackText !important; }
 }
 .reason { font-style: italic; }
 
 
 // Reading level & analysis //
 .inform {
-    width: 50%;
-    width: -webkit-calc(50% - 10px);
-    width:    -moz-calc(50% - 10px);
-    width:         calc(50% - 10px);
-    margin: 5px 0 0;
+  width: 220px;
+  float: left;
 
-    a { border-color: #fff; &:hover{ border-color: $darkGrey; }}
+  a {
+    border-color: $white;
+    &:hover{ border-color: $darkGrey; }
+  }
 }
 .analysis {
-    display: inline-block;
-    float: left;
-    margin-right: 10px;
-
-    p{ padding: 10px; background: $lightGrey; }
-    p span{ font-weight: bold; margin: 0 0 0 5px; }
-}
-@media only screen and (max-width: 1120px) {
-    .inform, .analysis{
-        width:215px;
-        float: none;
+  p {
+    padding: 10px;
+    background: $lightGrey;
+    span{
+      font-weight: bold;
+      margin: 0 0 0 5px;
     }
-    .inform{ margin: 10px auto; }
-    .analysis{ margin: 5px }
-}
-
-
-// Skills Engine //
-#skillsSection {
-    button { margin-top: 40px; }
-    p { @include centered; }
-}
-.skillsEngine {
-    width: auto;
-    display: none;
-    margin-top: 30px;
-
-    p{
-        text-align: left !important;
-        margin: 10px 0 0 !important;
-        float: left;
-    }
-    ul {
-        @include centered;
-        max-width: 700px;
-    }
-    li {
-        overflow: hidden;
-        border-bottom: 1px solid #ccc;
-        padding: 10px 0 0 0;
-        &:last-child { border-bottom: none; }
-    }
-    form { margin: 0; }
-    input {
-        width: 350px;
-        padding: 5px;
-        margin: 5px 0 0;
-        float: left;
-    }
-}
-@media only screen and (max-width: 990px) {
-    .skillsEngine {
-        p{ width: auto; }
-        li{
-            @include centered;
-            width: 95%;
-        }
-        input{width:50%;}
-    }
-
-}
-.switch-field {
-    margin: 0 20px 0 0;
-    float: left;
-    border: none;
-    overflow: hidden;
-
-    input { display: none; }
-    label {
-          @include centered;
-          @include transitions;
-          width: auto;
-          @include rem(font-size, 18px);
-          color: $mediumGrey;
-          background-color: #fff;
-          text-shadow: none;
-          padding: 6px 14px;
-          margin: 0 2px;
-          border: 2px solid $mediumGrey;
-          cursor: pointer;
-          float: left;
-          position: relative;
-    }
-    input:checked + label {
-        color: $darkGrey;
-        background-color: $lightGrey;
-        border: 2px solid $darkGrey;
-    }
+    &:first-child { margin-top: 0; }
+  }
 }
 
 
 // Certifications //
 #qualificationsNeeded {
-    display: none;
+  display: none;
 
-    p{ @include centered; }
-    form { margin-top: 20px; }
-    form input{ width: 80%; }
+  p{ @include centered; }
+  form { margin-top: 20px; }
+  form input{ width: 80%; }
 }
-
-
-// Circle styles //
-.circle {
-    @include border-radius(50%);
-    @include transitions;
-    @include centered;
-    width: 25px;
-    height: 25px;
-    color: #888;
-    font: bold 24px sans-serif;
-    display: block;
-    position: relative;
-    margin: 5px auto;
-    border: 2px solid $lightGrey;
-    background-color: #fff;
-    line-height: 1em;
-    cursor: pointer;
-
-    &:hover{ color: $blackText; background-color: $lightGrey; }
-}
-.circle-plus {
-    font: bold 30px sans-serif;
-    margin: 10px 0;
-    line-height: .7em;
-}
-.circle-remove { float: right; }
 
 
 // Export Button //
-#exportButton{ margin-top: 20px; }
+#exportButton{ margin-top: 50px; }
 
 
 // Export Posting //
 #final-posting{
-    width:96%;
-    max-width: 750px;
-    margin: 40px 0;
-    padding: 0 2%;
+  width:96%;
+  max-width: 750px;
+  margin: 40px 0;
+  padding: 0 2%;
 
-    h3, p, li { text-align: left; }
-    ul {
-        list-style-type: disc;
-        margin: 0 0 0 15px;
-    }
-}
-
-// Overlays //
-.modal, .overlay {
-    width: 100%;
-    height: 100%;
-    position: fixed;
-    left: 0;
-    top: 0;
-}
-.modal {
-    background-color: #000;
-    opacity: .5;
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
-    z-index: 500;
-}
-.overlay {
-    z-index: 501;
-}
-.overlay-inner {
-    @include rem(font-size, 16px);
-    width: auto;
-    max-width: 400px;
-    padding: 20px;
-    margin: 100px auto;
-    background-color: #33353a;
-
-    a { color: #ddd; }
+  h3, p, li { text-align: left; }
+  ul {
+      list-style-type: disc;
+      margin: 0 0 0 15px;
+  }
 }
 
 
 // Footer  //
 footer p {
-    @include centered;
-    @include rem(font-size, 16px);
-	  width: 1450px;
-}
-@media only screen and (max-width: 1450px) {
-    footer p {
-		width: 100%;
-	}
+  @include rem(font-size, 16px);
 }

@@ -5,85 +5,94 @@ layout: page
 ---
 
 <div id="page_1">
-  <section id="template-or-new">
-    <button data-control="freshStartButton" data-event-category="navigate" data-event-action="start">NEW JOB DESCRIPTION</button>
-    <span class="button-separator">OR</span>
-    <button data-control="showTemplatesButton" data-event-category="navigate" data-event-action="start">START FROM TEMPLATE</button>
-  </section>
+  <div class="centered">
+    <section id="template-or-new">
+      <button data-control="freshStartButton" data-event-category="navigate" data-event-action="start">New Job Posting</button>
+      <span class="button-separator">OR</span>
+      <button data-control="showTemplatesButton" data-event-category="navigate" data-event-action="start">Start from Template</button>
+    </section>
 
-  <section id="template-shower" style="display:none;">
-    <h3>Select a Template:</h3>
-    <div id="template-picker"></div>
-  </section>
+    <section id="template-shower" style="display:none;">
+      <h3>Select a Template:</h3>
+      <div id="template-picker"></div>
+    </section>
+  </div>
 </div>
 
 <div id="page_2" style="display:none;">
+  <div class="centered">
+    <section>
+      <h3>Job Title</h3>
+      <form>
+        <input type="text" name="positiontitle">
+      </form>
+    </section>
 
-<section>
-  <h3>Job Title</h3>
-  <form>
-    <input type="text" name="positiontitle">
-  </form>
-</section>
+    <section>
+      <h3>Company Overview</h3>
+      <p><i>Insert a short paragraph about your company. Include details that capture core values, culture and mission so job seekers clearly understand the environment they will be working in.</i></p>
+      <div id="company-desc" placeholder="Place or write your company overview here." data-control="analysisField"></div>
+    </section>
 
-<section>
-  <h3>Company Overview</h3>
-  <div id="company-desc" placeholder="Please insert a short paragraph talking about your company and what makes it different to work there. Include details that capture the core values, culture and mission of your company, so job seekers more clearly understand the environment they will be working in." data-control="analysisField"></div>
-</section>
+    <section>
+      <h3>Job Summary and Responsibilities</h3>
+      <p><i>Add responsibilities or modifications appropriate for this role.</i></p>
+      <div id="job-desc" placeholder="Place or write your job description here." data-control="analysisField"></div>
+    </section>
 
-<section>
-  <h3>Job Summary and Responsibilities</h3>
-  <div id="job-desc" placeholder="Place or write your job description here." data-control="analysisField"></div>
-</section>
+    <section>
+      <h3>Required Competencies</h3>
+      <p><i>Find additional Competencies for this role to insert if desired at <a href="www.onetonline.org/find/descriptor/browse/Skills/" target="_blank">www.onetonline.org</a>.</i></p>
+      <h4>Occupational Competencies</h4>
+      <ul id="reqcomp-occupation-list"></ul>
+      <p class="addAnother" id="reqcomp-occupation" data-control="addDoubleFieldButton" data-event-category="qualifications" data-event-action="add new" data-event-label="qualification"><i class="fa fa-plus-circle" aria-hidden="true"></i> Add Another</p>
+      <h4>Foundational Competencies</h4>
+      <ul id="reqcomp-foundation-list"></ul>
+      <p class="addAnother" id="reqcomp-foundation" data-control="addDoubleFieldButton" data-event-category="qualifications" data-event-action="add new" data-event-label="qualification"><i class="fa fa-plus-circle" aria-hidden="true"></i> Add Another</p>
+    </section>
 
-<section>
-  <h3>Required Competencies</h3>
-  <h4>Occupational Competencies</h4>
-  <ul id="reqcomp-occupation-list"></ul>
-  <span class="circle circle-plus" id="reqcomp-occupation" data-control="addDoubleFieldButton" data-event-category="qualifications" data-event-action="add new" data-event-label="qualification">+</span>
-  <h4>Foundational Competencies</h4>
-  <ul id="reqcomp-foundation-list"></ul>
-  <span class="circle circle-plus" id="reqcomp-foundation" data-control="addDoubleFieldButton" data-event-category="qualifications" data-event-action="add new" data-event-label="qualification">+</span>
-</section>
+    <section>
+      <h3>Preferred Competencies</h3>
+      <p><i>Find additional Competencies for this role to insert if desired at <a href="www.onetonline.org/find/descriptor/browse/Skills/" target="_blank">www.onetonline.org</a>.</i></p>
+      <h4>Occupational Competencies</h4>
+      <ul id="prefcomp-occupation-list"></ul>
+      <p class="addAnother" id="prefcomp-occupation" data-control="addDoubleFieldButton" data-event-category="qualifications" data-event-action="add new" data-event-label="qualification"><i class="fa fa-plus-circle" aria-hidden="true"></i> Add Another</p>
+      <h4>Foundational Competencies</h4>
+      <ul id="prefcomp-foundation-list"></ul>
+      <p class="addAnother" id="prefcomp-foundation" data-control="addDoubleFieldButton" data-event-category="qualifications" data-event-action="add new" data-event-label="qualification"><i class="fa fa-plus-circle" aria-hidden="true"></i> Add Another</p>
+    </section>
 
-<section>
-  <h3>Preferred Competencies</h3>
-  <h4>Occupational Competencies</h4>
-  <ul id="prefcomp-occupation-list"></ul>
-  <span class="circle circle-plus" id="prefcomp-occupation" data-control="addDoubleFieldButton" data-event-category="qualifications" data-event-action="add new" data-event-label="qualification">+</span>
-  <h4>Foundational Competencies</h4>
-  <ul id="prefcomp-foundation-list"></ul>
-  <span class="circle circle-plus" id="prefcomp-foundation" data-control="addDoubleFieldButton" data-event-category="qualifications" data-event-action="add new" data-event-label="qualification">+</span>
-</section>
+    <section>
+      <h3>Example Activities</h3>
+      <ul id="activity-list"></ul>
+      <p class="addAnother" id="activity" data-control="addSingleFieldButton" data-event-category="qualifications" data-event-action="add new" data-event-label="qualification"><i class="fa fa-plus-circle" aria-hidden="true"></i> Add Another</p>
+    </section>
 
-<section>
-  <h3>Example Activities</h3>
-  <ul id="activity-list"></ul>
-  <span class="circle circle-plus" id="activity" data-control="addSingleFieldButton" data-event-category="qualifications" data-event-action="add new" data-event-label="qualification">+</span>
-</section>
+    <section>
+      <h3>Required Certifications</h3>
+      <p><i>Insert Required Certifications only if truly required.</i></p>
+      <ul id="cert-list"></ul>
+      <p class="addAnother" id="cert" data-control="addSingleFieldButton" data-event-category="qualifications" data-event-action="add new" data-event-label="qualification"><i class="fa fa-plus-circle" aria-hidden="true"></i> Add Another</p>
+    </section>
 
-<section>
-  <h3>Required Certifications</h3>
-  <ul id="cert-list"></ul>
-  <span class="circle circle-plus" id="cert" data-control="addSingleFieldButton" data-event-category="qualifications" data-event-action="add new" data-event-label="qualification">+</span>
-</section>
-
-<section id="exportButton">
-  <button data-control="startOverButton" data-event-category="navigate" data-event-action="start over">START OVER</button>
-  <button data-control="exportPostingPageButton" data-event-category="navigate" data-event-action="export">REVIEW</button>
-</section>
-
+    <section id="exportButton">
+      <button data-control="startOverButton" data-event-category="navigate" data-event-action="start over">Start Over</button>
+      <button data-control="exportPostingPageButton" data-event-category="navigate" data-event-action="export">Review</button>
+    </section>
+  </div>
 </div>
 
 <div id="page_3" style="display:none;">
-  <section>
-    <button data-control="saveAsWordDocButton" data-event-category="navigate" data-event-action="save as word doc">SAVE AS WORD DOCUMENT</button>
-  </section>
-  <section id="final-posting"></section>
+  <div class="centered">
+    <section>
+      <button data-control="saveAsWordDocButton" data-event-category="navigate" data-event-action="save as word doc">Save as Word Document</button>
+    </section>
+    <section id="final-posting"></section>
 
-  <section>
-    <button data-control="gotoPage2Button" data-event-category="navigate" data-event-action="back">BACK</button>
-  </section>
+    <section>
+      <button data-control="gotoPage2Button" data-event-category="navigate" data-event-action="back">Back</button>
+    </section>
+  </div>
 </div>
 
 {% include site/templatepicker.html %}
