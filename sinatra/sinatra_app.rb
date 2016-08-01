@@ -123,6 +123,10 @@ post '/api/templates' do
 end
 
 # serve secured section for 'manage' folder
+get '/admin' do
+  redirect to('/manage')
+end
+
 get '/manage' do
   protected!
   file_name = "_site#{request.path_info}/index.html".gsub(%r{\/+}, '/')
