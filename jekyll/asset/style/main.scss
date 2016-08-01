@@ -178,6 +178,39 @@ button {
   cursor: pointer;
 }
 
+.removeTemplate {
+    margin-left: 10px;
+    display: inline-block;
+    cursor: pointer;
+}
+
+#template-file-name {
+  margin-right: 15px;
+  font-size: 1.25em;
+}
+
+.input-file {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+.input-file + label {
+    font-size: 1.25em;
+    font-weight: 700;
+    margin-right: 15px;
+    cursor: pointer;
+    display: inline-block;
+    color: $darkGrey;
+    text-decoration: underline;
+}
+
+.input-file:focus + label,
+.input-file + label:hover {
+    color: black;
+}
 
 // Clearfix //
 .clearfix { zoom: 1; }

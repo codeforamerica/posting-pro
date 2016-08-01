@@ -47,7 +47,7 @@ helpers do
 
   def authorized?
     @auth ||=  Rack::Auth::Basic::Request.new(request.env)
-    @auth.provided? and @auth.basic? and @auth.credentials and @auth.credentials == ['admin', 'admin']
+    @auth.provided? and @auth.basic? and @auth.credentials and @auth.credentials == [ENV['ADMIN_USER'], ENV['ADMIN_PASSWORD']]
   end
 end
 
@@ -85,7 +85,8 @@ post '/api/templates/:id/delete' do
   dataset = database[:templates]
   dataset.filter(id: id).delete
 
-  halt 200, { id: id }.to_json
+  status 200
+  { id: id }.to_json
 end
 
 post '/api/templates' do
@@ -117,10 +118,15 @@ post '/api/templates' do
     req_certifications: req_certifications
   )
 
-  halt 200, data.to_json
+  status 200
+  data.to_json
 end
 
 # serve secured section for 'manage' folder
+get '/admin' do
+  redirect to('/manage')
+end
+
 get '/manage' do
   protected!
   file_name = "_site#{request.path_info}/index.html".gsub(%r{\/+}, '/')

@@ -18,6 +18,12 @@
     },
     "SKILLS_ENGINE_SECRET": {
       "required": true
+    },
+    "ADMIN_USER": {
+      "required": true
+    },
+    "ADMIN_PASSWORD": {
+      "required": true
     }
   },
   "formation": {
