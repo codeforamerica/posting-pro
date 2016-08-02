@@ -33,7 +33,6 @@
         cuff.controls.postInput = postInputControl;
         cuff.controls.countOutput = countOutputControl;
         cuff.controls.readingLevelOutput = readingLevelOutputControl;
-        cuff.controls.errorTooltip = errorTooltipControl;
         cuff.controls.freshStartButton = freshStartControl;
         cuff.controls.showTemplatesButton = showTemplatesControl;
         cuff.controls.pickTemplateButton = pickTemplateControl;
@@ -101,65 +100,6 @@
         element.innerHTML = templates.readingLevel.render(readingLevelSummary);
         cuff(element);
       });
-    }
-
-    function calculateOffset($parent) {
-      var parentOffset = $parent.offset();
-      var parentWidth = $parent.width();
-      var documentWidth = $(document).width();
-
-      var tooltipOffset = {
-        top : parentOffset.top + 30
-      };
-
-      var tooltipWidth = 300;
-
-      if(parentOffset.left + parentWidth + tooltipWidth > documentWidth) { // if the tooltip will go over the edge
-        tooltipOffset.left = parentOffset.left - tooltipWidth + parentWidth / 2;
-      } else { // if it's fine
-        tooltipOffset.left = parentOffset.left;
-      }
-
-      return tooltipOffset;
-    }
-
-    function errorTooltipControl (element) {
-      var $parent = $(element).parent();
-
-      // move tooltip to body so that it doesn't get cut off
-      var $tooltip = $(element).detach();
-      $('body').append($tooltip);
-
-      // save reference to hideTooltip event since we'll use it frequently
-      var hideEvent = function() { hideTooltip($tooltip); };
-
-      $parent.hover(
-        function() { showTooltip($tooltip, $parent); },
-        hideEvent
-      );
-
-      // hide tooltip if container scrolls so that it doesn't get unaligned
-      $parent.parent().on('scroll', hideEvent);
-
-      // when the text is changed, make sure to remove tooltip from DOM and any referencing events
-      $parent.bind('DOMNodeRemoved', function(event) {
-        $parent.parent().off('scroll', hideEvent);
-        $tooltip.remove();
-      });
-    }
-
-    function showTooltip($tooltip, $parent) {
-      $tooltip.addClass("tooltip-show");
-
-      // if a parent element was passed in, readjust offset
-      if($parent) {
-        var tooltipOffset = calculateOffset($parent);
-        $tooltip.offset(tooltipOffset);
-      }
-    }
-
-    function hideTooltip($tooltip) {
-      $tooltip.removeClass("tooltip-show");
     }
 
     function startOverControl(element) {
@@ -302,7 +242,6 @@
       });
     }
 
-
     function templateListControl(element) {
       getTemplateList(function(data) {
         var listData = {};
@@ -311,8 +250,7 @@
         element.innerHTML = templates.templateList.render(listData);
         cuff(element);
       });
-    };
-
+    }
 
     function deleteTemplateControl(element) {
       $(element).bind('click', function() {
