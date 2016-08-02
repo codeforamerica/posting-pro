@@ -2,7 +2,6 @@
     'use strict';
 
     var templates = {};
-    var acceptedTypes = ["tech", "sexism", "realism"];
     var pages = ['1', '2', '3'];
     var convertedDocument;
 
@@ -73,12 +72,15 @@
 
     function countOutputControl (element) {
 
-      element.innerHTML = templates.issueCount.render({"issueCount" : "0"});
+      element.innerHTML = templates.issueCount.render({'issueCount' : '0'});
       cuff(element);
 
-      var eventId = element.getAttributeNode("event-id").value;
+      var eventId = element.getAttributeNode('event-id').value;
       $(document).on('lint-results-' + eventId, function (event, results) {
-        element.innerHTML = templates.issueCount.render({ "issueCount" : results.issues.length});
+        var sexismIssues = _.filter(results.issues, function(i) {
+          return _.has(i.increment, 'sexism');
+        });
+        element.innerHTML = templates.issueCount.render({ 'issueCount' : sexismIssues.length});
         cuff(element);
       });
     }
