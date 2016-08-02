@@ -106,7 +106,7 @@
 
     function startOverControl(element) {
       $(element).bind('click', function() {
-        $("[name=positiontitle]").val('');
+        $("[name=positionTitle]").val('');
         $("#company-desc-input").val('').trigger('keyup'); // keyup triggers clearing right-hand results box
         $("#job-desc-input").val('').trigger('keyup'); // keyup triggers clearing right-hand results box
         $("#reqcomp-occupation-list")[0].innerHTML = '';
@@ -171,7 +171,7 @@
     }
 
     function populateFieldsWithData(data) {
-      $("[name=positiontitle]").val(data.job_title);
+      $("[name=positionTitle]").val(data.job_title);
       $("#company-desc-input").val(data.company_description).trigger('keyup'); // keyup triggers results box
       $("#job-desc-input").val(data.job_description).trigger('keyup'); // keyup triggers results box
 
@@ -408,7 +408,7 @@
     function composePostingFromFields() {
       var postingData = {};
 
-      var $positionTitleEl = $("input[name='positiontitle']");
+      var $positionTitleEl = $("input[name='positionTitle']");
       if($positionTitleEl) postingData.positionTitle = $positionTitleEl.val();
 
       postingData.companyDescription = captureFormattedField("company-desc-input");
