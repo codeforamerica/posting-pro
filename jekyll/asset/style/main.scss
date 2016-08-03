@@ -85,6 +85,7 @@ body {
 header, .main, section, footer {
   @extend .clearfix;
   width: 100%;
+  padding: 0 .5rem;
 }
 header {
   .tagline {
@@ -101,7 +102,7 @@ section {
   margin: 25px 0 0 0;
   position: relative;
 }
-.centered{
+.centered {
   max-width: 800px;
   margin: 0 auto;
 }
@@ -286,8 +287,6 @@ button {
 }
 
 
-
-
 // Context output //
 .error-highlight {
   position: relative;
@@ -297,33 +296,9 @@ button {
   &.error-realism { border-color: $expectationsIssueColor; }
   &.error-tech { border-color: $jargonIssueColor; }
 }
-.tooltip, .error-tooltip {
-  position: absolute;
-  width: 300px;
-  height: auto;
-  display: none;
-  z-index: 100;
-
-  &.tooltip-show { display: block; }
-}
 
 
-// Issues //
-.issue {
-  padding: 0 10px;
-  background-color: $white;
-  border: 2px solid red;
-
-  &.issue-sexism { border-color: $genderIssueColor; color: $genderIssueColor; }
-  &.issue-realism { border-color: $expectationsIssueColor; color: $expectationsIssueColor}
-  &.issue-tech { border-color: $jargonIssueColor; color: $jargonIssueColor; }
-
-  p { text-align: left; color: $blackText !important; }
-}
-.reason { font-style: italic; }
-
-
-// Reading level & analysis //
+// Reading level //
 .inform {
   width: 220px;
   float: left;
@@ -333,6 +308,7 @@ button {
     &:hover{ border-color: $darkGrey; }
   }
 }
+
 .analysis {
   p {
     padding: 10px;
