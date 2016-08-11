@@ -129,10 +129,9 @@ input {
   input, textarea {
     width: 90%;
     margin: 0 0 0 4rem;
-    padding: 1%;
   }
   .removeInput {
-    top: 35px;
+    top: 15px;
     left: 0;
     margin: 2rem 0 !important;
   }
@@ -142,7 +141,7 @@ input {
     width: 100%;
     position: relative;
   }
-  input {
+  input, textarea {
     width: 90%;
     margin: 1rem 0 0 4rem;
   }
@@ -157,7 +156,7 @@ input {
     width: 100%;
     position: relative;
   }
-  input {
+  input, textarea {
     width: 90%;
     margin: 1rem 0 0 4rem;
   }
@@ -177,10 +176,11 @@ textarea {
   @include rem(font-size, 18px);
   width: 94%;
   height: 200px;
-  padding: 2%;
+  padding: 1%;
   margin: 0 2% 0 0;
   border: 2px solid $lightGrey !important;
 }
+textarea.short { height: 50px; }
 button {
   @include centered;
   @include rem(font-size, 18px);

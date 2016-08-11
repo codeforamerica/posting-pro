@@ -1,7 +1,7 @@
 <script type="text/x-template" data-template="singleFieldTemplate">
   <li>
     <form name="{name}-form">
-      <input type="text" id="new-{id}" name="value" value="{data}">
+      <textarea type="text" id="new-{id}" name="value" class="short">{data}</textarea>
       <p class="removeInput" data-control="removeSingleFieldButton" id="{id}" data-event-category="qualifications" data-event-action="remove one" data-event-label="qualification" title="Remove this row"><i class="fa fa-times-circle fa-2x" aria-hidden="true"></i></p>
       <div class="clearfix"></div>
     </form>
@@ -14,7 +14,7 @@
       <p>Skill</p>
       <input type="text" id="new-{id}-name" name="name" {#data}value="{name}"{/data}>
       <p>Description</p>
-      <textarea id="new-{id}-description" name="description">{#data}{description}{/data}</textarea>
+      <textarea id="new-{id}-description" name="description" class="short">{#data}{description}{/data}</textarea>
       <p class="removeInput" data-control="removeSingleFieldButton" id="{id}" data-event-category="qualifications" data-event-action="remove one" data-event-label="qualification" title="Remove this row"><i class="fa fa-times-circle fa-2x" aria-hidden="true"></i></p>
     </form>
   </li>
