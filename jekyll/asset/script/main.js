@@ -456,7 +456,7 @@
 
       $('form[name='+name+'-form]').each(function() {
         var nameInputs = $(this).find('input[name=name]');
-        var descriptionInputs = $(this).find('input[name=description]');
+        var descriptionInputs = $(this).find('textarea[name=description]');
 
         if(nameInputs && nameInputs.length && nameInputs[0].value && descriptionInputs && descriptionInputs.length) {
             fieldValues.push({name: nameInputs[0].value, description: descriptionInputs[0].value });
