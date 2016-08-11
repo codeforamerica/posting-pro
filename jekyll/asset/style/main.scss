@@ -112,7 +112,8 @@ form {
   position: relative;
 }
 input {
-  @include rem(font-size, 18px);
+  @include rem(font-size, 16px);
+  line-height: 1.5em;
   width: 94%;
   padding: 1%;
   margin-bottom: 5px;
@@ -168,19 +169,21 @@ input {
 }
 select {
   width: 250px;
-  @include rem(font-size, 18px);
+  @include rem(font-size, 16px);
+  line-height: 1.5em;
   display: block;
   margin: 3rem 0;
 }
 textarea {
-  @include rem(font-size, 18px);
+  @include rem(font-size, 16px);
+  line-height: 1.5em;
   width: 94%;
   height: 200px;
   padding: 1%;
   margin: 0 2% 0 0;
   border: 2px solid $lightGrey !important;
 }
-textarea.short { height: 50px; }
+textarea.short { max-height: 50px; }
 button {
   @include centered;
   @include rem(font-size, 18px);
@@ -387,9 +390,12 @@ button {
 
 
 // Export Button //
-#exportButton{
+#exportButton {
   margin-top: 50px;
   .centered { width:225px; }
+}
+#saveButtonContainer {
+  .centered { width:315px; }
 }
 
 
