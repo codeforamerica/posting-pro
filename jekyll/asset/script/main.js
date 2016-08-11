@@ -442,7 +442,7 @@
       var fieldValues = [];
 
       $('form[name='+name+'-form]').each(function() {
-        var inputs = $(this).find('input[name=value]');
+        var inputs = $(this).find('textarea[name=value]');
         if(inputs && inputs.length && inputs[0].value) {
             fieldValues.push({name: inputs[0].value});
         }
