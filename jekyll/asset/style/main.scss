@@ -126,9 +126,10 @@ input {
     font-weight: bold;
     margin: 1rem 0 .3rem 4rem;
   }
-  input {
+  input, textarea {
     width: 90%;
     margin: 0 0 0 4rem;
+    padding: 1%;
   }
   .removeInput {
     top: 35px;
