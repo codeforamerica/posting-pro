@@ -4,11 +4,11 @@
       {#templates}<option value="{id}">{job_title}</option>{/templates}
     </select>
 
-    <button data-control="pickTemplateButton">Get Started</button>
+    <button data-control="pickTemplateButton" data-event-category="templates" data-event-action="pick template">Get Started</button>
   {/templates.length}
 
   {^templates.length}
     <h4>Sorry, there are curently no templates. Start a new posting instead!</h4>
-    <button data-control="freshStartButton">New Job Posting</button>
+    <button data-control="freshStartButton" data-event-category="navigate" data-event-action="New Posting" data-event-label="No Templates">New Job Posting</button>
   {/templates.length}
 </script>
