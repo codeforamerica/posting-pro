@@ -28,7 +28,8 @@ end
 post '/api/skillsengine/competencies' do
   data = JSON.parse(request.body.read)
 
-  skills_engine_api = SkillsEngine.new(session['se_access_token'], session['se_token_expiry'])
+  skills_engine_api = SkillsEngine.new(session['se_access_token'],
+                                       session['se_token_expiry'])
   skills_engine_response = skills_engine_api.analyze_competencies(data['text'])
   if skills_engine_api.has_updated_token
     session['se_access_token'] = skills_engine_api.access_token
@@ -47,7 +48,11 @@ helpers do
 
   def authorized?
     @auth ||=  Rack::Auth::Basic::Request.new(request.env)
-    @auth.provided? and @auth.basic? and @auth.credentials and @auth.credentials == [ENV['ADMIN_USER'], ENV['ADMIN_PASSWORD']]
+    if @auth.provided? &&
+       @auth.basic? &&
+       @auth.credentials &&
+       @auth.credentials == [ENV['ADMIN_USER'], ENV['ADMIN_PASSWORD']]
+    end
   end
 end
 
@@ -59,7 +64,6 @@ end
 get %r{(/.*)\/$} do
   redirect params[:captures].first.to_s
 end
-
 
 get '/api/templates' do
   content_type :json
@@ -95,12 +99,12 @@ post '/api/templates' do
 
   data = JSON.parse(request.body.read)
 
-  example_activities = "{}"
+  example_activities = '{}'
   if data['example_activities'].any?
     example_activities = Sequel.pg_array(data['example_activities'])
   end
 
-  req_certifications = "{}"
+  req_certifications = '{}'
   if data['req_certifications'].any?
     req_certifications = Sequel.pg_array(data['req_certifications'])
   end

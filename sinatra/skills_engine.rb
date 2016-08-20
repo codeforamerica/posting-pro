@@ -24,7 +24,8 @@ class SkillsEngine
 
     response = RestClient.post('https://api.skillsengine.com/v2/competencies/analyze',
                                { text: text },
-                               'Authorization': "Bearer #{access_token}", 'Accept-Encoding': 'gzip,deflate')
+                               'Authorization': "Bearer #{access_token}",
+                               'Accept-Encoding': 'gzip,deflate')
     response.body
   end
 
@@ -34,8 +35,7 @@ class SkillsEngine
     response = RestClient.post('https://api.skillsengine.com/oauth/token',
                                grant_type: 'client_credentials',
                                client_id: ENV['SKILLS_ENGINE_ID'],
-                               client_secret: ENV['SKILLS_ENGINE_SECRET']
-                              )
+                               client_secret: ENV['SKILLS_ENGINE_SECRET'])
 
     json_response = JSON.parse(response)
     @token_expiry = json_response['created_at'] + json_response['expires_in']
