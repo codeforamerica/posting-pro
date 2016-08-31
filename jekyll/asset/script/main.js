@@ -206,6 +206,10 @@
         var content = composePostingFromFields();
         $("#final-posting")[0].innerHTML = content;
         showPage('3');
+        if (navigator.userAgent.indexOf('Safari') != -1 && navigator.userAgent.indexOf('Chrome') == -1) {
+          $(".word-doc").hide();
+          $(".word-doc-width").css("width", "80px");
+        }
         convertedDocument = htmlDocx.asBlob(content);
       });
     }
