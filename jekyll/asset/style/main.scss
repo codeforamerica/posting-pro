@@ -45,6 +45,7 @@ h1 {
   @include rem(font-size, 72px);
   line-height: 8rem;
   font-weight: bold;
+  margin-top: 1rem;
 }
 h2 { @include rem(font-size, 42px); }
 h3 {
@@ -83,12 +84,12 @@ body {
 #bodyContainer {
   max-width:800px;
   min-height: 80%;
-  margin: 0 0 0 250px;
+  margin: 0 0 0 230px;
 }
 header, .main, section, footer {
   @extend .clearfix;
   width: 100%;
-  padding: 0 .5rem;
+  padding: 0 .5rem 0 30px;
 }
 header {
   .tagline {
@@ -322,24 +323,33 @@ button {
 // Menu //
 .scroll-on-page {
   position: fixed;
+  max-width: 225px;
   left: 30px;
   top: 50px;
 
   a {
-    color: $action-color;
+    color: $darkGray;
     text-decoration: none;
+    &:hover { background-color: transparentize($action-color, 0.9); }
+  }
+  .scrollActive {
+    font-weight: bold;
+    color: $action-color;
+    border-left: 5px solid $action-color;
   }
   .scroll-on-page-link {
-    border-bottom: 1px solid transparentize($action-color, 0.8);
+    border-left: 5px solid $white;
+    border-bottom: 1px solid $darkGray;
     display: block;
     margin-right: $base-spacing;
     outline: none;
-    padding: ($base-spacing / 2) 0;
+    padding: ($base-spacing / 2) 0 ($base-spacing / 2) ($base-spacing / 2);
 
     &:last-child {
       margin-bottom: $base-spacing;
     }
   }
+  .indent { padding-left: 2rem; }
 
   article {
     h4 {
