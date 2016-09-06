@@ -5,7 +5,7 @@ layout: page
 ---
 
 <div id="page_1">
-  <div class="centered">
+  <div class="leftAlign">
     <section id="template-or-new">
       <button data-control="freshStartButton" data-event-category="navigate" data-event-action="start" data-event-label="New Posting">New Job Posting</button>
       <span class="button-separator">or</span>
@@ -20,27 +20,27 @@ layout: page
 </div>
 
 <div id="page_2" style="display:none;">
-  <div class="centered">
-    <section>
+  <div class="leftAlign">
+    <section id="scroll-link-1">
       <h3>Job Title</h3>
       <form>
         <input type="text" name="positionTitle">
       </form>
     </section>
 
-    <section>
+    <section id="scroll-link-2">
       <h3>Company Overview</h3>
       <p><i>Insert a short paragraph about your company. Include details that capture core values, culture and mission so job seekers clearly understand the environment they will be working in.</i></p>
       <div id="company-desc" placeholder="Place or write your company overview here." data-control="analysisField"></div>
     </section>
 
-    <section>
+    <section id="scroll-link-3">
       <h3>Job Summary and Responsibilities</h3>
       <p><i>Add responsibilities or modifications appropriate for this role.</i></p>
       <div id="job-desc" placeholder="Place or write your job summary and responsibilities here." data-control="analysisField"></div>
     </section>
 
-    <section>
+    <section id="scroll-link-4">
       <h3>Required Competencies</h3>
       <h4>Occupational Competencies</h4>
       <p>A measurable pattern of knowledge, skills, abilities, behaviors, and other characteristics that an individual needs to perform work roles or occupational functions successfully. Find additional competencies for this role to insert if desired at <a href="http://www.onetonline.org/find/descriptor/browse/Skills/" target="_blank">www.onetonline.org</a>.</p>
@@ -80,23 +80,23 @@ layout: page
     </section>
 
     <section id="exportButton">
-      <div class="centered">
+      <div class="leftAlign">
         <button data-control="startOverButton" data-event-category="navigate" data-event-action="start over">Start Over</button>
         <button data-control="exportPostingPageButton" data-event-category="navigate" data-event-action="export">Review</button>
-      </centered>
+      </div>
     </section>
   </div>
 </div>
 
 <div id="page_3" style="display:none;">
-  <div class="centered">
+  <div class="leftAlign">
     <section class="word-doc">
       <button data-control="saveAsWordDocButton" data-event-category="navigate" data-event-action="save as word doc">Save as Word Document</button>
     </section>
     <section id="final-posting"></section>
 
     <section id="saveButtonContainer">
-      <div class="centered word-doc-width">
+      <div class="leftAlign word-doc-width">
         <button data-control="gotoPage2Button" data-event-category="navigate" data-event-action="back">Back</button>
         <button data-control="saveAsWordDocButton" data-event-category="navigate" data-event-action="save as word doc" class="word-doc">Save as Word Document</button>
       </div>

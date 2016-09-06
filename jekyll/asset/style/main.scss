@@ -8,10 +8,14 @@ $jargonIssueColor: #0074FF;
 $genderIssueColor: #4EB200;
 $expectationsIssueColor: #3C1488;
 $white: #fff;
-$lightGrey: #E0E0E0;
-$mediumGrey: #BBB;
-$darkGrey: #666;
+$lightGray: #E0E0E0;
+$mediumGray: #BBB;
+$darkGray: #333;
 $blackText: #333;
+$base-line-height: 1.5em !default;
+$base-spacing: 1.5em !default;
+$action-color: #477DCA !default;
+$base-font-color: $darkGray !default;
 
 @mixin border-radius ($radius) {
   -webkit-border-radius:  $radius;
@@ -64,8 +68,8 @@ li { @include rem(font-size, 18px); }
 a {
   color: inherit;
   text-decoration: none;
-  border-bottom: 2px solid $lightGrey;
-  &:hover{ border-color: $darkGrey; }
+  border-bottom: 2px solid $lightGray;
+  &:hover{ border-color: $darkGray; }
 }
 p.remove-margin { margin: 0; }
 .bold { font-weight: 700; }
@@ -79,7 +83,7 @@ body {
 #bodyContainer {
   max-width:800px;
   min-height: 80%;
-  margin: 0 auto;
+  margin: 0 0 0 200px;
 }
 header, .main, section, footer {
   @extend .clearfix;
@@ -93,16 +97,16 @@ header {
   }
 }
 footer {
-  border-top: 1px solid $lightGrey;
+  border-top: 1px solid $lightGray;
   margin: 50px 0 0 0;
 }
 section {
   margin: 25px 0 4rem 0;
   position: relative;
 }
-.centered {
+.leftAlign {
   max-width: 800px;
-  margin: 0 auto;
+  margin: 5px 30px;
 }
 
 
@@ -117,7 +121,7 @@ input {
   width: 94%;
   padding: 1%;
   margin-bottom: 5px;
-  border: 2px solid $lightGrey !important;
+  border: 2px solid $lightGray !important;
 }
 .double-field {
   width: 100%;
@@ -181,7 +185,7 @@ textarea {
   height: 200px;
   padding: 1%;
   margin: 0 2% 0 0;
-  border: 2px solid $lightGrey !important;
+  border: 2px solid $lightGray !important;
 }
 textarea.short { max-height: 50px; }
 button {
@@ -190,10 +194,10 @@ button {
   color: $blackText;
   font-weight: bold;
   background-color: #fff;
-  border: 5px solid $lightGrey;
+  border: 5px solid $lightGray;
   padding:15px;
   display: inline-block;
-  &:hover{ border-color: $darkGrey; }
+  &:hover{ border-color: $darkGray; }
 }
 .columnWrapper { float: left; }
 .column {
@@ -249,7 +253,7 @@ button {
     margin-right: 15px;
     cursor: pointer;
     display: inline-block;
-    color: $darkGrey;
+    color: $darkGray;
     text-decoration: underline;
 }
 
@@ -301,16 +305,55 @@ button {
   @include rem(font-size, 16px);
   margin: 0;
   padding: 5px 0;
-  background-color: $lightGrey;
+  background-color: $lightGray;
 
-  a { border-color: $darkGrey; }
+  a { border-color: $darkGray; }
   a:hover { border-color: $white; }
   .fa-comments {
-    color: $darkGrey;
+    color: $darkGray;
     margin: 0 5px 0 0;
     padding: 5px;
     background-color: $white;
     border-radius: 50%;
+  }
+}
+
+
+// Menu //
+.scroll-on-page {
+  position: fixed;
+  left: 30px;
+  top: 100px;
+
+  a {
+    color: $action-color;
+    text-decoration: none;
+  }
+  .scroll-on-page-link {
+    border-bottom: 1px solid transparentize($action-color, 0.8);
+    display: block;
+    margin-right: $base-spacing;
+    outline: none;
+    padding: ($base-spacing / 2) 0;
+
+    &:last-child {
+      margin-bottom: $base-spacing;
+    }
+  }
+
+  article {
+    h4 {
+      margin: 0 0 0.5em 0;
+    }
+
+    p {
+      color: $base-font-color;
+      line-height: $base-line-height;
+    }
+
+    section p:last-of-type {
+      margin-bottom: 2em;
+    }
   }
 }
 
@@ -350,14 +393,14 @@ button {
 
   a {
     border-color: $white;
-    &:hover{ border-color: $darkGrey; }
+    &:hover{ border-color: $darkGray; }
   }
 }
 
 .analysis {
   p {
     padding: 10px;
-    background: $lightGrey;
+    background: $lightGray;
     span{
       font-weight: bold;
       margin: 0 0 0 5px;
@@ -370,7 +413,7 @@ button {
 // Competencies //
 #reqcomp-occupation-list, #reqcomp-foundation-list, #prefcomp-occupation-list, #prefcomp-foundation-list {
   li {
-    border-bottom: 2px solid $lightGrey;
+    border-bottom: 2px solid $lightGray;
     padding: 2rem 0;
   }
   li:first-of-type { padding: 0 0 2rem 0; }
