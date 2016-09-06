@@ -83,7 +83,7 @@ body {
 #bodyContainer {
   max-width:800px;
   min-height: 80%;
-  margin: 0 0 0 200px;
+  margin: 0 0 0 250px;
 }
 header, .main, section, footer {
   @extend .clearfix;
@@ -323,7 +323,7 @@ button {
 .scroll-on-page {
   position: fixed;
   left: 30px;
-  top: 100px;
+  top: 50px;
 
   a {
     color: $action-color;
