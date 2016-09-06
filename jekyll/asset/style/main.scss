@@ -47,11 +47,15 @@ h1 {
   font-weight: bold;
   margin-top: 1rem;
 }
-h2 { @include rem(font-size, 42px); }
+h2 {
+  @include rem(font-size, 42px);
+  padding-bottom: 1rem;
+  border-bottom: 1px solid $lightGray;
+}
 h3 {
-  @include rem(font-size, 36px);
+  @include rem(font-size, 24px);
   line-height: 1.5em;
-  margin-top: 1rem;
+  margin: 1rem 0;
 }
 h4 {
   @include rem(font-size, 20px);
@@ -62,7 +66,7 @@ h4 {
 p {
   @include rem(font-size, 16px);
   line-height: 1.5em;
-  margin: 2rem 0;
+  margin: 0 0 1rem;
 }
 ul { list-style-type:  none; }
 li { @include rem(font-size, 18px); }
@@ -91,23 +95,27 @@ header, .main, section, footer {
   width: 100%;
   padding: 0 .5rem 0 30px;
 }
+section { padding-left: 0; }
 header {
-  .tagline {
-    @include rem(font-size, 24px);
-    line-height: 1.8em;
-  }
+  h3 { margin-bottom: 4rem; }
 }
 footer {
   border-top: 1px solid $lightGray;
   margin: 50px 0 0 0;
 }
 section {
-  margin: 25px 0 4rem 0;
+  margin: 2rem 0;
   position: relative;
 }
 .leftAlign {
-  max-width: 800px;
-  margin: 5px 30px;
+  width: 800px;
+  margin: 0 0 0 30px;
+}
+.examplePosting {
+  background-color: $action-color;
+  color: #fff;
+  margin: 4rem 0 2rem;
+  padding: 2rem;
 }
 
 
@@ -120,21 +128,16 @@ input {
   @include rem(font-size, 16px);
   line-height: 1.5em;
   width: 94%;
-  padding: 1%;
+  padding: .5rem;
   margin-bottom: 5px;
-  border: 2px solid $lightGray !important;
+  border: 1px solid $darkGray !important;
 }
 .double-field {
   width: 100%;
   position: relative;
   margin: 1rem 0;
   p {
-    font-weight: bold;
-    margin: 1rem 0 .3rem 4rem;
-  }
-  input, textarea {
-    width: 90%;
-    margin: 0 0 0 4rem;
+    margin: 1rem 0 .5rem;
   }
   .removeInput {
     top: 15px;
@@ -142,6 +145,11 @@ input {
     margin: 2rem 0 !important;
   }
 }
+.floatLeft {
+  float: left;
+  max-width: 300px;
+}
+.second { max-width: 500px !important; }
 #activity-list {
   form {
     width: 100%;
@@ -177,7 +185,7 @@ select {
   @include rem(font-size, 16px);
   line-height: 1.5em;
   display: block;
-  margin: 3rem 0;
+  margin: 0 0 1rem;
 }
 textarea {
   @include rem(font-size, 16px);
@@ -186,7 +194,7 @@ textarea {
   height: 200px;
   padding: 1%;
   margin: 0 2% 0 0;
-  border: 2px solid $lightGray !important;
+  border: 1px solid $darkGray !important;
 }
 textarea.short { max-height: 50px; }
 button {

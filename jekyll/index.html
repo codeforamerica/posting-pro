@@ -6,7 +6,7 @@ layout: page
 
 <div id="page_1">
   <div class="leftAlign">
-    <section id="template-or-new">
+    <section id="template-or-new" style="display: none;">
       <button data-control="freshStartButton" data-event-category="navigate" data-event-action="start" data-event-label="New Posting">New Job Posting</button>
       <span class="button-separator">or</span>
       <button data-control="showTemplatesButton" data-event-category="navigate" data-event-action="start" data-event-label="From Template">Start from Template</button>
@@ -17,44 +17,71 @@ layout: page
 <div id="page_2">
   <div class="leftAlign">
     <h2 id="scroll-link-2">Employer Information</h2>
-    <hr>
     <section id="scroll-link-3">
       <h3>Employer</h3>
-      <form>
-        <input type="text" name="positionTitle">
+      <form class="floatLeft">
+        <p>Company Name</p>
+          <input type="text" name="companyName" placeholder="Type here">
+      </form>
+      <form class="floatLeft second">
+        <p>Website (optional)</p>
+          <input type="text" name="website" placeholder="Type here">
       </form>
     </section>
 
     <section id="scroll-link-4">
       <h3>Contact for Hiring</h3>
-      <form>
-        <input type="text" name="positionTitle">
+      <form class="floatLeft">
+        <p>Name</p>
+          <input type="text" name="contactName" placeholder="Type here">
+      </form>
+      <form class="floatLeft second">
+        <p>Email or Phone Number</p>
+          <input type="text" name="contact" placeholder="Type here">
       </form>
     </section>
 
     <section id="scroll-link-5">
       <h3>Employer Description</h3>
       <p>Insert a short paragraph about your company. Include details that capture core values, culture and mission so job seekers clearly understand the environment they will be working in.</p>
-      <div id="company-desc" placeholder="Place or write your company overview here." data-control="analysisField"></div>
+      <div id="company-desc" placeholder="Type here" data-control="analysisField"></div>
     </section>
 
     <h2 id="scroll-link-6">Job Information</h2>
-    <hr>
     <section id="scroll-link-7">
-      <h3>Employment Type</h3>
-      <form>
-        <input type="text" name="positionTitle">
+      <form class="floatLeft">
+        <h3>Employment Type</h3>
+        <select class="select" name="employment_type">
+          <option value="full_time" selected>Full-Time</option>
+          <option value="part_time">Part-Time</option>
+          <option value="contract">Contract</option>
+          <option value="temporary">Temporary</option>
+          <option value="volunteer">Volunteer</option>
+          <option value="other">Other</option>
+        </select>
+      </form>
+      <form class="floatLeft">
+        <h3>Seniority Level</h3>
+        <select class="select" name="seniorityLevel">
+          <option value="full_time">Not Applicable</option>
+          <option value="full_time">Internship</option>
+          <option value="full_time" selected>Entry Level</option>
+          <option value="full_time">Associate</option>
+          <option value="full_time">Mid-Senior Level</option>
+          <option value="full_time">Director</option>
+          <option value="full_time">Executive Level</option>
+        </select>
       </form>
     </section>
 
     <section id="scroll-link-8">
       <h3>Primary Work Address</h3>
       <form>
-        <input type="text" name="positionTitle">
+        <input type="text" name="positionTitle" placeholder="Type here">
       </form>
     </section>
 
-    <section id="scroll-link-9">
+    <section id="scroll-link-9" class="examplePosting">
       <h3>Fill fields below with an example job posting</h3>
       <p>Start your job posting with a template and then review to make sure it matches your company standards.</p>
       <div id="template-picker"></div>
@@ -63,13 +90,13 @@ layout: page
     <section id="scroll-link-10">
       <h3>Title</h3>
       <form>
-        <input type="text" name="positionTitle">
+        <input type="text" name="positionTitle" placeholder="Type here">
       </form>
     </section>
 
     <section id="scroll-link-11">
       <h3>Short Description of Work</h3>
-      <div id="job-desc" placeholder="Place or write your job summary and responsibilities here." data-control="analysisField"></div>
+      <div id="job-desc" placeholder="Type here" data-control="analysisField"></div>
     </section>
 
     <section id="scroll-link-12">
@@ -125,7 +152,7 @@ layout: page
 
     <section id="saveButtonContainer">
       <div class="leftAlign word-doc-width">
-        <button data-control="gotoPage2Button" data-event-category="navigate" data-event-action="back">Back</button>
+        <button data-control="" data-event-category="navigate" data-event-action="back">Back</button>
         <button data-control="saveAsWordDocButton" data-event-category="navigate" data-event-action="save as word doc" class="word-doc">Save as Word Document</button>
       </div>
     </section>

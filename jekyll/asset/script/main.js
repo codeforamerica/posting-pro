@@ -35,7 +35,6 @@
         cuff.controls.freshStartButton = freshStartControl;
         cuff.controls.showTemplatesButton = showTemplatesControl;
         cuff.controls.pickTemplateButton = pickTemplateControl;
-        cuff.controls.gotoPage2Button = gotoPage2Control;
         cuff.controls.exportPostingPageButton = exportPostingPageControl;
         cuff.controls.startOverButton = startOverControl;
         cuff.controls.addSingleFieldButton = addSingleFieldControl;
@@ -121,12 +120,6 @@
       });
     }
 
-    function gotoPage2Control(element) {
-      $(element).bind('click', function() {
-        showPage('2');
-      });
-    }
-
     function freshStartControl(element) {
       $(element).bind('click', function() {
         populateBlankFields();
@@ -143,9 +136,6 @@
           $pickerContainer[0].innerHTML = templates.templatePicker.render(pickerData);
           cuff($pickerContainer[0]);
         });
-
-        $("#template-or-new").hide();
-        $("#template-shower").show();
       });
     }
 
