@@ -311,8 +311,10 @@ button {
 .scroll-on-page {
   position: fixed;
   max-width: 225px;
+  max-height: 92%;
   left: 30px;
   top: 50px;
+  overflow: auto;
 
   a {
     color: $darkGray;

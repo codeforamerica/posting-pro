@@ -74,12 +74,11 @@
 
       <main role="main">
         {{content}}
+        <footer role="contentinfo">
+          {% include site/footer.html %}
+        </footer>
       </main>
     </div>
-
-    <footer role="contentinfo">
-      {% include site/footer.html %}
-    </footer>
 
     <div id="unsupported" style="display: none;">
         <div class="overlay">
