@@ -96,11 +96,11 @@ body {
   background-color: #fff;
 }
 #bodyContainer {
-  width:830px;
+  max-width:830px;
   min-height: 80%;
   margin: 0 0 0 235px;
 }
-header, main, section, footer {
+header, main, section {
   @extend .clearfix;
   padding: 0 0 0 30px;
 }
@@ -114,6 +114,7 @@ header {
 footer {
   border-top: 1px solid $lightGray;
   margin: 50px 0 0 0;
+  padding: 1rem;
 }
 section {
   margin: 2rem 0;
@@ -151,7 +152,11 @@ input {
     border: 1px solid $lightGray;
     padding: .5rem 1rem;
     input, textarea { width: 98%; }
-    p { margin: .5rem 0; }
+    p {
+      @include rem(font-size, 12px);
+      font-weight: bold;
+      margin: .5rem 0;
+    }
   }
 }
 .floatLeft {
@@ -384,7 +389,10 @@ button {
     float: left;
     margin: 0;
   }
-  .analysisTitle { &:first-of-type { border-right: 2px solid $lightGray; } }
+  .analysisTitle {
+    font-weight: bold;
+    &:first-of-type { border-right: 2px solid $lightGray; }
+  }
   .analysis {
     p {
       width: 125px;
@@ -401,7 +409,7 @@ button {
 
 // Competencies //
 #reqcomp-occupation-list, #reqcomp-foundation-list, #prefcomp-occupation-list, #prefcomp-foundation-list {
-  li { padding: 0 0 .5rem; }
+  li { padding: 0 0 1rem; }
   li:last-of-type { padding-bottom: 0; }
 }
 #reqcomp-occupation, #prefcomp-occupation { margin-bottom: 3rem; }
@@ -423,10 +431,6 @@ button {
 
 // Export Posting //
 #final-posting{
-  width:96%;
-  max-width: 750px;
-  margin: 40px 0;
-  padding: 0 2%;
 
   h3, p, li { text-align: left; }
   ul {
