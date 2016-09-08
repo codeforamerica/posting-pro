@@ -74,7 +74,7 @@ body {
 #bodyContainer {
   max-width:830px;
   min-height: 80%;
-  margin: 87px 0 0 235px;
+  margin: 145px 0 0 235px;
 }
 header, main, section { @extend .clearfix; }
 section {
@@ -108,6 +108,18 @@ footer {
 section {
   margin: 2rem 0;
   position: relative;
+}
+nav {
+  background-color: $white;
+  color: $action-color;
+
+  li {
+    float: left;
+    padding: 1rem 2rem;
+
+    a { border-bottom: 0; }
+    a.active { font-weight: bold; }
+  }
 }
 .examplePosting {
   width: 96%;
@@ -276,7 +288,7 @@ textarea.short { max-height: 50px; }
   max-width: 225px;
   max-height: 92%;
   left: 1rem;
-  top: 87px;
+  top: 145px;
   z-index: 100;
   overflow: auto;
 
