@@ -1,38 +1,15 @@
 ---
 ---
-
+@import "vendor/variables";
 @import "vendor/normalize";
 @import "vendor/rem";
-
-$jargonIssueColor: #0074FF;
-$genderIssueColor: #4EB200;
-$expectationsIssueColor: #3C1488;
-$white: #fff;
-$lightGray: #E0E0E0;
-$mediumGray: #BBB;
-$darkGray: #333;
-$blackText: #333;
-$base-line-height: 1.5em !default;
-$base-spacing: 1.5em !default;
-$action-color: #477DCA !default;
-$base-font-color: $darkGray !default;
-
-@mixin border-radius ($radius) {
-  -webkit-border-radius:  $radius;
-  -moz-border-radius:     $radius;
-  -ms-border-radius:      $radius;
-  border-radius:          $radius;
-}
-@mixin centered() {
-  text-align: center;
-  margin: 0 auto;
-}
+@import "vendor/buttons";
 
 
 // Typography //
 html { font-size: 62.5%; }
 body {
-  font: 140% 'Source Sans Pro', sans-serif;
+  font: 140% $sans-serif;
   line-height: 1.3;
   color: $blackText;
 }
