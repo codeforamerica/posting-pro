@@ -26,6 +26,7 @@ button,
   line-height: 2.2rem;
   outline: none;
   margin: 0;
+  padding: 1rem 2rem;
   text-align: left;
   text-decoration: none;
   width: auto;
@@ -86,6 +87,7 @@ button,
       text-decoration: none;
     }
   }
+  a { border-bottom: 0; }
 }
 
 [type='submit']:disabled,

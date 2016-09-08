@@ -259,25 +259,6 @@ textarea.short { max-height: 50px; }
 }
 
 
-// Global Alert //
-#global-alert{
-  @include rem(font-size, 16px);
-  margin: 0;
-  padding: .5rem 1rem;
-  background-color: $lightGray;
-
-  a { border-color: $darkGray; }
-  a:hover { border-color: $white; }
-  .fa-comments {
-    color: $darkGray;
-    margin: 0 5px 0 0;
-    padding: 5px;
-    background-color: $white;
-    border-radius: 50%;
-  }
-}
-
-
 // Menu //
 .scroll-on-page {
   position: fixed;
@@ -309,7 +290,13 @@ textarea.short { max-height: 50px; }
     &:last-of-type { border-bottom: 0; }
   }
   .indent { padding-left: 2rem; }
-  .buttonContainer { padding: 0 1rem; }
+  .buttonContainer {
+    padding: 0 1rem;
+    .basic-button-outline {
+      float: left;
+      &:first-of-type { margin: 0 1rem 0 0; }
+    }
+  }
 }
 
 
