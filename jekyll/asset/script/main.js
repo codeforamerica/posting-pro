@@ -51,7 +51,7 @@
     }
 
     function analysisFieldControl(element) {
-      element.innerHTML = templates.analysisField.render({"id" : element.id, "placeholder" : element.getAttributeNode("placeholder").value });
+      element.innerHTML = templates.analysisField.render({"id" : element.id, "placeholder" : element.getAttributeNode("placeholder") ? element.getAttributeNode("placeholder").value : '' });
       cuff(element);
     }
 
