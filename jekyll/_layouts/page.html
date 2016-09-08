@@ -41,6 +41,10 @@
         </div>
     <![endif]-->
 
+    <header role="banner">
+      {% include site/header.html %}
+    </header>
+    
     <div id="bodyContainer">
       <div class="scroll-on-page">
         <aside id="scroll-on-page-top">
@@ -65,9 +69,6 @@
           </div>
         </aside>
       </div>
-      <header role="banner">
-        {% include site/header.html %}
-      </header>
 
       <main role="main">
         {{content}}
