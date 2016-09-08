@@ -45,7 +45,7 @@ p {
   margin: 0 0 1rem;
 }
 ul { list-style-type:  none; }
-li { @include rem(font-size, 18px); }
+li { @include rem(font-size, 16px); }
 a {
   color: inherit;
   text-decoration: none;
@@ -74,7 +74,7 @@ body {
 #bodyContainer {
   max-width:830px;
   min-height: 80%;
-  margin: 145px 0 0 235px;
+  margin: 132px 0 0 235px;
 }
 header, main, section { @extend .clearfix; }
 section {
@@ -86,14 +86,17 @@ header {
   position: fixed;
   top: 0;
   z-index: 100;
-  background-color: $action-color;
-  color: #fff;
 
-  h1, h3 { float: left; }
+  .headerCont {
+    background-color: $action-color;
+    color: #fff;
+  }
+  h1, h2 { float: left; }
   h1 { padding: 0 0 0 2rem; }
-  h3 {
+  h2 {
     @include rem(font-size, 16px);
     margin: 3.5rem 0 0 2rem;
+    border-bottom: 0;
   }
   .basic-button-outline {
     float: right;
@@ -112,13 +115,23 @@ section {
 nav {
   background-color: $white;
   color: $action-color;
+  border-bottom: 2px solid $action-color;
 
+  ul {
+    overflow: auto;
+    margin: 0;
+  }
   li {
     float: left;
-    padding: 1rem 2rem;
+    padding: 1rem 0;
 
-    a { border-bottom: 0; }
+    a {
+      padding: 0 2rem;
+      border-bottom: 0;
+      border-right: 2px solid $action-color;
+    }
     a.active { font-weight: bold; }
+    &:last-of-type a { border-right: 0; }
   }
 }
 .examplePosting {
@@ -288,7 +301,7 @@ textarea.short { max-height: 50px; }
   max-width: 225px;
   max-height: 92%;
   left: 1rem;
-  top: 145px;
+  top: 132px;
   z-index: 100;
   overflow: auto;
 
