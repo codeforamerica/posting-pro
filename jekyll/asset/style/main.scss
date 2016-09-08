@@ -168,17 +168,6 @@ textarea {
   border: 1px solid $darkGray !important;
 }
 textarea.short { max-height: 50px; }
-button {
-  @include centered;
-  @include rem(font-size, 18px);
-  color: $blackText;
-  font-weight: bold;
-  background-color: #fff;
-  border: 5px solid $lightGray;
-  padding:15px;
-  display: inline-block;
-  &:hover{ border-color: $darkGray; }
-}
 .columnWrapper { float: left; }
 .column {
   width: 530px;
