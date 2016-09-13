@@ -15,6 +15,7 @@
     function initPage () {
         initTemplates();
         initControls();
+        showPage('employer');
     }
 
     function initTemplates () {
@@ -35,6 +36,8 @@
         cuff.controls.freshStartButton = freshStartControl;
         cuff.controls.showTemplatesButton = showTemplatesControl;
         cuff.controls.pickTemplateButton = pickTemplateControl;
+        cuff.controls.goToEmployerPageButton = goToEmployerPageControl;
+        cuff.controls.goToJobPageButton = goToJobPageControl;
         cuff.controls.exportPostingPageButton = exportPostingPageControl;
         cuff.controls.startOverButton = startOverControl;
         cuff.controls.addSingleFieldButton = addSingleFieldControl;
@@ -116,14 +119,14 @@
         $("#cert-list")[0].innerHTML = '';
         $("#template-or-new").show();
         $("#template-shower").hide();
-        showPage('1');
+        showPage('employer');
       });
     }
 
     function freshStartControl(element) {
       $(element).bind('click', function() {
         populateBlankFields();
-        showPage('2');
+        showPage('employer');
       });
     }
 
@@ -146,7 +149,6 @@
 
         getTemplate(id, function(data) {
           if(data) populateFieldsWithData(data);
-          showPage('2');
         });
       });
     }
@@ -181,13 +183,28 @@
       }
     }
 
-    function showPage(pageId) {
-      _.forEach(pages, function(page) {
-        if(page == pageId) {
-          $("#page_" + page).show();
-        } else {
-          $("#page_" + page).hide();
-        }
+    function showPage(pageName) {
+      $("[id^=page_]").hide(); // hide all divs that begin with 'page_'
+      $("#page_" + pageName).show();
+
+      $("[id^=header_nav_]").removeClass('active'); // remove the active class from header links
+      $("#header_nav_" + pageName).addClass('active');
+
+      var navContainer = $("#lef-nav");
+      navContainer.val('');
+      navContainer[0].innerHTML = templates[pageName + "Nav"].render({});
+      cuff(navContainer[0]);
+    }
+
+    function goToEmployerPageControl(element) {
+      $(element).bind('click', function() {
+        showPage('employer');
+      });
+    }
+
+    function goToJobPageControl(element) {
+      $(element).bind('click', function() {
+        showPage('job');
       });
     }
 
@@ -195,7 +212,7 @@
       $(element).bind('click', function() {
         var content = composePostingFromFields();
         $("#final-posting")[0].innerHTML = content;
-        showPage('3');
+        showPage('review');
         if (navigator.userAgent.indexOf('Safari') != -1 && navigator.userAgent.indexOf('Chrome') == -1) {
           $(".word-doc").hide();
           $(".word-doc-width").css("width", "80px");

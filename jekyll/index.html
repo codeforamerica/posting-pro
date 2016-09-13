@@ -4,7 +4,7 @@ description: Create job postings that are inclusive and skills-based so that you
 layout: page
 ---
 
-<div id="page_2">
+<div id="page_employer">
   <h2>Employer Information</h2>
   <section>
     <h3>Employer</h3>
@@ -36,6 +36,12 @@ layout: page
     <div id="company-desc" data-control="analysisField"></div>
   </section>
 
+  <section>
+    <button data-control="goToJobPageButton" data-event-category="navigate" data-event-action="job">Next Step: Job Information</button>
+  </section>
+</div>
+
+<div id="page_job" style="display:none;">
   <h2>Job Information</h2>
   <section>
     <form class="floatLeft">
@@ -129,15 +135,15 @@ layout: page
   </section>
 </div>
 
-<div id="page_3" style="display:none;">
+<div id="page_review" style="display:none;">
   <section class="word-doc">
-    <button data-event-category="navigate" data-event-action="back">Previous Step: Job Information</button>
+    <button data-control="goToJobPageButton" data-event-category="navigate" data-event-action="back">Previous Step: Job Information</button>
   </section>
   <section id="final-posting"></section>
 
   <section id="saveButtonContainer">
     <div class="word-doc-width">
-      <button data-event-category="navigate" data-event-action="back">Back</button>
+      <button data-control="goToJobPageButton" data-event-category="navigate" data-event-action="back">Back</button>
       <button data-control="saveAsWordDocButton" data-event-category="navigate" data-event-action="save as word doc" class="word-doc">Next Step: Save as Word Document</button>
     </div>
   </section>
@@ -147,3 +153,6 @@ layout: page
 {% include site/analysisfield.html %}
 {% include site/simplefields.html %}
 {% include site/jobpostingtemplate.html %}
+{% include site/nav_employer.html %}
+{% include site/nav_job.html %}
+{% include site/nav_review.html %}
