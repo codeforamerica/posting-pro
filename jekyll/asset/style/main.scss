@@ -299,7 +299,7 @@ textarea.short { max-height: 50px; }
 // Menu //
 .scroll-on-page {
   position: fixed;
-  max-width: 225px;
+  width: 225px;
   max-height: 92%;
   left: 1rem;
   top: 132px;
@@ -327,11 +327,12 @@ textarea.short { max-height: 50px; }
     &:last-child { margin-bottom: $base-spacing; }
     &:last-of-type { border-bottom: 0; }
   }
-  .indent { padding-left: 2rem; }
   .buttonContainer {
     padding: 0 1rem;
     .basic-button-outline {
       float: left;
+      width: 100%;
+      text-align: center;
       &:first-of-type { margin: 0 1rem 0 0; }
     }
   }
@@ -375,12 +376,13 @@ textarea.short { max-height: 50px; }
   border: 1px solid $lightGray;
   p {
     @include rem(font-size, 12px);
+    width: 100%;
     text-align: center;
-    width: 124px;
     float: left;
     margin: 0;
   }
   .analysisTitle {
+    width: 124px;
     font-weight: bold;
     &:first-of-type { border-right: 2px solid $lightGray; }
   }
@@ -418,6 +420,12 @@ textarea.short { max-height: 50px; }
 
 // Export Button //
 #exportButton { margin-top: 50px; }
+.word-doc-width{
+  button {
+    float: left;
+    margin-right: 1rem;
+  }
+}
 
 
 // Export Posting //
