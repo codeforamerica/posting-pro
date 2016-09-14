@@ -1,0 +1,26 @@
+$sans-serif: 'Source Sans Pro', sans-serif;
+$jargonIssueColor: #0074FF;
+$genderIssueColor: #4EB200;
+$expectationsIssueColor: #3C1488;
+$white: #fff;
+$lightGray: #E0E0E0;
+$mediumGray: #BBB;
+$darkGray: #333;
+$blackText: #333;
+$base-line-height: 1.5em !default;
+$base-spacing: 1.5em !default;
+$action-color: #477DCA !default;
+$action-color-darker: #20467D;
+$base-font-color: $darkGray !default;
+$button-stroke: inset 0 0 0 2px;
+
+@mixin border-radius ($radius) {
+  -webkit-border-radius:  $radius;
+  -moz-border-radius:     $radius;
+  -ms-border-radius:      $radius;
+  border-radius:          $radius;
+}
+@mixin centered() {
+  text-align: center;
+  margin: 0 auto;
+}

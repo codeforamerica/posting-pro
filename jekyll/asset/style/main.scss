@@ -1,34 +1,15 @@
 ---
 ---
-
+@import "vendor/variables";
 @import "vendor/normalize";
 @import "vendor/rem";
-
-$jargonIssueColor: #0074FF;
-$genderIssueColor: #4EB200;
-$expectationsIssueColor: #3C1488;
-$white: #fff;
-$lightGrey: #E0E0E0;
-$mediumGrey: #BBB;
-$darkGrey: #666;
-$blackText: #333;
-
-@mixin border-radius ($radius) {
-  -webkit-border-radius:  $radius;
-  -moz-border-radius:     $radius;
-  -ms-border-radius:      $radius;
-  border-radius:          $radius;
-}
-@mixin centered() {
-  text-align: center;
-  margin: 0 auto;
-}
+@import "vendor/buttons";
 
 
 // Typography //
 html { font-size: 62.5%; }
 body {
-  font: 140% 'Source Sans Pro', sans-serif;
+  font: 140% $sans-serif;
   line-height: 1.3;
   color: $blackText;
 }
@@ -38,15 +19,19 @@ h1, h2, h3, p, ul {
   padding: 0;
 }
 h1 {
-  @include rem(font-size, 72px);
-  line-height: 8rem;
+  @include rem(font-size, 52px);
   font-weight: bold;
-}
-h2 { @include rem(font-size, 42px); }
-h3 {
-  @include rem(font-size, 36px);
-  line-height: 1.5em;
   margin-top: 1rem;
+}
+h2 {
+  @include rem(font-size, 42px);
+  padding-bottom: 1rem;
+  border-bottom: 1px solid $lightGray;
+}
+h3 {
+  @include rem(font-size, 24px);
+  line-height: 1.5em;
+  margin: 1rem 0;
 }
 h4 {
   @include rem(font-size, 20px);
@@ -57,18 +42,28 @@ h4 {
 p {
   @include rem(font-size, 16px);
   line-height: 1.5em;
-  margin: 2rem 0;
+  margin: 0 0 1rem;
 }
 ul { list-style-type:  none; }
-li { @include rem(font-size, 18px); }
-a {
+li { @include rem(font-size, 16px); }
+a, span.link {
   color: inherit;
   text-decoration: none;
-  border-bottom: 2px solid $lightGrey;
-  &:hover{ border-color: $darkGrey; }
+  border-bottom: 2px solid $lightGray;
+  &:hover{ border-color: $darkGray; }
 }
 p.remove-margin { margin: 0; }
 .bold { font-weight: 700; }
+.fa-2x {
+  color: $lightGray;
+  font-size: 1.5em !important;
+  cursor: pointer;
+  &:hover { color: $darkGray; }
+}
+.removeInput {
+  max-width: 25px;
+  margin: 0 1rem 0 0;
+}
 
 // Structure //
 html { height: 100%; }
@@ -77,32 +72,74 @@ body {
   background-color: #fff;
 }
 #bodyContainer {
-  max-width:800px;
+  max-width:830px;
   min-height: 80%;
-  margin: 0 auto;
+  margin: 132px 0 0 235px;
 }
-header, .main, section, footer {
-  @extend .clearfix;
+header, main, section { @extend .clearfix; }
+section {
   width: 100%;
-  padding: 0 .5rem;
+  padding-left: 0;
 }
 header {
-  .tagline {
-    @include rem(font-size, 24px);
-    line-height: 1.8em;
+  width:100%;
+  position: fixed;
+  top: 0;
+  z-index: 100;
+
+  .headerCont {
+    background-color: $action-color;
+    color: #fff;
+  }
+  h1, h2 { float: left; }
+  h1 { padding: 0 0 0 2rem; }
+  h2 {
+    @include rem(font-size, 16px);
+    margin: 3.5rem 0 0 2rem;
+    border-bottom: 0;
+  }
+  .basic-button-outline {
+    float: right;
+    margin: 2rem 2rem 0 0;
   }
 }
 footer {
-  border-top: 1px solid $lightGrey;
+  border-top: 1px solid $lightGray;
   margin: 50px 0 0 0;
+  padding: 1rem;
 }
 section {
-  margin: 25px 0 4rem 0;
+  margin: 2rem 0;
   position: relative;
 }
-.centered {
-  max-width: 800px;
-  margin: 0 auto;
+nav {
+  background-color: $white;
+  color: $action-color;
+  border-bottom: 2px solid $action-color;
+
+  ul {
+    overflow: auto;
+    margin: 0;
+  }
+  li {
+    float: left;
+    padding: 1rem 0;
+
+    a, span.link {
+      padding: 0 2rem;
+      border-bottom: 0;
+      border-right: 2px solid $action-color;
+    }
+    a.active, span.link.active { font-weight: bold; }
+    &:last-of-type a, &:last-of-type span.link { border-right: 0; }
+    span.link { cursor: pointer; }
+  }
+}
+.examplePosting {
+  width: 96%;
+  border: 3px solid $action-color;
+  margin: 4rem 0 2rem;
+  padding: 2%;
 }
 
 
@@ -115,56 +152,40 @@ input {
   @include rem(font-size, 16px);
   line-height: 1.5em;
   width: 94%;
-  padding: 1%;
+  padding: .5rem;
   margin-bottom: 5px;
-  border: 2px solid $lightGrey !important;
+  border: 1px solid $darkGray !important;
 }
 .double-field {
   width: 100%;
   position: relative;
-  margin: 1rem 0;
-  p {
-    font-weight: bold;
-    margin: 1rem 0 .3rem 4rem;
-  }
-  input, textarea {
+  margin: 0;
+  .removeInput, .doubleFieldContainer { float: left; }
+  .doubleFieldContainer {
     width: 90%;
-    margin: 0 0 0 4rem;
-  }
-  .removeInput {
-    top: 15px;
-    left: 0;
-    margin: 2rem 0 !important;
+    border: 1px solid $lightGray;
+    padding: .5rem 1rem;
+    input, textarea { width: 98%; }
+    p {
+      @include rem(font-size, 12px);
+      font-weight: bold;
+      margin: .5rem 0;
+    }
   }
 }
-#activity-list {
+.floatLeft {
+  float: left;
+  width: 300px;
+}
+.second { width: 500px; }
+#activity-list, #cert-list {
+  li { margin: 0 0 1rem; }
   form {
     width: 100%;
     position: relative;
   }
-  input, textarea {
-    width: 90%;
-    margin: 1rem 0 0 4rem;
-  }
-  .removeInput {
-    top: -2px;
-    left: 0;
-  }
-  li:last-of-type { padding-bottom: 1rem; }
-}
-#cert-list {
-  form {
-    width: 100%;
-    position: relative;
-  }
-  input, textarea {
-    width: 90%;
-    margin: 1rem 0 0 4rem;
-  }
-  .removeInput {
-    top: -5px;
-    left: 0;
-  }
+  textarea { width: 90%; }
+  input, textarea, .removeInput { float: left; }
   li:last-of-type { padding-bottom: 1rem; }
 }
 select {
@@ -172,56 +193,35 @@ select {
   @include rem(font-size, 16px);
   line-height: 1.5em;
   display: block;
-  margin: 3rem 0;
+  margin: 0 0 1rem;
 }
 textarea {
   @include rem(font-size, 16px);
   line-height: 1.5em;
-  width: 94%;
+  width: 98%;
   height: 200px;
   padding: 1%;
   margin: 0 2% 0 0;
-  border: 2px solid $lightGrey !important;
+  border: 1px solid $darkGray !important;
 }
 textarea.short { max-height: 50px; }
-button {
-  @include centered;
-  @include rem(font-size, 18px);
-  color: $blackText;
-  font-weight: bold;
-  background-color: #fff;
-  border: 5px solid $lightGrey;
-  padding:15px;
-  display: inline-block;
-  &:hover{ border-color: $darkGrey; }
-}
 .columnWrapper { float: left; }
 .column {
-  width: 550px;
+  width: 530px;
   height: 100%;
   box-sizing: border-box;
-
-  &:first-child{ margin-right: 10px; }
 }
 .addAnother {
-  max-width:125px;
+  max-width: 110px;
   cursor: pointer;
-  margin: 0 auto;
   position: relative;
   text-align: right;
-  font-weight: bold;
 
   .fa-plus-circle {
     position: absolute;
-    top: -5px;
+    top: 0;
     left: 0;
   }
-}
-.removeInput {
-  position: absolute;
-  top: 35px;
-  left: 0;
-  cursor: pointer;
 }
 
 .removeTemplate {
@@ -249,7 +249,7 @@ button {
     margin-right: 15px;
     cursor: pointer;
     display: inline-block;
-    color: $darkGrey;
+    color: $darkGray;
     text-decoration: underline;
 }
 
@@ -296,21 +296,45 @@ button {
 }
 
 
-// Global Alert //
-#global-alert{
-  @include rem(font-size, 16px);
-  margin: 0;
-  padding: 5px 0;
-  background-color: $lightGrey;
+// Menu //
+.scroll-on-page {
+  position: fixed;
+  width: 225px;
+  max-height: 92%;
+  left: 1rem;
+  top: 132px;
+  z-index: 100;
+  overflow: auto;
 
-  a { border-color: $darkGrey; }
-  a:hover { border-color: $white; }
-  .fa-comments {
-    color: $darkGrey;
-    margin: 0 5px 0 0;
-    padding: 5px;
-    background-color: $white;
-    border-radius: 50%;
+  a {
+    color: $darkGray;
+    text-decoration: none;
+    &:hover { background-color: transparentize($action-color, 0.9); }
+  }
+  .scrollActive {
+    font-weight: bold;
+    color: $action-color;
+    border-left: 5px solid $action-color;
+  }
+  .scroll-on-page-link {
+    border-left: 5px solid $white;
+    border-bottom: 1px solid $darkGray;
+    display: block;
+    margin-right: $base-spacing;
+    outline: none;
+    padding: ($base-spacing / 2) 0 ($base-spacing / 2) ($base-spacing / 2);
+
+    &:last-child { margin-bottom: $base-spacing; }
+    &:last-of-type { border-bottom: 0; }
+  }
+  .buttonContainer {
+    padding: 0 1rem;
+    .basic-button-outline {
+      float: left;
+      width: 100%;
+      text-align: center;
+      &:first-of-type { margin: 0 1rem 0 0; }
+    }
   }
 }
 
@@ -345,36 +369,41 @@ button {
 
 // Reading level //
 .inform {
-  width: 220px;
+  width: 250px;
+  height: 210px;
   float: left;
-
-  a {
-    border-color: $white;
-    &:hover{ border-color: $darkGrey; }
-  }
-}
-
-.analysis {
+  margin-left: 1rem;
+  border: 1px solid $lightGray;
   p {
-    padding: 10px;
-    background: $lightGrey;
-    span{
+    @include rem(font-size, 12px);
+    width: 100%;
+    text-align: center;
+    float: left;
+    margin: 0;
+  }
+  .analysisTitle {
+    width: 124px;
+    font-weight: bold;
+    &:first-of-type { border-right: 2px solid $lightGray; }
+  }
+  .analysis {
+    p {
+      width: 125px;
       font-weight: bold;
-      margin: 0 0 0 5px;
+      background-color: $lightGray;
     }
-    &:first-child { margin-top: 0; }
+  }
+  .suggestions {
+    width: 100%;
+    padding: .5rem 0;
   }
 }
 
 
 // Competencies //
 #reqcomp-occupation-list, #reqcomp-foundation-list, #prefcomp-occupation-list, #prefcomp-foundation-list {
-  li {
-    border-bottom: 2px solid $lightGrey;
-    padding: 2rem 0;
-  }
-  li:first-of-type { padding: 0 0 2rem 0; }
-  li:last-of-type { border-bottom: 0; }
+  li { padding: 0 0 1rem; }
+  li:last-of-type { padding-bottom: 0; }
 }
 #reqcomp-occupation, #prefcomp-occupation { margin-bottom: 3rem; }
 
@@ -390,21 +419,17 @@ button {
 
 
 // Export Button //
-#exportButton {
-  margin-top: 50px;
-  .centered { width:225px; }
-}
-#saveButtonContainer {
-  .centered { width:315px; }
+#exportButton { margin-top: 50px; }
+.word-doc-width{
+  button {
+    float: left;
+    margin-right: 1rem;
+  }
 }
 
 
 // Export Posting //
 #final-posting{
-  width:96%;
-  max-width: 750px;
-  margin: 40px 0;
-  padding: 0 2%;
 
   h3, p, li { text-align: left; }
   ul {

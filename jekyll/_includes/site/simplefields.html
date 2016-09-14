@@ -1,8 +1,8 @@
 <script type="text/x-template" data-template="singleFieldTemplate">
   <li>
     <form name="{name}-form">
-      <textarea type="text" id="new-{id}" name="value" class="short">{data}</textarea>
       <p class="removeInput" data-control="removeSingleFieldButton" id="{id}" data-event-category="{name}" data-event-action="remove one" title="Remove this row"><i class="fa fa-times-circle fa-2x" aria-hidden="true"></i></p>
+      <textarea type="text" id="new-{id}" name="value" class="short" placeholder="Type here">{data}</textarea>
       <div class="clearfix"></div>
     </form>
   </li>
@@ -11,11 +11,14 @@
 <script type="text/x-template" data-template="doubleFieldTemplate">
   <li>
     <form name="{name}-form" class="double-field">
-      <p>Skill</p>
-      <input type="text" id="new-{id}-name" name="name" {#data}value="{name}"{/data}>
-      <p>Description</p>
-      <textarea id="new-{id}-description" name="description" class="short">{#data}{description}{/data}</textarea>
       <p class="removeInput" data-control="removeSingleFieldButton" id="{id}" data-event-category="{name}" data-event-action="remove one" title="Remove this row"><i class="fa fa-times-circle fa-2x" aria-hidden="true"></i></p>
+      <div class="doubleFieldContainer">
+        <p>Skill</p>
+        <input type="text" id="new-{id}-name" name="name" {#data}value="{name}"{/data} placeholder="Type here">
+        <p>Description</p>
+        <textarea id="new-{id}-description" name="description" class="short" placeholder="Type here">{#data}{description}{/data}</textarea>
+      </div>
     </form>
+    <div class="clearfix"></div>
   </li>
 </script>

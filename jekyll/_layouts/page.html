@@ -41,24 +41,21 @@
         </div>
     <![endif]-->
 
-    <section id="global-alert">
-      <div class="centered">
-        <i class="fa fa-comments" aria-hidden="true"></i> <a class="alert-link" href="mailto:nola+workforwardnola@codeforamerica.org" target="_blank">We're testing a new website focused on you. Please give us your feedback here.</a>
-      </div>
-    </section>
+    <header role="banner">
+      {% include site/header.html %}
+    </header>
+
     <div id="bodyContainer">
-      <header role="banner">
-        {% include site/header.html %}
-      </header>
+      <div class="scroll-on-page" id="left-nav">
+      </div>
 
       <main role="main">
         {{content}}
+        <footer role="contentinfo">
+          {% include site/footer.html %}
+        </footer>
       </main>
     </div>
-
-    <footer role="contentinfo">
-      {% include site/footer.html %}
-    </footer>
 
     <div id="unsupported" style="display: none;">
         <div class="overlay">

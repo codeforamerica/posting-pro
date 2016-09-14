@@ -1,0 +1,161 @@
+// Buttons
+
+// scss-lint:disable PropertyCount
+.button-wrapper { padding: .5em 0 !important; }
+
+.basic-button,
+.basic-button-primary,
+.basic-button:visited,
+.basic-button-primary:visited,
+button,
+[type="button"],
+[type="submit"],
+[type="reset"],
+[type="image"] {
+  //@include margin(0.5em 0.5em 0.5em null);
+  -webkit-font-smoothing: antialiased;
+  appearance: none;
+  background-color: $action-color;
+  border: 0;
+  color: $white;
+  cursor: pointer;
+  display: block;
+  font-family: $sans-serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  line-height: 2.2rem;
+  outline: none;
+  margin: 0;
+  padding: 1rem 2rem;
+  text-align: left;
+  text-decoration: none;
+  width: auto;
+  min-height: 44px;
+
+  &:hover,
+  &.basic-button-hover {
+    background-color: $action-color-darker;
+    border-bottom: 0;
+    text-decoration: none;
+  }
+
+  &:focus,
+  &.basic-button-focus {
+    box-shadow: $action-color;
+  }
+
+  &:active,
+  &.basic-button-active {
+    background-color: $action-color-darker;
+  }
+
+  &.basic-button-outline {
+    background-color: $white;
+    box-shadow: $button-stroke $action-color;
+    color: $action-color;
+
+    &:hover,
+    &.basic-button-hover {
+      box-shadow: $button-stroke $action-color-darker;
+      color: $action-color-darker;
+    }
+
+    &:active,
+    &.basic-button-active {
+      box-shadow: $button-stroke $action-color-darker;
+      color: $action-color-darker;
+    }
+
+    &:focus,
+    &.basic-button-focus {
+      box-shadow: $button-stroke $action-color-darker, $action-color;
+    }
+  }
+
+  &.basic-button-big {
+    font-size: 1.9rem;
+    padding: 1.5rem 3rem;
+  }
+
+  &.basic-button-gray {
+    background-color: $lightGray;
+    color: $action-color;
+
+    &:hover {
+      background-color: darken($lightGray, 10);
+      border-bottom: 0;
+      text-decoration: none;
+    }
+  }
+  a { border-bottom: 0; }
+}
+
+[type='submit']:disabled,
+.basic-button-disabled {
+  background-color: $lightGray;
+  color: $darkGray;
+  pointer-events: none;
+
+  &:hover,
+  &.basic-button-hover,
+  &:active,
+  &.basic-button-active,
+  &:focus {
+    background-color: $lightGray;
+    border: 0;
+    box-shadow: none;
+    color: $darkGray;
+  }
+}
+
+.button-group {
+  $base-border-radius: 10px !default;
+  $base-font-size: 1em !default;
+  $base-background-color: $white !default;
+  $border-size: 2px;
+  $button-group-background: $base-background-color;
+  $button-group-color: lighten($base-font-color, 10%);
+  $button-group-border: $border-size solid $action-color;
+  $button-group-background-checked: $action-color;
+  $button-group-color-checked: $white;
+  $button-group-border-checked: darken($button-group-background-checked, 15%);
+
+  width: 168px;
+  margin: 0 auto;
+  text-align: center;
+
+  input {
+    display: none;
+  }
+
+  label {
+    float: left;
+    .button-group-item {
+      background: $button-group-background;
+      border: $button-group-border;
+      border-radius: 0;
+      color: $button-group-color;
+      cursor: pointer;
+      float: left;
+      font-size: $base-font-size;
+      font-weight: normal;
+      line-height: 1;
+      padding: .75em 1em;
+      width: 84px;
+
+      &:focus,
+      &:hover {
+        background-color: darken($button-group-background, 3%);
+      }
+    }
+    input:checked + .button-group-item {
+      background: $button-group-background-checked;
+      border: $border-size solid $button-group-border-checked;
+      box-shadow: inset 0 1px 2px darken($button-group-background-checked, 10%);
+      color: $button-group-color-checked;
+    }
+  }
+  :first-child .button-group-item, :first-child input:checked + .button-group-item {
+    border-right: none;
+  }
+}

@@ -5,15 +5,18 @@
     </div>
   </div>
   <div class="inform">
+    <p class="analysisTitle">Readability Score</p>
+    <p class="analysisTitle">Gender biased phrases</p>
     <div id="{id}-reading-output" event-id="{id}" data-control="readingLevelOutput" class="analysis"></div>
     <div id="{id}-count-output" event-id="{id}" data-control="countOutput" class="analysis"></div>
+    <p>Suggestions for Improvement</p>
   </div>
 </script>
 
-<script type="text/x-template" data-template="issueCount">
-  <p>Gender biased phrases: <span>{issueCount}</span></p>
+<script type="text/x-template" data-template="readingLevel">
+  <p>{readingLevel}</p>
 </script>
 
-<script type="text/x-template" data-template="readingLevel">
-  <p class="{level}">Grade reading level: <span>{readingLevel}</span></p>
+<script type="text/x-template" data-template="issueCount">
+  <p>{issueCount}</p>
 </script>

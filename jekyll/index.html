@@ -1,110 +1,158 @@
 ---
 title: PostingPro
-description: Test job posts for issues with gender, jargon, expectations, and reading level.
+description: Create job postings that are inclusive and skills-based so that you can find the best match for your company.
 layout: page
 ---
 
-<div id="page_1">
-  <div class="centered">
-    <section id="template-or-new">
-      <button data-control="freshStartButton" data-event-category="navigate" data-event-action="start" data-event-label="New Posting">New Job Posting</button>
-      <span class="button-separator">or</span>
-      <button data-control="showTemplatesButton" data-event-category="navigate" data-event-action="start" data-event-label="From Template">Start from Template</button>
-    </section>
+<div id="page_employer">
+  <h2>Employer Information</h2>
+  <section id="navLink1">
+    <h3>Employer</h3>
+    <form class="floatLeft">
+      <p>Company Name</p>
+        <input type="text" name="companyName">
+    </form>
+    <form class="floatLeft second">
+      <p>Website (optional)</p>
+        <input type="text" name="website">
+    </form>
+  </section>
 
-    <section id="template-shower" style="display:none;">
-      <h3>Select a Template:</h3>
-      <div id="template-picker"></div>
-    </section>
-  </div>
+  <section id="navLink2">
+    <h3>Hiring Contact</h3>
+    <form class="floatLeft">
+      <p>Name</p>
+        <input type="text" name="contactName">
+    </form>
+    <form class="floatLeft second">
+      <p>Email or Phone Number</p>
+        <input type="text" name="contact">
+    </form>
+  </section>
+
+  <section id="navLink3">
+    <h3>Employer Description</h3>
+    <p>Insert a short paragraph about your company. Include details that capture core values, culture and mission so job seekers clearly understand the environment they will be working in.</p>
+    <div id="company-desc" data-control="analysisField"></div>
+  </section>
+
+  <section>
+    <button data-control="goToJobPageButton" data-event-category="navigate" data-event-action="job">Next Step: Job Information</button>
+  </section>
 </div>
 
-<div id="page_2" style="display:none;">
-  <div class="centered">
-    <section>
-      <h3>Job Title</h3>
-      <form>
-        <input type="text" name="positionTitle">
-      </form>
-    </section>
+<div id="page_job" style="display:none;">
+  <h2>Job Information</h2>
+  <section id="navLink4">
+    <form class="floatLeft">
+      <h3>Employment Type</h3>
+      <select class="select" name="employment_type">
+        <option value="full_time" selected>Full-Time</option>
+        <option value="part_time">Part-Time</option>
+        <option value="contract">Contract</option>
+        <option value="temporary">Temporary</option>
+        <option value="volunteer">Volunteer</option>
+        <option value="other">Other</option>
+      </select>
+    </form>
+    <form class="floatLeft">
+      <h3>Seniority Level</h3>
+      <select class="select" name="seniorityLevel">
+        <option value="full_time">Not Applicable</option>
+        <option value="full_time">Internship</option>
+        <option value="full_time" selected>Entry Level</option>
+        <option value="full_time">Associate</option>
+        <option value="full_time">Mid-Senior Level</option>
+        <option value="full_time">Director</option>
+        <option value="full_time">Executive Level</option>
+      </select>
+    </form>
+  </section>
 
-    <section>
-      <h3>Company Overview</h3>
-      <p><i>Insert a short paragraph about your company. Include details that capture core values, culture and mission so job seekers clearly understand the environment they will be working in.</i></p>
-      <div id="company-desc" placeholder="Place or write your company overview here." data-control="analysisField"></div>
-    </section>
+  <section id="navLink5">
+    <h3>Primary Work Address</h3>
+    <form>
+      <input type="text" name="workAddress">
+    </form>
+  </section>
 
-    <section>
-      <h3>Job Summary and Responsibilities</h3>
-      <p><i>Add responsibilities or modifications appropriate for this role.</i></p>
-      <div id="job-desc" placeholder="Place or write your job summary and responsibilities here." data-control="analysisField"></div>
-    </section>
+  <section class="examplePosting">
+    <button class="basic-button" data-control="showTemplatesButton" data-event-category="navigate" data-event-action="start" data-event-label="From Template">Start from Template</button>
+    <h3>Fill fields below with an example job posting</h3>
+    <p>Start your job posting with a template and then review to make sure it matches your company standards.</p>
+    <div id="template-picker"></div>
+  </section>
 
-    <section>
-      <h3>Required Competencies</h3>
-      <h4>Occupational Competencies</h4>
-      <p>A measurable pattern of knowledge, skills, abilities, behaviors, and other characteristics that an individual needs to perform work roles or occupational functions successfully. Find additional competencies for this role to insert if desired at <a href="http://www.onetonline.org/find/descriptor/browse/Skills/" target="_blank">www.onetonline.org</a>.</p>
-      <ul id="reqcomp-occupation-list"></ul>
-      <p class="addAnother" id="reqcomp-occupation" data-control="addDoubleFieldButton" data-event-category="required competencies" data-event-action="add new" title="Add another row"><i class="fa fa-plus-circle fa-2x" aria-hidden="true"></i> Add Another</p>
-      <h4>Foundational Competencies</h4>
-      <p>Personal attributes that enable someone to interact effectively and harmoniously with other people. Find additional competencies for this role to insert if desired at <a href="http://www.onetonline.org/find/descriptor/browse/Skills/" target="_blank">www.onetonline.org</a>.</p>
-      <ul id="reqcomp-foundation-list"></ul>
-      <p class="addAnother" id="reqcomp-foundation" data-control="addDoubleFieldButton" data-event-category="required competencies" data-event-action="add new" title="Add another row"><i class="fa fa-plus-circle fa-2x" aria-hidden="true"></i> Add Another</p>
-    </section>
+  <section id="navLink6">
+    <h3>Title</h3>
+    <form>
+      <input type="text" name="positionTitle">
+    </form>
+  </section>
 
-    <section>
-      <h3>Preferred Competencies</h3>
-      <p><i>Find additional competencies for this role to insert if desired at <a href="http://www.onetonline.org/find/descriptor/browse/Skills/" target="_blank">www.onetonline.org</a>.</i></p>
-      <h4>Occupational Competencies</h4>
-      <p>A measurable pattern of knowledge, skills, abilities, behaviors, and other characteristics that an individual needs to perform work roles or occupational functions successfully. Find additional competencies for this role to insert if desired at <a href="http://www.onetonline.org/find/descriptor/browse/Skills/" target="_blank">www.onetonline.org</a>.</p>
-      <ul id="prefcomp-occupation-list"></ul>
-      <p class="addAnother" id="prefcomp-occupation" data-control="addDoubleFieldButton" data-event-category="preferred competencies" data-event-action="add new" title="Add another row"><i class="fa fa-plus-circle fa-2x" aria-hidden="true"></i> Add Another</p>
-      <h4>Foundational Competencies</h4>
-      <p>Personal attributes that enable someone to interact effectively and harmoniously with other people. Find additional competencies for this role to insert if desired at <a href="http://www.onetonline.org/find/descriptor/browse/Skills/" target="_blank">www.onetonline.org</a>.</p>
-      <ul id="prefcomp-foundation-list"></ul>
-      <p class="addAnother" id="prefcomp-foundation" data-control="addDoubleFieldButton" data-event-category="preferred competencies" data-event-action="add new" title="Add another row"><i class="fa fa-plus-circle fa-2x" aria-hidden="true"></i> Add Another</p>
-    </section>
+  <section id="navLink7">
+    <h3>Short Description of Work</h3>
+    <div id="job-desc" data-control="analysisField"></div>
+  </section>
 
-    <section>
-      <h3>Example Activities</h3>
-      <p>Add some examples of work this person might be doing in this position. </p>
-      <ul id="activity-list"></ul>
-      <p class="addAnother" id="activity" data-control="addSingleFieldButton" data-event-category="example activities" data-event-action="add new" title="Add another row"><i class="fa fa-plus-circle fa-2x" aria-hidden="true"></i> Add Another</p>
-    </section>
+  <section id="navLink8">
+    <h3>Example Activities</h3>
+    <ul id="activity-list"></ul>
+    <p class="addAnother" id="activity" data-control="addSingleFieldButton" data-event-category="example activities" data-event-action="add new" title="Add another row"><i class="fa fa-plus-circle fa-2x" aria-hidden="true"></i> Add Another</p>
+  </section>
 
-    <section>
-      <h3>Required Certifications</h3>
-      <p><i>Insert required certifications only if truly required.</i></p>
-      <ul id="cert-list"></ul>
-      <p class="addAnother" id="cert" data-control="addSingleFieldButton" data-event-category="required certifications" data-event-action="add new" title="Add another row"><i class="fa fa-plus-circle fa-2x" aria-hidden="true"></i> Add Another</p>
-    </section>
+  <section id="navLink9">
+    <h3>Foundational Skills</h3>
+    <p>Knowledge, skills, and abilities that provide a basis for success and performance in the workplace. Think of these competencies as being specific to personal (integrity, initiative, dependability, etc.), academic (communication, mathematics, critical thinking, etc.), or workplace (problem solving, teamwork, coordinating) situations.</p>
+    <h4>Required</h4>
+    <ul id="reqcomp-foundation-list"></ul>
+    <p class="addAnother" id="reqcomp-foundation" data-control="addDoubleFieldButton" data-event-category="required competencies" data-event-action="add new" title="Add another row"><i class="fa fa-plus-circle fa-2x" aria-hidden="true"></i> Add Another</p>
+    <h4>Preferred</h4>
+    <ul id="prefcomp-foundation-list"></ul>
+    <p class="addAnother" id="prefcomp-foundation" data-control="addDoubleFieldButton" data-event-category="preferred competencies" data-event-action="add new" title="Add another row"><i class="fa fa-plus-circle fa-2x" aria-hidden="true"></i> Add Another</p>
+  </section>
 
-    <section id="exportButton">
-      <div class="centered">
-        <button data-control="startOverButton" data-event-category="navigate" data-event-action="start over">Start Over</button>
-        <button data-control="exportPostingPageButton" data-event-category="navigate" data-event-action="export">Review</button>
-      </centered>
-    </section>
-  </div>
+  <section id="navLink10">
+    <h3>Occupational Skills</h3>
+    <p>Knowledge, skills, and abilities, specific to an industry and occupation that are required to successfully work in that role. These skills are more technical and tied to actual processes and equipment ties to a job (IT: system networking, C++ coding, etc.; AM: CNC-machining, product inspection, etc.).</p>
+    <h4>Required</h4>
+    <ul id="reqcomp-occupation-list"></ul>
+    <p class="addAnother" id="reqcomp-occupation" data-control="addDoubleFieldButton" data-event-category="required competencies" data-event-action="add new" title="Add another row"><i class="fa fa-plus-circle fa-2x" aria-hidden="true"></i> Add Another</p>
+    <h4>Preferred</h4>
+    <ul id="prefcomp-occupation-list"></ul>
+    <p class="addAnother" id="prefcomp-occupation" data-control="addDoubleFieldButton" data-event-category="preferred competencies" data-event-action="add new" title="Add another row"><i class="fa fa-plus-circle fa-2x" aria-hidden="true"></i> Add Another</p>
+  </section>
+
+  <section id="navLink11">
+    <h3>Required Certifications</h3>
+    <p>Insert required certifications only if truly required to ensure that you are promoting the right candidates to apply.</p>
+    <ul id="cert-list"></ul>
+    <p class="addAnother" id="cert" data-control="addSingleFieldButton" data-event-category="required certifications" data-event-action="add new" title="Add another row"><i class="fa fa-plus-circle fa-2x" aria-hidden="true"></i> Add Another</p>
+  </section>
+
+  <section id="exportButton">
+    <button data-control="exportPostingPageButton" data-event-category="navigate" data-event-action="export">Next Step: Review</button>
+  </section>
 </div>
 
-<div id="page_3" style="display:none;">
-  <div class="centered">
-    <section class="word-doc">
-      <button data-control="saveAsWordDocButton" data-event-category="navigate" data-event-action="save as word doc">Save as Word Document</button>
-    </section>
-    <section id="final-posting"></section>
+<div id="page_review" style="display:none;">
+  <section class="word-doc">
+    <button data-control="goToJobPageButton" data-event-category="navigate" data-event-action="back">Previous Step: Job Information</button>
+  </section>
+  <section id="final-posting"></section>
 
-    <section id="saveButtonContainer">
-      <div class="centered word-doc-width">
-        <button data-control="gotoPage2Button" data-event-category="navigate" data-event-action="back">Back</button>
-        <button data-control="saveAsWordDocButton" data-event-category="navigate" data-event-action="save as word doc" class="word-doc">Save as Word Document</button>
-      </div>
-    </section>
-  </div>
+  <section id="saveButtonContainer">
+    <div class="word-doc-width">
+      <button data-control="goToJobPageButton" data-event-category="navigate" data-event-action="back">Back</button>
+      <button data-control="saveAsWordDocButton" data-event-category="navigate" data-event-action="save as word doc" class="word-doc">Next Step: Save as Word Document</button>
+    </div>
+  </section>
 </div>
 
 {% include site/templatepicker.html %}
 {% include site/analysisfield.html %}
 {% include site/simplefields.html %}
 {% include site/jobpostingtemplate.html %}
+{% include site/nav_employer.html %}
+{% include site/nav_job.html %}
+{% include site/nav_review.html %}
