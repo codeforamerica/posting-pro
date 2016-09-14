@@ -1,46 +1,11 @@
 <script type="text/x-template" data-template="fullJobPosting">
 {#positionTitle}
-  <h3 id="navLink12">Job Title</h3>
-  <p>{positionTitle}</p>
+  <h3 id="navLink12">{positionTitle}</h3>
 {/positionTitle}
 
-{#companyDescription}
-  <h3>Company Description</h3>
-  <p>{& companyDescription}</p>
-{/companyDescription}
-
 {#jobDescription}
-  <h3>Job Description</h3>
   <p>{& jobDescription}</p>
 {/jobDescription}
-
-{#hasRequiredCompetencies}<h3>Required Competencies</h3>{/hasRequiredCompetencies}
-{#requiredOccupationalCompetencies.length}
-  <h4>Occupational</h4>
-  <ul>
-    {#requiredOccupationalCompetencies}<li><strong>{name}</strong>{#description}: {description}{/description}</li>{/requiredOccupationalCompetencies}
-  </ul>
-{/requiredOccupationalCompetencies.length}
-{#requiredFoundationalCompetencies.length}
-  <h4>Foundational</h4>
-  <ul>
-    {#requiredFoundationalCompetencies}<li><strong>{name}</strong>{#description}: {description}{/description}</li>{/requiredFoundationalCompetencies}
-  </ul>
-{/requiredFoundationalCompetencies.length}
-
-{#hasPreferredCompetencies}<h3>Preferred Competencies</h3>{/hasPreferredCompetencies}
-{#preferredOccupationalCompetencies.length}
-  <h4>Occupational</h4>
-  <ul>
-    {#preferredOccupationalCompetencies}<li><strong>{name}</strong>{#description}: {description}{/description}</li>{/preferredOccupationalCompetencies}
-  </ul>
-{/preferredOccupationalCompetencies.length}
-{#preferredFoundationalCompetencies.length}
-  <h4>Foundational</h4>
-  <ul>
-    {#preferredFoundationalCompetencies}<li><strong>{name}</strong>{#description}: {description}{/description}</li>{/preferredFoundationalCompetencies}
-  </ul>
-{/preferredFoundationalCompetencies.length}
 
 {#exampleActivities.length}
   <h3 id="navLink13">Example Activities</h3>
@@ -49,7 +14,6 @@
   </ul>
 {/exampleActivities.length}
 
-
 {#certificationsNeeded.length}
   <h3 id="navLink14">Required Certifications</h3>
   <ul>
@@ -57,4 +21,34 @@
   </ul>
 {/certificationsNeeded.length}
 
+{#hasRequiredCompetencies}<h3>Foundational Skills</h3>{/hasRequiredCompetencies}
+{#requiredFoundationalCompetencies.length}
+  <ul>
+    {#requiredFoundationalCompetencies}<li><strong>{name}</strong>{#description}: {description}{/description}</li>{/requiredFoundationalCompetencies}
+  </ul>
+{/requiredFoundationalCompetencies.length}
+{#preferredFoundationalCompetencies.length}
+  <h4>Preferred</h4>
+  <ul>
+    {#preferredFoundationalCompetencies}<li><strong>{name}</strong>{#description}: {description}{/description}</li>{/preferredFoundationalCompetencies}
+  </ul>
+{/preferredFoundationalCompetencies.length}
+
+{#hasPreferredCompetencies}<h3>Occupational Skills</h3>{/hasPreferredCompetencies}
+{#requiredOccupationalCompetencies.length}
+  <ul>
+    {#requiredOccupationalCompetencies}<li><strong>{name}</strong>{#description}: {description}{/description}</li>{/requiredOccupationalCompetencies}
+  </ul>
+{/requiredOccupationalCompetencies.length}
+{#preferredOccupationalCompetencies.length}
+  <h4>Preferred</h4>
+  <ul>
+    {#preferredOccupationalCompetencies}<li><strong>{name}</strong>{#description}: {description}{/description}</li>{/preferredOccupationalCompetencies}
+  </ul>
+{/preferredOccupationalCompetencies.length}
+
+{#companyDescription}
+  <h3>Company Description</h3>
+  <p>{& companyDescription}</p>
+{/companyDescription}
 </script>

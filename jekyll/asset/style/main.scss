@@ -432,6 +432,8 @@ textarea.short { max-height: 50px; }
 #final-posting{
 
   h3, p, li { text-align: left; }
+  li { margin: 0 0 1rem 0; }
+  li:last-of-type { margin: 0; }
   ul {
       list-style-type: disc;
       margin: 0 0 0 15px;
