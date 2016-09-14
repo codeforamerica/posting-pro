@@ -194,6 +194,9 @@
       navContainer.val('');
       navContainer[0].innerHTML = templates[pageName + "Nav"].render({});
       cuff(navContainer[0]);
+
+      $.mark.jump();
+      $("main").scrollTop(129);
     }
 
     function goToEmployerPageControl(element) {
