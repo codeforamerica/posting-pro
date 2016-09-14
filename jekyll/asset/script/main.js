@@ -190,7 +190,7 @@
       $("[id^=header_nav_]").removeClass('active'); // remove the active class from header links
       $("#header_nav_" + pageName).addClass('active');
 
-      var navContainer = $("#lef-nav");
+      var navContainer = $("#left-nav");
       navContainer.val('');
       navContainer[0].innerHTML = templates[pageName + "Nav"].render({});
       cuff(navContainer[0]);
