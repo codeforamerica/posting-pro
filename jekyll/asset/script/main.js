@@ -422,6 +422,27 @@
       var $positionTitleEl = $("input[name='positionTitle']");
       if($positionTitleEl) postingData.positionTitle = $positionTitleEl.val();
 
+      var $companyNameEl = $("input[name='companyName']");
+      if($companyNameEl) postingData.companyName = $companyNameEl.val();
+
+      var $websiteEl = $("input[name='website']");
+      if($websiteEl) postingData.companyWebsite = $websiteEl.val();
+
+      var $contactNameEl = $("input[name='contactName']");
+      if($contactNameEl) postingData.contactName = $contactNameEl.val();
+
+      var $contactEl = $("input[name='contact']");
+      if($contactEl) postingData.contact = $contactEl.val();
+
+      var $employmentTypeEl = $("select[name='employment_type'] :selected");
+      if($employmentTypeEl) postingData.employmentType = $employmentTypeEl.text();
+
+      var $seniorityLevelEl = $("select[name='seniorityLevel'] :selected");
+      if($seniorityLevelEl) postingData.seniorityLevel = $seniorityLevelEl.text();
+
+      var $workAddressEl = $("select[name='workAddress']");
+      if($workAddressEl) postingData.workAddress = $workAddressEl.val();
+
       postingData.companyDescription = captureFormattedField("company-desc-input");
       postingData.jobDescription = captureFormattedField("job-desc-output");
       postingData.requiredFoundationalCompetencies = captureDoubleFieldValues('reqcomp-foundation');

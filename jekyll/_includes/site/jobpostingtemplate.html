@@ -1,7 +1,42 @@
 <script type="text/x-template" data-template="fullJobPosting">
+<div class="companyinfo">
+  {#companyName}
+    <h4>Employer</h4>
+    <p>{companyName}</p>
+  {/companyName}
+
+  {#companyWebsite}
+    <h4>Website</h4>
+    <p>{companyWebsite}</p>
+  {/companyWebsite}
+
+  {#workAddress}
+    <h4>Primary Work Address</h4>
+    <p>{workAddress}</p>
+  {/workAddress}
+
+  {#contactName}
+    <h4>Contact</h4>
+    <p>{contactName}</p>
+  {/contactName}
+
+  {#contact}
+    <p>{contact}</p>
+  {/contact}
+
+  {#companyDescription}
+    <h4>Company Description</h4>
+    <p>{& companyDescription}</p>
+  {/companyDescription}
+</div>
+
 {#positionTitle}
   <h3 id="navLink12">{positionTitle}</h3>
 {/positionTitle}
+
+{#employmentType}
+  <p><strong>Employment Type:</strong> {employmentType}<span class="seniority"><strong>Seniority Level:</strong> {seniorityLevel}</span></p>
+{/employmentType}
 
 {#jobDescription}
   <p>{& jobDescription}</p>
@@ -46,9 +81,4 @@
     {#preferredOccupationalCompetencies}<li><strong>{name}</strong>{#description}: {description}{/description}</li>{/preferredOccupationalCompetencies}
   </ul>
 {/preferredOccupationalCompetencies.length}
-
-{#companyDescription}
-  <h3>Company Description</h3>
-  <p>{& companyDescription}</p>
-{/companyDescription}
 </script>
