@@ -430,11 +430,22 @@ textarea.short { max-height: 50px; }
 
 // Export Posting //
 #final-posting{
+  position: relative;
 
   h3, p, li { text-align: left; }
+  li { margin: 0 0 1rem 0; }
+  li:last-of-type { margin: 0; }
   ul {
       list-style-type: disc;
       margin: 0 0 0 15px;
+  }
+  .seniority { margin-left: 2rem; }
+  .companyinfo {
+    width: 250px;
+    float: right;
+    border: 1px solid $lightGray;
+    margin: 0 0 2rem 2rem;
+    padding: 0 1rem;
   }
 }
 
