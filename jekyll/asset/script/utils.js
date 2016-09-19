@@ -24,7 +24,7 @@ $.mark = {
       var jumpobj = $(this);
       var target = jumpobj.attr('href');
       var thespeed = 1000;
-      var offset = jQuery(target).offset().top;
+      var offset = jQuery(target).offset().top - 129;
       jQuery('html,body').animate({
         scrollTop: offset
       }, thespeed, 'swing');
