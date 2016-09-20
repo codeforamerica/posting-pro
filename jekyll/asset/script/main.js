@@ -33,6 +33,7 @@
         cuff.controls.postInput = postInputControl;
         cuff.controls.countOutput = countOutputControl;
         cuff.controls.readingLevelOutput = readingLevelOutputControl;
+        cuff.controls.suggestionsOutput = suggestionsOutputControl;
         cuff.controls.freshStartButton = freshStartControl;
         cuff.controls.showTemplatesButton = showTemplatesControl;
         cuff.controls.pickTemplateButton = pickTemplateControl;
@@ -66,6 +67,7 @@
             var inputValue = element.value.replace(/\n/g, "<br>");
             var results = joblint(inputValue);
             results.readingLevel = buildReadingLevel(element.value);
+            results.suggestions = generateReadingLevelSuggestions(element.value); // try to combine with above method?
             var lintId = generateLintId(results);
             var eventId = element.getAttributeNode("event-id").value;
             $document.trigger('lint-results-' + eventId, results);
@@ -102,6 +104,16 @@
         };
 
         element.innerHTML = templates.readingLevel.render(readingLevelSummary);
+        cuff(element);
+      });
+    }
+
+    function suggestionsOutputControl(element) {
+
+      var eventId = element.getAttributeNode("event-id").value;
+      $(document).on('lint-results-' + eventId, function (event, results) {
+        console.log(results.suggestions[0]);
+        element.innerHTML = templates.suggestions.render({"suggestions" : results.suggestions});
         cuff(element);
       });
     }
@@ -530,6 +542,24 @@
       } else {
         return -1;
       }
+    }
+
+    function generateReadingLevelSuggestions(text) {
+      var suggestions= [];
+      if (text) {
+        var ts = textstatistics(text);
+        var longWords = ts.listWordsWithFourOrMoreSyllables(text, false);
+        if (longWords.length !== 0) {
+          suggestions.push({
+            "explanation": "Some words are very long (four or more syllables), try to replace with simpler words.",
+            "examples": longWords
+          });
+        }
+
+
+      }
+      // console.log(suggestions);
+      return suggestions;
     }
 
     function getSkillsEngineCompetencies (text, callback) {

@@ -9,7 +9,9 @@
     <p class="analysisTitle">Gender biased phrases</p>
     <div id="{id}-reading-output" event-id="{id}" data-control="readingLevelOutput" class="analysis"></div>
     <div id="{id}-count-output" event-id="{id}" data-control="countOutput" class="analysis"></div>
-    <p>Suggestions for Improvement</p>
+    <div id="{id}-suggestions" event-id="{id}" data-control="suggestionsOutput">
+      <p>Suggestions for improvement</p>
+    </div>
   </div>
 </script>
 
@@ -19,4 +21,13 @@
 
 <script type="text/x-template" data-template="issueCount">
   <p>{issueCount}</p>
+</script>
+
+<script type="text/x-template" data-template="suggestions">
+  {#suggestions}
+    <p>{explanation} ({examples})</p>
+  {/suggestions}
+  {^suggestions}
+  <p>Suggestions for improvement</p>
+  {/suggestions}
 </script>

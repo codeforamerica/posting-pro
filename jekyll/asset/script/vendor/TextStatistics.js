@@ -115,13 +115,33 @@
 		text.split(/\s+/).forEach(function(word) {
 
 			// We don't count proper nouns or capitalised words if the countProperNouns attribute is set.
+			// Also don't count email addresses.
 			// Defaults to true.
-			if (!word.match(/^[A-Z]/) || countProperNouns) {
+			if ((!word.match(/^[A-Z]/) || countProperNouns) && !word.match(/@/)) {
 				if (self.syllableCount(word) > 2) longWordCount ++;
 			}
 		});
 
 		return longWordCount;
+	};
+
+	TextStatistics.prototype.listWordsWithFourOrMoreSyllables = function(text, countProperNouns) {
+		text = text ? cleanText(text) : this.text;
+		var longWords = [], self = this;
+
+		countProperNouns = countProperNouns === false ? false : true;
+
+		text.split(/\s+/).forEach(function(word) {
+
+			// We don't count proper nouns or capitalised words if the countProperNouns attribute is set.
+			// Also don't count email addresses.
+			// Defaults to true.
+			if ((!word.match(/^[A-Z]/) || countProperNouns) && !word.match(/@/)) {
+				if (self.syllableCount(word) > 3) longWords.push(word);
+			}
+		});
+
+		return longWords;
 	};
 
 	TextStatistics.prototype.percentageWordsWithThreeSyllables = function(text, countProperNouns) {
