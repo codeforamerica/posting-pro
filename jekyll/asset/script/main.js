@@ -68,6 +68,7 @@
             var results = joblint(inputValue);
             results.readingLevel = buildReadingLevel(element.value);
             results.suggestions = generateReadingLevelSuggestions(element.value); // try to combine with above method?
+            results.suggestions = rearrangeJobLintResults(results.issues, results.suggestions); // this whole bit could use a rewrite
             var lintId = generateLintId(results);
             var eventId = element.getAttributeNode("event-id").value;
             $document.trigger('lint-results-' + eventId, results);
@@ -112,7 +113,6 @@
 
       var eventId = element.getAttributeNode("event-id").value;
       $(document).on('lint-results-' + eventId, function (event, results) {
-        console.log(results.suggestions[0]);
         element.innerHTML = templates.suggestions.render({"suggestions" : results.suggestions});
         cuff(element);
       });
@@ -545,7 +545,7 @@
     }
 
     function generateReadingLevelSuggestions(text) {
-      var suggestions= [];
+      var suggestions = [];
       if (text) {
         var ts = textstatistics(text);
         var longWords = ts.listWordsWithFourOrMoreSyllables(text, false);
@@ -555,10 +555,21 @@
             "examples": longWords
           });
         }
-
-
+        // maybe long sentences?
       }
-      // console.log(suggestions);
+      return suggestions;
+    }
+
+    function rearrangeJobLintResults(issues, suggestions) {
+      var sexismIssues = _.filter(issues, function(i) {
+        return _.has(i.increment, 'sexism');
+      });
+      for (var i = 0; i < sexismIssues.length; i++) {
+        suggestions.push({
+          "explanation": sexismIssues[i].solution,
+          "examples": sexismIssues[i].occurrence
+        });
+      }
       return suggestions;
     }
 
