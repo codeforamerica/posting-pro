@@ -33,6 +33,7 @@
         cuff.controls.postInput = postInputControl;
         cuff.controls.countOutput = countOutputControl;
         cuff.controls.readingLevelOutput = readingLevelOutputControl;
+        cuff.controls.suggestionsOutput = suggestionsOutputControl;
         cuff.controls.freshStartButton = freshStartControl;
         cuff.controls.showTemplatesButton = showTemplatesControl;
         cuff.controls.pickTemplateButton = pickTemplateControl;
@@ -66,9 +67,11 @@
             var inputValue = element.value.replace(/\n/g, "<br>");
             var results = joblint(inputValue);
             results.readingLevel = buildReadingLevel(element.value);
-            var lintId = generateLintId(results);
+            results.suggestions = generateReadingLevelSuggestions(element.value); // try to combine with above method?
+            var finalResults = rearrangeJobLintResults(results); // this whole bit could use a rewrite
+            var lintId = generateLintId(finalResults);
             var eventId = element.getAttributeNode("event-id").value;
-            $document.trigger('lint-results-' + eventId, results);
+            $document.trigger('lint-results-' + eventId, finalResults);
         });
     }
 
@@ -102,6 +105,15 @@
         };
 
         element.innerHTML = templates.readingLevel.render(readingLevelSummary);
+        cuff(element);
+      });
+    }
+
+    function suggestionsOutputControl(element) {
+
+      var eventId = element.getAttributeNode("event-id").value;
+      $(document).on('lint-results-' + eventId, function (event, results) {
+        element.innerHTML = templates.suggestions.render({"suggestions" : results.suggestions});
         cuff(element);
       });
     }
@@ -530,6 +542,48 @@
       } else {
         return -1;
       }
+    }
+
+    function generateReadingLevelSuggestions(text) {
+      var suggestions = [];
+      if (text) {
+        var ts = textstatistics(text);
+        var longWords = ts.wordsWithFourOrMoreSyllablesList(text, false);
+        if (longWords.length !== 0) {
+          suggestions.push({
+            "explanation": "Some words are very long (four or more syllables), try to replace with simpler words.",
+            "examples": longWords
+          });
+        }
+        var longSentences = ts.sentencesOver25WordsList();
+        if (longSentences.length !== 0) {
+          var sentenceExamples = _.map(longSentences, function(sentence) {
+            return sentence.substring(0, 10) + "...";
+          });
+
+          suggestions.push({
+            "explanation": "At 25 words or more, sentences become difficult to read, try to shorten these or break them up.",
+            "examples": sentenceExamples
+          });
+        }
+      }
+      return suggestions;
+    }
+
+    function rearrangeJobLintResults(results) {
+      var finalResults = _.cloneDeep(results);
+      var sexismIssues = _.filter(finalResults.issues, function(i) {
+        return _.has(i.increment, 'sexism');
+      });
+
+      for (var i = 0; i < sexismIssues.length; i++) {
+        finalResults.suggestions.push({
+          "explanation": sexismIssues[i].solution,
+          "examples": sexismIssues[i].occurrence
+        });
+      }
+
+      return finalResults;
     }
 
     function getSkillsEngineCompetencies (text, callback) {

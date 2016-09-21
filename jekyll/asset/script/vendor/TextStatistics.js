@@ -19,6 +19,7 @@
 			.replace(/[,:;()\/&+]|\-\-/g, " ")				// Replace commas, hyphens etc (count them as spaces)
 			.replace(/[\.!?]/g, ".")					// Unify terminators
 			.replace(/^\s+/, "")						// Strip leading whitespace
+			.replace(/[\.]?(\w+)[\.]?(\w+)@(\w+)[\.](\w+)[\.]?/g, "$1$2@$3$4")	// strip periods in email addresses (so they remain counted as one word)
 			.replace(/[ ]*(\n|\r\n|\r)[ ]*/g, ".")	// Replace new lines with periods
 			.replace(/([\.])[\.]+/g, ".")			// Check for duplicated terminators
 			.replace(/[ ]*([\.])/g, ". ")				// Pad sentence terminators
@@ -28,7 +29,6 @@
 		if(text.slice(-1) != '.') {
 			text += "."; // Add final terminator, just in case it's missing.
 		}
-
 		return text;
 	}
 
@@ -94,6 +94,17 @@
 		return this.wordCount(text) / this.sentenceCount(text);
 	};
 
+	TextStatistics.prototype.sentencesOver25WordsList = function(text, countProperNouns) {
+		text = text ? cleanText(text) : this.text;
+		var longSentences = [], self = this;
+
+		text.replace(/([.?!])\s*(?=[A-Z])/g, "$1|").split("|").forEach(function(sentence) {
+			if (self.wordCount(sentence) >= 25) longSentences.push(sentence);
+		});
+
+		return longSentences;
+	};
+
 	TextStatistics.prototype.averageSyllablesPerWord = function(text) {
 		text = text ? cleanText(text) : this.text;
 		var syllableCount = 0, wordCount = this.wordCount(text), self = this;
@@ -115,13 +126,33 @@
 		text.split(/\s+/).forEach(function(word) {
 
 			// We don't count proper nouns or capitalised words if the countProperNouns attribute is set.
+			// Also don't count email addresses.
 			// Defaults to true.
-			if (!word.match(/^[A-Z]/) || countProperNouns) {
+			if ((!word.match(/^[A-Z]/) || countProperNouns) && !word.match(/@/)) {
 				if (self.syllableCount(word) > 2) longWordCount ++;
 			}
 		});
 
 		return longWordCount;
+	};
+
+	TextStatistics.prototype.wordsWithFourOrMoreSyllablesList = function(text, countProperNouns) {
+		text = text ? cleanText(text) : this.text;
+		var longWords = [], self = this;
+
+		countProperNouns = countProperNouns === false ? false : true;
+
+		text.split(/\s+/).forEach(function(word) {
+
+			// We don't count proper nouns or capitalised words if the countProperNouns attribute is set.
+			// Also don't count email addresses.
+			// Defaults to true.
+			if ((!word.match(/^[A-Z]/) || countProperNouns) && !word.match(/@/)) {
+				if (self.syllableCount(word) > 3) longWords.push(word);
+			}
+		});
+
+		return longWords;
 	};
 
 	TextStatistics.prototype.percentageWordsWithThreeSyllables = function(text, countProperNouns) {
