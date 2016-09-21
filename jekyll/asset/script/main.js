@@ -68,10 +68,10 @@
             var results = joblint(inputValue);
             results.readingLevel = buildReadingLevel(element.value);
             results.suggestions = generateReadingLevelSuggestions(element.value); // try to combine with above method?
-            results.suggestions = rearrangeJobLintResults(results.issues, results.suggestions); // this whole bit could use a rewrite
-            var lintId = generateLintId(results);
+            var finalResults = rearrangeJobLintResults(results); // this whole bit could use a rewrite
+            var lintId = generateLintId(finalResults);
             var eventId = element.getAttributeNode("event-id").value;
-            $document.trigger('lint-results-' + eventId, results);
+            $document.trigger('lint-results-' + eventId, finalResults);
         });
     }
 
@@ -570,17 +570,20 @@
       return suggestions;
     }
 
-    function rearrangeJobLintResults(issues, suggestions) {
-      var sexismIssues = _.filter(issues, function(i) {
+    function rearrangeJobLintResults(results) {
+      var finalResults = _.cloneDeep(results);
+      var sexismIssues = _.filter(finalResults.issues, function(i) {
         return _.has(i.increment, 'sexism');
       });
+
       for (var i = 0; i < sexismIssues.length; i++) {
-        suggestions.push({
+        finalResults.suggestions.push({
           "explanation": sexismIssues[i].solution,
           "examples": sexismIssues[i].occurrence
         });
       }
-      return suggestions;
+
+      return finalResults;
     }
 
     function getSkillsEngineCompetencies (text, callback) {
