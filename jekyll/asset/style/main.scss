@@ -200,17 +200,15 @@ select {
 textarea {
   @include rem(font-size, 16px);
   line-height: 1.5em;
-  width: 98%;
-  height: 200px;
-  padding: 1%;
-  margin: 0 2% 0 0;
+  width: 808px;
+  height: 128px;
+  padding: 10px;
   border: 1px solid $darkGray !important;
 }
 textarea.short { max-height: 50px; }
-.columnWrapper { float: left; }
 .column {
-  width: 530px;
-  height: 100%;
+  width: 100%;
+  height: 150px;
   box-sizing: border-box;
 }
 .addAnother {
@@ -371,33 +369,36 @@ textarea.short { max-height: 50px; }
 
 // Reading level //
 .inform {
-  width: 250px;
-  height: 210px;
-  float: left;
-  margin-left: 1rem;
-  border: 1px solid $lightGray;
-  p {
-    @include rem(font-size, 12px);
-    width: 100%;
-    text-align: center;
-    float: left;
-    margin: 0;
-  }
-  .analysisTitle {
-    width: 124px;
-    font-weight: bold;
-    &:first-of-type { border-right: 2px solid $lightGray; }
+  width: 818px;
+  height: 162px;
+  padding: 0 0 0 10px;
+  border: 2px solid $lightGray;
+  .suggestions, .analysis { float: left; }
+  .suggestions {
+    width: 550px;
+    height: 100%;
+    padding: 0 10px 0 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    p { margin-bottom: 2rem; }
   }
   .analysis {
-    p {
-      width: 125px;
-      font-weight: bold;
-      background-color: $lightGray;
+    width: 256px;
+    border-left: 2px solid $action-color;
+    .analysis-field {
+      width: 210px;
+      height: 38px;
+      text-align: center;
+      font-size: 1.8rem;
+      color: $action-color;
+      margin: .5rem auto;
+      padding: 20px 10px 10px;
     }
-  }
-  .suggestions {
-    width: 100%;
-    padding: .5rem 0;
+    hr {
+      color: $action-color;
+      border-top: 1px solid $action-color;
+      background-color: $action-color;
+    }
   }
 }
 

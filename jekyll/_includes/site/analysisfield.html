@@ -5,29 +5,27 @@
     </div>
   </div>
   <div class="inform">
-    <p class="analysisTitle">Readability Score</p>
-    <p class="analysisTitle">Gender biased phrases</p>
-    <div id="{id}-reading-output" event-id="{id}" data-control="readingLevelOutput" class="analysis"></div>
-    <div id="{id}-count-output" event-id="{id}" data-control="countOutput" class="analysis"></div>
-    <div id="{id}-suggestions" event-id="{id}" data-control="suggestionsOutput">
-      <p>Suggestions for improvement</p>
+    <div id="{id}-suggestions" event-id="{id}" data-control="suggestionsOutput" class="suggestions"><h4>Suggestions for improvement:</h4></div>
+    <div class="analysis">
+      <div id="{id}-reading-output" event-id="{id}" data-control="readingLevelOutput"></div>
+      <div id="{id}-count-output" event-id="{id}" data-control="countOutput"></div>
     </div>
   </div>
 </script>
 
-<script type="text/x-template" data-template="readingLevel">
-  <p>{readingLevel}</p>
-</script>
-
-<script type="text/x-template" data-template="issueCount">
-  <p>{issueCount}</p>
-</script>
-
 <script type="text/x-template" data-template="suggestions">
+  <h4>Suggestions for improvement</h4>
   {#suggestions}
-    <p><b>{examples}</b> - {explanation}</p>
+    <p><strong>{explanation}</strong><br>{examples}</p>
   {/suggestions}
   {^suggestions}
-  <p>Suggestions for improvement</p>
+  <h4>Suggestions for improvement:</h4>
   {/suggestions}
+</script>
+<script type="text/x-template" data-template="readingLevel">
+  <div class="analysis-field">Readability Score: <strong>{readingLevel}/100</strong></div>
+  <hr>
+</script>
+<script type="text/x-template" data-template="issueCount">
+  <div class="analysis-field">Gender-Biased Phrases: <strong>{issueCount}</strong></div>
 </script>
