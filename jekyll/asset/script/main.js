@@ -175,9 +175,9 @@
     }
 
     function populateFieldsWithData(data) {
-      $("[name=positionTitle]").val(data.job_title);
-      $("#company-desc-input").val(data.company_description).trigger('keyup'); // keyup triggers results box
-      $("#job-desc-input").val(data.job_description).trigger('keyup'); // keyup triggers results box
+      if(data.job_title) $("[name=positionTitle]").val(data.job_title);
+      if(data.company_description) $("#company-desc-input").val(data.company_description).trigger('keyup'); // keyup triggers results box
+      if(data.job_description) $("#job-desc-input").val(data.job_description).trigger('keyup'); // keyup triggers results box
 
       renderFieldWithData("doubleFieldTemplate", "reqcomp-occupation", data.req_occupational_skills);
       renderFieldWithData("doubleFieldTemplate", "reqcomp-foundation", data.req_foundational_skills);
