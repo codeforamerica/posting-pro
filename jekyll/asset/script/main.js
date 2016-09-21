@@ -548,14 +548,24 @@
       var suggestions = [];
       if (text) {
         var ts = textstatistics(text);
-        var longWords = ts.listWordsWithFourOrMoreSyllables(text, false);
+        var longWords = ts.wordsWithFourOrMoreSyllablesList(text, false);
         if (longWords.length !== 0) {
           suggestions.push({
             "explanation": "Some words are very long (four or more syllables), try to replace with simpler words.",
             "examples": longWords
           });
         }
-        // maybe long sentences?
+        var longSentences = ts.sentencesOver25WordsList();
+        if (longSentences.length !== 0) {
+          var sentenceExamples = _.map(longSentences, function(sentence) {
+            return sentence.substring(0, 10) + "...";
+          });
+
+          suggestions.push({
+            "explanation": "At 25 words or more, sentences become difficult to read, try to shorten these or break them up.",
+            "examples": sentenceExamples
+          });
+        }
       }
       return suggestions;
     }

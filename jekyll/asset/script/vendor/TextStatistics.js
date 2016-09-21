@@ -94,6 +94,17 @@
 		return this.wordCount(text) / this.sentenceCount(text);
 	};
 
+	TextStatistics.prototype.sentencesOver25WordsList = function(text, countProperNouns) {
+		text = text ? cleanText(text) : this.text;
+		var longSentences = [], self = this;
+
+		text.replace(/([.?!])\s*(?=[A-Z])/g, "$1|").split("|").forEach(function(sentence) {
+			if (self.wordCount(sentence) >= 25) longSentences.push(sentence);
+		});
+
+		return longSentences;
+	};
+
 	TextStatistics.prototype.averageSyllablesPerWord = function(text) {
 		text = text ? cleanText(text) : this.text;
 		var syllableCount = 0, wordCount = this.wordCount(text), self = this;
@@ -125,7 +136,7 @@
 		return longWordCount;
 	};
 
-	TextStatistics.prototype.listWordsWithFourOrMoreSyllables = function(text, countProperNouns) {
+	TextStatistics.prototype.wordsWithFourOrMoreSyllablesList = function(text, countProperNouns) {
 		text = text ? cleanText(text) : this.text;
 		var longWords = [], self = this;
 
