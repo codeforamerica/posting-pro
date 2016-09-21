@@ -551,8 +551,8 @@
         var longWords = ts.wordsWithFourOrMoreSyllablesList(text, false);
         if (longWords.length !== 0) {
           suggestions.push({
-            "explanation": "Some words are very long (four or more syllables), try to replace with simpler words.",
-            "examples": longWords
+            "explanation": "Replace complex words with simpler alternatives",
+            "examples": longWords.join(", ")
           });
         }
         var longSentences = ts.sentencesOver25WordsList();
@@ -562,8 +562,8 @@
           });
 
           suggestions.push({
-            "explanation": "At 25 words or more, sentences become difficult to read, try to shorten these or break them up.",
-            "examples": sentenceExamples
+            "explanation": "Reduce or break up sentences that are over 25 words.",
+            "examples": sentenceExamples.join(", ")
           });
         }
       }
