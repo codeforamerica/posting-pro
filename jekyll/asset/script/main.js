@@ -552,7 +552,7 @@
         if (longWords.length !== 0) {
           suggestions.push({
             "explanation": "Replace complex words with simpler alternatives",
-            "examples": longWords
+            "examples": longWords.join(", ")
           });
         }
         var longSentences = ts.sentencesOver25WordsList();
@@ -563,7 +563,7 @@
 
           suggestions.push({
             "explanation": "Reduce or break up sentences that are over 25 words.",
-            "examples": sentenceExamples
+            "examples": sentenceExamples.join(", ")
           });
         }
       }
