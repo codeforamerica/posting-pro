@@ -92,14 +92,14 @@
 
     function readingLevelOutputControl(element) {
 
-      element.innerHTML = templates.readingLevel.render({"readingLevel" : 'N/A'});
+      element.innerHTML = templates.readingLevel.render({"readingLevel" : '?'});
       cuff(element);
 
       var eventId = element.getAttributeNode("event-id").value;
       $(document).on('lint-results-' + eventId, function (event, results) {
-        var tooHigh = results.readingLevel >= 9;
+        var tooHigh = results.readingLevel < 55;
         var readingLevelSummary = {
-          "readingLevel": results.readingLevel < 0 ? 'N/A' : results.readingLevel,
+          "readingLevel": results.readingLevel < 0 ? '?' : results.readingLevel,
           "tooHigh": tooHigh,
           "level": tooHigh ? "error-highlight" : "info-highlight"
         };
@@ -537,8 +537,8 @@
     function buildReadingLevel (text) {
       if (text) { // apparently if text == "", this is false
         var ts = textstatistics(text);
-        var gradeLevel = ts.fleschKincaidGradeLevel();
-        return gradeLevel;
+        var readingEase = ts.fleschKincaidReadingEase();
+        return readingEase;
       } else {
         return -1;
       }
@@ -558,7 +558,7 @@
         var longSentences = ts.sentencesOver25WordsList();
         if (longSentences.length !== 0) {
           var sentenceExamples = _.map(longSentences, function(sentence) {
-            return sentence.substring(0, 10) + "...";
+            return sentence.substring(0, 20) + "...";
           });
 
           suggestions.push({
