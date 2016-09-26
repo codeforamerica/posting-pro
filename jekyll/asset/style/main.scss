@@ -372,7 +372,7 @@ textarea.short { max-height: 50px; }
   width: 818px;
   height: 162px;
   padding: 0 0 0 10px;
-  border: 2px solid $lightGray;
+  border: 1px solid $lightGray;
   .suggestions, .analysis { float: left; }
   .suggestions {
     width: 550px;
@@ -384,7 +384,7 @@ textarea.short { max-height: 50px; }
   }
   .analysis {
     width: 256px;
-    border-left: 2px solid $action-color;
+    border-left: 1px solid $action-color;
     .analysis-field {
       width: 210px;
       height: 38px;
