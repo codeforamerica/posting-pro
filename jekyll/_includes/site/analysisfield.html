@@ -5,7 +5,7 @@
     </div>
   </div>
   <div class="inform">
-    <div id="{id}-suggestions" event-id="{id}" data-control="suggestionsOutput" class="suggestions"><h4>Suggestions for improvement:</h4></div>
+    <div id="{id}-suggestions" event-id="{id}" data-control="suggestionsOutput" class="suggestions"><h4>Suggestions for improvement</h4></div>
     <div class="analysis">
       <div id="{id}-reading-output" event-id="{id}" data-control="readingLevelOutput"></div>
       <div id="{id}-count-output" event-id="{id}" data-control="countOutput"></div>
@@ -18,9 +18,6 @@
   <h4>Suggestions for improvement</h4>
   {#suggestions}
     <p><strong>{explanation}</strong><br>{examples}</p>
-  {/suggestions}
-  {^suggestions}
-  <h4>Suggestions for improvement:</h4>
   {/suggestions}
 </script>
 <script type="text/x-template" data-template="readingLevel">
