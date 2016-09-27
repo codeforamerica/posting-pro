@@ -24,6 +24,7 @@ if ENV['RACK_ENV'].eql? 'development'
   Sequel::Migrator.check_current(database, 'sinatra/db/migrations')
 end
 
+# not currently used, remains for reference
 # call the SkillsEngine API
 post '/api/skillsengine/competencies' do
   data = JSON.parse(request.body.read)
