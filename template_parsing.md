@@ -1,4 +1,4 @@
-# Parsing Job Posting Template
+# Parsing Job Posting Templates
 The parsing algorithm for PostingPro depends on a very specific format for job posting templates for them to be imported successfully. When the Word document is imported, it is converted to plain text so we rely on keywords and specific formatting structure to tease it apart.
 > We convert the content of the Word document to plain text.
 
