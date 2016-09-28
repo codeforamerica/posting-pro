@@ -2,6 +2,7 @@
 The parsing algorithm for PostingPro depends on a very specific format for job posting templates for them to be imported successfully. When the Word document is imported, it is converted to plain text so we rely on keywords and specific formatting structure to tease it apart.
 > We convert the content of the Word document to plain text.
 
+See the [`template_examples`](\template_examples) folder for an example.
 ## How does it work?
 We expect the following headings to be present and to each end with a colon:
 - Job Posting
