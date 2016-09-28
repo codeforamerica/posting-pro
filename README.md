@@ -29,6 +29,8 @@ Deploying your own instance: This app has only been tested on Heroku and may req
 
 ### Adding/Removing Job Posting Templates
 To add or remove templates, access the management portal at by adding `/manage` to the Posting Pro path. This part of the website requires a username and password. It's set in the `.env` file for local deployments and as an environment variable on Heroku. Please ask the administrator of the Heroku deployment for credentials.
+#### Template format
+The template parsing currently requires a very specific template. See [the guide](template_parsing.md) for an explanation of how parsings works.
 
 ### Making changes to joblint.js or rules.js
 The text analysis is mainly done by our fork of the [joblint](https://github.com/codeforamerica/joblint/) library. To move your changes there to here, follow these steps.
