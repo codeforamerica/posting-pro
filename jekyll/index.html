@@ -32,7 +32,7 @@ layout: page
 
   <section id="navLink3">
     <h3>Employer Description</h3>
-    <label>Insert a short paragraph about your company. Include details that capture core values, culture and mission so job seekers clearly understand the environment they will be working in.</label>
+    <label for="company-desc">Insert a short paragraph about your company. Include details that capture core values, culture and mission so job seekers clearly understand the environment they will be working in.</label>
     <div id="company-desc" data-control="analysisField"></div>
   </section>
 
@@ -45,7 +45,7 @@ layout: page
   <h2>Job Information</h2>
   <section id="navLink4">
     <form class="floatLeft">
-      <h3>Employment Type</h3>
+      <label for="employment_type" class="label-heading">Employment Type</label>
       <select class="select" name="employment_type">
         <option value="full_time" selected>Full-Time</option>
         <option value="part_time">Part-Time</option>
@@ -56,7 +56,7 @@ layout: page
       </select>
     </form>
     <form class="floatLeft">
-      <h3>Seniority Level</h3>
+      <label for="seniorityLevel" class="label-heading">Seniority Level</label>
       <select class="select" name="seniorityLevel">
         <option value="not-applicable">Not Applicable</option>
         <option value="internship">Internship</option>
@@ -70,7 +70,7 @@ layout: page
   </section>
 
   <section id="navLink5">
-    <h3>Primary Work Address</h3>
+    <label for="workAddress" class="label-heading">Primary Work Address</label>
     <form>
       <input type="text" name="workAddress">
     </form>
@@ -84,19 +84,19 @@ layout: page
   </section>
 
   <section id="navLink6">
-    <h3>Title</h3>
+    <label for="workAddress" class="label-heading">Title</label>
     <form>
       <input type="text" name="positionTitle">
     </form>
   </section>
 
   <section id="navLink7">
-    <h3>Short Description of Work</h3>
+    <label for="job-desc" class="label-heading">Short Description of Work</label>
     <div id="job-desc" data-control="analysisField"></div>
   </section>
 
   <section id="navLink8">
-    <h3>Example Activities</h3>
+    <label for="activity100" class="label-heading">Example Activities</label>
     <ul id="activity-list"></ul>
     <p class="addAnother" id="activity" data-control="addSingleFieldButton" data-event-category="example activities" data-event-action="add new" title="Add another row"><i class="fa fa-plus-circle fa-2x" aria-hidden="true"></i> Add Another</p>
   </section>
@@ -124,7 +124,7 @@ layout: page
   </section>
 
   <section id="navLink11">
-    <h3>Required Certifications</h3>
+    <label for="cert100" class="label-heading">Required Certifications</label>
     <p>Insert required certifications only if truly required to ensure that you are promoting the right candidates to apply.</p>
     <ul id="cert-list"></ul>
     <p class="addAnother" id="cert" data-control="addSingleFieldButton" data-event-category="required certifications" data-event-action="add new" title="Add another row"><i class="fa fa-plus-circle fa-2x" aria-hidden="true"></i> Add Another</p>
