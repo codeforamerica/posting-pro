@@ -64,6 +64,12 @@ p.remove-margin { margin: 0; }
   max-width: 25px;
   margin: 0 1rem 0 0;
 }
+small, label { font-size: 110%; }
+.label-heading {
+  @include rem(font-size, 24px);
+  line-height: 2.5em;
+  margin: 1rem 0;
+}
 
 // Structure //
 html { height: 100%; }
@@ -155,7 +161,7 @@ input {
   line-height: 1.5em;
   width: 94%;
   padding: .5rem;
-  margin-bottom: 5px;
+  margin: .5rem 0 2rem;
   border: 1px solid $darkGray !important;
 }
 .double-field {
@@ -203,6 +209,7 @@ textarea {
   width: 808px;
   height: 128px;
   padding: 10px;
+  margin: .5rem 0 0;
   border: 1px solid $darkGray !important;
 }
 textarea.short { max-height: 50px; }
@@ -378,6 +385,7 @@ textarea.short { max-height: 50px; }
     width: 550px;
     height: 100%;
     padding: 0 10px 0 0;
+    margin: 0 0 2rem;
     overflow-y: auto;
     overflow-x: hidden;
     p { margin-bottom: 2rem; }
@@ -385,6 +393,7 @@ textarea.short { max-height: 50px; }
   .analysis {
     width: 256px;
     border-left: 1px solid $action-color;
+    margin: 0 0 2rem 0;
     .analysis-field {
       width: 210px;
       height: 38px;

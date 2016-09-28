@@ -1,7 +1,7 @@
 <script type="text/x-template" data-template="analysisField">
   <div class="columnWrapper">
     <div class="column input-area">
-      <textarea id="{id}-input" event-id="{id}" data-control="postInput" placeholder="{placeholder}" class="analysis-input"></textarea>
+      <textarea name="{id}" id="{id}-input" event-id="{id}" data-control="postInput" placeholder="{placeholder}" class="analysis-input"></textarea>
     </div>
   </div>
   <div class="inform">
@@ -11,7 +11,8 @@
       <div id="{id}-count-output" event-id="{id}" data-control="countOutput"></div>
     </div>
   </div>
-  <small>Readability score based on the <a href="https://en.wikipedia.org/wiki/Flesch%E2%80%93Kincaid_readability_tests#Flesch_reading_ease" target="_blank">Flesch reading ease test</a>.</small>
+  <small>Readability score based on the <a href="https://en.wikipedia.org/wiki/Flesch%E2%80%93Kincaid_readability_tests#Flesch_reading_ease" target="_blank">Flesch reading ease test</a>.<br>
+    A perfect score of 70/70 is equal to an 8th grade reading level (the national average for adults in the U.S.).</small>
 </script>
 
 <script type="text/x-template" data-template="suggestions">
