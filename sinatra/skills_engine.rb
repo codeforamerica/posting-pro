@@ -1,6 +1,7 @@
 require 'rest-client'
 require 'json'
 
+# Not currently used, remains for reference
 # Wrap calls to the SkillsEngine API & handle auth
 class SkillsEngine
   attr_reader :token_expiry, :has_updated_token

@@ -586,6 +586,7 @@
       return finalResults;
     }
 
+    // not currently used, remains for reference
     function getSkillsEngineCompetencies (text, callback) {
       $.postJSON('api/skillsengine/competencies', { text: text }, callback);
     }
