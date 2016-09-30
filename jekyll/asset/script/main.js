@@ -62,14 +62,12 @@
     function postInputControl (element) {
         var $document = $(document);
         var $element = $(element);
-        var lastLintId;
         $element.on('keyup', function () {
             var inputValue = element.value.replace(/\n/g, "<br>");
             var results = joblint(inputValue);
             results.readingLevel = buildReadingLevel(element.value);
             results.suggestions = generateReadingLevelSuggestions(element.value); // try to combine with above method?
             var finalResults = rearrangeJobLintResults(results); // this whole bit could use a rewrite
-            var lintId = generateLintId(finalResults);
             var eventId = element.getAttributeNode("event-id").value;
             $document.trigger('lint-results-' + eventId, finalResults);
         });
@@ -462,16 +460,15 @@
       postingData.jobDescription = captureFormattedField("job-desc-output");
       postingData.requiredFoundationalCompetencies = captureDoubleFieldValues('reqcomp-foundation');
       postingData.requiredOccupationalCompetencies = captureDoubleFieldValues('reqcomp-occupation');
-      postingData.hasRequiredCompetencies = postingData.requiredFoundationalCompetencies.length || postingData.requiredOccupationalCompetencies.length;
       postingData.preferredFoundationalCompetencies = captureDoubleFieldValues('prefcomp-foundation');
       postingData.preferredOccupationalCompetencies = captureDoubleFieldValues('prefcomp-occupation');
-      postingData.hasPreferredCompetencies = postingData.preferredFoundationalCompetencies.length || postingData.preferredOccupationalCompetencies.length;
+      postingData.hasFoundationalCompetencies = postingData.requiredFoundationalCompetencies.length || postingData.preferredFoundationalCompetencies.length;
+      postingData.hasOccupationalCompetencies = postingData.requiredOccupationalCompetencies.length || postingData.preferredOccupationalCompetencies.length;
       postingData.exampleActivities = captureSingleFieldValues('activity');
       postingData.certificationsNeeded = captureSingleFieldValues('cert');
 
       return templates.fullJobPosting.render(postingData, templates);
     }
-
 
     function captureFormattedField(id) {
       var description = "";
@@ -519,10 +516,6 @@
       var $list = $(listReference);
       $list.append(templates[templateName].render({"id": id+index, "name": id, "data": data }));
       cuff($list[0]);
-    }
-
-    function generateLintId (results) {
-        return JSON.stringify(results);
     }
 
     function isSupportedBrowser () {

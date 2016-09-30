@@ -35,7 +35,7 @@
 {/positionTitle}
 
 {#employmentType}
-  <p><strong>Employment Type:</strong> {employmentType}<span class="seniority"><strong>Seniority Level:</strong> {seniorityLevel}</span></p>
+  <p><strong>Employment Type:</strong> {employmentType}&nbsp;&nbsp;<span class="seniority"><strong>Seniority Level:</strong> {seniorityLevel}</span></p>
 {/employmentType}
 
 {#jobDescription}
@@ -56,7 +56,7 @@
   </ul>
 {/certificationsNeeded.length}
 
-{#hasRequiredCompetencies}<h3>Foundational Skills</h3>{/hasRequiredCompetencies}
+{#hasFoundationalCompetencies}<h3 id="navlink15">Foundational Skills</h3>{/hasFoundationalCompetencies}
 {#requiredFoundationalCompetencies.length}
   <ul>
     {#requiredFoundationalCompetencies}<li><strong>{name}</strong>{#description}: {description}{/description}</li>{/requiredFoundationalCompetencies}
@@ -69,7 +69,7 @@
   </ul>
 {/preferredFoundationalCompetencies.length}
 
-{#hasPreferredCompetencies}<h3>Occupational Skills</h3>{/hasPreferredCompetencies}
+{#hasOccupationalCompetencies}<h3 id="navlink16">Occupational Skills</h3>{/hasOccupationalCompetencies}
 {#requiredOccupationalCompetencies.length}
   <ul>
     {#requiredOccupationalCompetencies}<li><strong>{name}</strong>{#description}: {description}{/description}</li>{/requiredOccupationalCompetencies}
