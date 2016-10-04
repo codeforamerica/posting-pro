@@ -206,7 +206,7 @@
       cuff(navContainer[0]);
 
       $.mark.jump();
-      $("main").scrollTop(129);
+      $("html,body").scrollTop(0);
     }
 
     function goToEmployerPageControl(element) {
