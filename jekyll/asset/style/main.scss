@@ -466,4 +466,5 @@ textarea.short { max-height: 50px; }
 footer p {
   @include rem(font-size, 14px);
   line-height: 1rem;
+  &.less-tight { line-height: 1.6rem; }
 }
