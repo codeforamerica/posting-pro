@@ -31,7 +31,7 @@
     function initControls () {
         cuff.controls.analysisField = analysisFieldControl;
         cuff.controls.postInput = postInputControl;
-        cuff.controls.countOutput = countOutputControl;
+        cuff.controls.genderResult = genderResultControl;
         cuff.controls.readingLevelOutput = readingLevelOutputControl;
         cuff.controls.suggestionsOutput = suggestionsOutputControl;
         cuff.controls.freshStartButton = freshStartControl;
@@ -63,28 +63,25 @@
         var $document = $(document);
         var $element = $(element);
         $element.on('keyup', function () {
-            var inputValue = element.value.replace(/\n/g, "<br>");
             var results = {};
-            results.genderBias = joblint(inputValue);
+            results.genderBias = decodeGender(element.value);
             results.readingLevel = buildReadingLevel(element.value);
-            results.suggestions = generateReadingLevelSuggestions(element.value); // try to combine with above method?
-            var finalResults = rearrangeJobLintResults(results); // this whole bit could use a rewrite
+            var readingLevelSuggestions = generateReadingLevelSuggestions(element.value);
+            var genderBiasSuggestion = generateGenderBiasSuggestion(results.genderBias);
+            results.suggestions = readingLevelSuggestions.concat(genderBiasSuggestion);
             var eventId = element.getAttributeNode("event-id").value;
-            $document.trigger('lint-results-' + eventId, finalResults);
+            $document.trigger('lint-results-' + eventId, results);
         });
     }
 
-    function countOutputControl (element) {
+    function genderResultControl (element) {
 
-      element.innerHTML = templates.issueCount.render({'issueCount' : '0'});
+      element.innerHTML = templates.genderResult.render({'genderResult' : '-'});
       cuff(element);
 
       var eventId = element.getAttributeNode('event-id').value;
       $(document).on('lint-results-' + eventId, function (event, results) {
-        var sexismIssues = _.filter(results.issues, function(i) {
-          return _.has(i.increment, 'sexism');
-        });
-        element.innerHTML = templates.issueCount.render({ 'issueCount' : sexismIssues.length});
+        element.innerHTML = templates.genderResult.render({ 'genderResult' : results.genderBias.result});
         cuff(element);
       });
     }
@@ -564,20 +561,11 @@
       return suggestions;
     }
 
-    function rearrangeJobLintResults(results) {
-      var finalResults = _.cloneDeep(results);
-      var sexismIssues = _.filter(finalResults.issues, function(i) {
-        return _.has(i.increment, 'sexism');
-      });
-
-      for (var i = 0; i < sexismIssues.length; i++) {
-        finalResults.suggestions.push({
-          "explanation": sexismIssues[i].solution,
-          "examples": sexismIssues[i].occurrence
-        });
-      }
-
-      return finalResults;
+    function generateGenderBiasSuggestion(genderResults) {
+      return [{
+        "explanation": genderResults.explanation,
+        "examples": genderResults.feminineCodedWords.concat(genderResults.masculineCodedWords).join(", ")
+      }];
     }
 
     // not currently used, remains for reference

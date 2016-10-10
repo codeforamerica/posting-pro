@@ -402,6 +402,7 @@ textarea.short { max-height: 50px; }
       color: $action-color;
       margin: .5rem auto;
       padding: 20px 10px 10px;
+      text-transform: capitalize;
     }
     hr {
       color: $action-color;

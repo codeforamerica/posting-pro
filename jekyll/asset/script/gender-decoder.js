@@ -1,10 +1,9 @@
-function assess(text) {
+function decodeGender (text) {
   text = text.replace(/\s+/g, " ")
              .replace(/[\.\t,:;\(\)?!]/g, "");
 
   var words = text.split(" ");
-  console.log(words);
-
+  
   var masculineWords = [];
   var feminineWords = [];
 
