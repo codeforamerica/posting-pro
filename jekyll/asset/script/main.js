@@ -64,7 +64,8 @@
         var $element = $(element);
         $element.on('keyup', function () {
             var inputValue = element.value.replace(/\n/g, "<br>");
-            var results = joblint(inputValue);
+            var results = {};
+            results.genderBias = joblint(inputValue);
             results.readingLevel = buildReadingLevel(element.value);
             results.suggestions = generateReadingLevelSuggestions(element.value); // try to combine with above method?
             var finalResults = rearrangeJobLintResults(results); // this whole bit could use a rewrite
@@ -541,7 +542,7 @@
       var suggestions = [];
       if (text) {
         var ts = textstatistics(text);
-        var longWords = ts.wordsWithFourOrMoreSyllablesList(text, false);
+        var longWords = ts.wordsWithFourOrMoreSyllablesList(text);
         if (longWords.length !== 0) {
           suggestions.push({
             "explanation": "Replace complex words with simpler alternatives",
