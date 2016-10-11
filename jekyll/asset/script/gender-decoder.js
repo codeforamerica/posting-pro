@@ -6,8 +6,8 @@ if(!String.prototype.startsWith){
 }
 
 // includes() polyfill (ditto w/ above)
-if(!Array.prototype.includes) {
-    Array.prototype.includes = function (v) {
+if(!String.prototype.includes) {
+    String.prototype.includes = function (v) {
         return this.indexOf(v) > -1;
     };
 }
