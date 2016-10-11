@@ -1,7 +1,14 @@
-// startsWith polyfill (startWith is only standard starting in May 2016)
+// startsWith() polyfill (startWith is only standard starting in May 2016)
 if(!String.prototype.startsWith){
     String.prototype.startsWith = function (str) {
         return !this.indexOf(str);
+    };
+}
+
+// includes() polyfill (ditto w/ above)
+if(!Array.prototype.includes) {
+    Array.prototype.includes = function (v) {
+        return this.indexOf(v) > -1;
     };
 }
 
