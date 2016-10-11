@@ -203,6 +203,7 @@ select {
   display: block;
   margin: 0 0 1rem;
 }
+
 textarea {
   @include rem(font-size, 16px);
   line-height: 1.5em;
@@ -212,12 +213,21 @@ textarea {
   margin: .5rem 0 0;
   border: 1px solid $darkGray !important;
 }
+
+textarea.analysis-input { margin: 0; }
+
 textarea.short { max-height: 50px; }
+
 .column {
   width: 100%;
   height: 150px;
   box-sizing: border-box;
+
+  &.input-area {
+    margin-top: .5rem;
+  }
 }
+
 .addAnother {
   max-width: 110px;
   cursor: pointer;
@@ -402,6 +412,7 @@ textarea.short { max-height: 50px; }
       color: $action-color;
       margin: .5rem auto;
       padding: 20px 10px 10px;
+      text-transform: capitalize;
     }
     hr {
       color: $action-color;

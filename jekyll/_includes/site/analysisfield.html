@@ -8,11 +8,12 @@
     <div id="{id}-suggestions" event-id="{id}" data-control="suggestionsOutput" class="suggestions"><h4>Suggestions for improvement</h4></div>
     <div class="analysis">
       <div id="{id}-reading-output" event-id="{id}" data-control="readingLevelOutput"></div>
-      <div id="{id}-count-output" event-id="{id}" data-control="countOutput"></div>
+      <div id="{id}-gender-result" event-id="{id}" data-control="genderResult"></div>
     </div>
   </div>
-  <small>Readability score based on the <a href="https://en.wikipedia.org/wiki/Flesch%E2%80%93Kincaid_readability_tests#Flesch_reading_ease" target="_blank">Flesch reading ease test</a>.<br>
-    A perfect score of 70/70 is equal to an 8th grade reading level (the national average for adults in the U.S.).</small>
+  <small>Readability score based on the <a href="https://en.wikipedia.org/wiki/Flesch%E2%80%93Kincaid_readability_tests#Flesch_reading_ease" target="_blank">Flesch reading ease test</a>. A perfect score of 70/70 is equal to an 8th grade reading level (the national average for adults in the U.S.).<br/>
+  Gender balance analysis based on <a href="http://gender-decoder.katmatfield.com/" target="_blank">gender-decoder.katmatfield.com</a>. Aim for neutral: an overly masculine job posting will dissuade women from applying.
+  </small>
 </script>
 
 <script type="text/x-template" data-template="suggestions">
@@ -25,6 +26,6 @@
   <div class="analysis-field">Readability Score: <strong>{readingLevel}/70</strong></div>
   <hr>
 </script>
-<script type="text/x-template" data-template="issueCount">
-  <div class="analysis-field">Gender-Biased Phrases: <strong>{issueCount}</strong></div>
+<script type="text/x-template" data-template="genderResult">
+  <div class="analysis-field">Gender Balance: <strong>{genderResult}</strong></div>
 </script>
