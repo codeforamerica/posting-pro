@@ -76,7 +76,7 @@
 
     function genderResultControl (element) {
 
-      element.innerHTML = templates.genderResult.render({'genderResult' : '-'});
+      element.innerHTML = templates.genderResult.render({'genderResult' : 'Neutral'});
       cuff(element);
 
       var eventId = element.getAttributeNode('event-id').value;
