@@ -22,22 +22,17 @@ function decodeGender (text) {
   var explanation = "";
 
   if (result.includes("feminine")) {
-    explanation = "This job ad uses more words that are stereotypically feminine " +
-            "than words that are stereotypically masculine. Fortunately, the research " +
-            "suggests this will have only a slight effect on how appealing the job is " +
-            "to men, and will encourage women applicants.";
+    explanation = "This uses more words that are stereotypically feminine " +
+            "than words that are stereotypically masculine.";
   } else if (result.includes("masculine")) {
-    explanation = "This job ad uses more words that are stereotypically masculine " +
-            "than words that are stereotypically feminine. It risks putting women off " +
-            "applying, but will probably encourage men to apply.";
+    explanation = "This uses more words that are stereotypically masculine " +
+            "than words that are stereotypically feminine.";
   } else if (!masculineWords.length && !feminineWords.length) {
-    explanation = "This job ad doesn't use any words that are stereotypically " +
-            "masculine and stereotypically feminine. It probably won't be off-putting " +
-            "to men or women applicants.";
+    explanation = "This doesn't use any words that are stereotypically " +
+            "masculine and stereotypically feminine.";
   } else {
-    explanation = "This job ad uses an equal number of words that are " +
-            "stereotypically masculine and stereotypically feminine. It probably won't " +
-            "be off-putting to men or women applicants.";
+    explanation = "This uses an equal number of words that are " +
+            "stereotypically masculine and stereotypically feminine.";
   }
 
   return {result: result, 
