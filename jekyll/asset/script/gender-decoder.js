@@ -1,3 +1,10 @@
+// startsWith polyfill (startWith is only standard starting in May 2016)
+if(!String.prototype.startsWith){
+    String.prototype.startsWith = function (str) {
+        return !this.indexOf(str);
+    };
+}
+
 function decodeGender (text) {
   text = text.replace(/\s+/g, " ")
              .replace(/[\.\t,:;\(\)?!]/g, "");
